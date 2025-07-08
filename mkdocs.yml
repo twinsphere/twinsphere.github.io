@@ -1,0 +1,37 @@
+site_name: conplement AG twinsphere.TypedAasMetamodels
+site_url: https://docs.aas.conplement.cloud
+theme:
+  name: readthedocs
+  locale: en
+  logo: img/twinsphere-logo.png
+  palette:
+    primary: green
+extra_css:
+- css/extra.css
+nav:
+  - Home: index.md
+  - Contact us: contact.md
+  - twinsphere.TypedAasMetamodels:
+    - Library: typed_aas_models.md
+    - Submodels: submodels.md
+    - Validation Rules: validation.md
+    - Release Notes: release_notes.md
+copyright: Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+plugins:
+  - search
+  - open-in-new-tab
+  - link-marker
+  - spellcheck:
+      backends:
+      - symspellpy
+      - codespell:
+          dictionaries: [clear, rare, informal, usage, en-GB_to_en-US]
+      known_words: known_words.txt
+      ignore_code: yes
+      allow_unicode: yes
+      strict_only: yes
