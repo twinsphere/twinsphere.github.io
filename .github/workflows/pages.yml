@@ -1,0 +1,109 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install commitlint
+      run: npm install -D @commitlint/cli @commitlint/config-conventional
+
+    - name: Print versions
+      run: |
+        git --version
+        node --version
+        npm --version
+        npx commitlint --version
+
+    - name: Validate current commit (last commit) with commitlint
+      if: github.event_name == 'push'
+      run: npx commitlint --last --verbose
+
+    - name: Validate PR commits with commitlint
+      if: github.event_name == 'pull_request'
+      run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Lint markdown files
+      uses: DavidAnson/markdownlint-cli2-action@v20
+
+    - name: Validate link targets
+      uses: tcort/github-action-markdown-link-check@v1
+      with:
+        # show errors only
+        use-quiet-mode: 'yes'
+        # show HTTP error codes for the links
+        use-verbose-mode: 'yes'
+        check-modified-files-only: 'yes'
+        base-branch: main
+
+  build:
+    needs: [commitlint, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@user.noreply.github.com
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: echo "cache-id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          key: twinsphere-docs-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            twinsphere-docs-
+      - run: pip install mkdocs
+      - run: pip install mkdocs-open-in-new-tab mkdocs-link-marker mkdocs-spellcheck[all]
+      - run: mkdocs gh-deploy --force
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
