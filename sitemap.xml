@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://docs.aas.conplement.cloud/</loc>
+         <lastmod>2025-07-09</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.aas.conplement.cloud/contact/</loc>
+         <lastmod>2025-07-09</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.aas.conplement.cloud/release_notes/</loc>
+         <lastmod>2025-07-09</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.aas.conplement.cloud/submodels/</loc>
+         <lastmod>2025-07-09</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.aas.conplement.cloud/typed_aas_models/</loc>
+         <lastmod>2025-07-09</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.aas.conplement.cloud/validation/</loc>
+         <lastmod>2025-07-09</lastmod>
+    </url>
+</urlset>
