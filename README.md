@@ -28,7 +28,7 @@ Like so:
 sudo apt -y update && sudo apt install pipx
 
 # Install mkdocs and the necessary plugins
-pipx install
+pipx install mkdocs
 pipx inject mkdocs mkdocs-open-in-new-tab
 pipx inject mkdocs-link-marker
 pipx inject mkdocs-spellcheck[all]
