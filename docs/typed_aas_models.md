@@ -454,3 +454,12 @@ Aas3_0.ISubmodel digitalNameplateMetamodel;
 
 var jsonString = ValueOnlySerializer.ToValueOnly(digitalNameplateMetamodel);
 ```
+
+### Caveats and Notes on Usage
+
+twinsphere.TypedAasMetamodels internally uses features of `System.Globalization`, please ensure that your execution
+environment provides support for this library, otherwise, twinsphere.TypedAasMetamodels may not function correctly!
+The `dotnet` apline images, for example, are known to cause issues with default settings and require additional care.
+See the
+[dotnet notes on globalization support](https://github.com/dotnet/dotnet-docker/blob/main/samples/enable-globalization.md
+"Notes for running dotnet applications in alpine containers.") for detailed information.
