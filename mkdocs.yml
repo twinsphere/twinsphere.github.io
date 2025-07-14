@@ -12,10 +12,10 @@ nav:
   - Home: index.md
   - Contact us: contact.md
   - twinsphere.TypedAasMetamodels:
-    - Library: typed_aas_models.md
-    - Submodels: submodels.md
-    - Validation Rules: validation.md
-    - Release Notes: release_notes.md
+    - Overview: tam-overview.md
+    - Supported Submodels: tam-submodels.md
+    - Validation Rules: tam-validation.md
+    - Release Notes: tam-release_notes.md
 copyright: Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
 validation:
   omitted_files: warn
