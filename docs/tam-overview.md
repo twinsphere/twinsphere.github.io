@@ -352,7 +352,7 @@ validations for:
 - correct cardinality of submodel elements
 - valid type representation of properties
 
-> **Note**: The page on [validations](validation.md) contains an exhaustive list of the respective validations with
+> **Note**: The page on [validations](tam-validation.md) contains an exhaustive list of the respective validations with
 > descriptions.
 
 Each submodel type exposes a validator class that can be used to validate instances of the submodel. These validators
@@ -390,8 +390,8 @@ else
 
 ### Conversion
 
-The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](validation.md)) models in the
-generic meta model representation and the typed submodel, and vice versa.
+The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](tam-validation.md)) models in
+the generic meta model representation and the typed submodel, and vice versa.
 
 To this end, submodels implement `FromMetamodel()` and `ToMetamodel()`:
 
@@ -443,7 +443,7 @@ Besides the heavy meta model specification, the IDTA, furthermore, provides a sp
 "Value-only Semantics". The Value-only Semantics describes a stripped down representation for meta models.
 
 The twinsphere.TypedAasMetamodels library allows to convert arbitrary submodels, i.e., also for submodels not listed in
-the [supported submodels](submodels.md) to the value-only representation.
+the [supported submodels](tam-submodels.md) to the value-only representation.
 
 ```csharp
 using AasCore.Aas3_0;

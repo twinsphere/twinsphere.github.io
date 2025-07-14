@@ -152,7 +152,11 @@ The value of IncompleteDevice is not "U". If IncompleteDevice is set, its value 
 
 ### IDTA 02004-1-2 Handover Documentation 1.2
 
+<!-- markdownlint-disable line-length -->
+
 #### Preview File must match the correct MIME-Type. Allowed file types are JPG, PNG, BMP
+
+<!-- markdownlint-enable line-length -->
 
 The MIME-type of the preview file is not that of a JPG, PNG, or BMP file. The preview file only allows JPG, PNG, or BMP
 MIME-types.
@@ -161,7 +165,11 @@ MIME-types.
 
 Digital files does not contain at least one file that is a PDF/A file. At least one PDF/A file type shall be provided.
 
+<!-- markdownlint-disable line-length -->
+
 #### Constraint: for each language-dependent Title, Summary and at least one KeyWord shall exist for the given language
+
+<!-- markdownlint-enable line-length -->
 
 There is a title or summary for which there is no keyword in the same language. For each language-dependent keyword, a
 title and summary shall exist for the given language.
@@ -182,9 +190,13 @@ There is more than one document id that set as primary. Only one document id may
 
 There are no submodel specific rules for Hierarchical Structures enabling Bills of Material 1.1.
 
+<!-- markdownlint-disable line-length -->
+
 ### IDTA 02003-1-2 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 1.2
 
 #### Semantic Id not set for property. Properties are expected to carry a valid semantic id
+
+<!-- markdownlint-enable line-length -->
 
 There is no semantic id set for a property of TechnicalData, MainSection, or SubSection. Each entry in TechnicalData,
 MainSection, and SubSection needs a semantic id.
