@@ -11,7 +11,7 @@ extra_css:
 nav:
   - Home: index.md
   - Contact us: contact.md
-  - twinsphere.TypedAasMetamodels:
+  - twinsphere DevKit:
     - Overview: tam-overview.md
     - Supported Submodels: tam-submodels.md
     - Validation Rules: tam-validation.md
