@@ -22,3 +22,6 @@ via the ticket system.
     - [https://www.conplement.de/twinsphere](https://www.conplement.de/twinsphere)
 - **twinsphere insights (webinar series)**
     - [https://www.conplement.de/webinar-twinsphere-insights](https://www.conplement.de/webinar-twinsphere-insights)
+- **Swagger UI of twinsphere's API**
+    - [https://conplement.cloud.twinsphere.io/swagger/index.html](https://conplement.cloud.twinsphere.io/swagger/index.html)
+    - [https://conplement.cloud.twinsphere.io/sphere/swagger/index.html](https://conplement.cloud.twinsphere.io/sphere/swagger/index.html)
