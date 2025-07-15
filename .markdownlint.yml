@@ -1,8 +1,12 @@
 default: true
 
+# unordered list formatting
+MD004:
+  style: dash
+
 # unordered list indent
 MD007:
-  indent: 2
+  indent: 4
 
 # line-length
 MD013:
