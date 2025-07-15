@@ -20,7 +20,7 @@ Our twinsphere suite consists of the following applications:
 
 - [twinsphere Server (API)](api-documentation.md)
 - [twinsphere DevKit (C# library, TypedAasMetamodels)](tam-overview.md)
-<!-- - [twinsphere Viewer](viewer-overview.md) -->
+- [twinsphere Viewer](viewer-overview.md)
 - [twinsphere ID](id-overview.md)
 <!-- - [twinsphere twinfix (Web)](validator-overview.md) -->
 <!-- - [twinsphere Validator (CLI)](validator-overview.md) -->
