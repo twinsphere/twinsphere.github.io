@@ -12,3 +12,11 @@ MD013:
   code_blocks: true
   tables: true
   headings: true
+
+# emphasis style
+MD049:
+  style: asterisk
+
+# strong style
+MD050:
+  style: asterisk
