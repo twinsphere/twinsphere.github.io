@@ -1,17 +1,20 @@
-# twinsphere.TypedAasMetamodels Documentation
+# twinsphere Documentation
 
-<!-- markdownlint-disable no-inline-html -->
+[![twinsphere logo](img/twinsphere-logo.png){: width='300' }](https://www.conplement.de/twinsphere){: target='_blank' }
+[![conplement AG logo](img/CP_BildWortmarke.svg){: width='300' }](https://www.conplement.de){: target='_blank' }
 
-<!-- markdownlint-disable line-length -->
+This is the technical documentation of twinsphere by [conplement AG](https://www.conplement.de).
 
-<a href="https://www.conplement.de/twinsphere" target="_blank"><img src="./img/twinsphere-logo.png" width="300" alt="twinsphere logo" /></a>
-<a href="https://www.conplement.de" target="_blank"><img src="./img/CP_BildWortmarke.svg" width="300" alt="conplement AG logo" /></a>
+twinsphere is a software suite for creation, validation, hosting, viewing and interaction with industrial digital twins
+in form of [Asset Administration Shells](https://industrialdigitaltwin.org){: target='blank' }.
 
-<!-- markdownlint-disable line-length -->
+Our twinsphere suite consists of the following applications:
 
-This is the technical documentation of twinsphere.TypedAasMetamodels by conplement AG.
+- [twinsphere Server (API)](api-documentation.md)
+- [twinsphere.TypedAasMetamodels (C# library)](tam-overview.md)
+- [twinsphere Viewer](viewer-overview.md)
+- [twinsphere ID](id-overview.md)
+- [twinsphere twinfix (Web)](validator-overview.md)
+- [twinsphere Validator (CLI)](validator-overview.md)
 
-twinsphere.TypedAasMetamodels is a software suite for creation, validation, and interaction with industrial digital
-twins in form of <a href="https://industrialdigitaltwin.org" target="_blank">Asset Administration Shells</a>
-
-<!-- markdownlint-enable no-inline-html -->
+[![markitecture](img/twinsphere_marketecture-2-neu-eng.png)](./img/twinsphere_marketecture-2-neu-eng.png)

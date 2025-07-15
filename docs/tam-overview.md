@@ -5,28 +5,6 @@ following the IDTA Asset Administration Shell standard.
 
 > Relevant specification: [Specification of the Asset Administration Shell - Part 1: Metamodel - v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf)
 
-## Table of Contents
-
-- [twinsphere.TypedAasMetamodels](#twinspheretypedaasmetamodels)
-  - [Introduction](#introduction)
-  - [Download](#download)
-  - [Example](#example)
-  - [Design Principles and Concepts](#design-principles-and-concepts)
-  - [Working with Shells and Packages](#working-with-shells-and-packages)
-    - [Shell Abstractions](#shell-abstractions)
-    - [Packaging](#packaging)
-  - [Working with Submodels](#working-with-submodels)
-    - [Supported Submodels](#supported-submodels)
-    - [Types of the Meta Model](#types-of-the-meta-model)
-      - [Submodels and Submodel Element Collections](#submodels-and-submodel-element-collections)
-      - [Submodel Elements](#submodel-elements)
-      - [Properties and Lists](#properties-and-lists)
-    - [Builders](#builders)
-    - [Validation](#validation)
-    - [Conversion](#conversion)
-  - [Additional Features](#additional-features)
-    - [Value-only Semantics](#value-only-semantics)
-
 ## Introduction
 
 twinsphere.TypedAasMetamodels is an easy-to-use library, that provides tools for modification and stream-lined creation
@@ -143,16 +121,16 @@ In its design, the library is designed to make the creation of shells and submod
 sources of potential errors where possible. To this end, it employs some basic design rules:
 
 - Use distinct types where possible:
-  - Submodels are class citizens: where possible (i.e., where submodel templates are not ambiguous), submodels and their
+    - Submodels are class citizens: where possible (i.e., where submodel templates are not ambiguous), submodels and their
     submodel elements are modelled, individual types.
-  - Enums to encode restricted properties.
+    - Enums to encode restricted properties.
 - Prevent illegal states where possible, both, with respect to the meta model specification, as well as, to the submodel
   template specification:
-  - At compile time via signatures: creation methods enforce mandatory arguments, preventing incomplete submodel
+    - At compile time via signatures: creation methods enforce mandatory arguments, preventing incomplete submodel
     elements.
-  - At runtime time via fail-fast principle: constraints enforce correct types and qualifiers, e.g., the number of
+    - At runtime time via fail-fast principle: constraints enforce correct types and qualifiers, e.g., the number of
     elements in lists.
-  - At runtime in conversion: meta models are validated in conversion. Validation errors cause the conversion to fail
+    - At runtime in conversion: meta models are validated in conversion. Validation errors cause the conversion to fail
     early.
 - Hide metadata from the user: any SMT metadata, such as SemanticIds, IdShorts, ValueTypes, ... is handled internally.
   Users don't have to worry about them.
@@ -352,7 +330,7 @@ validations for:
 - correct cardinality of submodel elements
 - valid type representation of properties
 
-> **Note**: The page on [validations](validation.md) contains an exhaustive list of the respective validations with
+> **Note**: The page on [validations](tam-validation.md) contains an exhaustive list of the respective validations with
 > descriptions.
 
 Each submodel type exposes a validator class that can be used to validate instances of the submodel. These validators
@@ -390,8 +368,8 @@ else
 
 ### Conversion
 
-The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](validation.md)) models in the
-generic meta model representation and the typed submodel, and vice versa.
+The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](tam-validation.md)) models in
+the generic meta model representation and the typed submodel, and vice versa.
 
 To this end, submodels implement `FromMetamodel()` and `ToMetamodel()`:
 
@@ -443,7 +421,7 @@ Besides the heavy meta model specification, the IDTA, furthermore, provides a sp
 "Value-only Semantics". The Value-only Semantics describes a stripped down representation for meta models.
 
 The twinsphere.TypedAasMetamodels library allows to convert arbitrary submodels, i.e., also for submodels not listed in
-the [supported submodels](submodels.md) to the value-only representation.
+the [supported submodels](tam-submodels.md) to the value-only representation.
 
 ```csharp
 using AasCore.Aas3_0;

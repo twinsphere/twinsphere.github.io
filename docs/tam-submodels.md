@@ -22,7 +22,7 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 | **Version**     | 2.0                                                                                                |
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/2/0> |
 
-**Supported submodel specific constraints**
+**Supported submodel specific constraints**:
 
 - Nameplate::CountryOfOrigin
     - Country codes defined accord. to DIN EN ISO 3166-1 alpha-2 codes
@@ -35,14 +35,18 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 
 ## Handover Documentation (Version 1.2)
 
-| ---             | Supported Submodel Template                                                                             |
+<!-- markdownlint-disable line-length -->
+
+| --- | Supported Submodel Template |
 |-----------------|---------------------------------------------------------------------------------------------------------|
 | **Name**        | Handover Documentation                                                                                  |
 | **IDTA Number** | 02004                                                                                                   |
 | **Version**     | 1.2                                                                                                     |
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Handover%20Documentation/1/2> |
 
-**Supported submodel specific constraints**
+<!-- markdownlint-enable line-length -->
+
+**Supported submodel specific constraints**:
 
 - Document::DocumentClassification
     - At least one classification according to VDI 2770 shall be provided.
@@ -63,9 +67,9 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
     - At least one PDF/A file type shall be provided.
 - DocumentVersion::PreviewFile
     - The MIME-Type needs to match the file type.
-    - Allowed file types are JPG, PNG, BMP.
+        - Allowed file types are JPG, PNG, BMP.
 
-**Not yet supported submodel specific constraints**
+**Not yet supported submodel specific constraints**:
 
 - Document::DocumentedEntity
     - Reference targets an Entity within the Submodel “ManufacturerDocumentation”.
@@ -85,6 +89,8 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
     - The [language-independent] content must be identical in both Documents or DocumentVersions.
         - This cannot be checked as there is no way to check the language of the document content from the library.
 
+<!-- markdownlint-disable line-length -->
+
 ## Generic Frame for Technical Data for Industrial Equipment in Manufacturing (Version 1.2)
 
 | ---             | Supported Submodel Template                                                                   |
@@ -94,7 +100,9 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 | **Version**     | 1.2                                                                                           |
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Technical_Data/1/2> |
 
-**Supported submodel specific constraints**
+<!-- markdownlint-enable line-length -->
+
+**Supported submodel specific constraints**:
 
 - TechnicalProperties::MainSection
     - Each Main Section SMC may contain arbitrary sets of SubmodelElements, SemanticIdNotAvailable, SubSection.
