@@ -121,16 +121,16 @@ In its design, the library is designed to make the creation of shells and submod
 sources of potential errors where possible. To this end, it employs some basic design rules:
 
 - Use distinct types where possible:
-  - Submodels are class citizens: where possible (i.e., where submodel templates are not ambiguous), submodels and their
+    - Submodels are class citizens: where possible (i.e., where submodel templates are not ambiguous), submodels and their
     submodel elements are modelled, individual types.
-  - Enums to encode restricted properties.
+    - Enums to encode restricted properties.
 - Prevent illegal states where possible, both, with respect to the meta model specification, as well as, to the submodel
   template specification:
-  - At compile time via signatures: creation methods enforce mandatory arguments, preventing incomplete submodel
+    - At compile time via signatures: creation methods enforce mandatory arguments, preventing incomplete submodel
     elements.
-  - At runtime time via fail-fast principle: constraints enforce correct types and qualifiers, e.g., the number of
+    - At runtime time via fail-fast principle: constraints enforce correct types and qualifiers, e.g., the number of
     elements in lists.
-  - At runtime in conversion: meta models are validated in conversion. Validation errors cause the conversion to fail
+    - At runtime in conversion: meta models are validated in conversion. Validation errors cause the conversion to fail
     early.
 - Hide metadata from the user: any SMT metadata, such as SemanticIds, IdShorts, ValueTypes, ... is handled internally.
   Users don't have to worry about them.
