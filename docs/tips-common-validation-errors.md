@@ -178,8 +178,8 @@ is either referable or identifiable.
 ###### Remarks
 
 - Hyphen is NOT allowed as of v3.0.1 of the specification.
-- Hyphen will be allowed with upcoming version v3.1 of the specification, see [Issue #295 of aas-specs in
-  Github](https://github.com/admin-shell-io/aas-specs/issues/295) for details.
+- Hyphen will be allowed with upcoming version v3.1 of the specification, see [Issue #295 of aas-specs-metamodel in
+  Github](https://github.com/admin-shell-io/aas-specs-metamodel/issues/295) for details.
 
 ###### Recommended Solution
 
@@ -296,7 +296,7 @@ is either referable or identifiable.
 - The specification currently is not consistent since the examples for *PathType* given in Part 1 v3.0 are not all valid
   (./Specification.pdf).
 - The upcoming specification Part 1 v3.1 will address this issue by allowing more generic URIs. See [Issue #299 of
-  aas-specs on Github](https://github.com/admin-shell-io/aas-specs/issues/299) for details.
+  aas-specs-metamodel on Github](https://github.com/admin-shell-io/aas-specs-metamodel/issues/299) for details.
 
 ###### Recommended Solution
 
@@ -753,13 +753,13 @@ Main error source here is that the official XML schema is demanding that most XM
 >
 ###### Specification Reference
 
-- [Issue #296 of admin-shell-io/aas-specs on Github](https://github.com/admin-shell-io/aas-specs/issues/296)
+- [Issue #296 of admin-shell-io/aas-specs on Github](https://github.com/admin-shell-io/aas-specs-metamodel/issues/296)
 - [Part 1 v3.0, 7.2.5 Embedded Data Specifications, Figure 58 Realization of Embedded Data Specifications, P.
   115](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=116)
 - [Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
   135](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136)
 - [XML-Schema v3.0.7, <xs:group name="embeddedDataSpecification">, line 278
-  ff.](https://github.com/admin-shell-io/aas-specs/blob/master/schemas/xml/AAS.xsd#L278)
+  ff.](https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L278)
 
 ###### Remarks
 
@@ -785,7 +785,7 @@ Main error source here is that the official XML schema is demanding that most XM
 - [Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
   135](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136)
 - [XML-Schema v3.0.7, <xs:group name="embeddedDataSpecification">, line 869
-  ff.](https://github.com/admin-shell-io/aas-specs/blob/master/schemas/xml/AAS.xsd#L869)
+  ff.](https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L869)
 
 ###### Remarks
 
@@ -811,7 +811,7 @@ Main error source here is that the official XML schema is demanding that most XM
 - [Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
   135](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136)
 - [XML-Schema v3.0.7, <xs:element name="description"...>, line 739
-  ff.](https://github.com/admin-shell-io/aas-specs/blob/master/schemas/xml/AAS.xsd#L739)
+  ff.](https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L739)
 
 ###### Remarks
 
@@ -838,7 +838,7 @@ Main error source here is that the official XML schema is demanding that most XM
 - [Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
   135](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136)
 - [XML-Schema v3.0.7, <xs:element name="description"...>, line 293
-  ff.](https://github.com/admin-shell-io/aas-specs/blob/master/schemas/xml/AAS.xsd#L293)
+  ff.](https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L293)
 
 ###### Remarks
 
@@ -862,7 +862,7 @@ Main error source here is that the official XML schema is demanding that most XM
 - [Part 1 v3.0, 5.3.2.8 Qualifiable Attributes, P.
   53](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=54)
 - [XML-Schema v3.0.7, <xs:element name="description"...>, line 659
-  ff.](https://github.com/admin-shell-io/aas-specs/blob/master/schemas/xml/AAS.xsd#L659)
+  ff.](https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L659)
 
 ###### Remarks
 
@@ -887,7 +887,7 @@ Main error source here is that the official XML schema is demanding that most XM
 - [Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 2, P.
   135](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136)
 - [XML-Schema v3.0.7, <xs:element name="description"...>, line 659
-  ff.](https://github.com/admin-shell-io/aas-specs/blob/master/schemas/xml/AAS.xsd#L15)
+  ff.](https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L15)
 
 ###### Remarks
 
