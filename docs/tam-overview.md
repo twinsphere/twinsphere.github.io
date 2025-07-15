@@ -5,28 +5,6 @@ following the IDTA Asset Administration Shell standard.
 
 > Relevant specification: [Specification of the Asset Administration Shell - Part 1: Metamodel - v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf)
 
-## Table of Contents
-
-- [twinsphere.TypedAasMetamodels](#twinspheretypedaasmetamodels)
-  - [Introduction](#introduction)
-  - [Download](#download)
-  - [Example](#example)
-  - [Design Principles and Concepts](#design-principles-and-concepts)
-  - [Working with Shells and Packages](#working-with-shells-and-packages)
-    - [Shell Abstractions](#shell-abstractions)
-    - [Packaging](#packaging)
-  - [Working with Submodels](#working-with-submodels)
-    - [Supported Submodels](#supported-submodels)
-    - [Types of the Meta Model](#types-of-the-meta-model)
-      - [Submodels and Submodel Element Collections](#submodels-and-submodel-element-collections)
-      - [Submodel Elements](#submodel-elements)
-      - [Properties and Lists](#properties-and-lists)
-    - [Builders](#builders)
-    - [Validation](#validation)
-    - [Conversion](#conversion)
-  - [Additional Features](#additional-features)
-    - [Value-only Semantics](#value-only-semantics)
-
 ## Introduction
 
 twinsphere.TypedAasMetamodels is an easy-to-use library, that provides tools for modification and stream-lined creation
