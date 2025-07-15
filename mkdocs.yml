@@ -11,6 +11,8 @@ extra_css:
 nav:
   - Home: index.md
   - Contact us: contact.md
+  - twinstudio:
+    - Coming 2025: studio-overview.md
   - twinsphere Server:
     - API Documentation: api-documentation.md
     - Proprietary Features:
