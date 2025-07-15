@@ -25,13 +25,13 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 **Supported submodel specific constraints**:
 
 - Nameplate::CountryOfOrigin
-  - Country codes defined accord. to DIN EN ISO 3166-1 alpha-2 codes
+    - Country codes defined accord. to DIN EN ISO 3166-1 alpha-2 codes
 - ExplosionSafety::SpecificConditionsForUse
-  - X if any, otherwise no entry
+    - X if any, otherwise no entry
 - ExplosionSafety::IncompleteDevice
-  - U if any, otherwise no entry
+    - U if any, otherwise no entry
 - ExplosionSafety::IncompleteDevice
-  - U if any, otherwise no entry
+    - U if any, otherwise no entry
 
 ## Handover Documentation (Version 1.2)
 
@@ -49,45 +49,45 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 **Supported submodel specific constraints**:
 
 - Document::DocumentClassification
-  - At least one classification according to VDI 2770 shall be provided.
+    - At least one classification according to VDI 2770 shall be provided.
 - DocumentId::IsPrimary
-  - Only one DocumentId in a collection may be marked as primary.
+    - Only one DocumentId in a collection may be marked as primary.
 - DocumentClassification::ClassId
-  - If ClassificationSystem is set to “VDI2770 Blatt 1:2020”, the given IDs of VDI2770 Blatt 1:2020 shall be used
+    - If ClassificationSystem is set to “VDI2770 Blatt 1:2020”, the given IDs of VDI2770 Blatt 1:2020 shall be used
 - DocumentClassification::ClassName
-  - If ClassificationSystem is set to “VDI2770 Blatt 1:2020”, the given IDs of VDI2770 Blatt 1:2020 shall be used
+    - If ClassificationSystem is set to “VDI2770 Blatt 1:2020”, the given IDs of VDI2770 Blatt 1:2020 shall be used
 - DocumentVersion::Title
-  - For each language-dependent Title, a Summary and at least one KeyWord shall exist for the given language.
+    - For each language-dependent Title, a Summary and at least one KeyWord shall exist for the given language.
 - DocumentVersion::Summary
-  - For each language-dependent Title, a Summary and at least one KeyWord shall exist for the given language.
+    - For each language-dependent Title, a Summary and at least one KeyWord shall exist for the given language.
 - DocumentVersion::KeyWords
-  - For each language-dependent Title, a Summary and at least one KeyWord shall exist for the given language.
+    - For each language-dependent Title, a Summary and at least one KeyWord shall exist for the given language.
 - DocumentVersion::DigitalFile
-  - The MIME-Type needs to match the file type.
-  - At least one PDF/A file type shall be provided.
+    - The MIME-Type needs to match the file type.
+    - At least one PDF/A file type shall be provided.
 - DocumentVersion::PreviewFile
-  - The MIME-Type needs to match the file type.
-    - Allowed file types are JPG, PNG, BMP.
+    - The MIME-Type needs to match the file type.
+        - Allowed file types are JPG, PNG, BMP.
 
 **Not yet supported submodel specific constraints**:
 
 - Document::DocumentedEntity
-  - Reference targets an Entity within the Submodel “ManufacturerDocumentation”.
-    - This constraint is not ensured currently due to uncertainty in "ManufacturerDocumentation"
+    - Reference targets an Entity within the Submodel “ManufacturerDocumentation”.
+        - This constraint is not ensured currently due to uncertainty in "ManufacturerDocumentation"
 - DocumentClassification::ClassName
-  - Languages shall match at least the language specifications of the included DocumentVersions.
-    - This is currently not supported as only english is used
+    - Languages shall match at least the language specifications of the included DocumentVersions.
+        - This is currently not supported as only english is used
 - DocumentVersion::RefersTo
-  - Reference targets a SMC “Document” or a “DocumentVersion”.
-    - This is currently not ensured as the SDK accepts all references
+    - Reference targets a SMC “Document” or a “DocumentVersion”.
+        - This is currently not ensured as the SDK accepts all references
 - DocumentVersion::BasedOn
-  - Reference targets a SMC “Document” or a “DocumentVersion”.
-    - This is currently not ensured as the SDK accepts all references
+    - Reference targets a SMC “Document” or a “DocumentVersion”.
+        - This is currently not ensured as the SDK accepts all references
 - DocumentVersion::TranslationOf
-  - Reference targets a SMC “Document” or a “DocumentVersion”.
-    - This is currently not ensured as the SDK accepts all references
-  - The [language-independent] content must be identical in both Documents or DocumentVersions.
-    - This cannot be checked as there is no way to check the language of the document content from the library.
+    - Reference targets a SMC “Document” or a “DocumentVersion”.
+        - This is currently not ensured as the SDK accepts all references
+    - The [language-independent] content must be identical in both Documents or DocumentVersions.
+        - This cannot be checked as there is no way to check the language of the document content from the library.
 
 <!-- markdownlint-disable line-length -->
 
@@ -105,11 +105,11 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 **Supported submodel specific constraints**:
 
 - TechnicalProperties::MainSection
-  - Each Main Section SMC may contain arbitrary sets of SubmodelElements, SemanticIdNotAvailable, SubSection.
+    - Each Main Section SMC may contain arbitrary sets of SubmodelElements, SemanticIdNotAvailable, SubSection.
 - TechnicalProperties::SubSection
-  - Each Sub Section SMC may contain arbitrary sets of SubmodelElements, SemanticIdNotAvailable, SubSection.
+    - Each Sub Section SMC may contain arbitrary sets of SubmodelElements, SemanticIdNotAvailable, SubSection.
 - TechnicalProperties::SubSection
-  - In the hierarchy of SubmodelElements, a MainSection shall be super-ordinate to the SubSection.
+    - In the hierarchy of SubmodelElements, a MainSection shall be super-ordinate to the SubSection.
 
 ## Carbon Footprint
 
