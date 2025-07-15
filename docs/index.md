@@ -1,15 +1,7 @@
 # twinsphere Documentation
 
-<!-- markdownlint-disable no-inline-html -->
-
-<!-- markdownlint-disable line-length -->
-
-<a href="https://www.conplement.de/twinsphere" target="_blank"><img src="./img/twinsphere-logo.png" width="300" alt="twinsphere logo" /></a>
-<a href="https://www.conplement.de" target="_blank"><img src="./img/CP_BildWortmarke.svg" width="300" alt="conplement AG logo" /></a>
-
-<!-- markdownlint-disable line-length -->
-
-<!-- markdownlint-enable no-inline-html -->
+[![twinsphere logo](img/twinsphere-logo.png){: width='300' }](https://www.conplement.de/twinsphere){: target='_blank' }
+[![conplement AG logo](img/CP_BildWortmarke.svg){: width='300' }](https://www.conplement.de){: target='_blank' }
 
 This is the technical documentation of twinsphere by [conplement AG](https://www.conplement.de).
 
