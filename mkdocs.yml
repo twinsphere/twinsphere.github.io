@@ -36,6 +36,8 @@ nav:
     - Overview: viewer-overview.md
     - Features: viewer-features.md
     - Release Notes: viewer-release-notes.md
+  - twinsphere Validator:
+    - Overview: validator-overview.md
   - Tips & Tricks:
     - Common Validation Errors: tips-common-validation-errors.md
 copyright: Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
