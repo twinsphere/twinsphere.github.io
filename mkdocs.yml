@@ -28,7 +28,6 @@ plugins:
   - link-marker
   - spellcheck:
       backends:
-      - symspellpy
       - codespell:
           dictionaries: [clear, rare, informal, usage, en-GB_to_en-US]
       known_words: known_words.txt
