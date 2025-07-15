@@ -237,8 +237,10 @@ is either referable or identifiable.
 
 ###### Recommended Solution
 
+<!-- markdown-link-check-disable -->
 - You should use URNs (e.g. urn:GMA:7.20:contractnegotiation:1:1#001) or URIs (e.g. <http://www.vdi.de/gma720/>
   contractnegotiation/1/1#001) to create such a (submodel) identifier.
+<!-- markdown-link-check-enable -->
 - See [Part 1, Annex A, *How Are New Identifiers Created?* and *Best Practice for Creating URI Identifiers*, P.
   124](https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=125)
   for more information.
