@@ -16,6 +16,8 @@ nav:
     - Supported Submodels: tam-submodels.md
     - Validation Rules: tam-validation.md
     - Release Notes: tam-release_notes.md
+  - twinsphere ID:
+    - User management: id-overview.md
 copyright: Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
 validation:
   omitted_files: warn
