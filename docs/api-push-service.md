@@ -58,7 +58,9 @@ To connect to the AASX File Server, you need to create the following configurati
 }
 ```
 > **Note:**
-> All URLs must be absolute and point to your access token or push target resource.
+> - The AASX File Server only supports the "application/asset-administration-shell-package+json" serialization format.
+> - All URLs must be absolute and point to your access token or push target resource. 
+> - A name is not required in the request body when calling the update target endpoint.
 
 ## Job management
 
