@@ -18,7 +18,11 @@ details.
 
 ### Local Deployment
 
-For local development, please install the following dependencies:
+For local development you can either use your native Python installation, or use the supplied [Dockerfile](Dockerfile).
+
+#### Native Python installation
+
+Please first install the following dependencies:
 
 - [pipx](https://github.com/pypa/pipx)
 - [MkDocs](https://www.mkdocs.org/)
@@ -44,6 +48,33 @@ repo's directory like this:
 ```bash
 pipx serve mkdocs
 ```
+
+#### Dockerized environment
+
+We provide a slim [Dockerfile](Dockerfile) for local development so you don't need to install the development directly
+on your host environment. To this end, first ensure that you have a functional docker setup on your system. Then build
+the provided Dockerfile:
+
+```bash
+docker build -t mkdocs-dev .
+```
+
+After the build succeeded, you can now launch an mkdocs server as follows:
+
+```bash
+# Ensure you are in the correct directory
+cd /path/to/your/repo/twinsphere.github.io
+
+docker run --rm -v "$PWD":/docs mkdocs-dev
+
+INFO    -  Building documentation...
+INFO    -  Cleaning site directory
+INFO    -  Documentation built in 0.25 seconds
+INFO    -  [07:26:53] Watching paths for changes: 'docs', 'mkdocs.yml'
+INFO    -  [07:26:53] Serving on http://127.0.0.1:8000/
+```
+
+**Note**: the dockerized environment is solely for development purposes and not meant for actual deployments.
 
 ### Optional Dependencies and Additional Checks
 
