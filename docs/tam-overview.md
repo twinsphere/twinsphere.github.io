@@ -230,12 +230,23 @@ AssetAdministrationShell shell;
 // 2. create some submodels
 DigitalNameplate nameplate;
 
-// 3. we can now create an.aasx package out of all of this
+// 3.1. include an external file reference
+nameplate.CompanyLogo = new FileReference("https://some.tld/some/image.png");
+
+// 3.2. alternatively, include a reference to a local file
+nameplate.CompanyLogo = new PackageFileReference("/home/user/some/image.png");
+
+// 4. we can now create an.aasx package out of all of this
 // Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
 // referenced concept descriptions, and files to include into the paths, if available.
 var packagingInfo = PackagePreprocessor.ProcessShell(shell, [digitalNameplate]);
 var spherePackage = new SpherePackageBuilder(packagingInfo).Build();
 ```
+
+> **Note**: Take care to use the `PackageFileReference` type if you want to include local files into your package. This
+> type wraps a reference to a file on disk. In the packaging step `PackageFileReference` elements will be included into
+> the package and their links will resolved accordingly. See [Submodel Elements](tam-overview.md#submodel-elements) for
+> more details on the built-in types of the DevKit.
 
 ## Working with Submodels
 
@@ -267,8 +278,10 @@ At the moment, we provide support for the following set of submodel elements. Fo
 that performs additional correctness checks at creation, and, potentially, provides additional helper methods.
 
 - **ReferenceElement**: representation of a ReferenceElement.
-- **File**: generic representation of a File reference, may point anywhere.
-- **PackageFile**: special file representation. Use this, if you want to create a package for which a file should be included.
+- **Files**: the DevKit provides two abstractions to represent files
+    - **FileReference**: generic representation of a file that may reference files anywhere, including external URLs.
+    - **PackageFileReference**: special file representation. Use this, if you want to create a package for which a file
+      should be included.
 - **MultiLanguageString**: Multi Language Property.
 
 #### Properties and Lists
