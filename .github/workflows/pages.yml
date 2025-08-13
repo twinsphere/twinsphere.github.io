@@ -52,6 +52,12 @@ jobs:
 
     - name: Lint markdown files
       uses: DavidAnson/markdownlint-cli2-action@v20
+      with:
+        globs: |
+          CONTRIBUTING.md
+          README.md
+          docs/*.md
+          docs/**/*.md
 
     - name: Validate link targets
       uses: tcort/github-action-markdown-link-check@v1
