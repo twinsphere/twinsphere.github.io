@@ -1,0 +1,29 @@
+.wy-nav-content {
+    max-width: 1350px;
+    background-color: white;
+}
+
+.wy-side-scroll {
+    background-color: #444444
+}
+
+.wy-side-nav-search {
+    background-color: #343131;
+}
+
+.rst-versions .rst-current-version {
+    background-color: #343131;
+}
+
+.caption-text {
+    color: #6da40c;
+}
+
+blockquote {
+    margin: 16px 0;
+    font-size: inherit;
+    padding: 0 15px;
+    color: #5c5c5c;
+    background-color: #f0f0f0;
+    border-left: 4px solid #d6d6d6;
+}
