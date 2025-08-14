@@ -92,7 +92,7 @@ applications and fully integrate twinsphere into your ecosystem.
 In general, you need to create two Azure app registrations. One for the API service and one for the viewer, which acts
 as client for the API. If you don't use the twinsphere viewer, you can skip the viewer configuration section.
 
-> **Prerequisites:**
+> **Prerequisites**
 >
 > The following steps require you to sign in as a user that is authorized to consent on behalf of the organization. For
 > this, a user with the following roles is needed:

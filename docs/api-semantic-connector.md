@@ -118,7 +118,7 @@ As you can see all complex AAS metadata information is hidden to make the semant
 submodels" or "semantic submodel instances") easy to understand - even for non AAS experts. Simple key/value pairs. We
 believe that mapping data to this more comprehensive form should be much easier.
 
-> **REMARK:** *Semantic submodels and the value-only serialization of the AAS standard are not the same - even if they
+> **REMARK** *Semantic submodels and the value-only serialization of the AAS standard are not the same - even if they
 > look similar. The value-only format can not be converted back to its original form, our semantic submodels can!*
 
 Semantic Submodels are described via XML schemas (which we call "semantic submodel schemas"). We derive these schemas
@@ -200,7 +200,7 @@ For example:
   `https://admin-shell.io/ZVEI/TechnicalData/Submodel/1/2`.
 - therefore, this semantic schema is derived from submodel template Technical Data in version 1.2.
 
-> **IMPORTANT:** *The semantic schema uses the semantic ID of the submodel template, and not the ID field of the
+> **IMPORTANT** *The semantic schema uses the semantic ID of the submodel template, and not the ID field of the
 > submodel template (these two are often the same, but in some cases they can differ).*
 
 ## Semantic Instances
