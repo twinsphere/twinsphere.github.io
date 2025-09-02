@@ -37,6 +37,27 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 - ExplosionSafety::IncompleteDevice
     - U if any, otherwise no entry
 
+### Version 3.0
+
+| ---             | Supported Submodel Template                                                                        |
+|-----------------|----------------------------------------------------------------------------------------------------|
+| **Name**        | Digital Nameplate for Industrial Equipment                                                         |
+| **IDTA Number** | 02006                                                                                              |
+| **Version**     | 3.0                                                                                                |
+| **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/3/0> |
+
+**Note**:
+
+Contrary to [Digital Nameplate
+2.0](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/2/0), this submodels
+id short officially is `Nameplate`. We follow this naming strategy and it is reflected in the DevKit, i.e., the Digital
+Nameplate 3.0 can be found in the namespace `twinsphere.TypedAasMetamodels.Types.Submodels.Nameplate.V3_0`.
+
+**Supported submodel specific constraints**:
+
+- Nameplate::CountryOfOrigin
+    - Country codes defined accord. to DIN EN ISO 3166-1 alpha-2 codes
+
 ## Handover Documentation
 
 ### Version 1.2
