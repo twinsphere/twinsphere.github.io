@@ -166,6 +166,34 @@ is fixed or an official statement has been made, we chose to follow the spec by 
 - TechnicalProperties::SubSection
     - In the hierarchy of SubmodelElements, a MainSection shall be super-ordinate to the SubSection.
 
+### Version 2.0
+
+<!-- markdownlint-disable line-length -->
+
+| ---             | Supported Submodel Template                                                                   |
+|-----------------|-----------------------------------------------------------------------------------------------|
+| **Name**        | Generic Frame for Technical Data for Industrial Equipment in Manufacturing                    |
+| **IDTA Number** | 02003                                                                                         |
+| **Version**     | 2.0                                                                                           |
+| **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Technical_Data/2/0> |
+
+<!-- markdownlint-enable line-length -->
+
+**Note**:
+
+This SMT makes heavy use of arbitrary elements for modelling the `TechnicalDataAreas` and `SpecificDescriptions`. In
+both cases, users may use SubmodelElementCollections (SMCs) as structuring elements, e.g., to provide additional nesting
+in UIs. To this end, this SMT defines two different types of SMCs: `Section` and `ArbitrarySMC`, both are considered to
+act as arbitrary properties, i.e., properties for which the user may choose an id short, as well as, semantic ids. At
+the moment, however, there is no way to tell a `Section` element from any other SMC element in their respective context.
+In the DevKit we therefore do have a `Section` element for the creation of the submodel. However, it is currently
+impossible to load an instance of this submodel from metamodel and to retrieve `Section` elements.
+
+Furthermore, there currently are some additional modelling issues with this SMT: the SMT describes the
+`ProductClassifications`, `TechnicalPropertyAreas`, and `SpecialDescriptions` by qualifiers as lists of lists. This
+likely is a modelling error. As of now we interpret this as an error and interpret these individual elements as singular
+elements.
+
 ## Carbon Footprint
 
 ### Version 0.9
