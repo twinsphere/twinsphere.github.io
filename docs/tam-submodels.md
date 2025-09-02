@@ -116,6 +116,32 @@ Nameplate 3.0 can be found in the namespace `twinsphere.TypedAasMetamodels.Types
     - The [language-independent] content must be identical in both Documents or DocumentVersions.
         - This cannot be checked as there is no way to check the language of the document content from the library.
 
+### Version 2.0
+
+<!-- markdownlint-disable line-length -->
+
+| --- | Supported Submodel Template |
+|-----------------|---------------------------------------------------------------------------------------------------------|
+| **Name**        | Handover Documentation                                                                                  |
+| **IDTA Number** | 02004                                                                                                   |
+| **Version**     | 2.0                                                                                                     |
+| **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Handover%20Documentation/2/0> |
+
+<!-- markdownlint-enable line-length -->
+
+**Note**:
+
+The current state of the Handover Documentation 2.0 specification implicitly lifts many of the constraints defined for
+version 1.2. This omission from the spec is likely due to an error, rather than intentionally. However, until the spec
+is fixed or an official statement has been made, we chose to follow the spec by also omitting these checks from the SDK.
+
+**Supported submodel specific constraints**:
+
+- Document::DocumentClassification
+    - The classification according to VDI 2770 Blatt 1:2020 is mandatory in the Submodel Handover Documentation.
+- DocumentId::DocumentIsPrimary
+    - One ID in this collection should be used as a preferred ID.
+
 ## Generic Frame for Technical Data for Industrial Equipment in Manufacturing
 
 ### Version 1.2
