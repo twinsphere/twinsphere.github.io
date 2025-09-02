@@ -2,7 +2,9 @@
 
 The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 
-## Contact Information (Version 1.0)
+## Contact Information
+
+### Version 1.0
 
 | ---             | Supported Submodel Template                                                                        |
 |-----------------|----------------------------------------------------------------------------------------------------|
@@ -13,7 +15,9 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 
 > **Note**: Please pay attention to singular and plural versions - ContactInformation vs. ContactInformations.
 
-## Digital Nameplate for industrial equipment (Version 2.0)
+## Digital Nameplate for industrial equipment
+
+### Version 2.0
 
 | ---             | Supported Submodel Template                                                                        |
 |-----------------|----------------------------------------------------------------------------------------------------|
@@ -33,7 +37,9 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 - ExplosionSafety::IncompleteDevice
     - U if any, otherwise no entry
 
-## Handover Documentation (Version 1.2)
+## Handover Documentation
+
+### Version 1.2
 
 <!-- markdownlint-disable line-length -->
 
@@ -89,9 +95,11 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
     - The [language-independent] content must be identical in both Documents or DocumentVersions.
         - This cannot be checked as there is no way to check the language of the document content from the library.
 
-<!-- markdownlint-disable line-length -->
+## Generic Frame for Technical Data for Industrial Equipment in Manufacturing
 
-## Generic Frame for Technical Data for Industrial Equipment in Manufacturing (Version 1.2)
+### Version 1.2
+
+<!-- markdownlint-disable line-length -->
 
 | ---             | Supported Submodel Template                                                                   |
 |-----------------|-----------------------------------------------------------------------------------------------|
@@ -112,6 +120,8 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
     - In the hierarchy of SubmodelElements, a MainSection shall be super-ordinate to the SubSection.
 
 ## Carbon Footprint
+
+### Version 0.9
 
 | ---             | Supported Submodel Template                                                                       |
 |-----------------|---------------------------------------------------------------------------------------------------|
