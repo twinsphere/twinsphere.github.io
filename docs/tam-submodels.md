@@ -194,6 +194,21 @@ Furthermore, there currently are some additional modelling issues with this SMT:
 likely is a modelling error. As of now we interpret this as an error and interpret these individual elements as singular
 elements.
 
+## Hierarchical Structures enabling Bills of Material
+
+### Version 1.1
+
+<!-- markdownlint-disable line-length -->
+
+| ---             | Supported Submodel Template                                                                   |
+|-----------------|-----------------------------------------------------------------------------------------------|
+| **Name**        | Hierarchical Structures enabling Bills of Material                    |
+| **IDTA Number** | 02011                                                                                         |
+| **Version**     | 1.2                                                                                           |
+| **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Hierarchical%20Structures%20enabling%20Bills%20of%20Material/1/1> |
+
+<!-- markdownlint-enable line-length -->
+
 ## Carbon Footprint
 
 ### Version 0.9
