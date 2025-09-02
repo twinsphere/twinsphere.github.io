@@ -73,6 +73,35 @@ To connect to the AASX File Server, you need to create the following configurati
 > - All URLs must be absolute and point to your access token or push target resource.
 > - A name is not required in the request body when calling the update target endpoint.
 
+#### Sharecat
+
+To connect to Sharecat, you need to create the following configuration as in the example below:
+
+```json
+{
+  "name": "...",
+  "type": "sharecat",
+  "configuration": {
+    "credentials": {
+      "accessTokenUrl": "...",
+      "clientId": "...",
+      "clientSecret": "..."
+    },
+    "destination": {
+      "uploadFileUrl": "...",
+      "createUploadedFileUrl": "...",
+      "submitFileUrl": "..."
+    }
+  }
+}
+```
+
+> **Note**
+>
+> - Sharecat only supports the `application/asset-administration-shell-package+json` serialization format.
+> - All URLs must be absolute and point to your access token or push target resource.
+> - A name is not required in the request body when calling the update target endpoint.
+
 ## Job management
 
 To perform a push from twinsphere repository to one of your targets, you have to create a push job.
