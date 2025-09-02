@@ -17,6 +17,11 @@ MD013:
   tables: true
   headings: true
 
+# allow non-unique headings for non-sibling nodes
+MD024:
+  allow_different_nesting: True
+  siblings_only: True
+
 # emphasis style
 MD049:
   style: asterisk
