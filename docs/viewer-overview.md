@@ -14,4 +14,4 @@ all its referenced submodels and displays their data nicely to the clients scree
 To login into the twinsphere Viewer for your tenant, you will need a *twinsphere ID* account. Please contact the
 twinsphere [support team](contact.md) for the configuration. Alternatively you can use your own identity provider
 service, configuration instruction can be found in the [identity provider
-documentation](api-auth.md#identity-provider-federation).
+documentation](cloud-auth.md#identity-provider-federation).

@@ -7,13 +7,13 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 *13-Jun-2025*:
 
-- **[Filter]** Introduction of Filter Queries feature, see [documentation](api-filter-queries.md) for more information
+- **[Filter]** Introduction of Filter Queries feature, see [documentation](cloud-filter-queries.md) for more information
 
 ## Server 1.15
 
 *24-Apr-2025*:
 
-- **[SemConn]** Introduction of Semantic Connector feature, see [documentation](api-semantic-connector.md) for more
+- **[SemConn]** Introduction of Semantic Connector feature, see [documentation](cloud-semantic-connector.md) for more
   information
 
 ## Server 1.14
@@ -32,14 +32,14 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 - **[Auth]** Added support for Azure Entra ID authentication federation (enabling SSO for customers)
 - **[Auth]** Enhanced twinsphere ID login screen with twinsphere branding (logo, colors, ...)
 - **[API]** Introduced content Modifier $value for a value only representation of submodels / submodel elements
-- **[API]** Extended the SM repository with an [optional kind filter](api-documentation.md#enhanced-get-submodels)
+- **[API]** Extended the SM repository with an [optional kind filter](cloud-documentation.md#enhanced-get-submodels)
   enabling querying of templates or instances only
 - **[Push]** Introduced push feature for pushing shells, submodels & concept descriptions to configurable targets
     - Currently only Azure blob storage targets supported (MVP)
     - more target types to be added soon (like remote shell/submodel repositories)
-- **[Docs]** Added [technical documentation on twinsphere ID](api-auth.md)
+- **[Docs]** Added [technical documentation on twinsphere ID](cloud-auth.md)
 - **[Docs]** Documented reason and workaround for creation of invalid package files by [AASX
-  serialization](api-documentation.md#serialization)
+  serialization](cloud-documentation.md#serialization)
 - **[Bugfix]** Prevented returning status code 500 on not decodable twinsphere file paths on file GET, PUT, DELETE
   endpoints
 
@@ -231,7 +231,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 - Gzip compression of the message payload of the change events
     - Allows the transport of larger submodels beyond the Azure Event Grid MQTT message size limit of 512kB
-    - For usage and notes see [Change Events](api-change-events.md#topics-message-contracts-and-qos)
+    - For usage and notes see [Change Events](cloud-change-events.md#topics-message-contracts-and-qos)
 - Update of the aas-core-works metamodel to v1.0.1
     - [Bugfix] for Origin URL in packaging (see [release aas-package3-csharp
     1.0.1](https://github.com/aas-core-works/aas-package3-csharp/releases/tag/v1.0.1))
@@ -245,7 +245,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 <!-- markdownlint-disable no-inline-html -->
 
 - Change event mechanism for cyclical information about changes to AAS & SM
-    - For setup and usage please refer to [Change Events](api-change-events.md)
+    - For setup and usage please refer to [Change Events](cloud-change-events.md)
     - Payload of the event contains changed state of the changed AAS /SMs
 - [Bugfix] GET /shells/<aasId>/submodels now returns none instead of incorrectly all available SMs for shells without
   SMs

@@ -11,32 +11,33 @@ extra_css:
 nav:
   - Home: index.md
   - Contact us: contact.md
-  - twinstudio:
-    - Coming 2025: studio-overview.md
-  - twinsphere Server:
-    - API Documentation: api-documentation.md
+  - Cloud:
+    - API Documentation: cloud-documentation.md
     - Proprietary Features:
-      - Overview: api-proprietary-features.md
-      - Change Events: api-change-events.md
-      - Search: api-search.md
-      - Push Service: api-push-service.md
-      - Semantic Connector: api-semantic-connector.md
-      - Filter Queries: api-filter-queries.md
-    - Authentication: api-auth.md
-    - Client Generation: api-client-generation.md
-    - Release Notes: api-release-notes.md
-  - twinsphere DevKit:
+      - Overview: cloud-proprietary-features.md
+      - Change Events: cloud-change-events.md
+      - Search: cloud-search.md
+      - Push Service: cloud-push-service.md
+      - Semantic Connector: cloud-semantic-connector.md
+      - Filter Queries: cloud-filter-queries.md
+    - Authentication: cloud-auth.md
+    - Client Generation: cloud-client-generation.md
+    - Release Notes: cloud-release-notes.md
+  - Studio:
+    - Coming 2025: studio-overview.md
+  - Viewer:
+    - Overview: viewer-overview.md
+    - Features: viewer-features.md
+    - Release Notes: viewer-release-notes.md
+  - Management API:
+    - Overview: management-overview.md
+    - User management: id-overview.md
+  - Development Libraries:
     - Overview: tam-overview.md
     - Supported Submodels: tam-submodels.md
     - Validation Rules: tam-validation.md
     - Release Notes: tam-release_notes.md
-  - twinsphere ID:
-    - User management: id-overview.md
-  - twinsphere Viewer:
-    - Overview: viewer-overview.md
-    - Features: viewer-features.md
-    - Release Notes: viewer-release-notes.md
-  - twinsphere Validator:
+  - Validator:
     - Overview: validator-overview.md
   - Tips & Tricks:
     - Common Validation Errors: tips-common-validation-errors.md
