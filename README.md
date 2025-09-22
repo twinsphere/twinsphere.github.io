@@ -65,7 +65,7 @@ After the build succeeded, you can now launch an mkdocs server as follows:
 # Ensure you are in the correct directory
 cd /path/to/your/repo/twinsphere.github.io
 
-docker run --rm -v "$PWD":/docs mkdocs-dev
+docker run --rm -p 8000:8000 -v "$PWD":/docs mkdocs-dev
 
 INFO    -  Building documentation...
 INFO    -  Cleaning site directory

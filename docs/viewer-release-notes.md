@@ -41,7 +41,7 @@ The twinsphere Viewer follows the semantic versioning format in the form major.m
 *Sep-2024 to Feb-2025*:
 
 - Developed as integrated part of the twinsphere Server project
-- see [Server Release Notes](api-release-notes.md) tagged ***\[Viewer\]*** for details
+- see [Cloud Release Notes](cloud-release-notes.md) tagged ***\[Viewer\]*** for details
 
 ## Viewer 1.0
 
