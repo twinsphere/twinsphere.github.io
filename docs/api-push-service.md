@@ -6,8 +6,13 @@ Take a look at the Swagger for more API documentation around each parameter and 
 
 To send AAS data to a desired target, the following procedure must be followed:
 
-1. Create a valid target via the API
-2. Create a new push job with the IDs of the shells and submodels you want to push
+1. Create a valid target 
+2. Create a new push job with
+  1. the name of the target to push the data to
+  2. the IDs of the shells and submodels you want to push
+  3. the desired serialization format
+  4. boolean if to include concept descriptions.
+
 
 ## Target management
 
@@ -16,6 +21,8 @@ Target management is performed through `/sphere/push/targets/*` endpoints.
 To create or update a target, use the `/sphere/push/targets/{name}` endpoint
 (you need to choose a name for the target yourself), and post the JSON configuration
 as the body depending on the target itself (see supported targets below).
+
+Please note that all connection information of targets will be handled as secret by twinsphere and only stored in encrypted form.
 
 > **Note**
 > Please make sure that the target is reachable from the internet!
@@ -40,15 +47,14 @@ the configuration body as in the example below:
 
 > **Note**
 > blobContainerSasUrl should include the http target, blob container name and the secret
-> required for the connection! Make sure to use the URL value starting with *https*.
+> required for the connection. Make sure to use the URL value starting with *https*.
 > For more information on how to obtain your container SAS URL
 > visit: [Azure Storage SAS Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
 
-Connection information will be handled as secret and stored in encrypted form.
 
 #### AASX File Server
 
-To connect to the AASX File Server, you need to create the following configuration as in the example below:
+To connect to the AASX File Server, you need to create a target with a configuration as given in the example below:
 
 ```json
 {
@@ -75,7 +81,7 @@ To connect to the AASX File Server, you need to create the following configurati
 
 #### Sharecat
 
-To connect to Sharecat, you need to create the following configuration as in the example below:
+To connect to Sharecat, you need to create a target with a configuration as given in the example below:
 
 ```json
 {
