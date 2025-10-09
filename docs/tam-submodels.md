@@ -13,6 +13,10 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 | **Version**     | 0.9                                                                                               |
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Carbon%20Footprint/0/9> |
 
+#### Deviations from SMTs
+
+- Add AdministrativeInformation with version and revision.
+
 ## Contact Information
 
 ### Version 1.0
@@ -25,6 +29,10 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Contact%20Information/1> |
 
 > **Note**: Please pay attention to singular and plural versions - ContactInformation vs. ContactInformations.
+
+#### Deviations from SMTs
+
+- Add AdministrativeInformation with version and revision.
 
 ## Digital Nameplate for industrial equipment
 
@@ -47,6 +55,12 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
     - U if any, otherwise no entry
 - ExplosionSafety::IncompleteDevice
     - U if any, otherwise no entry
+
+#### Deviations from SMTs
+
+- Add AdministrativeInformation with version and revision.
+- Removed invalid whitespaces in IDs and semantic IDs.
+- Fix language type in language strings.
 
 ### Version 3.0
 
@@ -108,7 +122,7 @@ Nameplate 3.0 can be found in the namespace `twinsphere.TypedAasMetamodels.Types
 
 **Note**:
 
-This SMT makes heavy use of arbitrary elements for modelling the `TechnicalDataAreas` and `SpecificDescriptions`. In
+This SMT makes heavy use of arbitrary elements for modeling the `TechnicalDataAreas` and `SpecificDescriptions`. In
 both cases, users may use SubmodelElementCollections (SMCs) as structuring elements, e.g., to provide additional nesting
 in UIs. To this end, this SMT defines two different types of SMCs: `Section` and `ArbitrarySMC`, both are considered to
 act as arbitrary properties, i.e., properties for which the user may choose an id short, as well as, semantic ids. At
@@ -116,10 +130,15 @@ the moment, however, there is no way to tell a `Section` element from any other 
 In the DevKit we therefore do have a `Section` element for the creation of the submodel. However, it is currently
 impossible to load an instance of this submodel from metamodel and to retrieve `Section` elements.
 
-Furthermore, there currently are some additional modelling issues with this SMT: the SMT describes the
+Furthermore, there currently are some additional modeling issues with this SMT: the SMT describes the
 `ProductClassifications`, `TechnicalPropertyAreas`, and `SpecialDescriptions` by qualifiers as lists of lists. This
-likely is a modelling error. As of now we interpret this as an error and interpret these individual elements as singular
+likely is a modeling error. As of now we interpret this as an error and interpret these individual elements as singular
 elements.
+
+#### Deviations from SMTs
+
+- Removed invalid whitespaces in IDs and semantic IDs.
+- Fix language type in language strings.
 
 ## Handover Documentation
 
@@ -205,6 +224,10 @@ is fixed or an official statement has been made, we chose to follow the spec by 
 - DocumentId::DocumentIsPrimary
     - One ID in this collection should be used as a preferred ID.
 
+#### Deviations from SMTs
+
+- Fix language type in language strings.
+
 ## Hierarchical Structures enabling Bills of Material
 
 ### Version 1.1
@@ -217,5 +240,9 @@ is fixed or an official statement has been made, we chose to follow the spec by 
 | **IDTA Number** | 02011                                                                                         |
 | **Version**     | 1.2                                                                                           |
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Hierarchical%20Structures%20enabling%20Bills%20of%20Material/1/1> |
+
+#### Deviations from SMTs
+
+- Add AdministrativeInformation with version and revision.
 
 <!-- markdownlint-enable line-length -->
