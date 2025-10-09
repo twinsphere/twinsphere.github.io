@@ -448,6 +448,19 @@ var jsonString = ValueOnlySerializer.ToValueOnly(digitalNameplateMetamodel);
 
 ### Caveats and Notes on Usage
 
+#### Deviations From SMT Specifications
+
+In some cases the DevKit deviates from the properties as described in the officially released SMTs. These changes are
+typically editorial in nature to fix issues in the SMTs. We adopt editorial changes if we can easily identify what the
+SMT should look like if it was correct, even if these changes are not part of the official SMT specifications (yet). We
+chose this strategy to provide users with the ability to create valid submodels as early as possible.
+
+You can find a detailed list of these changes in the overview of the [supported submodels](tam-submodels.md).
+
+### Known Issues and Workarounds
+
+#### Using the proper locale
+
 twinsphere.TypedAasMetamodels internally uses features of `System.Globalization`, please ensure that your execution
 environment provides support for this library, otherwise, twinsphere.TypedAasMetamodels may not function correctly!
 The `dotnet` apline images, for example, are known to cause issues with default settings and require additional care.
