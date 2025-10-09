@@ -99,11 +99,11 @@ var shell = new AssetAdministrationShell("9A8F8B66-5AA7-4528-AA17-1CC128AF64C2",
 // Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
 // referenced concept descriptions, and files to include into the paths, if available.
 var packagingInfo = PackagePreprocessor.ProcessShell(shell, [digitalNameplate]);
-var spherePackage = new SpherePackageBuilder(packagingInfo).Build();
+var aasxPackage = new AasxPackage(packagingInfo).Build();
 
 // 4. you can save the package to disk for analysis with the https://github.com/admin-shell-io/aasx-package-explorer
 packageFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "my-package.aasx");
-await spherePackage.SaveToFile(packageFilePath);
+await aasxPackage.SaveToFile(packageFilePath);
 ```
 
 ## Design Principles and Concepts
@@ -215,7 +215,7 @@ Creating `.aasx` packages from scratch typically is complex and involves a numbe
 - Collect files for packaging
 - Collect the thumbnail file of the shell
 
-While you can do these steps manually, for most cases it should suffice to use the `SpherePackageBuilder`, that
+While you can do these steps manually, for most cases it should suffice to use the `AasxPackageBuilder`, that
 automatically takes care of the above steps:
 
 ```csharp
@@ -240,7 +240,7 @@ nameplate.CompanyLogo = new PackageFileReference("/home/user/some/image.png");
 // Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
 // referenced concept descriptions, and files to include into the paths, if available.
 var packagingInfo = PackagePreprocessor.ProcessShell(shell, [digitalNameplate]);
-var spherePackage = new SpherePackageBuilder(packagingInfo).Build();
+var aasxPackage = new AasxPackageBuilder(packagingInfo).Build();
 ```
 
 > **Note**: Take care to use the `PackageFileReference` type if you want to include local files into your package. This
