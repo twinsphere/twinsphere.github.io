@@ -6,4 +6,4 @@ VOLUME /docs
 WORKDIR /docs
 
 ENTRYPOINT []
-CMD ["uv", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000", "--strict"]
+CMD ["uv", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000", "--strict", "--livereload"]
