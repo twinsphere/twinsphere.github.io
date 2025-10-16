@@ -1,0 +1,11 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://industrialdigitaltwin\\.(io|org)"
+    }
+  ],
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 5,
+  "aliveStatusCodes": [200, 201, 202, 203, 204, 206, 301, 302, 307, 308, 404, 401, 403, 429]
+}
