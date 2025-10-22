@@ -23,7 +23,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 *20-Oct-2025*
 
-- **[OrgMgmt]** Unified RBAC: New roles added
+- **[OrgMgmt]** Unified RBAC: New roles added for fine-grained authorization at the endpoint level
 - **[ManageAPI]** Added role assignment endpoints
 - **[ManageAPI]** Added user invite functionality to assign users to organizations
 - **[ManageAPI]** Added service account functionality (with basic secret rotation)
