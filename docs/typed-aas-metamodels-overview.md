@@ -1,18 +1,16 @@
-# twinsphere.TypedAasMetamodels
+# Development libraries
 
-twinsphere.TypedAasMetamodels is a C# library provides a simplified work-flow for handling Shells and Submodels
-following the IDTA Asset Administration Shell standard.
+Our primary library that we offer is **twinsphere.TypedAasMetamodels**. It is a C# library providing a simplified work-flow 
+for handling Shells and Submodels following the IDTA Asset Administration Shell standard.
 
-> Relevant specification: [Specification of the Asset Administration Shell - Part 1: Metamodel - v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf)
+Currently supported version of the AAS Standard is [v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf). 
 
-## Introduction
-
-twinsphere.TypedAasMetamodels is an easy-to-use library, that provides tools for modification and stream-lined creation
-of `.aasx` packages, shells, and submodels.
+> In the past we also offered a general twinsphere library called *Conplement.Sphere.SDK*. This library is deprecated and no
+longer maintained. 
 
 ## Download
 
-The SDK is available as a [NuGet package](https://www.nuget.org/packages/twinsphere.TypedAasMetamodels). You can add the
+twinsphere.TypedAasMetamodels is available as a [NuGet package](https://www.nuget.org/packages/twinsphere.TypedAasMetamodels). You can add the
 feed to your project with ``dotnet add package``:
 
 ```sh
@@ -245,7 +243,7 @@ var aasxPackage = new AasxPackageBuilder(packagingInfo).Build();
 
 > **Note**: Take care to use the `PackageFileReference` type if you want to include local files into your package. This
 > type wraps a reference to a file on disk. In the packaging step `PackageFileReference` elements will be included into
-> the package and their links will resolved accordingly. See [Submodel Elements](tam-overview.md#submodel-elements) for
+> the package and their links will resolved accordingly. See [Submodel Elements](typed-aas-metamodels-overview.md#submodel-elements) for
 > more details on the built-in types of the DevKit.
 
 ## Working with Submodels
@@ -343,7 +341,7 @@ validations for:
 - correct cardinality of submodel elements
 - valid type representation of properties
 
-> **Note**: The page on [validations](tam-validation.md) contains an exhaustive list of the respective validations with
+> **Note**: The page on [validations](typed-aas-metamodels-validation.md) contains an exhaustive list of the respective validations with
 > descriptions.
 
 Each submodel type exposes a validator class that can be used to validate instances of the submodel. These validators
@@ -381,7 +379,7 @@ else
 
 ### Conversion
 
-The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](tam-validation.md)) models in
+The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](typed-aas-metamodels-validation.md)) models in
 the generic meta model representation and the typed submodel, and vice versa.
 
 To this end, submodels implement `FromMetamodel()` and `ToMetamodel()`:
@@ -434,7 +432,7 @@ Besides the heavy meta model specification, the IDTA, furthermore, provides a sp
 "Value-only Semantics". The Value-only Semantics describes a stripped down representation for meta models.
 
 The twinsphere.TypedAasMetamodels library allows to convert arbitrary submodels, i.e., also for submodels not listed in
-the [supported submodels](tam-submodels.md) to the value-only representation.
+the [supported submodels](typed-aas-metamodels-submodels.md) to the value-only representation.
 
 ```csharp
 using AasCore.Aas3_0;
@@ -455,7 +453,7 @@ typically editorial in nature to fix issues in the SMTs. We adopt editorial chan
 SMT should look like if it was correct, even if these changes are not part of the official SMT specifications (yet). We
 chose this strategy to provide users with the ability to create valid submodels as early as possible.
 
-You can find a detailed list of these changes in the overview of the [supported submodels](tam-submodels.md).
+You can find a detailed list of these changes in the overview of the [supported submodels](typed-aas-metamodels-submodels.md).
 
 ### Known Issues and Workarounds
 

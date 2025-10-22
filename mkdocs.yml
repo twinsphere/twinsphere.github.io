@@ -33,10 +33,10 @@ nav:
     - Overview: management-overview.md
     - User management: id-overview.md
   - Development Libraries:
-    - Overview: tam-overview.md
-    - Supported Submodels: tam-submodels.md
-    - Validation Rules: tam-validation.md
-    - Release Notes: tam-release_notes.md
+    - Overview: typed-aas-metamodels-overview.md
+    - Supported Submodels: typed-aas-metamodels-submodels.md
+    - Validation Rules: typed-aas-metamodels-validation.md
+    - Release Notes: typed-aas-metamodels-release_notes.md
   - Validator:
     - Overview: validator-overview.md
   - Tips & Tricks:

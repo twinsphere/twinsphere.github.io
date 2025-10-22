@@ -11,7 +11,7 @@ in form of [Asset Administration Shells](https://industrialdigitaltwin.org){: ta
 Our twinsphere suite consists of the following applications:
 
 - [twinsphere Server (API)](cloud-documentation.md)
-- [twinsphere DevKit (C# library, TypedAasMetamodels)](tam-overview.md)
+- [twinsphere Development Libraries (C# library, TypedAasMetamodels)](typed-aas-metamodels-overview.md)
 - [twinsphere Viewer](viewer-overview.md)
 - [twinsphere ID](id-overview.md)
 - [twinsphere twinfix (Web)](validator-overview.md)
