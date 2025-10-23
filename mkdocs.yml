@@ -31,6 +31,7 @@ nav:
     - Release Notes: viewer-release-notes.md
   - Management API:
     - Overview: management-overview.md
+    - Roles: management-roles.md
     - User management: id-overview.md
   - Development Libraries:
     - Overview: typed-aas-metamodels-overview.md
