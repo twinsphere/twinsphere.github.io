@@ -1,84 +1,20 @@
 # Authentication
 
-Base of identity management in twinsphere are the OAuth2 & OpenID Connect standards. Identities are stored and managed
-via our *twinsphere ID* identity management service or your own identity provider service. Configuration of own identity
-provider can be found in the part about [identity federation](#identity-provider-federation).
+twinsphere cloud supports two authentication strategies:
 
-In the most basic terms, every request to our API expects an `Authorization: Bearer *******` HTTP header. This header
-should deliver a proper JWT signed token which you can get from our *twinsphere ID* token endpoint. The "flow" of
-getting such a token is different for each usage scenario.
-
-## Machine authentication
-
-> Machine authentication described here is using twinsphere ID as the identity provider. If you setup [identity
-> federation](#identity-provider-federation) you can configure similar flows in your own identity provider.
-
-Accessing our APIs from machine clients (and for testing purposes) is supported using [OAuth2 Client
-Credentials](https://oauth.net/2/grant-types/client-credentials/) grant.
-
-First, you need to request a set of credentials from our [support team](contact.md) which can be used to issue tokens
-from the twinsphere ID service. You will receive info similar to:
-
-```text
-Token URI:     https://twinsphere.ciamlogin.com/.../oauth2/v2.0/token
-Client ID:     2c84bd-...-a437382
-Client Secret: z~n8...Zn
-Grant type:    client_credentials
-Scope:         api://twinsphere-server-...-api/.default
-```
-
-> Both client ID and client secret are confidential and should be kept secret!
-
-### Testing the tokens
-
-Simplest way to receive a token using the credentials above would be to simply perform a cURL request:
-
-```bash
-curl --location --request POST 'https://twinsphere.ciamlogin.com/.../oauth2/v2.0/token' \
---form 'grant_type="client_credentials"' \
---form 'client_id="2c84bd-...-a437382"' \
---form 'client_secret="z~n8...Zn"' \
---form 'scope="api://twinsphere-server-...-api/.default"'
-```
-
-Response will be similar to:
-
-```json
-{
-    "token_type":"Bearer",
-    "expires_in":3599,
-    "ext_expires_in":3599,
-    "access_token":"eyJ0e...A"
-}
-```
-
-The `access_token` field is the token you need to provide as an authorization header to every twinsphere API request,
-formatted as `Authorization: Bearer eyJ0e...A`.
-
-### Integration into your services
-
-While cURL might be nice for testing purposes, in your real services you will need to use a HTTP or auth library you
-have available in the programming language that you are using. Make sure to properly cache the tokens and not request a
-new token with each twinsphere API request. Many standard libraries provide you this functionality out of the box.
-
-## Using the twinsphere Swagger UI
-
-> Swagger UI interactive login flow is only supported with the usage of *twinsphere ID* identity
-
-The Swagger UI provides you with the *Authorize* button which can be used to set the authentication token for each
-request. You can then either set the token manually, or sign in using Twinsphere ID interactive login flow.
-
-![Swagger UI Authorization Button](img/swagger-auth.png)
+- using [twinsphere ID](id-overview.md), which is the default built-in authentication provider. Both user and service
+account authentication modes are supported, consult the [twinsphere ID documentation](id-overview.md) for more information.
+- using [identity federation](#identity-provider-federation) as an additional authentication provider
 
 ## Identity provider federation
 
-For tighter integration in your authentication and authorization systems, twinsphere supports adding external identity
+For tighter integration in your authentication and authorization systems, twinsphere cloud supports adding external identity
 provider configuration onto the platform.
 
 > You identity provider configuration will be added as an *additional* configuration, it will not completely replace the
 > usage of twinsphere ID which is still required for internal purposes!
 
-Supported authentication providers for twinsphere are:
+Supported authentication providers for twinsphere cloud are:
 
 - [Microsoft Entra ID OAuth2](#microsoft-entra-id-oauth2-federation)
 

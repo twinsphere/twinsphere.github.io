@@ -24,6 +24,10 @@ For each API request you need:
 
 Initially, each organization has a single user with rights to invite other users and create service accounts.
 
+### Self check via /me endpoint
+
+To check your currently assigned organizations, tenants and roles simply use the `/me` endpoint.
+
 ## Features
 
 The Management API currently allows:

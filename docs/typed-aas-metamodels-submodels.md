@@ -75,7 +75,7 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 
 Contrary to [Digital Nameplate
 2.0](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/2/0), this submodels
-id short officially is `Nameplate`. We follow this naming strategy and it is reflected in the DevKit, i.e., the Digital
+id short officially is `Nameplate`. We follow this naming strategy and it is reflected in the library, i.e., the Digital
 Nameplate 3.0 can be found in the namespace `twinsphere.TypedAasMetamodels.Types.Submodels.Nameplate.V3_0`.
 
 **Supported submodel specific constraints**:
@@ -127,7 +127,7 @@ both cases, users may use SubmodelElementCollections (SMCs) as structuring eleme
 in UIs. To this end, this SMT defines two different types of SMCs: `Section` and `ArbitrarySMC`, both are considered to
 act as arbitrary properties, i.e., properties for which the user may choose an id short, as well as, semantic ids. At
 the moment, however, there is no way to tell a `Section` element from any other SMC element in their respective context.
-In the DevKit we therefore do have a `Section` element for the creation of the submodel. However, it is currently
+In the library we therefore do have a `Section` element for the creation of the submodel. However, it is currently
 impossible to load an instance of this submodel from metamodel and to retrieve `Section` elements.
 
 Furthermore, there currently are some additional modeling issues with this SMT: the SMT describes the

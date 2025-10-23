@@ -11,6 +11,8 @@ extra_css:
 nav:
   - Home: index.md
   - Contact us: contact.md
+  - twinsphere ID: 
+    - Overview: id-overview.md
   - Cloud:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
@@ -32,14 +34,13 @@ nav:
   - Management API:
     - Overview: management-overview.md
     - Roles: management-roles.md
-    - User management: id-overview.md
   - Development Libraries:
     - Overview: typed-aas-metamodels-overview.md
     - Supported Submodels: typed-aas-metamodels-submodels.md
     - Validation Rules: typed-aas-metamodels-validation.md
     - Release Notes: typed-aas-metamodels-release_notes.md
-  - Validator:
-    - Overview: validator-overview.md
+  - Validators:
+    - Overview: validators-overview.md
   - Tips & Tricks:
     - Common Validation Errors: tips-common-validation-errors.md
 copyright: Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
