@@ -1,19 +1,19 @@
-# twinsphere.TypedAasMetamodels
+# Development libraries
 
-twinsphere.TypedAasMetamodels is a C# library provides a simplified work-flow for handling Shells and Submodels
-following the IDTA Asset Administration Shell standard.
+Our primary library that we offer is **twinsphere.TypedAasMetamodels**. It is a C# library providing a simplified
+work-flow for handling Shells and Submodels following the IDTA Asset Administration Shell standard.
 
-> Relevant specification: [Specification of the Asset Administration Shell - Part 1: Metamodel - v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf)
+<!-- markdownlint-disable line-length -->
+Currently supported version of the AAS Standard is [v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf).
+<!-- markdownlint-enable line-length -->
 
-## Introduction
-
-twinsphere.TypedAasMetamodels is an easy-to-use library, that provides tools for modification and stream-lined creation
-of `.aasx` packages, shells, and submodels.
+> In the past we also offered a general twinsphere library called *Conplement.Sphere.SDK*. This library is
+deprecated and no longer maintained.
 
 ## Download
 
-The SDK is available as a [NuGet package](https://www.nuget.org/packages/twinsphere.TypedAasMetamodels). You can add the
-feed to your project with ``dotnet add package``:
+twinsphere.TypedAasMetamodels is available as a [NuGet package](https://www.nuget.org/packages/twinsphere.TypedAasMetamodels).
+You can add the feed to your project with ``dotnet add package``:
 
 ```sh
 dotnet add package twinsphere.TypedAasMetamodels
@@ -245,8 +245,9 @@ var aasxPackage = new AasxPackageBuilder(packagingInfo).Build();
 
 > **Note**: Take care to use the `PackageFileReference` type if you want to include local files into your package. This
 > type wraps a reference to a file on disk. In the packaging step `PackageFileReference` elements will be included into
-> the package and their links will resolved accordingly. See [Submodel Elements](tam-overview.md#submodel-elements) for
-> more details on the built-in types of the DevKit.
+> the package and their links will resolved accordingly. See
+> [Submodel Elements](typed-aas-metamodels-overview.md#submodel-elements) for more details on the built-in types of
+> the library.
 
 ## Working with Submodels
 
@@ -278,7 +279,7 @@ At the moment, we provide support for the following set of submodel elements. Fo
 that performs additional correctness checks at creation, and, potentially, provides additional helper methods.
 
 - **ReferenceElement**: representation of a ReferenceElement.
-- **Files**: the DevKit provides two abstractions to represent files
+- **Files**: the library provides two abstractions to represent files
     - **FileReference**: generic representation of a file that may reference files anywhere, including external URLs.
     - **PackageFileReference**: special file representation. Use this, if you want to create a package for which a file
       should be included.
@@ -343,8 +344,8 @@ validations for:
 - correct cardinality of submodel elements
 - valid type representation of properties
 
-> **Note**: The page on [validations](tam-validation.md) contains an exhaustive list of the respective validations with
-> descriptions.
+> **Note**: The page on [validations](typed-aas-metamodels-validation.md) contains an exhaustive list of the respective
+> validations with descriptions.
 
 Each submodel type exposes a validator class that can be used to validate instances of the submodel. These validators
 return enumerators with the found validation errors:
@@ -381,8 +382,8 @@ else
 
 ### Conversion
 
-The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](tam-validation.md)) models in
-the generic meta model representation and the typed submodel, and vice versa.
+The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](typed-aas-metamodels-validation.md))
+models in the generic meta model representation and the typed submodel, and vice versa.
 
 To this end, submodels implement `FromMetamodel()` and `ToMetamodel()`:
 
@@ -434,7 +435,7 @@ Besides the heavy meta model specification, the IDTA, furthermore, provides a sp
 "Value-only Semantics". The Value-only Semantics describes a stripped down representation for meta models.
 
 The twinsphere.TypedAasMetamodels library allows to convert arbitrary submodels, i.e., also for submodels not listed in
-the [supported submodels](tam-submodels.md) to the value-only representation.
+the [supported submodels](typed-aas-metamodels-submodels.md) to the value-only representation.
 
 ```csharp
 using AasCore.Aas3_0;
@@ -450,12 +451,12 @@ var jsonString = ValueOnlySerializer.ToValueOnly(digitalNameplateMetamodel);
 
 #### Deviations From SMT Specifications
 
-In some cases the DevKit deviates from the properties as described in the officially released SMTs. These changes are
+In some cases the library deviates from the properties as described in the officially released SMTs. These changes are
 typically editorial in nature to fix issues in the SMTs. We adopt editorial changes if we can easily identify what the
 SMT should look like if it was correct, even if these changes are not part of the official SMT specifications (yet). We
 chose this strategy to provide users with the ability to create valid submodels as early as possible.
 
-You can find a detailed list of these changes in the overview of the [supported submodels](tam-submodels.md).
+You can find a detailed list of these changes in the overview of the [supported submodels](typed-aas-metamodels-submodels.md).
 
 ### Known Issues and Workarounds
 

@@ -20,7 +20,7 @@ particular, but here are a few options:
 Most generated clients support setting authentication headers directly in code. For example, here is the documentation
 on how to do it with [Microsoft Kiota](https://learn.microsoft.com/en-us/openapi/kiota/authentication?tabs=csharp).
 
-Make sure to check the [Authentication section](api-auth.md) for further info.
+Make sure to check the [Authentication section](cloud-auth.md) for further info.
 
 ## Limitations of client generation
 
