@@ -34,13 +34,13 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 *12-Aug-2025*
 
 - **[IDTA]** Now supporting meta-model specification V3.0.2 
-- **[IDTA]** Now supporting API specificiation V3.0.4
+- **[IDTA]** Now supporting API specification V3.0.4
 - **[Push]** Added POST endpoint to sphere API for registration of new Push Targets
 - **[Push]** Added new Push Target support for AASX File Servers
 - **[Files]** Redesign of twinsphere's file handling including support for external file references - finally :)
     - Added support for Blob SME to the /attachment endpoints
-    - Kept functionality with twinsphere file paths (TFS) in File SME for /attachement and package serialization
-    - External file links are treated as such and not as files (package serialization inludes link not file and /attachment supports blobs and TFS only)
+    - Kept functionality with twinsphere file paths (TFS) in File SME for /attachment and package serialization
+    - External file links are treated as such and not as files (package serialization includes link not file and /attachment supports blobs and TFS only)
 - **[Bugfix]** Fixed encoding of location header value in operation PostSubmodel
 
 ## Cloud 1.17
