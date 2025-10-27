@@ -75,11 +75,12 @@ for the `client_credentials` flow.
 Simplest way to receive a token using the credentials above would be to simply perform a cURL request:
 
 ```bash
-curl --location --request POST 'https://twinsphere.ciamlogin.com/.../oauth2/v2.0/token' \
---form 'grant_type="client_credentials"' \
---form 'client_id="2c84bd-...-a437382"' \
---form 'client_secret="z~n8...Zn"' \
---form 'scope="api://twinsphere-server-...-api/.default"'
+curl \
+--data grant_type="client_credentials" \
+--data client_id="7a...ee" \
+--data client_secret="IPq...T" \
+--data scope="api://twinsphere-server-...-api/.default" \
+https://twinsphere.ciamlogin.com/..../oauth2/v2.0/token
 ```
 
 Response will be similar to:
