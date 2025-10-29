@@ -1,6 +1,6 @@
-# Filter Queries
+# Shell Filter Queries
 
-The Twinsphere Filter Queries allows for simplified searching of shells. It uses a straightforward search model where
+The Twinsphere Shell Filter Queries allows for simplified searching of shells. It uses a straightforward search model where
 you can specify supported shell and submodel properties. Based on this input, the filter returns the shells that match
 your criteria.
 

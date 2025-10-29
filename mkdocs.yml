@@ -21,7 +21,8 @@ nav:
       - Search: cloud-search.md
       - Push Service: cloud-push-service.md
       - Semantic Connector: cloud-semantic-connector.md
-      - Filter Queries: cloud-filter-queries.md
+      - Shell Filter Queries: cloud-filter-queries.md
+      - File Filter Queries: cloud-file-filter-queries.md
     - Authentication: cloud-auth.md
     - Client Generation: cloud-client-generation.md
     - Release Notes: cloud-release-notes.md

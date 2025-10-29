@@ -180,6 +180,33 @@ reference stay valid and now point to the new content.
 To remove a file physically from the repository, you have to use the `DELETE /files` interface. Please be aware that
 there is no check for existing references, so you may create invalid reference by deleting a file.
 
+You can attach meta information to a twinsphere file at
+`https://{tenant_url}/sphere/api/v1.0/files/{tfp}/metadata` endpoint.
+
+```json
+{
+  "displayName": "Document Display Name",
+  "classification": "01-01",
+  "attributes": [
+    {
+      "key": "string",
+      "value": "string"
+    },
+    {
+      "key": "string",
+      "value": "string"
+    }
+  ]
+}
+```
+
+- **displayName**: Custom name for the file
+- **classification**: Must be a valid class ID as defined in **VDI 2770**. For more information,
+  refer for example to the IDTA Submodel Handover documentation
+- **Attributes**: Custom key–value metadata. Each key must be unique within the files meta data
+- **Attributes Limit**: Up to 50 attributes per file
+- **Attribute Size**: Keys and values can each be up to 2048 characters
+
 ### Adaption of standard operations
 
 The introduction of our file repository made it necessary to adapt the behavior of standard operations working with
