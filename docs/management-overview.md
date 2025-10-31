@@ -34,7 +34,10 @@ The Management API currently allows:
 
 - user management within an organization
 - service account management (including secrets)
+- organizing users and service accounts via user groups
 - RBAC at organization and cloud (per cloud tenant) levels
+    - on users and service accounts
+    - on user groups
 
 ## Authentication
 
@@ -104,4 +107,17 @@ Add a secret to a service account:
 >
 > ℹ️ **More about authentication:** To learn more about authentication flows,
 > consult the detailed guide in [cloud-auth.md](cloud-auth.md).
+
+## User groups
+
+User groups provide an easier way to assign roles to multiple users or service accounts at once.
+
+Create a user group:
+`POST /api/v{version}/organizations/{organizationId}/user-groups`
+
+![Swagger UI: Create user group](img/manage_service_user_group_create.png)
+
+Add members to a user group:
+`POST /api/v{version}/organizations/{organizationId}/user-groups/{groupId}/members`
+![Swagger UI: Create user group](img/manage_service_user_group_add_members.png)
 <!-- markdown-link-check-enable -->
