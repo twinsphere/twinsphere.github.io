@@ -54,6 +54,7 @@ validation:
   unrecognized_links: warn
   anchors: warn
 markdown_extensions:
+  - admonition
   - attr_list
   - admonition
 plugins:
