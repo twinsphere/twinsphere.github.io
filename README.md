@@ -46,7 +46,7 @@ Using this, you should now be able to locally deploy the documentation from the
 repo's directory like this:
 
 ```bash
-pipx serve mkdocs
+mkdocs serve
 ```
 
 #### Dockerized environment
