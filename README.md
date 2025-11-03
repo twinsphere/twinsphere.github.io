@@ -22,6 +22,35 @@ For local development you can either use your native Python installation, or use
 
 #### Native Python installation
 
+There are multiple ways to use `mkdocs` if you already have a working local python environment.
+The instructions are examples, whereas `uv` is the recommended way:
+
+##### With uv (preferred way)
+
+Please first install the following dependencies:
+
+- [uv](https://docs.astral.sh/uv/)
+
+Like so:
+
+```bash
+# Adjust to the package manager of your development system. See pipx above for alternatives.
+pipx install uv
+```
+
+Now you should have a working `uv` installation setup on yor system. Using this, you should now be able to locally
+deploy the documentation from the repo's directory like this:
+
+```bash
+uvx \
+    --with "mkdocs-open-in-new-tab" \
+    --with "mkdocs-link-marker" \
+    --with "mkdocs-spellcheck[all]" \
+    mkdocs serve
+```
+
+##### With pipx
+
 Please first install the following dependencies:
 
 - [pipx](https://github.com/pypa/pipx)
@@ -46,7 +75,7 @@ Using this, you should now be able to locally deploy the documentation from the
 repo's directory like this:
 
 ```bash
-pipx serve mkdocs
+mkdocs serve
 ```
 
 #### Dockerized environment

@@ -11,7 +11,7 @@ extra_css:
 nav:
   - Home: index.md
   - Contact us: contact.md
-  - twinsphere ID: 
+  - twinsphere ID:
     - Overview: id-overview.md
   - Cloud:
     - API Documentation: cloud-documentation.md
