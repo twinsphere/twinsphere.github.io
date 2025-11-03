@@ -21,4 +21,5 @@ For some errors it even has the power to apply a fix automatically!
 ![twinfix Error List](img/twinsphere_twinfix_errorlist.png){: width='400' }
 ![twinfix Error Help](img/twinsphere_twinfix_errorhelp.png){: width='400' }
 
-> *More info and documentation coming soon.*
+!!! note
+    More info and documentation coming soon.

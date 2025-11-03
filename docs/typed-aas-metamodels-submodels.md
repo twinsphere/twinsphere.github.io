@@ -28,7 +28,8 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 | **Version**     | 1.0                                                                                                |
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Contact%20Information/1> |
 
-> **Note**: Please pay attention to singular and plural versions - ContactInformation vs. ContactInformations.
+!!! note
+    Please pay attention to singular and plural versions - ContactInformation vs. ContactInformations.
 
 #### Deviations from SMTs
 
@@ -71,12 +72,11 @@ The following lists the submodels supported by twinsphere.TypedAasMetamodels.
 | **Version**     | 3.0                                                                                                |
 | **Github**      | <https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/3/0> |
 
-**Note**:
-
-Contrary to [Digital Nameplate
-2.0](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/2/0), this submodels
-id short officially is `Nameplate`. We follow this naming strategy and it is reflected in the library, i.e., the Digital
-Nameplate 3.0 can be found in the namespace `twinsphere.TypedAasMetamodels.Types.Submodels.Nameplate.V3_0`.
+!!! note
+    Contrary to [Digital Nameplate
+    2.0](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/2/0), this submodels
+    id short officially is `Nameplate`. We follow this naming strategy and it is reflected in the library, i.e., the Digital
+    Nameplate 3.0 can be found in the namespace `twinsphere.TypedAasMetamodels.Types.Submodels.Nameplate.V3_0`.
 
 **Supported submodel specific constraints**:
 
@@ -120,20 +120,22 @@ Nameplate 3.0 can be found in the namespace `twinsphere.TypedAasMetamodels.Types
 
 <!-- markdownlint-enable line-length -->
 
-**Note**:
+<!-- markdownlint-disable code-block-style -->
+!!! note
+    This SMT makes heavy use of arbitrary elements for modeling the `TechnicalDataAreas` and `SpecificDescriptions`. In
+    both cases, users may use SubmodelElementCollections (SMCs) as structuring elements, e.g., to provide additional
+    nesting in UIs. To this end, this SMT defines two different types of SMCs: `Section` and `ArbitrarySMC`, both are
+    considered to act as arbitrary properties, i.e., properties for which the user may choose an id short, as well as,
+    semantic ids. At the moment, however, there is no way to tell a `Section` element from any other SMC element in
+    their respective context. In the library we therefore do have a `Section` element for the creation of the  submodel.
+    However, it is currently impossible to load an instance of this submodel from metamodel and to retrieve `Section`
+    elements.
 
-This SMT makes heavy use of arbitrary elements for modeling the `TechnicalDataAreas` and `SpecificDescriptions`. In
-both cases, users may use SubmodelElementCollections (SMCs) as structuring elements, e.g., to provide additional nesting
-in UIs. To this end, this SMT defines two different types of SMCs: `Section` and `ArbitrarySMC`, both are considered to
-act as arbitrary properties, i.e., properties for which the user may choose an id short, as well as, semantic ids. At
-the moment, however, there is no way to tell a `Section` element from any other SMC element in their respective context.
-In the library we therefore do have a `Section` element for the creation of the submodel. However, it is currently
-impossible to load an instance of this submodel from metamodel and to retrieve `Section` elements.
-
-Furthermore, there currently are some additional modeling issues with this SMT: the SMT describes the
-`ProductClassifications`, `TechnicalPropertyAreas`, and `SpecialDescriptions` by qualifiers as lists of lists. This
-likely is a modeling error. As of now we interpret this as an error and interpret these individual elements as singular
-elements.
+    Furthermore, there currently are some additional modeling issues with this SMT: the SMT describes the
+    `ProductClassifications`, `TechnicalPropertyAreas`, and `SpecialDescriptions` by qualifiers as lists of lists. This
+    likely is a modeling error. As of now we interpret this as an error and interpret these individual elements as singular
+    elements.
+<!-- markdownlint-enable code-block-style -->
 
 #### Deviations from SMTs
 
@@ -211,11 +213,10 @@ elements.
 
 <!-- markdownlint-enable line-length -->
 
-**Note**:
-
-The current state of the Handover Documentation 2.0 specification implicitly lifts many of the constraints defined for
-version 1.2. This omission from the spec is likely due to an error, rather than intentionally. However, until the spec
-is fixed or an official statement has been made, we chose to follow the spec by also omitting these checks from the SDK.
+!!! note
+    The current state of the Handover Documentation 2.0 specification implicitly lifts many of the constraints defined for
+    version 1.2. This omission from the spec is likely due to an error, rather than intentionally. However, until the spec
+    is fixed or an official statement has been made, we chose to follow the spec by also omitting these checks from the SDK.
 
 **Supported submodel specific constraints**:
 

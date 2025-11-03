@@ -36,16 +36,16 @@ The type of submodel element differs from that, that the submodel template descr
 Submodel elements in submodel instances are expected to carry a non-empty value. Optional unset submodel elements should
 be signified by elision from the submodel.
 
-> **Note**: For a submodel element to be optional, it must have a SMT/Cardinality qualifier like `ZeroToOne` or
-> `ZeroToMany`.
+!!! note
+    For a submodel element to be optional, it must have a SMT/Cardinality qualifier like `ZeroToOne` or `ZeroToMany`.
 
 ### File has unset ContentType
 
 File elements in submodel instances are expected to carry a non-empty ContentType. Optional unset file elements should
 be signified by elision from the submodel.
 
-> **Note**: For a submodel element to be optional, it must have a SMT/Cardinality qualifier like `ZeroToOne` or
-> `ZeroToMany`.
+!!! note
+    For a submodel element to be optional, it must have a SMT/Cardinality qualifier like `ZeroToOne` or `ZeroToMany`.
 
 ### MimeType of a File must be correct
 
