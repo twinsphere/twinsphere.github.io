@@ -102,6 +102,7 @@ formatted as `Authorization: Bearer eyJ0e...A`.
 While cURL might be nice for testing purposes, in your real services you will need to use a HTTP or auth library you
 have available in the programming language that you are using.
 
-> ⚠️ **IMPORTANT:** Make sure to properly **cache the tokens**
-and not request a new token with each twinsphere API request. Many standard libraries provide you this functionality
-out of the box. **If you issue too many tokens, you might get rate limited!**
+!!! important
+    Make sure to properly **cache the tokens** and not request a new token with each twinsphere API request. Many
+    standard libraries provide you this functionality out of the box.
+    **If you issue too many tokens, you might get rate limited!**

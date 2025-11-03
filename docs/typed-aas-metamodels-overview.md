@@ -7,8 +7,9 @@ work-flow for handling Shells and Submodels following the IDTA Asset Administrat
 Currently supported version of the AAS Standard is [v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf).
 <!-- markdownlint-enable line-length -->
 
-> In the past we also offered a general twinsphere library called *Conplement.Sphere.SDK*. This library is
-deprecated and no longer maintained.
+!!! important
+    In the past we also offered a general twinsphere library called *Conplement.Sphere.SDK*. This library is deprecated
+    and no longer maintained.
 
 ## Download
 
@@ -121,8 +122,8 @@ In its design, the library is designed to make the creation of shells and submod
 sources of potential errors where possible. To this end, it employs some basic design rules:
 
 - Use distinct types where possible:
-    - Submodels are class citizens: where possible (i.e., where submodel templates are not ambiguous), submodels and their
-    submodel elements are modelled, individual types.
+    - Submodels are class citizens: where possible (i.e., where submodel templates are not ambiguous), submodels and
+    their submodel elements are modelled, individual types.
     - Enums to encode restricted properties.
 - Prevent illegal states where possible, both, with respect to the meta model specification, as well as, to the submodel
   template specification:
@@ -200,9 +201,10 @@ catch (ValidationException exception)
 }
 ```
 
-> **Note**: In general the shell abstractions act as a thin layer around the types of the types of AasCore. They
-> primarily extend them with convenience methods and stricter correctness checks to prevent user errors as early as
-> possible.
+!!! note
+    In general the shell abstractions act as a thin layer around the types of the types of AasCore. They
+    primarily extend them with convenience methods and stricter correctness checks to prevent user errors as early as
+    possible.
 
 ### Packaging
 
@@ -243,11 +245,11 @@ var packagingInfo = PackagePreprocessor.ProcessShell(shell, [digitalNameplate]);
 var aasxPackage = new AasxPackageBuilder(packagingInfo).Build();
 ```
 
-> **Note**: Take care to use the `PackageFileReference` type if you want to include local files into your package. This
-> type wraps a reference to a file on disk. In the packaging step `PackageFileReference` elements will be included into
-> the package and their links will resolved accordingly. See
-> [Submodel Elements](typed-aas-metamodels-overview.md#submodel-elements) for more details on the built-in types of
-> the library.
+!!! note
+    Take care to use the `PackageFileReference` type if you want to include local files into your package. This
+    type wraps a reference to a file on disk. In the packaging step `PackageFileReference` elements will be included into
+    the package and their links will resolved accordingly. See [Submodel Elements](typed-aas-metamodels-overview.md#submodel-elements)
+    for more details on the built-in types of the library.
 
 ## Working with Submodels
 
@@ -329,8 +331,9 @@ digitalNameplateBuilder
 var digitalNameplate = digitalNameplateBuilder.Build();
 ```
 
-> **important**: As complex objects are passed into the builder by reference, it is not safe to reuse a builder for the
-> creation of multiple objects.
+!!! important
+    As complex objects are passed into the builder by reference, it is not safe to reuse a builder for the
+    creation of multiple objects.
 
 ### Validation
 
@@ -344,8 +347,9 @@ validations for:
 - correct cardinality of submodel elements
 - valid type representation of properties
 
-> **Note**: The page on [validations](typed-aas-metamodels-validation.md) contains an exhaustive list of the respective
-> validations with descriptions.
+!!! note
+    The page on [validations](typed-aas-metamodels-validation.md) contains an exhaustive list of the respective
+    validations with descriptions.
 
 Each submodel type exposes a validator class that can be used to validate instances of the submodel. These validators
 return enumerators with the found validation errors:
@@ -374,11 +378,12 @@ else
 }
 ```
 
-> **Note**: These validations are to be understood as an extension of the terrific validations provided by the
-> aas\_core\_works team. Whereas the validations in the AasCore SDK addresses the correctness of shells and submodels on
-    > a syntactical level, the validations in twinsphere.TypedMetaModels are instead concerned with the correctness of
-> submodels in respect to their respective submodel templates, i.e., whether submodels fulfill the requirements given by
-> their submodel templates. Thus, the validation is limited to submodel instances.
+!!! note
+    These validations are to be understood as an extension of the terrific validations provided by the
+    aas\_core\_works team. Whereas the validations in the AasCore SDK addresses the correctness of shells and submodels on
+    syntactical level, the validations in twinsphere.TypedMetaModels are instead concerned with the correctness of
+    submodels in respect to their respective submodel templates, i.e., whether submodels fulfill the requirements given by
+    their submodel templates. Thus, the validation is limited to submodel instances.
 
 ### Conversion
 
@@ -421,8 +426,9 @@ catch (SubmodelConversionException conversionException)
 }
 ```
 
-> **Note**: `FromMetamodel()` will use the validation mechanism to check whether the submodel is a valid instance of its
-> SMT. If it is not, it will throw a `SubmodelConversionException` with the encountered errors.
+!!! note
+    `FromMetamodel()` will use the validation mechanism to check whether the submodel is a valid instance of its
+    SMT. If it is not, it will throw a `SubmodelConversionException` with the encountered errors.
 
 ## Additional Features
 

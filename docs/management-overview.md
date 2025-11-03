@@ -51,7 +51,8 @@ You can also call the API with any HTTP client (e.g., curl). Using the Swagger U
 You can invite any user to your organization using their twinsphere ID.
 If the user does not yet have one, please submit a [support ticket](contact.md).
 
-> User self-registration in twinsphere ID is coming soon.
+!!! note
+    User self-registration in twinsphere ID is coming soon.
 
 To invite a user, use: `POST /api/v{version}/organizations/{organizationId}/users/invite`
 
@@ -99,9 +100,11 @@ Add a secret to a service account:
 
 ![Swagger UI: Create service account secret](img/manage_service_account_create_secret.png)
 
-> ⚠️ **IMPORTANT:** The secret value is shown only once at creation time.
-> Store it securely immediately; you cannot retrieve it again later.
->
-> ℹ️ **More about authentication:** To learn more about authentication flows,
-> consult the detailed guide in [cloud-auth.md](cloud-auth.md).
 <!-- markdown-link-check-enable -->
+
+!!! important
+    The secret value is shown only once at creation time.
+    Store it securely immediately; you cannot retrieve it again later.
+
+!!! note "More about authentication"
+    To learn more about authentication flows, consult the detailed guide in [cloud-auth.md](cloud-auth.md).

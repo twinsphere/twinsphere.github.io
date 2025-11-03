@@ -17,8 +17,8 @@ To create or update a target, use the `/sphere/push/targets/{name}` endpoint
 (you need to choose a name for the target yourself), and post the JSON configuration
 as the body depending on the target itself (see supported targets below).
 
-> **Note**
-> Please make sure that the target is reachable from the internet!
+!!! note
+    Please make sure that the target is reachable from the internet!
 
 ### Supported Targets
 
@@ -38,11 +38,11 @@ the configuration body as in the example below:
 }
 ```
 
-> **Note**
-> blobContainerSasUrl should include the http target, blob container name and the secret
-> required for the connection! Make sure to use the URL value starting with *https*.
-> For more information on how to obtain your container SAS URL
-> visit: [Azure Storage SAS Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
+!!! note
+    blobContainerSasUrl should include the http target, blob container name and the secret
+    required for the connection! Make sure to use the URL value starting with *https*.
+    For more information on how to obtain your container SAS URL
+    visit: [Azure Storage SAS Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
 
 Connection information will be handled as secret and stored in encrypted form.
 
@@ -67,11 +67,10 @@ To connect to the AASX File Server, you need to create the following configurati
 }
 ```
 
-> **Note**
->
-> - The AASX File Server only supports the `application/asset-administration-shell-package+json` serialization format.
-> - All URLs must be absolute and point to your access token or push target resource.
-> - A name is not required in the request body when calling the update target endpoint.
+!!! note
+    - The AASX File Server only supports the `application/asset-administration-shell-package+json` serialization format.
+    - All URLs must be absolute and point to your access token or push target resource.
+    - A name is not required in the request body when calling the update target endpoint.
 
 ## Job management
 

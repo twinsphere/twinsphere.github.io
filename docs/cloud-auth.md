@@ -11,8 +11,9 @@ account authentication modes are supported, consult the [twinsphere ID documenta
 For tighter integration in your authentication and authorization systems, twinsphere cloud supports adding external identity
 provider configuration onto the platform.
 
-> You identity provider configuration will be added as an *additional* configuration, it will not completely replace the
-> usage of twinsphere ID which is still required for internal purposes!
+!!! note
+    Your identity provider configuration will be added as an *additional* configuration, it will not completely replace the
+    usage of twinsphere ID which is still required for internal purposes!
 
 Supported authentication providers for twinsphere cloud are:
 
@@ -28,14 +29,14 @@ applications and fully integrate twinsphere into your ecosystem.
 In general, you need to create two Azure app registrations. One for the API service and one for the viewer, which acts
 as client for the API. If you don't use the twinsphere viewer, you can skip the viewer configuration section.
 
-> **Prerequisites**
->
-> The following steps require you to sign in as a user that is authorized to consent on behalf of the organization. For
-> this, a user with the following roles is needed:
->
-> - Privileged Role Administrator
->
-> - Cloud Application Administrator or Application Administrator
+<!-- markdownlint-disable code-block-style -->
+!!! note "Prerequisites"
+    The following steps require you to sign in as a user that is authorized to consent on behalf of the organization. For
+    this, a user with the following roles is needed:
+
+    - Privileged Role Administrator
+    - Cloud Application Administrator or Application Administrator
+<!-- markdownlint-enable code-block-style -->
 
 1. Log in to your [Microsoft Entra admin center](https://entra.microsoft.com/)
 2. If you have access to more than one tenant, select your account in the upper right. Set your session to the Entra ID
@@ -59,7 +60,8 @@ as client for the API. If you don't use the twinsphere viewer, you can skip the 
     | Reader       | reader      | Read data         | Both (Users / Groups + Applications) |
     | Contributor  | contributor | Write data        | Both (Users / Groups + Applications) |
 
-    > Make sure the values are typed exactly as above (lowercase!).
+    !!! important
+        Make sure the values are typed exactly as above (lowercase!).
 
 8. Click **Expose and API** under **Manage** section.
 9. Click **Add a scope**.
@@ -109,8 +111,9 @@ configuration:
 
 9. Click **Add** then copy and note the secret value. This is the OAuth client secret.
 
-    > The secret is needed, because the viewer acts as confidential OAuth client (web app which authenticates) unlike a
-    > public client (e.g. mobile client) which could not store a secret securely.
+    !!! important
+        The secret is needed, because the viewer acts as confidential OAuth client (web app which authenticates) unlike a
+        public client (e.g. mobile client) which could not store a secret securely.
 
 10. Click on **API permissions** in the side menu, then click **Add a permission**.
 11. In the opened window click **APIs my organization uses** and select the API application you previously created for

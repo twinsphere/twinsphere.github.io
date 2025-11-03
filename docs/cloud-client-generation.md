@@ -4,7 +4,8 @@ If you need to integrate the twinsphere API into your application landscape, con
 twinsphere API client from our OpenAPI definition. This approach allows you to use all endpoints of the twinsphere API
 with the programming language of your choice.
 
-> Make sure you read and understand the **Limitations of client generation** section below.
+!!! important
+    Make sure you read and understand the **Limitations of client generation** section below.
 
 ## General Code Generation
 
