@@ -4,20 +4,17 @@ The twinsphere Viewer follows the semantic versioning format in the form major.m
 [https://semver.org/](https://semver.org/).
 
 ## Studio 0.3
-
 *30-Oct-2025*
 
 - **[General]** Submitting feedback is now possible for everyone (no need for Jira login)
 - **[TwinBuilder]** Editing of further shell properties (globalAssetId, assetKind, specificAssetId(s))
 - **[TwinBuilder]** Display of assetType property and possibility to open referenced type twin in AAS Viewer
 - **[TwinBuilder]** Selection of assetKind in Creation Wizard
-- **[Catalog]** Added buttons for creation of new twin directly in Twin and Draft Catalog 
+- **[Catalog]** Added buttons for creation of new twin directly in Twin and Draft Catalog
 - **[Catalog]** New Catalog of Concept Descriptions, including display of IEC61360 properties
-- **[Bugfix]** Upload of files >1MB is now possible again
-
+- **[Bugfix]** Upload of files >1MB is possible now
 
 ## Studio 0.2 (MVP)
-
 *02-Oct-2025*
 
 - General Features

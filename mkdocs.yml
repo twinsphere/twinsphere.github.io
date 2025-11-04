@@ -55,6 +55,7 @@ validation:
   anchors: warn
 markdown_extensions:
   - attr_list
+  - admonition
 plugins:
   - search
   - open-in-new-tab

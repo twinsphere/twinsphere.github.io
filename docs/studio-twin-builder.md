@@ -1,10 +1,10 @@
 # twinstudio Twin Builder
 
-> **Work in Progress**
-
-> This section is still under construction — our keyboards are clacking, our coffee is strong, and the content is on its way.
-
-> Thanks for your patience!
+!!! note
+    **Work in Progress**  
+    This section is still under construction.
+    Our keyboards are clacking, our coffee is strong, and the content is on its way.  
+    Thanks for your patience!
 
 ## Twin Creation Wizard
 
