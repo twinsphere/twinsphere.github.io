@@ -60,6 +60,7 @@ If you need to use special characters in your pattern (such as *$ / . @ >*) you'
 double backslashes (\\\\).
 
 The following file filter properties support regex:
+
 - File Name
 - Display Name
 
