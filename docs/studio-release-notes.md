@@ -3,11 +3,11 @@
 The twinsphere Viewer follows the semantic versioning format in the form major.minor.patch:
 [https://semver.org/](https://semver.org/).
 
-
 ---
-*30-Oct-2025*
 
 ## Studio 0.3
+
+*Released on 30-Oct-2025*.
 
 - **[General]** Submitting feedback is now possible for everyone (no need for Jira login)
 - **[TwinBuilder]** Editing of further shell properties (globalAssetId, assetKind, specificAssetId(s))
@@ -18,9 +18,10 @@ The twinsphere Viewer follows the semantic versioning format in the form major.m
 - **[Bugfix]** Upload of files >1MB is possible now
 
 ---
-*02-Oct-2025*
 
 ## Studio 0.2 (MVP)
+
+*Released on 02-Oct-2025*.
 
 - General Features
     - Login with twinsphere ID Account (same as for Cloud)

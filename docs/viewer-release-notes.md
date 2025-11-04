@@ -3,15 +3,21 @@
 The twinsphere Viewer follows the semantic versioning format in the form major.minor.patch:
 [https://semver.org/](https://semver.org/).
 
+---
+
 ## Viewer 2.2
-*02-Jun-2025*
+
+*Released on 02-Jun-2025*.
 
 - Added display of unit behind attribute names in dedicated and generic views (see [documentation](viewer-overview.md)
   on data requirements)
 - [Bugfix] Embedded mode stays activated when navigating
 
+---
+
 ## Viewer 2.1
-*10-Mar-2025*
+
+*Released on 10-Mar-2025*.
 
 - Introduced new asset view
     - Displays general asset and AAS information
@@ -34,14 +40,20 @@ The twinsphere Viewer follows the semantic versioning format in the form major.m
 - [Bugfix] Fixed rarely occurring caching problem which displayed submodels of last opened asset when navigating to a
   new one
 
+---
+
 ## Viewer 2.0
-*Sep-2024 to Feb-2025*
+
+*Released from Sep-2024 to Feb-2025*.
 
 - Developed as integrated part of the twinsphere Server project
 - see [Cloud Release Notes](cloud-release-notes.md) tagged ***\[Viewer\]*** for details
 
+---
+
 ## Viewer 1.0
-*Aug-2023 to Sep-2024*
+
+*Released from Aug-2023 to Sep-2024*.
 
 - developed in the context of the fair showcase "follow the twin challenge" in separate project
 - no release notes available
