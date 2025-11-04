@@ -4,25 +4,57 @@
 The twinsphere Server follows the semantic versioning format in the form major.minor.patch:
 [https://semver.org/](https://semver.org/).
 
+---
+
+## Cloud 1.21
+
+*Released on 04-Nov-2025*.
+
+- **[Files]** Added [File Filter Query API](cloud-file-filter-queries.md) which leverages the recently introduced
+    metadata of twinsphere files for filtering
+- **[Files]** Moved file interface (/files) from TwinAPI to SphereAPI service
+- **[SphereAPI]** New experimental DCC endpoint for converting digital calibration certificate XML documents into
+    Digital Quality Document submodels
+- **[ManageAPI]** Introduced [user groups](management-overview.md#user-groups) for more convenient user management
+- **[Bugfix]** Fixed idShort path resolving for list elements
+
+!!! attention "File endpoints have moved"  
+    They are currently marked as deprecated on the Twin service and will be completely removed there soon.  
+    Please make neccessary adjustments and only use file operations of the Sphere service from now on (same behavior):  
+    *https://{tenant-base-url}/sphere/api/{version}/files*
+
+!!! attention "Deprecation of Basic Auth"
+    Our support of Basic Auth will end with this calendar year.  
+    The reason is that twinsphere's authorization model is based on [twinsphere ID](id-overview.md) and does not
+    support Basic Auth.  
+    If you still use Basic Auth, please get in touch with us to help you to use twinsphere ID with user
+    and service accounts instead. 
+
+---
+
 ## Cloud 1.20
 
-*23-Oct-2025*
+*Released on 23-Oct-2025*.
 
 - **[Files]** Automatic capture of metadata on twinsphere files during file upload
 - **[Files]** Data migration of existing twinsphere files to adhere to new metadata concept
 - **[Files]** Introduced new file metadata API endpoints for adding even more (custom) metadata to twinsphere files
 
+---
+
 ## Cloud 1.19.1
 
-*22-Oct-2025*
+*Released on 22-Oct-2025*.
 
 - **[DevOps]** Cluster Optimization: Introduced "tiers" tenant level for an optimized resource request/limit configuration
 - **[DataMgmt]** Introduced optimistic concurrency handling for most of our CRUD operations
 - **[ManageAPI]**  Added /me endpoint showing organizations and tenant assignments of logged in user
 
+---
+
 ## Cloud 1.19
 
-*20-Oct-2025*
+*Released on 20-Oct-2025*.
 
 - **[OrgMgmt]** Unified RBAC: New roles added for fine-grained authorization at the endpoint level
 - **[ManageAPI]** Added role assignment endpoints
@@ -30,9 +62,11 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 - **[ManageAPI]** Added service account functionality (with basic secret rotation)
 - **[Bugfix]** Fixed /import validation to ignore File SME with empty value (was too strict before)
 
+---
+
 ## Cloud 1.18
 
-*12-Aug-2025*
+*Released on 12-Aug-2025*.
 
 - **[IDTA]** Now supporting meta-model specification V3.0.2
 - **[IDTA]** Now supporting API specification V3.0.4
@@ -45,9 +79,11 @@ The twinsphere Server follows the semantic versioning format in the form major.m
       and /attachment supports blobs and TFS only)
 - **[Bugfix]** Fixed encoding of location header value in operation PostSubmodel
 
+---
+
 ## Cloud 1.17
 
-*11-Jul-2025*
+*Released on 11-Jul-2025*.
 
 - **[OrgMgmt]** Introduced organizations to group and manage users and tenants
     - Initial setup of organizations
@@ -62,30 +98,36 @@ The twinsphere Server follows the semantic versioning format in the form major.m
     - Used internally for tenant management and automation
 - **[Security]** Established secure inter-service communication between all twinsphere services
 
+---
+
 ## Cloud 1.16.1
 
-*09-Jul-2025*
+*Released on 09-Jul-2025*.
 
-- **[Filter]** Added further shell properties displayName, idShort and aas-id to [Filter Queries](cloud-filter-queries.md)
+- **[Filter]** Added further shell properties displayName, idShort and aas-id to [Filter Queries](cloud-shell-filter-queries.md)
+
+---
 
 ## Cloud 1.16
 
-*13-Jun-2025*
+*Released on 13-Jun-2025*.
 
-- **[Filter]** Introduction of Filter Queries feature, see [documentation](cloud-filter-queries.md) for more information
+- **[Filter]** Introduction of Filter Queries feature, see [documentation](cloud-shell-filter-queries.md) for more information
+
+---
 
 ## Archive
 
 ### Cloud 1.15
 
-*24-Apr-2025*
+*Released on 24-Apr-2025*.
 
 - **[SemConn]** Introduction of Semantic Connector feature, see [documentation](cloud-semantic-connector.md) for more
   information
 
 ### Cloud 1.14
 
-*10-Mar-2025*
+*Released on 10-Mar-2025*.
 
 - **[Security]** New "showcase mode" removes security layer/need for authentication on a tenant (useful for hackathons
   etc.)
@@ -94,7 +136,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.13
 
-*06-Feb-2025*
+*Released on 06-Feb-2025*.
 
 - **[Auth]** Added support for Azure Entra ID authentication federation (enabling SSO for customers)
 - **[Auth]** Enhanced twinsphere ID login screen with twinsphere branding (logo, colors, ...)
@@ -112,7 +154,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.12
 
-*28-Nov-2024*
+*Released on 28-Nov-2024*.
 
 - **[Viewer]** Authentication by twinsphere ID
     - Basic Auth was removed and replaced by a login button (twinsphere ID user needed)
@@ -128,13 +170,13 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.11.1
 
-*07-Nov-2024*
+*Released on 07-Nov-2024*.
 
 - **[Bugfix]** Viewer now correctly displays internal segments of time series submodels
 
 ### Cloud 1.11
 
-*06-Nov-2024*
+*Released on 06-Nov-2024*.
 
 - **[API]** Introduction of API-Endpoints to interact with submodels on submodel element level (CRUD)
     - Please be aware that change events will not yet be fired when changes on element level take place.
@@ -142,33 +184,33 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.10.1
 
-*29-Oct-2024*
+*Released on 29-Oct-2024*.
 
 - **[Viewer]** Added rendering of Entity and RelationshipElement types to generic view enabling display of BoM submodels
 
 ### Cloud 1.10
 
-*09-Oct-2024*
+*Released on 09-Oct-2024*.
 
 - **[Auth]** Added the possibility for twinsphere ID human users to login to twinsphere's Swagger UI
 - **[Security]** Introduced Patch & Update Management Process to keep all component up to date
 
 ### Cloud 1.9.4
 
-*12-Sep-2024*
+*Released on 12-Sep-2024*.
 
 - **[Search]** Added complete end-to-end example for building a search based UI and pagination example in docs
 - **[Search]** Introduced language specific indexing, increased indexing performance and optimized of index disk size
 
 ### Cloud 1.9.3
 
-*11-Sep-2024*
+*Released on 11-Sep-2024*.
 
 - **[DevOps]** Moved all twinsphere production cloud (shared) tenants to a dedicated kubernetes cluster
 
 ### Cloud 1.9.2
 
-*28-Aug-2024*
+*Released on 28-Aug-2024*.
 
 - **[Search]** We added the real names of the properties in all available languages and the unit of the value from the
   linked concept description to the collection object
@@ -177,7 +219,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.9.1
 
-*13-Aug-2024*
+*Released on 13-Aug-2024*.
 
 - **[API]** Introduction of proprietary Implicit Shell Registry for on-the-fly generation of basic shell descriptors
   based on existing shell repo data
@@ -192,7 +234,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.9
 
-*07-Aug-2024*
+*Released on 07-Aug-2024*.
 
 - **[Bugfix]** /import now ignores package thumbnails. Instead default thumbnails of assets are used.
 - **[Security]** Introduced vulnerability & patch level scanning
@@ -210,7 +252,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.8
 
-*18-Jul-2024*
+*Released on 18-Jul-2024*.
 
 - Added logging of all access to key store
 - Introduction of twinsphere's search feature
@@ -220,7 +262,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.7
 
-*23-May-2024*
+*Released on 23-May-2024*.
 
 - Introduction of File Repository for management of files (endpoints /api/v3.0/files…)
     - Files are identified by a so called twinsphere File Path which is valid in the context of a twinsphere tenant
@@ -237,7 +279,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.6
 
-*22-Apr-2024*
+*Released on 22-Apr-2024*.
 
 - New optional query parameter in GET /shells enables filtering by asset type (e.g. only type shells)
 - Restriction of endpoints with pagination to return a maximum of 250 list elements each (limit parameter)
@@ -246,7 +288,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.5.1
 
-*15-Apr-2024*
+*Released on 15-Apr-2024*.
 
 <!-- markdownlint-disable no-inline-html -->
 
@@ -260,7 +302,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.5
 
-*09-Apr-2024*
+*Released on 09-Apr-2024*.
 
 <!-- markdownlint-disable no-inline-html -->
 
@@ -282,7 +324,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.4
 
-*27-Mar-2024*
+*Released on 7-Mar-2024*.
 
 - Separation of the submodel repository and conversion of the SM repo superpaths to the original root paths
     - Original SM repo superpaths are still temporarily available via redirects
@@ -292,7 +334,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.3.1
 
-*15-Mar-2024*
+*Released on 15-Mar-2024*.
 
 - Gzip compression of the message payload of the change events
     - Allows the transport of larger submodels beyond the Azure Event Grid MQTT message size limit of 512kB
@@ -305,7 +347,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.3
 
-*13-Mar-2024*
+*Released on 13-Mar-2024*.
 
 <!-- markdownlint-disable no-inline-html -->
 
@@ -319,13 +361,13 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.2.1
 
- *28-Feb-2024*
+*Released on 28-Feb-2024*.
 
 - [Bugfix] Fixed GetThumbnail operation for existing thumbnails (no more 404 "Document mapping was not found..." )
 
 ### Cloud 1.2
 
-*27-Feb-2024*
+*Released on 27-Feb-2024*.
 
 - Introduction of a change log
     - Logging of any creation, modification and deletion of AAS and SM
@@ -344,26 +386,26 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.1.3
 
-*15-Feb-2024*
+*Released on 15-Feb-2024*.
 
 - [Bugfix] Fixed missing query param assetIds for API endpoint /shells/$references
 
 ### Cloud 1.1.2
 
-*12-Feb-2024*
+*Released on 12-Feb-2024*.
 
 - [Bugfix] /serialization now produces correct results for request on only AAS- or SM-IDs
 - [Bugfix] a revised swagger.json now also enables automated client generation with NSwag
 
 ### Cloud 1.1.1
 
-*07-Feb-2024*
+*Released on 07-Feb-2024*.
 
 - [Bugfix] Correction of our monitoring components (only internal)
 
 ### Cloud 1.1
 
-*15-Feb-2024*
+*Released on 15-Feb-2024*.
 
 - Serialization interface to output specific asset administration shells and submodels in the desired format
     - Return formats include JSON, XML and AASX
@@ -382,7 +424,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.0.2
 
-*16-Jan-2024*
+*Released on 16-Jan-2024*.
 
 - [Bugfix] Spec-compliant result objects are now returned for unsuccessful API requests
 - [Bugfix] API now supports Base64URL-encoded identifiers with and (new) also without padding
@@ -393,7 +435,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 1.0
 
-*22-Dez-2023*
+*Released on 22-Dez-2023*.
 
 - Creation and deletion of submodel references in an existing AAS
 - Concept Description Repository
@@ -403,7 +445,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 0.4
 
-*12-Dez-2023*
+*Released on 12-Dez-2023*.
 
 - Creation, modification and deletion of asset administration shells
 - Retrieving and changing the asset information of an AAS
@@ -412,26 +454,26 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 0.3.4
 
-*10-Nov-2023*
+*Released on 10-Nov-2023*.
 
 - [Bugfix] Optional XML prolog in aas-spec file within AASX package now possible
 
 ### Cloud 0.3.3
 
-*07-Nov-2023*
+*Released on 07-Nov-2023*.
 
 - [Bugfix] Sphere import endpoint does now overwrite shell/submodel data.
 
 ### Cloud 0.3.2
 
-*06-Nov-2023*
+*Released on 06-Nov-2023*.
 
 - [Bugfix] return pageable at GetAllSubmodellReferences
 - Enhanced Swagger API documentation
 
 ### Cloud 0.3
 
-*31-Oct-2023*
+*Released on 31-Oct-2023*.
 
 - AASX Import (Part 2: without Concept Descriptions)
     - Included AAS, submodels and files are imported
@@ -441,7 +483,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 0.2
 
-*20-Oct-2023*
+*Released on 20-Oct-2023*.
 
 - Basic Auth for (initially simple) access protection of the API
 - Upload and retrieval of AAS
@@ -450,7 +492,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ### Cloud 0.1
 
-*09-Oct-2023*
+*Released on 09-Oct-2023*.
 
 - Architecture of the platform
 - Automation of the infrastructure as infrastructure-as-code
