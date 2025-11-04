@@ -28,7 +28,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
     The reason is that twinsphere's authorization model is based on [twinsphere ID](id-overview.md) and does not
     support Basic Auth.  
     If you still use Basic Auth, please get in touch with us to help you to use twinsphere ID with user
-    and service accounts instead. 
+    and service accounts instead.
 
 ---
 
