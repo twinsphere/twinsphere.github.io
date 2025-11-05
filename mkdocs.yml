@@ -26,7 +26,11 @@ nav:
     - Client Generation: cloud-client-generation.md
     - Release Notes: cloud-release-notes.md
   - Studio:
-    - Coming 2025: studio-overview.md
+    - Overview: studio-overview.md
+    - General Features: studio-general-features.md
+    - Catalog: studio-catalog.md
+    - Twin Builder: studio-twin-builder.md
+    - Release Notes: studio-release-notes.md
   - Viewer:
     - Overview: viewer-overview.md
     - Features: viewer-features.md
@@ -52,6 +56,7 @@ validation:
 markdown_extensions:
   - admonition
   - attr_list
+  - admonition
 plugins:
   - search
   - open-in-new-tab
