@@ -32,9 +32,9 @@ The twinsphere Server follows the semantic versioning format in the form major.m
     *https://{tenant-base-url}/sphere/api/{version}/files*
 
 !!! attention "Deprecation of Basic Auth"
-    Our support of Basic Auth will end with this calendar year.  
+    Our support of Basic Auth will end with this calendar year.
     The reason is that twinsphere's authorization model is based on [twinsphere ID](id-overview.md) and does not
-    support Basic Auth.  
+    support Basic Auth.
     If you still use Basic Auth, please get in touch with us to help you to use twinsphere ID with user
     and service accounts instead.
 
