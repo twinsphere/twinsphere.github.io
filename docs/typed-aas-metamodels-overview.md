@@ -1,4 +1,4 @@
-# Development libraries
+# Development libraries (DevKit)
 
 Our primary library that we offer is **twinsphere.TypedAasMetamodels**. It is a C# library providing a simplified
 work-flow for handling Shells and Submodels following the IDTA Asset Administration Shell standard.
