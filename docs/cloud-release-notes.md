@@ -20,7 +20,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 !!! attention "File endpoints have moved"  
     They are currently marked as deprecated on the Twin service and will be completely removed there soon.  
-    Please make neccessary adjustments and only use file operations of the Sphere service from now on (same behavior):  
+    Please make necessary adjustments and only use file operations of the Sphere service from now on (same behavior):  
     *https://{tenant-base-url}/sphere/api/{version}/files*
 
 !!! attention "Deprecation of Basic Auth"
