@@ -12,7 +12,7 @@
 
 ## Add/Remove Submodels
 
-## Add/Remove Submodel Eleemnts
+## Add/Remove Submodel Elements
 
 ## Arbitrary Properties
 
