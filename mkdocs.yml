@@ -39,7 +39,7 @@ nav:
   - Management API:
     - Overview: management-overview.md
     - Roles: management-roles.md
-  - Development Libraries:
+  - Development libraries (DevKit):
     - Overview: typed-aas-metamodels-overview.md
     - Supported Submodels: typed-aas-metamodels-submodels.md
     - Validation Rules: typed-aas-metamodels-validation.md
