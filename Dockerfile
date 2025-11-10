@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm
 
 RUN ["uv", "pip", "install", "--system", "mkdocs", "mkdocs-open-in-new-tab", "mkdocs-link-marker", "mkdocs-spellcheck[all]"]
 
