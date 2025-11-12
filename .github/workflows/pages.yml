@@ -90,7 +90,7 @@ jobs:
             twinsphere-docs-
       - run: pip install mkdocs
       - run: pip install mkdocs-open-in-new-tab mkdocs-link-marker mkdocs-spellcheck[all]
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs gh-deploy --force --strict
 
   deploy:
     needs: build
