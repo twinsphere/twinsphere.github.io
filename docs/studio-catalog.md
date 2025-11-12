@@ -12,4 +12,4 @@
 
 ## ... of Drafts
 
-## ... of Submodel Tempates
+## ... of Submodel Templates
