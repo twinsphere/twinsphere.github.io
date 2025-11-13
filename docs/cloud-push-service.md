@@ -78,18 +78,18 @@ To connect to Sharecat, you need to create the following configuration as in the
 
 ```json
 {
-  "name": "...",
+  "name": "{your-custom-target-name}",
   "type": "sharecat",
   "configuration": {
     "credentials": {
-      "accessTokenUrl": "...",
-      "clientId": "...",
-      "clientSecret": "..."
+      "accessTokenUrl": "https://{domain}/{path}/token",
+      "clientId": "{id}",
+      "clientSecret": "{secret}"
     },
     "destination": {
-      "uploadFileUrl": "...",
-      "createUploadedFileUrl": "...",
-      "submitFileUrl": "..."
+      "baseUrl": "https://{domain}/{path}/workspaces",
+      "workspaceId": "{id}",
+      "parentId": "{id}"
     }
   }
 }
