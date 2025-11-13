@@ -7,19 +7,26 @@
     Thanks for your patience!
 
 ## Twin Creation Wizard
-The Creation Wizard helps you to create a digital twin. You can open the Creation Wizard by clicking on the *Create New Digital Twin* buttons in the [catalog](studio-catalog.md){: width='600' } or on the dashboard.
+
+The Creation Wizard helps you to create a digital twin.
+You can open the Creation Wizard by clicking on the *Create New Digital Twin* buttons
+in the [catalog](studio-catalog.md){: width='600' } or on the dashboard.
 
 ![Dashboard Builder Card](img/twinstudio-dashboard-digital-twin-builder.png){: width='600' }
 
 The Creation Wizard offers two options for creating a digital twin.
+
 ### Step 1 - Basis Selection
+
 #### Option 1 - New Digital Twin from scratch
+
 ![Creation Wizard Scratch](img/twinstudio-creation-wizard-from-scratch.png){: width='800' }
 
 If you create a digital twin from scratch you can choose the *asset kind* in the right radio button list.
 If you are unsure which *asset kind* is appropriate for your situation, the help texts describing the options may be of assistance.
 
 #### Option 2 - Duplicate existing Instance
+
 ![Creation Wizard Duplicate](img/twinstudio-creation-wizard-duplicate-existing-instance.png){: width='800' }
 
 If you duplicate an existing instance you have to choose an instance from the radio button list on the right.
@@ -28,7 +35,11 @@ If you duplicate an existing instance you have to choose an instance from the ra
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-2.png){: width='800' }
 
-In the second step you have to set an id for the digital twin, add a display name for your twin and refer to your physical asset by adding a asset identifier. The id for the digital twin has to be unique. The asset identifier could be common because you could create many digital twins for one physical asset. The display name is required because it is used to determine the name of the shell in the catalog.
+In the second step you have to set an id for the digital twin, add a display name for your twin
+and refer to your physical asset by adding a asset identifier.
+The id for the digital twin has to be unique.
+The asset identifier could be common because you could create many digital twins for one physical asset.
+The display name is required because it is used to determine the name of the shell in the catalog.
 
 ### Step 3 - Add Description (optional)
 
@@ -40,13 +51,17 @@ This step in the creation of a digital twin is optional. In this step you can de
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-4.png){: width='800' }
 
-In the last step of the digital twin creation you can add the submodels you need. The submodels you can choose from are submodel templates, which are stored in [twinsphere cloud](cloud-documentation.md). If you click the *Create Digital Twin* button every selected submodel template will be transformed into a submodel instance and added to your digital twin.
+In the last step of the digital twin creation you can add the submodels you need.
+The submodels you can choose from are submodel templates, which are stored in [twinsphere cloud](cloud-documentation.md).
+If you click the *Create Digital Twin* button every selected submodel template will be transformed
+into a submodel instance and added to your digital twin.
 
 ## Edit Shell Properties
 
 ![Edit Shell Properties](img/twinstudio_shellproperties.png){: width='600' }
 
-If you want to edit properties (*asset kind, global asset id and specific asset ids*) of your shell the editing has to be unlocked.
+If you want to edit properties (*asset kind, global asset id and specific asset ids*) of your shell
+the editing has to be unlocked.
 
 ![Add Specific Asset Ids](img/twinstudio_shellproperties_addremove.png){: width='200' }
 
@@ -66,15 +81,15 @@ The rest of the list contains all available submodel templates from your current
 To select the same template multiple times you have to add them one at a time.
 
 If a new submodel template is added it will be converted to a submodel of type instance
- and its elements are modified to reflect this change.
+and its elements are modified to reflect this change.
 
 ## Add/Remove Submodel Elements
 
 In the navigation list a symbol is displayed in every submodel entry.
- This states if the template for your submodel has been found in your tenant.
+This states if the template for your submodel has been found in your tenant.
 
 If this is the case you can find the *add element* button on some of the submodel elements.
- There are an *add to navigation* and *add to page* section.
+There are an *add to navigation* and *add to page* section.
 
 ![Add SME Dialog](img/twinstudio_addremove_sme.png){: width='200' }
 
@@ -87,7 +102,7 @@ Some templates specify a cardinality of *one* or *onetomany* then the last eleme
 ## Arbitrary Properties
 
 Some templates specify arbitrary properties. At the moment twinstudio only supports editing the first.
- Twinstudio cannot assume in good faith the correct idShort for additional elements.
+Twinstudio cannot assume in good faith the correct idShort for additional elements.
 
 ![Arbitray Properties Add Dialog](img/twinstudio_arbitrary.png){: width='500' }
 
@@ -99,13 +114,18 @@ In the add dialog these entries are grayed out and display the info.
 
 ![Properties](img/twinstudio-builder-property.png)
 
-The value of a property is represented by an input field. Please make sure that the data type of the property matches the value you set into the input field. The *Validation Issue List* will have an issue if the data type of the value does not match the data type of the property.
+The value of a property is represented by an input field.
+Please make sure that the data type of the property matches the value you set into the input field.
+The *Validation Issue List* will have an issue if the data type of the value does not match
+the data type of the property.
 
 ### Multi Language Properties
 
 ![MultiLanguageProperty_Collapsed](img/twinstudio-builder-mlp-collapsed.png)
 
-The Multi Language Property displays all languages for which a value is set, with tags above the value. The value displayed in the field is determined as follows using the language property of an entry and match it with (ISO 639-1):
+The Multi Language Property displays all languages for which a value is set, with tags above the value.
+The value displayed in the field is determined as follows using the language property of an entry
+and match it with (ISO 639-1):
 
 1. the data language
 2. containing the data language
@@ -116,7 +136,11 @@ The Multi Language Property displays all languages for which a value is set, wit
 
 ![MultiLanguageProperty_Dialog](img/twinstudio-builder-mlp-extended.png){: width='800' }
 
-The dialog box that opens when you click on the pencil icon shows all the values that have been set for the Multi Language Property. You can add new values and delete existing ones. Make sure that at least one value is set. At the top, you can see which value will be displayed when you click *Save*. If you click on the info icon, you will see an explanation of why this value was selected.
+The dialog box that opens when you click on the pencil icon shows all the values
+that have been set for the Multi Language Property.
+You can add new values and delete existing ones. Make sure that at least one value is set.
+At the top, you can see which value will be displayed when you click *Save*.
+If you click on the info icon, you will see an explanation of why this value was selected.
 
 ### File Properties
 
@@ -126,17 +150,25 @@ You can fill in the file properties by clicking on the *Add File* button.
 
 ![FileProperty_Collapsed](img/twinstudio-builder-file-expanded.png){: width='800' }
 
-In the dialog box, you can now choose whether you want to upload a file or store an external file. If you upload a file, it will be stored in the twinsphere file storage and a reference will be written to the property. If you store an external file, the link will be stored as a value. If no content type is specified in the template, the content type is set to octet-stream.
+In the dialog box, you can now choose whether you want to upload a file or store an external file.
+If you upload a file, it will be stored in the twinsphere file storage and a reference will be written to the property.
+If you store an external file, the link will be stored as a value.
+If no content type is specified in the template, the content type is set to octet-stream.
 
 ### Range Properties
 
 ![RangeProperty](img/twinstudio-builder-range.png)
 
-The Range Property can set minimum and maximum as values. If either minimum or maximum is set, the Required Validator is fulfilled. If the data type is a data type that describes a number, it is validated whether the minimum is smaller than the maximum.
+The Range Property can set minimum and maximum as values.
+If either minimum or maximum is set, the Required Validator is fulfilled.
+If the data type is a data type that describes a number, it is validated whether the minimum is smaller than the maximum.
 
 ### Reference Elements
 
-To set the value of a reference element, click the *Add Reference* button and then select an asset administration shell. You can then refer to a submodel or submodel element and save the reference. The reference is displayed as shown below.
+To set the value of a reference element, click the *Add Reference* button
+and then select an asset administration shell.
+You can then refer to a submodel or submodel element and save the reference.
+The reference is displayed as shown below.
 
 ![ReferenceElement](img/twinstudio-builder-reference-collapsed.png)
 
@@ -146,12 +178,12 @@ To set the value of a reference element, click the *Add Reference* button and th
 
 ![ReferenceElement](img/twinstudio-builder-reference-collapsed-filled.png)
 
-
 ## Validation Issue List
 
 ![Validation Issue List](img/twinstudio_issuelist_withpath.png){: width='300' }
 
-After each value change your twin gets validated. The count of issues will be displayed atop of the list.
+After each value change your twin gets validated.
+The count of issues will be displayed atop of the list.
 
 The errors are grouped by their path which can be displayed with the show issue path toggle.
 
@@ -159,8 +191,14 @@ Clicking on an issue will navigat you to the element and the edit mode will be o
 
 ## Save Draft
 
-To save a draft, simply click on the *Save Draft* button. Once saved, a toast message will appear in the upper left corner. Drafts are only visible to you and can only be edited or deleted by you. You can view all your drafts in the [draft catalog](studio-catalog.md).
+To save a draft, simply click on the *Save Draft* button. Once saved, a toast message will appear
+in the upper left corner. Drafts are only visible to you and can only be edited or deleted by you.
+You can view all your drafts in the [draft catalog](studio-catalog.md).
 
 ## Publish to Repo
 
-To publish a digital twin, all errors in the error list must be corrected. Once all errors have been corrected, the twin can be published by clicking the “Publish” button. Once the twin has been successfully published, a dialog box displays the ID, name, and tenant to which the twin was uploaded. Once the twin has been published, the corresponding draft is deleted from the draft catalog.
+To publish a digital twin, all errors in the error list must be corrected.
+Once all errors have been corrected, the twin can be published by clicking the "Publish" button.
+Once the twin has been successfully published, a dialog box displays the ID, name, and tenant
+to which the twin was uploaded.
+Once the twin has been published, the corresponding draft is deleted from the draft catalog.
