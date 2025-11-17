@@ -53,6 +53,7 @@ default values (as these are treated as omitted). All provided filter parameters
 - assetKind: "Instance" or "Type"
 - yearOfConstructionMin: Positive Number e.g: 2025
 - yearOfConstructionMax: Positive Number e.g: 2025
+- Nameplate functionality is supported in both Version 2 and Version 3
 
 ## Regex Support
 
