@@ -17,3 +17,7 @@ Here is a list of all available roles and their permissions, that you can set th
 | tenant-semantic-connector-reader | cloud tenant | Read permissions for the semantic connector feature endpoints |
 | tenant-semantic-connector-writer | cloud tenant | Read and write permissions for the semantic connector feature endpoints |
 <!-- markdownlint-enable line-length -->
+
+> [IMPORTANT]
+> The `organization-owner` role will not cascade and grant the `cloud tenant level`
+rights at this point in time! Explicit cloud tenant role assignment is required!
