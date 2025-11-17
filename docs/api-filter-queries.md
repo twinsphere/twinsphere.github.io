@@ -31,6 +31,7 @@ default values (as these are treated as omitted). All provided filter parameters
     "displayName": "string"
   },
   "submodelFilter": {
+    "id":"string",
     "semanticId": "string",
     "nameplateFilter": {
       "productArticleNumberOfManufacturer": "string",
@@ -68,6 +69,11 @@ For example:
 - idshort
 - displayname
 - globalAssetId
+- semanticId
+
+### Submodel Regex Support
+
+- id
 - semanticId
 
 ### Nameplate Regex Support
