@@ -70,3 +70,5 @@ plugins:
       ignore_code: yes
       allow_unicode: yes
       strict_only: yes
+      skip_files:
+        - typed-aas-metamodels-release_notes.md
