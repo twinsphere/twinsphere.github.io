@@ -12,7 +12,7 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 *Released on 20-Nov-2025*.
 
-- **[Bugfix]** Update to most recent specification versions for several submodels
+- **[TAM]** Update to most recent specification versions for several submodels
     - Contact Informations 1.0
     - Technical Data 2.0
     - Handover Documentation 2.0
