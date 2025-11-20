@@ -8,6 +8,18 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.1.4
+
+*Released on 20-Nov-2025*.
+
+- **[Bugfix]** Update to most recent specification versions for several submodels
+    - Contact Informations 1.0
+    - Technical Data 2.0
+    - Handover Documentation 2.0
+    - Hierarchical Structures enabling Bill of Materials 1.1
+- **[Bugfix]** Packaging and conversion now ensures that file paths/values are properly percent encoded in conformity
+  with RFC2396.
+
 ## twinsphere.TypedAasMetamodels 1.1.3
 
 *Released on 06-Nov-2025*.
