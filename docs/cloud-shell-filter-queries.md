@@ -4,6 +4,11 @@ The Twinsphere Shell Filter Queries allows for simplified searching of shells. I
 you can specify supported shell and submodel properties. Based on this input, the filter returns the shells that match
 your criteria.
 
+## Supported Features
+
+It is possible to search for shells based on their linked submodels and their values, as well as the shell properties themselves.
+The Digital Nameplate is supported in both version 2 and version 3.
+
 ## Request
 
 ### Url
@@ -53,34 +58,25 @@ default values (as these are treated as omitted). All provided filter parameters
 - assetKind: "Instance" or "Type"
 - yearOfConstructionMin: Positive Number e.g: 2025
 - yearOfConstructionMax: Positive Number e.g: 2025
-- Nameplate functionality is supported in both Version 2 and Version 3
 
 ## Regex Support
 
-To use regular expressions instead of exact matches, prefix your regex with "**$regex=**" and provide it as a property
-value.
+To use regular expressions instead of exact string matches, prefix your pattern with **`$regex=`** and provide it as the property value.
+All fields of type **string** support regex matching.
 
-For example:
+Regex Usage Example:
 
-**$regex=**conplement.*
+$regex=conplement.*
 
-### Shell Regex Support
+## Pagination
 
-- id
-- idshort
-- displayname
-- globalAssetId
-- semanticId
+The result contains the found shells, along with paging metadata. You can use the cursor from the current result as a query parameter in the next request to retrieve the following page.
 
-### Submodel Regex Support
+Result Object:
 
-- id
-- semanticId
-
-### Nameplate Regex Support
-
-- productArticleNumberOfManufacturer
-- orderCodeOfManufacturer
-- manufacturerProductDesignation
-- serialNumber
-- manufacturerName
+{
+    "result": [],
+    "paging_metadata": {
+        "cursor": ""
+    }
+}
