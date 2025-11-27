@@ -1,10 +1,10 @@
 # twinstudio Twin Builder
 
-!!! note
-    **Work in Progress**
-    This section is still under construction.
-    Our keyboards are clacking, our coffee is strong, and the content is on its way.
-    Thanks for your patience!
+## General Information
+
+The **Twin Builder** is used to edit the content of digital twins. It allows users to conveniently fill in and change
+the values of all elements, while increasing accessibility by hiding the complex  details of the metamodel as much as
+possible.
 
 ## Twin Creation Wizard
 
@@ -18,43 +18,63 @@ The Creation Wizard offers two options for creating a digital twin.
 
 ### Step 1 - Basis Selection
 
-#### Option 1 - New Digital Twin from scratch
+!!! note
+    We plan to include more options for creating twins here, like deriving an instance from a type twin or using a
+    blueprint as basis. for now you can choose "from scratch" or "duplicate an existing instance" Stay tuned :)
+
+#### Option 1 - New Digital Twin from Scratch
 
 ![Creation Wizard Scratch](img/twinstudio-creation-wizard-from-scratch.png){: width='800' }
 
-If you create a digital twin from scratch you can choose the *asset kind* in the right radio button list.
-If you are unsure which *asset kind* is appropriate for your situation, the help texts describing the options may be of assistance.
+If you create a digital twin from scratch you can choose the *asset kind* in the right radio button list.  
+If you are unsure which *asset kind* is appropriate for your situation (*Instance/Type/Undefined*), the help texts
+describing the options may be of assistance.
 
 #### Option 2 - Duplicate existing Instance
 
 ![Creation Wizard Duplicate](img/twinstudio-creation-wizard-duplicate-existing-instance.png){: width='800' }
 
-If you duplicate an existing instance you have to choose an instance from the radio button list on the right.
+If you duplicate an existing instance you have to choose an instance from the radio button list on the right.  
 
-### Step 2 - Add Indentification and Basic Information
+If you select this option, the wizard will only guide you to step 2 below. No further information is required; it will
+be taken from the original copy.
+
+### Step 2 - Add IDs and Basic Information
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-2.png){: width='800' }
 
-In the second step you have to set an id for the digital twin, add a display name for your twin
-and refer to your physical asset by adding a asset identifier.
-The id for the digital twin has to be unique.
-The asset identifier could be common because you could create many digital twins for one physical asset.
+In the second step you have to set an id for the digital twin, add a display name and refer to your physical asset
+by adding a asset identifier.
+
+The id for the digital twin has to be unique.  
+The asset identifier could be common because you could create many digital twins for one physical asset.  
 The display name is required because it is used to determine the name of the shell in the catalog.
+
+Depending on your usage of the [ID Generator](studio-general-features.md/#id-generator) feature twinstudio may already
+have filled-in some of the inputs above automatically for you.
 
 ### Step 3 - Add Description (optional)
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-3.png){: width='800' }
 
-This step in the creation of a digital twin is optional. In this step you can describe the asset and the digital twin.
+This step in the creation of a digital twin is optional.  
+You may add a textual description for the new digital twin here. This might help you and other users later on to
+understand the content or purpose of this twin.  
+Please only use English language here. You may add more/other languages later in the editor.
 
 ### Step 4 - Adding Submodels (optional)
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-4.png){: width='800' }
 
-In the last step of the digital twin creation you can add the submodels you need.
-The submodels you can choose from are submodel templates, which are stored in [twinsphere cloud](cloud-documentation.md).
+In the last step of the digital twin creation you can add the submodels you need.  
+The submodels you can choose from are submodel templates, which are stored in your
+[twinsphere cloud](cloud-documentation.md).
+
 If you click the *Create Digital Twin* button every selected submodel template will be transformed
-into a submodel instance and added to your digital twin.
+into a submodel instance, given an unique ID and added to your digital twin.
+
+We highly recommend using the studio's [ID Generator](studio-general-features.md/#id-generator) feature here. Otherwise
+will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel IDs to be created.
 
 ## Edit Shell Properties
 
