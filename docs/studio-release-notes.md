@@ -1,7 +1,47 @@
 # Release Notes of twinstudio
 
-The twinsphere Viewer follows the semantic versioning format in the form major.minor.patch:
+Our twinstudio follows the semantic versioning format in the form major.minor.patch:
 [https://semver.org/](https://semver.org/).
+
+---
+
+## Studio 0.4
+
+*Released on 21-Nov-2025*.
+
+**New Features:**
+
+- **[General]:**
+
+    - Established consistent behavior of popup dialogs
+
+- **[TwinBuilder]:**
+
+    - Added initial form support for submodel elements of type ReferenceElement.
+        - For now only setting and display of references to elements of the currently opened twin are supported.
+    - Export Twin as XML or JSON to File or Clipboard from within Twin Builder
+    - New option to open a twin from file for editing (AASX, JSON, XML) available in Dashboard
+    - Build with twinstudio signature added to AAS and submodels (via extensions)
+
+- **[Catalog]:**
+
+    - Added export (JSON/XML) to file or clipboard in more menu of
+        - Twin Catalog
+        - Submodel Catalog
+        - Submodel Template Catalog
+        - Concept Description Catalog
+        - Draft Catalog
+
+**Fixes:**
+
+- **[TwinBuilder]**
+
+    - Proper handling of all optional submodel elements (deletion and adding)
+    - It is possible to open empty twins now (shell without any SM references)
+    - Text in File properties is caped to max editor width now
+    - Fixed broken layout by enabling multiline form elements for MLPs and Properties
+    - It is now possible to add/remove elements to submodels which structurally do not adhere to their referenced
+      template
 
 ---
 
@@ -9,13 +49,28 @@ The twinsphere Viewer follows the semantic versioning format in the form major.m
 
 *Released on 30-Oct-2025*.
 
-- **[General]** Submitting feedback is now possible for everyone (no need for Jira login)
-- **[TwinBuilder]** Editing of further shell properties (globalAssetId, assetKind, specificAssetId(s))
-- **[TwinBuilder]** Display of assetType property and possibility to open referenced type twin in AAS Viewer
-- **[TwinBuilder]** Selection of assetKind in Creation Wizard
-- **[Catalog]** Added buttons for creation of new twin directly in Twin and Draft Catalog
-- **[Catalog]** New Catalog of Concept Descriptions, including display of IEC61360 properties
-- **[Bugfix]** Upload of files >1MB is possible now
+**New Features:**
+
+- **[General]:**
+
+    - Submitting feedback is now possible for everyone (no need for Jira login)
+
+- **[TwinBuilder]**
+
+- Editing of further shell properties (globalAssetId, assetKind, specificAssetId(s))
+- Display of assetType property and possibility to open referenced type twin in AAS Viewer
+- Selection of assetKind in Creation Wizard
+
+- **[Catalog]:**
+
+    - Added buttons for creation of new twin directly in Twin and Draft Catalog
+    - New Catalog of Concept Descriptions, including display of IEC61360 properties
+
+**Fixes:**
+
+- **[General]:**
+
+    - Upload of files >1MB is possible now
 
 ---
 
