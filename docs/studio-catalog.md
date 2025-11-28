@@ -34,7 +34,7 @@ The catalog of twins has a toggle on top to switch between *asset administration
 ![Twin Catalog - Shells](img/twinstudio_catalog_twins_shells.png){: width='800'}
 
 The **quick filter** at the top allows you to display only twins of the selected *asset kind* (types or instances).
-  
+
 On the right a **filter** for the shells can be set:
 
 - Filters are combined with a logical AND, so twins have to fulfill all set filter criteria to be in the result list.
@@ -56,7 +56,7 @@ The action represented by a **pen symbol** (or the "Edit" button in the more men
 The more menu offers two further features:
 
 - The **export** of twins as JSON or XML to a file or directly to your system's clipboard.
-- The **duplication** of _instance_ twins (not types).
+- The **duplication** of *instance* twins (not types).
 
 When duplicating an existing twin all of its data (shell and referenced submodels) are duplicated. New IDs are created
 and assigned to the copies. We highly recommend using the studio's
@@ -68,7 +68,7 @@ IDs.
 
 ![Twin Catalog - Submodels](img/twinstudio_catalog_twins_submodels.png){: width='800'}
 
-The Submodels view of the Twin Catalog lists all exsting submodels of the connected tenant.  
+The Submodels view of the Twin Catalog lists all existing submodels of the connected tenant.
 
 The **export** of a submodel is available as action in the more menu of each record.
 
@@ -83,18 +83,18 @@ This catalog lists all concept descriptions available in the corresponding repos
 
 Since a concept description may consist of multiple data specifications the according catalog column shows which types
 of specification are included in each record. Currently only the type *IEC61360* is recognized and displayed by name.
-Every other specification will be labeled as "unknown". [Please give us a hint](contact.md#support_channels) if you
+Every other specification will be labeled as "unknown". [Please give us a hint](contact.md#support-channels) if you
 experience this value so we can improve our recognition here.
 
 If it is a *IEC61360* data specification you can inspect the details of it by clicking on the *eye* button.
 
 The **export** of a concept description is available as action in the more menu of each record.
 
-## Catalog of Submodel Tempates
+## Catalog of Submodel Templates
 
 ![Submodel Template Catalog](img/twinstudio_catalog_submodeltemplates.png){: width='800'}
 
-This catalog displays all *submodels* in your twinsphere repository that are of kind **template**.  
+This catalog displays all *submodels* in your twinsphere repository that are of kind **template**.
 These are the ones you can choose from when adding new sobmodels to your twin in
 [Twin Builder](studio-twin-builder.md/#addremove-submodels).
 
@@ -106,10 +106,10 @@ The **export** of a submodel template is available as action in the more menu of
 
 Your personal **twin drafts** are shown here.
 
-They are sorted by the *last modified* column in descending order.  
+They are sorted by the *last modified* column in descending order.
 The state column shows if your draft has still issues (issue count as tooltip) or is valid already.
 
-You may continue editing the twin draft by clicking on the **pen symbol** or choosing "**Edit**" in the more menu.  
+You may continue editing the twin draft by clicking on the **pen symbol** or choosing "**Edit**" in the more menu.
 This is as well where you may "**Delete**" the draft or "**Export**" it.
 
 For valid drafts only the more menu offers a "**Publish**" action. This will publish the twin to the connect
