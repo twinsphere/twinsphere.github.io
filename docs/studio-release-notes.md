@@ -37,10 +37,10 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 - **[TwinBuilder]**
 
     - Proper handling of all optional submodel elements (deletion and adding)
-    - It is possible to open empty twins now (shell without any SM references)
-    - Text in File properties is caped to max editor width now
+    - It is possible to open empty twins (shell without any SM references)
+    - Text in File submodel-element is capped to max editor width
     - Fixed broken layout by enabling multiline form elements for MLPs and Properties
-    - It is now possible to add/remove elements to submodels which structurally do not adhere to their referenced
+    - It is possible to add/remove elements to submodels which structurally do not adhere to their referenced
       template
 
 ---
