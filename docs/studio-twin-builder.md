@@ -20,13 +20,13 @@ The Creation Wizard offers two options for creating a digital twin.
 
 !!! note
     We plan to include more options for creating twins here, like deriving an instance from a type twin or using a
-    blueprint as basis. for now you can choose "from scratch" or "duplicate an existing instance" Stay tuned :)
+    blueprint as basis. For now you can choose "from scratch" or "duplicate an existing instance" Stay tuned :)
 
 #### Option 1 - New Digital Twin from Scratch
 
 ![Creation Wizard Scratch](img/twinstudio-creation-wizard-from-scratch.png){: width='800' }
 
-If you create a digital twin from scratch you can choose the *asset kind* in the right radio button list.  
+If you create a digital twin from scratch you can choose the *asset kind* in the right radio button list.
 If you are unsure which *asset kind* is appropriate for your situation (*Instance/Type/Undefined*), the help texts
 describing the options may be of assistance.
 
@@ -34,7 +34,7 @@ describing the options may be of assistance.
 
 ![Creation Wizard Duplicate](img/twinstudio-creation-wizard-duplicate-existing-instance.png){: width='800' }
 
-If you duplicate an existing instance you have to choose an instance from the radio button list on the right.  
+If you duplicate an existing instance you have to choose an instance from the radio button list on the right.
 
 If you select this option, the wizard will only guide you to step 2 below. No further information is required; it will
 be taken from the original copy.
@@ -46,8 +46,8 @@ be taken from the original copy.
 In the second step you have to set an id for the digital twin, add a display name and refer to your physical asset
 by adding a asset identifier.
 
-The id for the digital twin has to be unique.  
-The asset identifier could be common because you could create many digital twins for one physical asset.  
+The id for the digital twin has to be unique.
+The asset identifier could be common because you could create many digital twins for one physical asset.
 The display name is required because it is used to determine the name of the shell in the catalog.
 
 Depending on your usage of the [ID Generator](studio-general-features.md/#id-generator) feature twinstudio may already
@@ -57,16 +57,16 @@ have filled-in some of the inputs above automatically for you.
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-3.png){: width='800' }
 
-This step in the creation of a digital twin is optional.  
+This step in the creation of a digital twin is optional.
 You may add a textual description for the new digital twin here. This might help you and other users later on to
-understand the content or purpose of this twin.  
+understand the content or purpose of this twin.
 Please only use English language here. You may add more/other languages later in the editor.
 
 ### Step 4 - Adding Submodels (optional)
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-4.png){: width='800' }
 
-In the last step of the digital twin creation you can add the submodels you need.  
+In the last step of the digital twin creation you can add the submodels you need.
 The submodels you can choose from are submodel templates, which are stored in your
 [twinsphere cloud](cloud-documentation.md).
 
@@ -138,13 +138,14 @@ The value of a property is represented by an input field.
 Please make sure that the data type of the property matches the value you set into the input field.
 The *Validation Issue List* will have an issue if the data type of the value does not match
 the data type of the property.
+The input field expands up to 5 rows and a scrollbar will be displayed for longer content.
 
 ### Multi Language Properties
 
 ![MultiLanguageProperty_Collapsed](img/twinstudio-builder-mlp-collapsed.png)
 
-The Multi Language Property displays all languages for which a value is set, with tags above the value.
-The value displayed in the field is determined as follows using the language property of an entry
+The Multi Language Properties displays all languages for which a value is set, with tags above the value.
+The value displayed in the field is determined as follows using the languages of an entry
 and match it with (ISO 639-1):
 
 1. the data language
@@ -159,33 +160,36 @@ and match it with (ISO 639-1):
 The dialog box that opens when you click on the pencil icon shows all the values
 that have been set for the Multi Language Property.
 You can add new values and delete existing ones. Make sure that at least one value is set.
+The value input fields expands up to 5 rows and a scrollbar will be displayed for longer content.
 At the top, you can see which value will be displayed when you click *Save*.
 If you click on the info icon, you will see an explanation of why this value was selected.
 
-### File Properties
+### File Elements
 
 ![FileProperty_Collapsed](img/twinstudio-builder-file-collapsed.png)
 
-You can fill in the file properties by clicking on the *Add File* button.
+You can fill in the *file* elements by clicking on the *Add File* button.
 
 ![FileProperty_Collapsed](img/twinstudio-builder-file-expanded.png){: width='800' }
 
 In the dialog box, you can now choose whether you want to upload a file or store an external file.
-If you upload a file, it will be stored in the twinsphere file storage and a reference will be written to the property.
+If you upload a file, it will be stored in the twinsphere file storage and a reference will be written to the element.
 If you store an external file, the link will be stored as a value.
 If no content type is specified in the template, the content type is set to octet-stream.
+File links that would overflow the input will be clipped.
 
-### Range Properties
+### Range
 
 ![RangeProperty](img/twinstudio-builder-range.png)
 
-The Range Property can set minimum and maximum as values.
-If either minimum or maximum is set, the Required Validator is fulfilled.
-If the data type is a data type that describes a number, it is validated whether the minimum is smaller than the maximum.
+The *Range* can set minimum and maximum as values.
+If it is required, either a minimum or maximum value has to be set to satisfy the validation.
+If the data type describes a number (according to [xsd schema](https://www.w3.org/TR/xmlschema11-2/#built-in-primitive-datatypes)),
+it is validated whether the minimum is smaller than the maximum.
 
 ### Reference Elements
 
-To set the value of a reference element, click the *Add Reference* button
+To set the value of a *reference* element, click the *Add Reference* button
 and then select an asset administration shell.
 You can then refer to a submodel or submodel element and save the reference.
 The reference is displayed as shown below.
@@ -197,6 +201,10 @@ The reference is displayed as shown below.
 ![ReferenceElement](img/twinstudio-builder-reference-extended-choose-sme.png)
 
 ![ReferenceElement](img/twinstudio-builder-reference-collapsed-filled.png)
+
+!!!note "Current limitations"
+    Reference Elements only support referencing submodels and submodel elements within the same twin.
+    This behavior will be changed in future releases.
 
 ## Validation Issue List
 
@@ -222,3 +230,8 @@ Once all errors have been corrected, the twin can be published by clicking the "
 Once the twin has been successfully published, a dialog box displays the ID, name, and tenant
 to which the twin was uploaded.
 Once the twin has been published, the corresponding draft is deleted from the draft catalog.
+
+## Branding
+
+Each twin and all of its submodels that are edited with *twinstudio* will receive an extension which contains
+the *twinstudio* branding with its current version.

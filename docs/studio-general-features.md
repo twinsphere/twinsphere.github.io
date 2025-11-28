@@ -14,7 +14,7 @@ If set respective IDs are automatically generated when needed (mainly on twin an
 twinstudio will not ask you to manually fill-in IDs anymore.
 
 !!!note "ID patterns have tenant scope"
-    The ID generator patterns are applied at the tenant level, not just to your user account.  
+    The ID generator patterns are applied at the tenant level, not just to your user account.
     They are centrally stored in twinstudio. So other users will automatically create IDs according to the specified
     pattern when they are logged in to the relevant tenant.
 
@@ -33,7 +33,7 @@ All language settings have user scope and are stored locally in your browser.
 
 ## Tenant Switch
 
-twinstudio can connect to different twinsphere cloud tenants (access rights required).  
+twinstudio can connect to different twinsphere cloud tenants (access rights required).
 The tenants are hereby grouped into organizations. You can switch the tenant in the menu.
 
 ![twinstudio Tenant Swich](img/twinstudio-general-switchtenant.png){: width='400' }
@@ -47,6 +47,11 @@ The dashboard of twinstudio serves as an entry point to the application.
 You can easily switch to the twin catalog or to any other module of the application.
 
 ![twinstudio ID Generator](img/twinstudio-general-dashboard.png){: width='500' }
+
+Via **open digital twin from file** you can upload a twin from a \*.json, \*.xml or \*.aasx file.
+If the file contains multiple twins, you are presented a dialog to select the desired one.
+All submodels that are of type **template** will be filtered out and all contained files will be ignored.
+After the selection you will be redirected to the twinbuilder so you can start editing your twin.
 
 ## Object Naming
 
@@ -68,7 +73,7 @@ In twinstudio the same object naming logic applies to the following AAS metamode
 
 The name of those objects is determined in the following order (first available value wins):
 
-- Object's property *displayName*, language value in the following order: 
+- Object's property *displayName*, language value in the following order:
     - studio's language setting "preferred data language"
     - studio's language setting "UI language"
     - language "EN"
@@ -95,14 +100,14 @@ Explanation:
 - If none of these work, we use a constant for naming SMEs as a last resort.
 
 !!! note
-    Concept Description are not yet used by twinstudio for the time being.  
+    Concept Description are not yet used by twinstudio for the time being.
     It is planned tough to take them into consideration for determination of an object's display name as well (e.g.
     *preferredName* of the data specification).
 
 ## Drafts
 
-twinstudio is able to save your unfinished work as a so called *draft*.  
-These *drafts* belong exclusively to the user who saved them. They cannot be accessed by anyone else.  
+twinstudio is able to save your unfinished work as a so called *draft*.
+These *drafts* belong exclusively to the user who saved them. They cannot be accessed by anyone else.
 *Drafts* are stored in twinstudio and not in your twinsphere tenant/repository. Therefore, they may not yet be fully
 valid and may still contain validation errors.
 
