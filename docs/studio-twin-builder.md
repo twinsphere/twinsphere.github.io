@@ -132,6 +132,11 @@ In the add dialog these entries are grayed out and display the info.
 
 ### Properties
 
+Property elements have a valuetype according to which the different selection elements will be displayed.
+The types of time, date and datetime have a custom representation, all others are shown in a default input field.
+
+#### Default
+
 ![Properties](img/twinstudio-builder-property.png)
 
 The value of a property is represented by an input field.
@@ -139,6 +144,44 @@ Please make sure that the data type of the property matches the value you set in
 The *Validation Issue List* will have an issue if the data type of the value does not match
 the data type of the property.
 The input field expands up to 5 rows and a scrollbar will be displayed for longer content.
+
+#### Date
+
+![Date Control](img/twinstudio_builder_property_date.png)
+
+![Date Control Popup](img/twinstudio_builder_property_date_dropdown.png)
+
+The selected value will be displayed in local date (according to browser locale, in the image the locale was set to **de**).
+In the calendar popup you can navigate between months with the arrow buttons.  
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
+#### Time
+
+![Time Control](img/twinstudio_builder_property_time.png)
+
+![TIme Control Popup](img/twinstudio_builder_property_time_dropdown.png)
+
+The selected value will be displayed in local time (according to browser locale, in the image the locale was set to **de**).
+In the time popup you can select hours, minutes and seconds. AM PM selection will only be shown if your locale suggests it.
+The columns are scrollable to reach desired values.  
+By clicking the month-year the year selection will be
+shown and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
+#### Date-Time
+
+![Date Time Control](img/twinstudio_builder_property_datetime.png)
+
+![Date Time Control Popup](img/twinstudio_builder_property_datetime_dropdown.png)
+
+The selected value will be displayed in local date time
+(according to browser locale, in the image the locale was set to **de**).
+In the dropdown there is a combination of the calendar and the time selection.  
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
 
 ### Multi Language Properties
 
