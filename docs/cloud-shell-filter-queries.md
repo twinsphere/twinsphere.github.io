@@ -61,7 +61,8 @@ default values (as these are treated as omitted). All provided filter parameters
 
 ## Regex Support
 
-To use regular expressions instead of exact string matches, prefix your pattern with **`$regex=`** and provide it as the property value.
+To use regular expressions instead of exact string matches, prefix your pattern with **`$regex=`** and provide it as
+the property value.
 All fields of type **string** support regex matching.
 
 Regex Usage Example:
@@ -70,7 +71,8 @@ $regex=conplement.*
 
 ## Pagination
 
-The result contains the found shells, along with paging metadata. You can use the cursor from the current result as a query parameter in the next request to retrieve the following page.
+The result contains the found shells, along with paging metadata. You can use the cursor from the current result as
+a query parameter in the next request to retrieve the following page.
 
 Result Object:
 
