@@ -100,13 +100,12 @@ To connect to Sharecat, you need to create a target with a configuration as give
 }
 ```
 
-> **Note**
->
-> - The Sharecat target is currently in **experimental** state and may be modified or removed in future releases.
-> - Sharecat only supports the `application/asset-administration-shell-package+json` serialization format.
-> - All URLs must be absolute and point to your access token or push target resource.
-> - The destination's `workspaceId` and `parentId` are specific Ids of the Sharecat eco-system.
-> - A name is not required in the request body when calling the update target endpoint.
+!!! note
+    - The Sharecat target is currently in **experimental** state and may be modified or removed in future releases.
+    - Sharecat only supports the `application/asset-administration-shell-package+json` serialization format.
+    - All URLs must be absolute and point to your access token or push target resource.
+    - The destination's `workspaceId` and `parentId` are specific Ids of the Sharecat eco-system.
+    - A name is not required in the request body when calling the update target endpoint.
 
 ## Job management
 
