@@ -6,6 +6,14 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ---
 
+## Cloud 1.22
+
+*Released on 24-Nov-2025*.
+
+- **[DevOps]** Internal optimizations regarding automation and stable operations
+
+---
+
 ## Cloud 1.21
 
 *Released on 04-Nov-2025*.
