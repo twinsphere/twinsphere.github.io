@@ -15,11 +15,6 @@ The Digital Nameplate is supported in both version 2 and version 3.
 
 /sphere/api/v1.0/filter/shells
 
-### Query Parameters
-
-- Limit
-- Cursor
-
 ### Request Body
 
 Include only the properties relevant to your request. Omit any fields that are unnecessary, empty, or set to their
@@ -71,14 +66,26 @@ $regex=conplement.*
 
 ## Pagination
 
-The result contains the found shells, along with paging metadata. You can use the cursor from the current result as
-a query parameter in the next request to retrieve the following page.
+The result contains the found shells, along with paging metadata.
 
-Result Object:
-
+```json
 {
     "result": [],
     "paging_metadata": {
         "cursor": ""
     }
 }
+```
+
+You can use the cursor from the current result as a query parameter in the next request to retrieve the following page.
+
+### Query Parameters
+
+- `limit` (string, optional): Maximum number of results to return per page
+- `cursor` (string, optional): Pagination cursor from the previous response
+
+**Example query string:**
+
+```text
+/sphere/api/v1.0/filter/shells?limit=50&cursor=eyJpZCI6IjEyMzQ1In0
+```
