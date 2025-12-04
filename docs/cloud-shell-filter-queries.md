@@ -4,16 +4,16 @@ The Twinsphere Shell Filter Queries allows for simplified searching of shells. I
 you can specify supported shell and submodel properties. Based on this input, the filter returns the shells that match
 your criteria.
 
+## Supported Features
+
+It is possible to search for shells based on their linked submodels and their values, as well as the shell properties themselves.
+The Digital Nameplate is supported in both version 2 and version 3.
+
 ## Request
 
 ### Url
 
 /sphere/api/v1.0/filter/shells
-
-### Query Parameters
-
-- Limit
-- Cursor
 
 ### Request Body
 
@@ -31,6 +31,7 @@ default values (as these are treated as omitted). All provided filter parameters
     "displayName": "string"
   },
   "submodelFilter": {
+    "id":"string",
     "semanticId": "string",
     "nameplateFilter": {
       "productArticleNumberOfManufacturer": "string",
@@ -55,25 +56,36 @@ default values (as these are treated as omitted). All provided filter parameters
 
 ## Regex Support
 
-To use regular expressions instead of exact matches, prefix your regex with "**$regex=**" and provide it as a property
-value.
+To use regular expressions instead of exact string matches, prefix your pattern with **`$regex=`** and provide it as
+the property value.
+All fields of type **string** support regex matching.
 
-For example:
+Regex Usage Example:
 
-**$regex=**conplement.*
+$regex=conplement.*
 
-### Shell Regex Support
+## Pagination
 
-- id
-- idshort
-- displayname
-- globalAssetId
-- semanticId
+The result contains the found shells, along with paging metadata.
 
-### Nameplate Regex Support
+```json
+{
+    "result": [],
+    "paging_metadata": {
+        "cursor": ""
+    }
+}
+```
 
-- productArticleNumberOfManufacturer
-- orderCodeOfManufacturer
-- manufacturerProductDesignation
-- serialNumber
-- manufacturerName
+You can use the cursor from the current result as a query parameter in the next request to retrieve the following page.
+
+### Query Parameters
+
+- `limit` (string, optional): Maximum number of results to return per page
+- `cursor` (string, optional): Pagination cursor from the previous response
+
+**Example query string:**
+
+```text
+/sphere/api/v1.0/filter/shells?limit=50&cursor=eyJpZCI6IjEyMzQ1In0
+```
