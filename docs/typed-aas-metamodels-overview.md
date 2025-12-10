@@ -136,6 +136,20 @@ sources of potential errors where possible. To this end, it employs some basic d
 - Hide metadata from the user: any SMT metadata, such as SemanticIds, IdShorts, ValueTypes, ... is handled internally.
   Users don't have to worry about them.
 
+### Design Considerations for Unset Values
+
+Our design considerations imply some restrictions wrt. to the expressiveness of the meta model. The meta model marks
+many attributes of SubmodelElements as optional. In many cases, this is only sensible for submodel templates but not for
+instances: for example, the DigitalNameplate 3.0 has a mandatory Property element `URIOfTheProduct`, however, in the
+meta model the value attribute of Property elements is optional. This raises the question whether a Property without
+value *really* is set? Sadly, the specification does not provide a clear answer.
+
+In terms of this library, we interpret a SubmodelElement with an unset value as if the SubmodelElement was not set. This
+decision implies the following:
+
+- An instance where a *mandatory* SubmodelElement has an unset value is considered incorrect.
+- The library does not provide functionality to create instances in which *mandatory* SubmodelElements have unset values.
+
 ## Working with Shells and Packages
 
 ### Shell Abstractions
