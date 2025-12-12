@@ -67,8 +67,8 @@ sudo apt -y update && sudo apt install pipx
 # Install mkdocs and the necessary plugins
 pipx install mkdocs
 pipx inject mkdocs mkdocs-open-in-new-tab
-pipx inject mkdocs-link-marker
-pipx inject mkdocs-spellcheck[all]
+pipx inject mkdocs mkdocs-link-marker
+pipx inject mkdocs mkdocs-spellcheck[all]
 ```
 
 Using this, you should now be able to locally deploy the documentation from the
