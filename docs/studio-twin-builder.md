@@ -278,3 +278,39 @@ Once the twin has been published, the corresponding draft is deleted from the dr
 
 Each twin and all of its submodels that are edited with *twinstudio* will receive an extension which contains
 the *twinstudio* branding with its current version.
+
+## Save State
+
+The save state display shows you the current state of the draft or twin you are working on.
+There are three save states for a twin:
+
+- Unsaved Changes
+- Draft Saved
+- Published
+
+### Unsaved Changes
+
+The Unsaved changes status indicates that changes have been made to the twin or draft that have not yet been saved.
+These can be saved by [publishing](#publish-to-repo) or [saving](#save-draft).
+
+![UnsavedChanges](img/twinstudio-builder-save-state-unsaved-changes.png)
+
+### Draft Saved
+
+The Draft Saved status indicates that the draft has been saved as a draft.
+
+![DraftSaved](img/twinstudio-builder-save-state-saved.png)
+
+### Published
+
+The Published status indicates that the draft/twin has been published
+in your repository or has been loaded from the repository in this state.
+
+![Published](img/twinstudio-builder-save-state-published.png)
+
+## Show Twin in AAS Viewer
+
+If you have a design/twin with the status Published open in the editor,
+you can click on the eye icon next to the memory status display to open the design/twin in AASViewer.
+
+![Published](img/twinstudio-builder-save-state-published.png)
