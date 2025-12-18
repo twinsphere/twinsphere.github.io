@@ -32,12 +32,18 @@ To check your currently assigned organizations, tenants and roles simply use the
 
 The Management API currently allows:
 
+- user self signup
 - user management within an organization
 - service account management (including secrets)
 - organizing users and service accounts via user groups
 - RBAC at organization and cloud (per cloud tenant) levels
     - on users and service accounts
     - on user groups
+
+## User self signup
+
+1. Open the Management API self signup endpoint in your browser: [https://manage.twinsphere.io/signup](https://manage.twinsphere.io/signup)
+2. You will be guided through the process
 
 ## Authentication
 
