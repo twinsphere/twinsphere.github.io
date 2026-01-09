@@ -185,10 +185,10 @@ The clear button will set the value to *null*.
 
 ### Multi Language Properties
 
-![MultiLanguageProperty_Collapsed](img/twinstudio-builder-mlp-collapsed.png)
+![MultiLanguageProperty_Collapsed](img/twinstudio_builder_mlp_collapsed.png)
 
 The Multi Language Properties displays all languages for which a value is set, with tags above the value.
-The value displayed in the field is determined as follows using the languages of an entry
+The initially displayed value in the field is determined as follows using the languages of an entry
 and match it with (ISO 639-1):
 
 1. the data language
@@ -198,7 +198,11 @@ and match it with (ISO 639-1):
 5. english (en)
 6. containing english (en)
 
-![MultiLanguageProperty_Dialog](img/twinstudio-builder-mlp-extended.png){: width='800' }
+You can select another language value by clicking on the corresponding language tag.
+Hovering over a tag will display an indicator above it.
+The selected language is highlighted with a gray background.
+
+![MultiLanguageProperty_Dialog](img/twinstudio_builder_mlp_dialog.png){: width='800' }
 
 The dialog box that opens when you click on the pencil icon shows all the values
 that have been set for the Multi Language Property.

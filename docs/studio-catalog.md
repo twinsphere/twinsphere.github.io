@@ -90,6 +90,20 @@ If it is a *IEC61360* data specification you can inspect the details of it by cl
 
 The **export** of a concept description is available as action in the more menu of each record.
 
+*Preferred Name*, *Short Name* and *Definition* display an initial value from
+the available languages according to following criteria:
+
+1. the data language
+2. containing the data language
+3. the ui language
+4. containing the ui language
+5. english (en)
+6. containing english (en)
+
+You can select another language value by clicking on the corresponding language tag.
+Hovering over a tag will display an indicator above it.
+The selected language is highlighted with a gray background.
+
 ## Catalog of Submodel Templates
 
 ![Submodel Template Catalog](img/twinstudio_catalog_submodeltemplates.png){: width='800'}
