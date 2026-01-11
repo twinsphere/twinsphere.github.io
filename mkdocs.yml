@@ -13,6 +13,9 @@ nav:
   - Contact us: contact.md
   - twinsphere ID:
     - Overview: id-overview.md
+    - New user registration: id-new-user-registration.md
+    - Users: id-users.md
+    - Service accounts: id-service-accounts.md
   - Cloud:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
