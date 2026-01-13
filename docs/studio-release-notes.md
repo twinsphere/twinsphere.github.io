@@ -5,6 +5,45 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ---
 
+## Studio 0.5
+
+*Released on 14-Jan-2026*.
+
+**New Features:**
+
+- **[General]:**
+
+    - Introduced user settings menu in top right corner.
+        - Shows info of currently logged-in user account.
+        - Moved langauge settings and tenant switch from sidebar to here.
+    - Displayed value of MLP form elements can now be selected by clicking on the respective language tag
+
+- **[TwinBuilder]:**
+
+    - Added status bar representing the save state of the current twin ("published" / "draft saved" / "unsaved changes")
+    - Export Twin as AASX Package directly from within editor (available for twins in "published" state only)
+    - Added view button to open twin in AAS-Viewer (available for twins in "published" state only)
+    - Replaced very technical fill-in pattern of date and time values by comfortable and localized selection via UI
+      component (valueType of property in SMT has to be XS:date, xs:time or xs:datetime)
+    - Intoduction of deep links to directly open a certain twin in TwinBuilder by adding URL query params twinid,
+      orgid and tenantid
+
+
+- **[Catalog]:**
+
+    - Export of twins as AASX Package available in "more" menu
+    - Deletion of Twins in Twein Catalog with and without its SMs
+        - Deletion of SMs also referenced by other twins is prohibited
+
+**Fixes:**
+
+- **[General]** Menu headings haven been harmonized in their formatting
+- **[Catalog]** Fixed display of SM details on twins with zero submodels in twin catalog
+- **[TwinBuidler]** Cancel on edit twin modal doesn't lead to endless spinner anymore
+- **[TwinBuilder]** Fixed display of long twin names in AAS button
+
+---
+
 ## Studio 0.4
 
 *Released on 21-Nov-2025*.
@@ -34,7 +73,7 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 **Fixes:**
 
-- **[TwinBuilder]**
+- **[TwinBuilder]:**
 
     - Proper handling of all optional submodel elements (deletion and adding)
     - It is possible to open empty twins (shell without any SM references)
@@ -55,11 +94,11 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
     - Submitting feedback is now possible for everyone (no need for Jira login)
 
-- **[TwinBuilder]**
+- **[TwinBuilder]:**
 
-- Editing of further shell properties (globalAssetId, assetKind, specificAssetId(s))
-- Display of assetType property and possibility to open referenced type twin in AAS Viewer
-- Selection of assetKind in Creation Wizard
+    - Editing of further shell properties (globalAssetId, assetKind, specificAssetId(s))
+    - Display of assetType property and possibility to open referenced type twin in AAS Viewer
+    - Selection of assetKind in Creation Wizard
 
 - **[Catalog]:**
 
