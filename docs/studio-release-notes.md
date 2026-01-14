@@ -15,7 +15,7 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
     - Introduced user settings menu in top right corner.
         - Shows info of currently logged-in user account.
-        - Moved langauge settings and tenant switch from sidebar to here.
+        - Moved language settings and tenant switch from sidebar to the settings menu.
     - Displayed value of MLP form elements can now be selected by clicking on the respective language tag
 
 - **[TwinBuilder]:**
@@ -25,21 +25,20 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
     - Added view button to open twin in AAS-Viewer (available for twins in "published" state only)
     - Replaced very technical fill-in pattern of date and time values by comfortable and localized selection via UI
       component (valueType of property in SMT has to be XS:date, xs:time or xs:datetime)
-    - Intoduction of deep links to directly open a certain twin in TwinBuilder by adding URL query params twinid,
+    - Introduction of deep links to directly open a certain twin in TwinBuilder by adding URL query parameter twinid,
       orgid and tenantid
-
 
 - **[Catalog]:**
 
     - Export of twins as AASX Package available in "more" menu
-    - Deletion of Twins in Twein Catalog with and without its SMs
+    - Deletion of Twins in Twin Catalog with and without its SMs
         - Deletion of SMs also referenced by other twins is prohibited
 
 **Fixes:**
 
 - **[General]** Menu headings haven been harmonized in their formatting
 - **[Catalog]** Fixed display of SM details on twins with zero submodels in twin catalog
-- **[TwinBuidler]** Cancel on edit twin modal doesn't lead to endless spinner anymore
+- **[TwinBuilder]** Cancel on edit twin modal doesn't lead to endless spinner anymore
 - **[TwinBuilder]** Fixed display of long twin names in AAS button
 
 ---
