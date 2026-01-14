@@ -2,10 +2,10 @@
 
 ## General Information
 
-The catalog is twinstudio's view on all of twinsphere's content like twins, submodel templates, concept description
+The catalog is a view on all the content of twinsphere like twins, submodel templates, concept description
 and more.
 
-Each object type has its own catalog. Its records are displayed as a list. On most items you may involke actions, like
+Each object type has its own catalog. Its records are displayed as a list. On most items you may invoke actions, like
 viewing or editing a twin or displaying the detailed definitions of a concept description.
 
 If there are more entries than displayed (indicated by a *"+"* sign in the list header) a *load more* button is visible
@@ -42,7 +42,7 @@ On the right a **filter** for the shells can be set:
 - A partially qualified value can be specified for all attributes listed as
   [regex supported filter properties](cloud-shell-filter-queries.md/#regex-support).
 
-The **submodel column** shows the count of submodels the respective twin has. A click opens a dialog lsting them
+The **submodel column** shows the count of submodels the respective twin has. A click opens a dialog listing them
 with some basic information.
 
 The action represented by an **eye symbol** (or the "Show" button in the more menu) opens the twin in our
@@ -57,10 +57,22 @@ The more menu offers two further features:
 
 - The **export** of twins as JSON or XML to a file or directly to your system's clipboard.
 - The **duplication** of *instance* twins (not types).
+- The **deletion** of twins.
+
+#### Delete Twin Dialog
+
+After clicking on the **deletion** entry, a dialog appears. There you can see which twin will get deleted.
+You also have the possibility to deselect certain submodels of the twin, if you do not want them to be deleted.
+Submodels which are referenced by other twins, cannot be selected for deletion. If you want to delete a type twin,
+you will get a warning about its implications.
+
+![Twin Catalog](img/twinstudio_catalog_twins_delete_twin_dialog.png){: width='350'}
+
+#### Duplication of Instance Twins
 
 When duplicating an existing twin all of its data (shell and referenced submodels) are duplicated. New IDs are created
 and assigned to the copies. We highly recommend using the studio's
-[ID Generator feature](studio-general-features.md/#id-generator) here. Otherwise you'll be asked to enter an AAS-ID
+[ID Generator feature](studio-general-features.md/#id-generator) here. Otherwise, you'll be asked to enter an AAS-ID
 and GlobalAssetID manually and we will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel
 IDs.
 
@@ -86,7 +98,7 @@ of specification are included in each record. Currently only the type *IEC61360*
 Every other specification will be labeled as "unknown". [Please give us a hint](contact.md#support-channels) if you
 experience this value so we can improve our recognition here.
 
-If it is a *IEC61360* data specification you can inspect the details of it by clicking on the *eye* button.
+If it is an *IEC61360* data specification you can inspect the details of it by clicking on the *eye* button.
 
 The **export** of a concept description is available as action in the more menu of each record.
 
@@ -109,7 +121,7 @@ The selected language is highlighted with a gray background.
 ![Submodel Template Catalog](img/twinstudio_catalog_submodeltemplates.png){: width='800'}
 
 This catalog displays all *submodels* in your twinsphere repository that are of kind **template**.
-These are the ones you can choose from when adding new sobmodels to your twin in
+These are the ones you can choose from when adding new submodel to your twin in
 [Twin Builder](studio-twin-builder.md/#addremove-submodels).
 
 The **export** of a submodel template is available as action in the more menu of each record.
@@ -127,7 +139,7 @@ You may continue editing the twin draft by clicking on the **pen symbol** or cho
 This is as well where you may "**Delete**" the draft or "**Export**" it.
 
 For valid drafts only the more menu offers a "**Publish**" action. This will publish the twin to the connect
-twinsphere tenant's repository and delete the draft afterwards.
+twinsphere tenant's repository and delete the draft afterward.
 
 !!! note
     With introduction of the upcoming twinstudio modules **Template Designer** and **Blueprint Editor** further draft
