@@ -7,7 +7,7 @@ In addition to the IDTA AAS API Specification, twinsphere offers supplementary p
 - [Enhanced GET /submodels](cloud-documentation.md#enhanced-get-submodels)
 - [Implicit Discovery](cloud-documentation.md#implicit-discovery)
 - [Implicit AAS & Submodel Registry](cloud-documentation.md#implicit-shell-registry)
-- [Change Events](cloud-change-events.md)
+- [Events](cloud-events.md)
 - [Search](cloud-search.md)
 - [Semantic Connector](cloud-semantic-connector.md)
 - [Shell Filter Queries](cloud-shell-filter-queries.md)

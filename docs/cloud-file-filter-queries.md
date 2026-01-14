@@ -54,10 +54,9 @@ default values (as these are treated as omitted). All provided filter parameters
 
 ## Regex Support
 
-To use regular expressions instead of exact matches, prefix your regex with "**$regex=**" and provide it as a property
-value.  
-If you need to use special characters in your pattern (such as *$ / . @ >*) you'll need to escape them with
-double backslashes (\\\\).
+To use regular expressions instead of exact matches, prefix your regex with "**$regex=**" and provide it as
+a property value. If you need to use special characters in your pattern (such as *$ / . @ >*) you'll need
+to escape them with double backslashes (\\\\).
 
 The following file filter properties support regex:
 
