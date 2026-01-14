@@ -20,7 +20,7 @@ nav:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
       - Overview: cloud-proprietary-features.md
-      - Change Events: cloud-change-events.md
+      - Events: cloud-events.md
       - Search: cloud-search.md
       - Push Service: cloud-push-service.md
       - Semantic Connector: cloud-semantic-connector.md
