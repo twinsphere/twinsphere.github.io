@@ -132,6 +132,11 @@ In the add dialog these entries are grayed out and display the info.
 
 ### Properties
 
+Property elements have a valuetype according to which the different selection elements will be displayed.
+The types of time, date and datetime have a custom representation, all others are shown in a default input field.
+
+#### Default
+
 ![Properties](img/twinstudio-builder-property.png)
 
 The value of a property is represented by an input field.
@@ -140,12 +145,50 @@ The *Validation Issue List* will have an issue if the data type of the value doe
 the data type of the property.
 The input field expands up to 5 rows and a scrollbar will be displayed for longer content.
 
+#### Date
+
+![Date Control](img/twinstudio_builder_property_date.png)
+
+![Date Control Popup](img/twinstudio_builder_property_date_dropdown.png)
+
+The selected value will be displayed in local date (according to browser locale, in the image the locale was set to **de**).
+In the calendar popup you can navigate between months with the arrow buttons.  
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
+#### Time
+
+![Time Control](img/twinstudio_builder_property_time.png)
+
+![TIme Control Popup](img/twinstudio_builder_property_time_dropdown.png)
+
+The selected value will be displayed in local time (according to browser locale, in the image the locale was set to **de**).
+In the time popup you can select hours, minutes and seconds. AM PM selection will only be shown if your locale suggests it.
+The columns are scrollable to reach desired values.  
+By clicking the month-year the year selection will be
+shown and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
+#### Date-Time
+
+![Date Time Control](img/twinstudio_builder_property_datetime.png)
+
+![Date Time Control Popup](img/twinstudio_builder_property_datetime_dropdown.png)
+
+The selected value will be displayed in local date time
+(according to browser locale, in the image the locale was set to **de**).
+In the dropdown there is a combination of the calendar and the time selection.  
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
 ### Multi Language Properties
 
-![MultiLanguageProperty_Collapsed](img/twinstudio-builder-mlp-collapsed.png)
+![MultiLanguageProperty_Collapsed](img/twinstudio_builder_mlp_collapsed.png)
 
 The Multi Language Properties displays all languages for which a value is set, with tags above the value.
-The value displayed in the field is determined as follows using the languages of an entry
+The initially displayed value in the field is determined as follows using the languages of an entry
 and match it with (ISO 639-1):
 
 1. the data language
@@ -155,7 +198,11 @@ and match it with (ISO 639-1):
 5. english (en)
 6. containing english (en)
 
-![MultiLanguageProperty_Dialog](img/twinstudio-builder-mlp-extended.png){: width='800' }
+You can select another language value by clicking on the corresponding language tag.
+Hovering over a tag will display an indicator above it.
+The selected language is highlighted with a gray background.
+
+![MultiLanguageProperty_Dialog](img/twinstudio_builder_mlp_dialog.png){: width='800' }
 
 The dialog box that opens when you click on the pencil icon shows all the values
 that have been set for the Multi Language Property.
@@ -235,3 +282,39 @@ Once the twin has been published, the corresponding draft is deleted from the dr
 
 Each twin and all of its submodels that are edited with *twinstudio* will receive an extension which contains
 the *twinstudio* branding with its current version.
+
+## Save State
+
+The save state display shows you the current state of the draft or twin you are working on.
+There are three save states for a twin:
+
+- Unsaved Changes
+- Draft Saved
+- Published
+
+### Unsaved Changes
+
+The Unsaved changes status indicates that changes have been made to the twin or draft that have not yet been saved.
+These can be saved by [publishing](#publish-to-repo) or [saving](#save-draft).
+
+![UnsavedChanges](img/twinstudio-builder-save-state-unsaved-changes.png)
+
+### Draft Saved
+
+The Draft Saved status indicates that the draft has been saved as a draft.
+
+![DraftSaved](img/twinstudio-builder-save-state-saved.png)
+
+### Published
+
+The Published status indicates that the draft/twin has been published
+in your repository or has been loaded from the repository in this state.
+
+![Published](img/twinstudio-builder-save-state-published.png)
+
+## Show Twin in AAS Viewer
+
+If you have a design/twin with the status Published open in the editor,
+you can click on the eye icon next to the memory status display to open the design/twin in AASViewer.
+
+![Published](img/twinstudio-builder-save-state-published.png)
