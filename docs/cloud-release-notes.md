@@ -6,6 +6,19 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ---
 
+## Cloud 1.23
+
+*Released on 14-Jan-2026*.
+
+- **[ManageAPI]** Added [User registration](id-new-user-registration.md)
+- **[RBAC]** organization-owner role now cascades and grants administrative rights in tenants of that organization
+- **[Events]** Configurable event publishing as a performance improvement
+- **[DevOps]** Internal optimizations regarding automation and stable operations
+
+---
+
+---
+
 ## Cloud 1.22
 
 *Released on 24-Nov-2025*.
