@@ -6,6 +6,19 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ---
 
+## Cloud 1.23
+
+*Released on 14-Jan-2026*.
+
+- **[ManageAPI]** Added [User registration](id-new-user-registration.md)
+- **[RBAC]** organization-owner role now cascades and grants administrative rights in tenants of that organization
+- **[Events]** Configurable event publishing as a performance improvement
+- **[DevOps]** Internal optimizations regarding automation and stable operations
+
+---
+
+---
+
 ## Cloud 1.22
 
 *Released on 24-Nov-2025*.
@@ -346,7 +359,7 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 - Gzip compression of the message payload of the change events
     - Allows the transport of larger submodels beyond the Azure Event Grid MQTT message size limit of 512kB
-    - For usage and notes see [Change Events](cloud-change-events.md#topics-message-contracts-and-qos)
+    - For usage and notes see [Events](cloud-events.md#topics-message-contracts-and-qos)
 - Update of the aas-core-works metamodel to v1.0.1
     - [Bugfix] for Origin URL in packaging (see [release aas-package3-csharp
     1.0.1](https://github.com/aas-core-works/aas-package3-csharp/releases/tag/v1.0.1))
@@ -359,8 +372,8 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 <!-- markdownlint-disable no-inline-html -->
 
-- Change event mechanism for cyclical information about changes to AAS & SM
-    - For setup and usage please refer to [Change Events](cloud-change-events.md)
+- Event mechanism for cyclical information about changes to AAS & SM (experimental)
+    - For setup and usage please refer to [Events](cloud-events.md)
     - Payload of the event contains changed state of the changed AAS /SMs
 - [Bugfix] GET /shells/<aasId>/submodels now returns none instead of incorrectly all available SMs for shells without
   SMs
