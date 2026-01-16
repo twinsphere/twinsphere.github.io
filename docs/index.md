@@ -18,4 +18,4 @@ Our twinsphere suite consists of multiple applications and libraries:
 - [Development libraries (DevKit)](typed-aas-metamodels-overview.md)
 - [Validators](validators-overview.md)
 
-[![markitecture](img/twinsphere_marketecture-2-neu-eng.png)](./img/twinsphere_marketecture-2-neu-eng.png)
+[![markitecture](img/twinsphere_marketecture-eng.png)](./img/twinsphere_marketecture-eng.png)
