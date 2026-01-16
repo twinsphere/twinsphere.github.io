@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/cloud-semantic-connector/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Semantic Connector - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Semantic Connector";
+        var mkdocs_page_input_path = "cloud-semantic-connector.md";
+        var mkdocs_page_url = "/cloud-semantic-connector/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Proprietary Features</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Semantic Connector</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#api">API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#semantic-schemas">Semantic Schemas</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#supported-submodel-templates">Supported Submodel Templates</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#semantic-schema-identifiers">Semantic Schema Identifiers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#semantic-instances">Semantic Instances</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation Rules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud</li>
+          <li class="breadcrumb-item">Proprietary Features</li>
+      <li class="breadcrumb-item active">Semantic Connector</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="semantic-connector">Semantic Connector</h1>
+<p>The twinsphere Semantic Connector enables a simplified generation of submodels. It offers a simplified format of
+submodel templates which makes mapping of your data to submodel properties much easier. The resulting mapped data is
+then converted back to a standard conform, valid submodel instances and stored in the twinsphere repository.</p>
+<p><img alt="Semantic Connector" src="../img/twinsphere-Semantic-Connector.png" width="800" /></p>
+<p>Here is an example of some properties of the digital nameplate submodel, first in the original form of the metamodel and
+then in our semantic representation.</p>
+<!-- markdownlint-disable no-inline-html -->
+
+<table>
+<tr>
+<th>Standard JSON</th>
+<th>twinsphere Semantic XML</th>
+</tr>
+<tr>
+<td valign="top">
+
+<pre><code class="language-json">{
+  &quot;idShort&quot;: &quot;Markings&quot;,
+  &quot;semanticId&quot;: {
+    &quot;type&quot;: &quot;ExternalReference&quot;,
+    &quot;keys&quot;: [
+      {
+        &quot;type&quot;: &quot;GlobalReference&quot;,
+        &quot;value&quot;: &quot;0173-1#01-AGZ673#001&quot;
+      }
+    ]
+  },
+  &quot;value&quot;: [
+    {
+      &quot;idShort&quot;: &quot;Marking00&quot;,
+      &quot;semanticId&quot;: {
+        &quot;type&quot;: &quot;ExternalReference&quot;,
+        &quot;keys&quot;: [
+          {
+            &quot;type&quot;: &quot;GlobalReference&quot;,
+            &quot;value&quot;: &quot;0173-1#01-AHD206#001&quot;
+          }
+        ]
+      },
+      &quot;value&quot;: [
+        {
+          &quot;idShort&quot;: &quot;MarkingName&quot;,
+          &quot;semanticId&quot;: {
+            &quot;type&quot;: &quot;ExternalReference&quot;,
+            &quot;keys&quot;: [
+              {
+                &quot;type&quot;: &quot;GlobalReference&quot;,
+                &quot;value&quot;: &quot;https://admin-shell.io/zvei/nameplate/2/0/Nameplate/Markings/Marking/MarkingName&quot;
+              }
+            ]
+          },
+          &quot;valueType&quot;: &quot;xs:string&quot;,
+          &quot;value&quot;: &quot;0173-1#07-DAA603#004&quot;,
+          &quot;modelType&quot;: &quot;Property&quot;
+        },
+        {
+          &quot;idShort&quot;: &quot;IssueDate&quot;,
+          &quot;semanticId&quot;: {
+            &quot;type&quot;: &quot;ExternalReference&quot;,
+            &quot;keys&quot;: [
+              {
+                &quot;type&quot;: &quot;GlobalReference&quot;,
+                &quot;value&quot;: &quot;https://admin-shell.io/zvei/nameplate/2/0/Nameplate/Markings/Marking/IssueDate&quot;
+              }
+            ]
+          },
+          &quot;valueType&quot;: &quot;xs:date&quot;,
+          &quot;value&quot;: &quot;2022-01-01&quot;,
+          &quot;modelType&quot;: &quot;Property&quot;
+        },
+        {
+          &quot;idShort&quot;: &quot;ExpiryDate&quot;,
+          &quot;semanticId&quot;: {
+            &quot;type&quot;: &quot;ExternalReference&quot;,
+            &quot;keys&quot;: [
+              {
+                &quot;type&quot;: &quot;GlobalReference&quot;,
+                &quot;value&quot;: &quot;https://admin-shell.io/zvei/nameplate/2/0/Nameplate/Markings/Marking/ExpiryDate&quot;
+              }
+            ]
+          },
+          &quot;valueType&quot;: &quot;xs:date&quot;,
+          &quot;value&quot;: &quot;2022-01-01&quot;,
+          &quot;modelType&quot;: &quot;Property&quot;
+        }
+        ...
+      ],
+      &quot;modelType&quot;: &quot;SubmodelElementCollection&quot;
+    }
+  ],
+  &quot;modelType&quot;: &quot;SubmodelElementCollection&quot;
+}
+</code></pre>
+
+</td>
+<td valign="top">
+
+<pre><code class="language-xml">  &lt;Markings&gt;
+    &lt;Marking&gt;
+      &lt;MarkingName&gt;0173-1#07-DAA603#004&lt;/MarkingName&gt;
+      &lt;IssueDate&gt;2022-01-01&lt;/IssueDate&gt;
+      &lt;ExpiryDate&gt;2022-01-01&lt;/ExpiryDate&gt;
+      ...
+    &lt;/Marking&gt;
+  &lt;/Markings&gt;
+</code></pre>
+
+</td>
+</tr>
+</table>
+
+<!-- markdownlint-enable no-inline-html -->
+
+<p>As you can see all complex AAS metadata information is hidden to make the semantic format (which we call "semantic
+submodels" or "semantic submodel instances") easy to understand - even for non AAS experts. Simple key/value pairs. We
+believe that mapping data to this more comprehensive form should be much easier.</p>
+<div class="admonition important">
+<p class="admonition-title">Remark</p>
+<p>Semantic submodels and the value-only serialization of the AAS standard are not the same - even if they
+look similar. The value-only format can not be converted back to its original form, our semantic submodels can!</p>
+</div>
+<p>Semantic Submodels are described via XML schemas (which we call "semantic submodel schemas"). We derive these schemas
+from the structure and rules defined in the submodel templates. An example of such schema is given below:</p>
+<pre><code class="language-xml">  ...
+  &lt;xs:complexType name=&quot;MarkingsMarkingItem_t&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&quot;MarkingName&quot; type=&quot;xs:string&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;1&quot;/&gt;
+      &lt;xs:element name=&quot;DesignationOfCertificateOrApproval&quot; type=&quot;xs:string&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;/&gt;
+      &lt;xs:element name=&quot;IssueDate&quot; type=&quot;xs:string&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;/&gt;
+      &lt;xs:element name=&quot;ExpiryDate&quot; type=&quot;xs:string&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;/&gt;
+      &lt;xs:element name=&quot;MarkingFile&quot; type=&quot;File_t&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;1&quot;/&gt;
+      &lt;xs:element name=&quot;MarkingAdditionalText&quot; type=&quot;MarkingMarkingAdditionalText_t&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;1&quot;/&gt;
+      &lt;xs:element name=&quot;ExplosionSafeties&quot; type=&quot;MarkingExplosionSafeties_t&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name=&quot;Marking&quot; type=&quot;MarkingsMarkingItem_t&quot;/&gt;
+  &lt;xs:complexType name=&quot;MarkingsMarking_t&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&quot;Value&quot; type=&quot;MarkingsMarkingItem_t&quot; minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:complexType name=&quot;DigitalNameplateMarkings_t&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&quot;Marking&quot; type=&quot;MarkingsMarking_t&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;1&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element name=&quot;Markings&quot; type=&quot;DigitalNameplateMarkings_t&quot;/&gt;
+  ...
+</code></pre>
+<p>These schemas are especially useful in workflow / mapping tools to create automatic connectors.</p>
+<h2 id="api">API</h2>
+<blockquote>
+<p>The API follows url-based versioning semantics, for example: /sphere/api/<strong>v1.0</strong>/semantic-connector</p>
+</blockquote>
+<p>Semantic connector is available under <code>/sphere/api/{api-version}/semantic-connector</code>.</p>
+<p>Take a look at the Swagger for more API documentation around each parameter and return value. Swagger for the semantic
+connector is available under <code>/sphere/swagger/index.html</code>.</p>
+<h2 id="semantic-schemas">Semantic Schemas</h2>
+<p>The derived schemas, which we call semantic schemas, are available under
+<code>sphere/api/{api-version}/semantic-connector/schemas</code>.</p>
+<h3 id="supported-submodel-templates">Supported Submodel Templates</h3>
+<p>With the first release of our Semantic Connector we offer (bi-directional) support for the following standard submodel
+templates:</p>
+<ul>
+<li>Digital Nameplate 2.0</li>
+<li>Contact Information 1.0</li>
+<li>Technical Data 1.2</li>
+<li>Carbon Footprint 0.9</li>
+<li>Handover Documentation 1.2</li>
+<li>Hierarchical Structures enabling Bills of Material 1.1</li>
+</ul>
+<p>We are already working on the support of any submodel templates stored in the twinsphere repository - be it published
+standard templates or user-defined templates. This feature will be available in Q3 2025.</p>
+<h3 id="semantic-schema-identifiers">Semantic Schema Identifiers</h3>
+<p>Each schema is identified via its targetNamespace attribute of the top level xs:schema element. The identifier is
+structured as follows:</p>
+<p><code>schema-engine-version/base64(submodel-template-semantic-id)</code></p>
+<p>For example:</p>
+<p><code>https://twinsphere.io/semantics/1/0/aHR0cHM6Ly9hZG1pbi1zaGVsbC5pby9aVkVJL1RlY2huaWNhbERhdGEvU3VibW9kZWwvMS8y</code></p>
+<ul>
+<li>the <code>https://twinsphere.io/semantics/1/0</code> is the schema engine version (produced by twinsphere semantics in version
+  1.0)</li>
+<li>the base64 part (<code>aHR0c...ZWwvMS8y</code>) is the submodel template semantic id, decoded with value
+  <code>https://admin-shell.io/ZVEI/TechnicalData/Submodel/1/2</code>.</li>
+<li>therefore, this semantic schema is derived from submodel template Technical Data in version 1.2.</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The semantic schema uses the semantic ID of the submodel template, and not the ID field of the
+submodel template (these two are often the same, but in some cases they can differ).</p>
+</div>
+<h2 id="semantic-instances">Semantic Instances</h2>
+<p>Based on the semantic schemas, you can now read and write submodels in the "semantic" form using the semantic connector.</p>
+<p>To perform validation and serialization / deserialization correctly, you just need to always remember to reference the
+semantic schema via the xmlns attribute on the root element of the hierarchy, as in the example below:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;
+&lt;DigitalNameplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;https://twinsphere.io/semantics/aHR0cHM6Ly9hZG1pbi1zaGVsbC5pby96dmVpL25hbWVwbGF0ZS8yLzAvTmFtZXBsYXRl&quot;&gt;
+  &lt;Id&gt;testsubmodel&lt;/Id&gt;
+  &lt;UriOfTheProduct&gt;https://www.domain-abc.com/Model-Nr-1234/Serial-Nr-5678&lt;/UriOfTheProduct&gt;
+  &lt;ManufacturerName&gt;
+    &lt;LanguageString&gt;
+      &lt;Language&gt;de&lt;/Language&gt;
+      &lt;Value&gt;Muster AG&lt;/Value&gt;
+    &lt;/LanguageString&gt;
+  &lt;/ManufacturerName&gt;
+  ...
+&lt;/DigitalNameplate&gt;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cloud-push-service/" class="btn btn-neutral float-left" title="Push Service"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cloud-shell-filter-queries/" class="btn btn-neutral float-right" title="Shell Filter Queries">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cloud-push-service/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-shell-filter-queries/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
