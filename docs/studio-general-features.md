@@ -11,7 +11,10 @@ You can specify generator patterns for several ID types:
 ![twinstudio General IdGenerator](img/twinstudio-general-idgenerator.png){: width='600' }
 
 If set respective IDs are automatically generated when needed (mainly on twin and submodel creation) and
-twinstudio will not ask you to manually fill-in IDs anymore.
+twinstudio will not ask you to manually fill-in IDs anymore.  
+Generally the {ULID} token has to be used trying to ensure a unique ID. If the *globalAssetId* is active
+it is possible to use {ASSET-ULID} instead of {ULID} for the *aasId* and if you use this and generate
+a new twin the *globalAssetId* and the *aasId* will contain the same generated *ulid*.
 
 !!!note "ID patterns have tenant scope"
     The ID generator patterns are applied at the tenant level, not just to your user account.
