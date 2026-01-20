@@ -144,3 +144,32 @@ twinsphere tenant's repository and delete the draft afterward.
 !!! note
     With introduction of the upcoming twinstudio modules **Template Designer** and **Blueprint Editor** further draft
     types will become available and shown in this catalog as well.
+
+## Catalog of Files
+
+In this catalog all *files* of the twinsphere are displayed. The classification value is displayed according to the
+[Handover Documentation Submodel](https://industrialdigitaltwin.io/idta-submodel-templates/Handover%20Documentation/v2.0/index.html#_annex_b_how_does_the_submodel_handover_documentation_relates_to_the_submodel_intelligent_information_for_use).
+Values that are not in this list will be displayed as *invalid* and empty values display *"-"*.
+Filesize is shown as kilo byte value until it reaches 0.1 mega byte
+then the MB unit is used up to the maximum size of 100 MB.
+
+![File Catalog](img/twinstudio_catalog_file_overview.png){:width='1000'}
+
+The custom attributes column displays the count of attributes. If this is greater than 0 it gets clickable and
+a dialog that displays all custom attributes is shown.
+
+![Custom Attributes](img/twinstudio_catalog_file_customattributes.png){:width='400'}
+
+Each file has a menu with the following actions:
+*download*, *copy file path* and in future iterations the option to *delete*.
+
+![File Actions](img/twinstudio_catalog_file_actions.png){:width='400'}
+
+*Set Filter* opens a dialog which allows to filter the file list.
+The *Display Name* and *File Name* filter check for the inclusion of text ignoring casing.
+The two date selects are for start and end date.
+Start date the time 00:00:00 will be added and to the end date 23:59:59.
+Added attributes will be matched exactly.
+If either a key or a value is empty this pair will be ignored for filtering the files.
+
+![Filterdialog](img/twinstudio_catalog_file_filterdialog.png){:width='600'}
