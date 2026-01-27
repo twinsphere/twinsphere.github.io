@@ -173,3 +173,18 @@ Added attributes will be matched exactly.
 If either a key or a value is empty this pair will be ignored for filtering the files.
 
 ![Filterdialog](img/twinstudio_catalog_file_filterdialog.png){:width='600'}
+
+### Edit File Properties
+
+To edit the properties of a file, you can click on the pencil icon or on the “Edit” entry in the menu.
+
+![FilePropertiesEditButton](img/twinstudio_catalog_file_edit_buttons.png){:width='600'}
+
+You can change the display name and classification of the file. You can also store user-defined attributes for a file.
+An attribute consists of a key and a value, which must not be longer than 2048 characters.
+A key must be unique in the list of attributes.
+
+![FilePropertiesEditDialog](img/twinstudio_catalog_file_edit_properties_dialog.png){:width='600'}
+
+Each key and each value must be filled in, or the attribute must be removed completely.
+If the Save button is not activated or is deactivated when clicked, a validation rule has been violated.
