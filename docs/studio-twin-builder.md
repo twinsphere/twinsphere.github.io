@@ -253,6 +253,19 @@ The reference is displayed as shown below.
     Reference Elements only support referencing submodels and submodel elements within the same twin.
     This behavior will be changed in future releases.
 
+### Entity
+
+This element is displayed in the tree on the left. On the page you can select to set a reference to an existing twin.
+If selected an input field is shown in which the *globalAssetId* of a twin has to be entered.
+When the twin exists in the twinsphere a link to the **AAS-Viewer** is activated.
+
+![Entity](img/twinstudio_builder_entity_overview.png){: width='800'}
+
+The button with the *magnifying glass* icon opens a dialog in which it is possible to search for a twin.
+Only 10 results will be shown. Twins without a *globalAssetId* will be disabled for selection.
+
+![Entity Twin Selection Dialog](img/twinstudio_builder_entity_selection.png){: width='400' }
+
 ## Validation Issue List
 
 ![Validation Issue List](img/twinstudio_issuelist_withpath.png){: width='300' }
