@@ -3,7 +3,7 @@
 ## General Information
 
 The **Twin Builder** is used to edit the content of digital twins. It allows users to conveniently fill in and change
-the values of all elements, while increasing accessibility by hiding the complex  details of the metamodel as much as
+the values of all elements, while increasing accessibility by hiding the complex details of the meta model as much as
 possible.
 
 ## Twin Creation Wizard
@@ -30,11 +30,22 @@ If you create a digital twin from scratch you can choose the *asset kind* in the
 If you are unsure which *asset kind* is appropriate for your situation (*Instance/Type/Undefined*), the help texts
 describing the options may be of assistance.
 
-#### Option 2 - Duplicate existing Instance
+#### Option 2 - Duplicate Existing Instance
 
 ![Creation Wizard Duplicate](img/twinstudio-creation-wizard-duplicate-existing-instance.png){: width='800' }
 
-If you duplicate an existing instance you have to choose an instance from the radio button list on the right.
+If you duplicate an existing instance you can search for an instance, which you want to duplicate.
+Your entered search term will be matched via a regular expression against following attributes:
+
+- displayName
+- globalAssetId
+- idShort
+- AAS Id
+
+If there are more than 10 matches, you have to redefine the search, to narrow down the match count.
+When you select a result, it will be automatically expanded, and you can see where the instance matched the search term.
+
+![Creation Wizard Duplicate Highlight](img/twinstudio-creation-wizard-duplicate-existing-instance-highlight.png){: width='600' }
 
 If you select this option, the wizard will only guide you to step 2 below. No further information is required; it will
 be taken from the original copy.
@@ -44,7 +55,7 @@ be taken from the original copy.
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-2.png){: width='800' }
 
 In the second step you have to set an id for the digital twin, add a display name and refer to your physical asset
-by adding a asset identifier.
+by adding an asset identifier.
 
 The id for the digital twin has to be unique.
 The asset identifier could be common because you could create many digital twins for one physical asset.
@@ -53,7 +64,7 @@ The display name is required because it is used to determine the name of the she
 Depending on your usage of the [ID Generator](studio-general-features.md/#id-generator) feature twinstudio may already
 have filled-in some of the inputs above automatically for you.
 
-### Step 3 - Add Description (optional)
+### Step 3 - Add Description (Optional)
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-3.png){: width='800' }
 
@@ -62,7 +73,7 @@ You may add a textual description for the new digital twin here. This might help
 understand the content or purpose of this twin.
 Please only use English language here. You may add more/other languages later in the editor.
 
-### Step 4 - Adding Submodels (optional)
+### Step 4 - Adding Submodels (Optional)
 
 ![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-4.png){: width='800' }
 
@@ -71,9 +82,9 @@ The submodels you can choose from are submodel templates, which are stored in yo
 [twinsphere cloud](cloud-documentation.md).
 
 If you click the *Create Digital Twin* button every selected submodel template will be transformed
-into a submodel instance, given an unique ID and added to your digital twin.
+into a submodel instance, given a unique ID and added to your digital twin.
 
-We highly recommend using the studio's [ID Generator](studio-general-features.md/#id-generator) feature here. Otherwise
+We highly recommend using the studio's [ID Generator](studio-general-features.md/#id-generator) feature here. Otherwise,
 will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel IDs to be created.
 
 ## Edit Shell Properties
@@ -88,7 +99,7 @@ the editing has to be unlocked.
 Via the dropdown you can add specific asset ids, if the editing has been enabled.
 
 The asset type of the shell is shown in the row below these properties.
-If the url points to an existing twin in your current tenant, a link to it will be displayed.
+If the URL points to an existing twin in your current tenant, a link to it will be displayed.
 
 ## Add/Remove Submodels
 
@@ -115,9 +126,9 @@ There are an *add to navigation* and *add to page* section.
 
 Adding a navigation element will insert a child in the navigation tree. To delete this element you have to visit the node.
 
-Adding an element to the page will cluster similar elements. Next to them there will be a trash can to delete each entry.
+Adding an element to the page will cluster similar elements. Next to them there will be a trashcan to delete each entry.
 
-Some templates specify a cardinality of *one* or *onetomany* then the last element cannot be removed.
+Some templates specify cardinality of *one* or *onetomany* then the last element cannot be removed.
 
 ## Arbitrary Properties
 
@@ -132,17 +143,17 @@ In the add dialog these entries are grayed out and display the info.
 
 ### Properties
 
-Property elements have a valuetype according to which the different selection elements will be displayed.
-The types of time, date and datetime have a custom representation, all others are shown in a default input field.
+Property elements have a valueType according to which the different selection elements will be displayed.
+The types of time, date, and datetime have a custom representation, all others are shown in a default input field.
 
 #### Default
 
 ![Properties](img/twinstudio-builder-property.png)
 
 The value of a property is represented by an input field.
-Please make sure that the data type of the property matches the value you set into the input field.
-The *Validation Issue List* will have an issue if the data type of the value does not match
-the data type of the property.
+Please make sure that the datatype of the property matches the value you set into the input field.
+The *Validation Issue List* will have an issue if the datatype of the value does not match
+the datatype of the property.
 The input field expands up to 5 rows and a scrollbar will be displayed for longer content.
 
 #### Date
