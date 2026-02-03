@@ -5,6 +5,46 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ---
 
+## Studio 0.6
+
+*Released on 04-Feb-2026*.
+
+**New Features:**
+
+- **[General]:**
+
+    - Added help button (?) to app menu in upper right corner which opens twinstudio documentation in new tab.
+    - ID generator offers new *{ASSET-ULID}* token that allows the same ULID to be used for generating asset IDs and
+      AAS IDs.
+
+- **[TwinBuilder]:**
+
+    - Added form support for submodel element type *Entity* (represented as tree node) with following limitations:
+        - Only globalAssetIds are supported for referencing self-managed entities, no support for specificAssetIds yet.
+        - Limited support for co-managed entities: No adding statements that are not specified by the template in use.
+    - Enhanced source selection search when creating a new twins by duplicating an existing instance.
+    - Moved "Edit Submodels" action to right side of shell selection button above navigation tree.
+    - Added "Edit Submodels" option to more menu (three vertical dots).
+
+- **[Catalog]:**
+
+    - Introduced [Catalog of Files](studio-catalog.md#catalog-of-files):
+        - List all files stored in [twinsphere's File Repository](cloud-documentation.md#file-repository).
+        - Applying filter criteria to catalog view like file size, creation date, classification, file/display name or
+          any custom attribute value.
+        - Editing of file properties including display name, classification and custom attributes.
+        - Upload of new files to twinsphere and setting their properties.
+        - Download of file.
+        - Copy twinsphere File Path to clipboard (aka TFP, reference to file to be used in a File submodel element).
+    - Removed dummy source selection button in upper left catalog corner (no function so far).
+
+**Fixes:**
+
+- **[TwinBuilder]** Builder now opens also twins with IDs that have encoded urlsafe characters.
+- **[TwinBuilder]** Long twin names are now truncated with "..." at the end when displayed in the shell button.
+
+---
+
 ## Studio 0.5
 
 *Released on 14-Jan-2026*.
