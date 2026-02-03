@@ -147,41 +147,43 @@ twinsphere tenant's repository and delete the draft afterward.
 
 ## Catalog of Files
 
-In this catalog all *files* of the twinsphere are displayed. The classification value is displayed according to the
-[Handover Documentation Submodel](https://industrialdigitaltwin.io/idta-submodel-templates/Handover%20Documentation/v2.0/index.html#_annex_b_how_does_the_submodel_handover_documentation_relates_to_the_submodel_intelligent_information_for_use).
-Values that are not in this list will be displayed as *invalid* and empty values display *"-"*.
-Filesize is shown as kilo byte value until it reaches 0.1 mega byte
-then the MB unit is used up to the maximum size of 100 MB.
+This catalog lists all *files* of [twinsphere's file repository](cloud-documentation.md#file-repository).
+
+The classification value is displayed according to
+VDI 2770 Blatt 1: 2020, see respective table at [Handover Documentation Submodel](https://industrialdigitaltwin.io/idta-submodel-templates/Handover%20Documentation/v2.0/index.html#_annex_b_how_does_the_submodel_handover_documentation_relates_to_the_submodel_intelligent_information_for_use).
+Values that are not in this list will be displayed as *invalid* and empty values are represented by a dash (*-*).
+
+The file size is given in kilo bytes for values below 100 kB and in mega bytes if larger.
 
 ![File Catalog](img/twinstudio_catalog_file_overview.png){:width='1000'}
 
-The custom attributes column displays the count of attributes. If this is greater than 0 it gets clickable and
-a dialog that displays all custom attributes is shown.
+The custom attributes column displays the amount of configured attributes. If greater than 0 it gets clickable. A popup
+dialog shows the keys and values of all custom attributes. An *edit* button enables you to directly edit them.
 
 ![Custom Attributes](img/twinstudio_catalog_file_customattributes.png){:width='400'}
 
-Each file has a menu with the following actions:
-*download*, *copy file path* and in future iterations the option to *delete*.
+Each file has a more menu (represented by three vertical dots) offering the following actions:
+*Download File*, *Copy File Path*, *Edit Properties* and in future iterations the option to *Delete*.
 
 ![File Actions](img/twinstudio_catalog_file_actions.png){:width='400'}
 
-*Set Filter* opens a dialog which allows to filter the file list.
-The *Display Name* and *File Name* filter check for the inclusion of text ignoring casing.
+*Set Filter* opens a dialog which allows to filter the file list.  
+The *Display Name* and *File Name* filter check for the inclusion of text ignoring casing.  
 The two date selects are for start and end date.
-Start date the time 00:00:00 will be added and to the end date 23:59:59.
-Added attributes will be matched exactly.
+Start date the time 00:00:00 will be added and to the end date 23:59:59.  
+Added custom attributes will be matched exactly.
 If either a key or a value is empty this pair will be ignored for filtering the files.
 
 ![Filterdialog](img/twinstudio_catalog_file_filterdialog.png){:width='600'}
 
 ### Edit File Properties
 
-To edit the properties of a file, you can click on the pencil icon or on the “Edit” entry in the menu.
+To edit the properties of a file, you can click on the pencil icon or on the "Edit Properties" entry in the menu.
 
 ![FilePropertiesEditButton](img/twinstudio_catalog_file_edit_buttons.png){:width='600'}
 
 You can change the display name and classification of the file. You can also store user-defined attributes for a file.
-An attribute consists of a key and a value, which must not be longer than 2048 characters.
+An attribute consists of a key and a value, which both must not be longer than 2048 characters.
 A key must be unique in the list of attributes.
 
 ![FilePropertiesEditDialog](img/twinstudio_catalog_file_edit_properties_dialog.png){:width='600'}
