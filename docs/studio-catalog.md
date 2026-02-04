@@ -176,6 +176,23 @@ If either a key or a value is empty this pair will be ignored for filtering the 
 
 ![Filterdialog](img/twinstudio_catalog_file_filterdialog.png){:width='600'}
 
+### Upload File
+
+To start an upload for a file you have to go to the file catalog an click on the upload button.
+
+![UploadButtonInCatalog](img/twinstudio_catalog_file_upload_button.png){:width='600'}
+
+First you have to choose a file by clicking on the drag and drop zone and choose the file from the dialog.
+
+![UploadDialog](img/twinstudio_catalog_file_upload_dialog.png)
+
+You can add a file name, a display name and a classification to the file. You can also store user-defined attributes
+for the file.
+An attribute consists of a key and a value, which both must not be longer than 2048 characters.
+A key must be unique in the list of attributes.
+For example the key could be "type" and the value could be "logo".
+If you do this with every logo you could find all logos with the filter function in the file catalog.
+
 ### Edit File Properties
 
 To edit the properties of a file, you can click on the pencil icon or on the "Edit Properties" entry in the menu.
