@@ -45,7 +45,7 @@ Your entered search term will be matched via a regular expression against follow
 If there are more than 10 matches, you have to redefine the search, to narrow down the match count.
 When you select a result, it will be automatically expanded, and you can see where the instance matched the search term.
 
-![Creation Wizard Duplicate Highlight](img/twinstudio-creation-wizard-duplicate-existing-instance-highlight.png){: width='600' }
+![CreationDuplicateHighlight](img/twinstudio-creation-wizard-duplicate-existing-instance-highlight.png){: width='600' }
 
 If you select this option, the wizard will only guide you to step 2 below. No further information is required; it will
 be taken from the original copy.
