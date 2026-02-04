@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/cloud-documentation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API Documentation - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API Documentation";
+        var mkdocs_page_input_path = "cloud-documentation.md";
+        var mkdocs_page_url = "/cloud-documentation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">API Documentation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#discovery">Discovery</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#implicit-discovery">Implicit Discovery</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#standard-explicit-discovery">Standard ("Explicit") Discovery</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shell-registry">Shell Registry</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#implicit-shell-registry">Implicit Shell Registry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#standard-explicit-shell-registry">Standard ("Explicit") Shell Registry</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#submodel-registry">Submodel Registry</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#implicit-submodel-registry">Implicit Submodel Registry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#standard-explicit-submodel-registry">Standard ("Explicit") Submodel Registry</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#shell-repository">Shell Repository</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enhanced-get-shells">Enhanced GET /shells</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#submodel-repository">Submodel Repository</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enhanced-get-submodels">Enhanced GET /submodels</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#concept-description-repository">Concept Description Repository</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file-repository">File Repository</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#twinsphere-file-paths">twinsphere File Paths</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usage-of-file-api">Usage of File API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adaption-of-standard-operations">Adaption of standard operations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#import">Import</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#serialization">Serialization</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#serialization_1">/serialization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#serialization-modifiers">Serialization Modifiers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#level-modifier">Level Modifier</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#content-modifier">Content Modifier</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#extent-modifier">Extent Modifier</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pagination">Pagination</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation Rules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud</li>
+      <li class="breadcrumb-item active">API Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api-documentation">API Documentation</h1>
+<p>This documentation complements the <a href="https://conplement.cloud.twinsphere.io/swagger/index.html">swagger documentation of our
+API</a> and contains addition information and background to the
+endpoints.</p>
+<hr />
+<h2 id="discovery">Discovery</h2>
+<h3 id="implicit-discovery">Implicit Discovery</h3>
+<p>We have introduced a <strong>proprietary comfort feature</strong> that allows asset links to be retrieved without or in addition to
+an existing "standard" discovery. Our Implicit Discovery works directly on the tenant's existing asset administration
+shell repository data and creates shell descriptors on-the-fly when called.</p>
+<p>The advantage of this feature is that all shells of your shell repository are hereby discoverable by default - without
+the need of explicitly entering lookup data into a discovery. The limitation of it is that only those "local shell" are
+discoverable and the quantity cannot be restricted or extended to shells of further (external) repositories. For
+distributed scenarios you need to use a standard discovery.</p>
+<p>The endpoints of our implicit discovery feature match IDTA's read service profile SSP-002 of the Discovery Service
+Specification and are located at the top level of our api path:</p>
+<blockquote>
+<p>https://<em>{twinsphereTenantURL}</em>/api/<em>{api_version}</em>/lookup/shells</p>
+</blockquote>
+<h3 id="standard-explicit-discovery">Standard ("Explicit") Discovery</h3>
+<p>Of course twinsphere also offers the official discovery service as specified. It is even possible to have multiple
+instances of discoveries with different sets of shell descriptors within one tenants.</p>
+<p>All endpoints of our discovery feature match IDTA's full service profile SSP-001 of the Discovery Service Specification
+and are separated under a freely definable instance name:</p>
+<blockquote>
+<p>https://<em>{twinsphereTenantURL}</em>/<strong><em>{instanceName}</em></strong>/api/<em>{api_version}</em>/lookup/shells</p>
+</blockquote>
+<p>In order to obtain a new discovery instance please contact our <a href="../contact/">support team</a>.</p>
+<hr />
+<h2 id="shell-registry">Shell Registry</h2>
+<h3 id="implicit-shell-registry">Implicit Shell Registry</h3>
+<p>We have introduced a <strong>proprietary comfort feature</strong> that allows shell descriptors to be retrieved without or in
+addition to an existing "standard" shell registry. Our Implicit Shell Registry works directly on the tenant's existing
+asset administration shell repository data and creates basic shell descriptors on-the-fly when called.</p>
+<p>The advantage of this feature is that all shells of your shell repository are hereby registered by default - without the
+need of explicitly entering descriptors into a registry. The limitation of it is that only local shells are retrievable
+and their quantity cannot be restricted or extended to shells of further (external) repositories. For distributed
+scenarios you need to use a standard registry.</p>
+<p>You might think: What a pointless feature - after all, you are asking a twinsphere tenant where a shell is located that
+is hosted by this very tenant. So the answer you'll get will always be "The shell is here with me!". However, the
+advantage of this approach lies in simple client-centered use cases, where clients are able to follow the standard call
+procedure (Discovery =&gt; Registry =&gt; Shell =&gt; Submodel) without you having to deal with shell registrations.</p>
+<p>The endpoints of our Implicit Shell Registry feature correspond to the IDTA read service profile SSP-002 of the
+Discovery Service Specification and are located at the top level of our api path:</p>
+<blockquote>
+<p>https://<em>{twinsphereTenantURL}</em>/api/<em>{api_version}</em>/shell-descriptors</p>
+</blockquote>
+<h3 id="standard-explicit-shell-registry">Standard ("Explicit") Shell Registry</h3>
+<p>Of course twinsphere also offers the official Asset Administration Shell Registry service as specified. It is even
+possible to have multiple instances of registries with different sets of shell descriptors within one tenants.</p>
+<p>All endpoints of our registry feature correspond to the IDTA full service profile SSP-001 of the Asset Administration
+Shell Registry Service Specification and are separated under a freely definable instance name:</p>
+<blockquote>
+<p>https://<em>{twinsphereTenantURL}</em>/<strong><em>{instanceName}</em></strong>/api/<em>{api_version}</em>/shell-descriptors</p>
+</blockquote>
+<p>In order to obtain such a new registry instance please contact our <a href="../contact/">support team</a>.</p>
+<hr />
+<h2 id="submodel-registry">Submodel Registry</h2>
+<h3 id="implicit-submodel-registry">Implicit Submodel Registry</h3>
+<p>We have introduced a <strong>proprietary comfort feature</strong> that allows submodel descriptors to be retrieved without or in
+addition to an existing "standard" submodel registry. Our Implicit Submodel Registry works directly on the tenant's
+existing submodel repository data and creates basic submodel descriptors on-the-fly when called.</p>
+<p>For the advantage and limitations of this feature are analog to those of our Implicit Shell Registry. Please refer
+there.</p>
+<p>The endpoints of our Implicit Submodel Registry feature correspond to the IDTA read service profile SSP-002 of the
+Discovery Service Specification and are located at the top level of our api path:</p>
+<blockquote>
+<p>https://<em>{twinsphereTenantURL}</em>/api/<em>{api_version}</em>/submodel-descriptors</p>
+</blockquote>
+<h3 id="standard-explicit-submodel-registry">Standard ("Explicit") Submodel Registry</h3>
+<blockquote>
+<p><em>Not yet available, coming soon...</em></p>
+</blockquote>
+<hr />
+<h2 id="shell-repository">Shell Repository</h2>
+<h3 id="enhanced-get-shells">Enhanced GET /shells</h3>
+<p>We have introduced an optional extra query parameter "assetKind" for filtering shells according to their asset kind.
+Presently, the available asset kinds include:</p>
+<ul>
+<li>Instance</li>
+<li>Type</li>
+</ul>
+<p>You can utilize this parameter within your existing /shells calls to filter based on the asset kind. If this parameter
+isn't provided, all shells, regardless of their asset kind, will be returned.</p>
+<p>Due to its optional nature, the parameter is a non-breaking extension of the standard.</p>
+<hr />
+<h2 id="submodel-repository">Submodel Repository</h2>
+<h3 id="enhanced-get-submodels">Enhanced GET /submodels</h3>
+<p>We have introduced an optional extra query parameter "kind" for filtering submodels according to their kind. Presently,
+the available kinds include:</p>
+<ul>
+<li>Instance</li>
+<li>Template</li>
+</ul>
+<p>You can utilize this parameter within your existing /submodels calls to filter based on the kind. If this parameter
+isn't provided, all submodels, regardless of their kind, will be returned.</p>
+<p>Due to its optional nature, the parameter is a non-breaking extension of the standard.</p>
+<hr />
+<h2 id="concept-description-repository">Concept Description Repository</h2>
+<p>Available and works :) Nothing special beyond the defined standard to document here.</p>
+<hr />
+<h2 id="file-repository">File Repository</h2>
+<p>twinsphere is self-sufficiently capable of hosting and managing files and documents to be referenced from any submodel
+within your tenant.</p>
+<h3 id="twinsphere-file-paths">twinsphere File Paths</h3>
+<p>The key concept behind the file repository are so called 'twinsphere file paths' (tfp). This feature enables clients to
+reuse and share files between shells and submodels, eliminating the need to upload the same files multiple times.</p>
+<p>A tfp follows a fixed format/pattern, for example:
+<code>file:/dHdpbnNwaGVyZS1maWxl/cp/18ef5516-618b-4a97-ac4b-d47f5d5ee823/thumbnail.jpg</code>. It follows the file URI scheme (as
+requested by the specifications in advance to v3.1) and consists of a static part, the tenant name, a unique documentId,
+and a file name.</p>
+<p>This tfp cannot be generated by the client. It is created by twinsphere when uploading a file to the repository (see
+<a href="#usage-of-file-api">Usage</a> below) and should be (re)used in submodels when referencing a file resources.</p>
+<div class="admonition note">
+<p class="admonition-title">Please notice</p>
+<p>A tfp is only valid in the context of a single tenant and is not reachable from outside this context.</p>
+</div>
+<h3 id="usage-of-file-api">Usage of File API</h3>
+<p>twinsphere's file repository is accessible via the "files" endpoints at <code>https://{tenant_url}/api/v3.0/files…</code></p>
+<p>Once a file has been uploaded to the file repository it can be referenced by shells (as thumbnail) or submodels (as
+attachment) using its corresponding tfp.</p>
+<p>We recommend the following procedure:</p>
+<ol>
+<li><code>POST /files</code> to upload a document, tfp is returned</li>
+<li>Remember the tfp and use it as File.value in submodels as required</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Please notice</p>
+<p>There is currently no way to search for a tfp in the file repository, as no metadata about the file
+is stored apart from the file name - and this may not be unique in the repository.</p>
+</div>
+<p>Replacing an existing file by <code>PUT /files</code> will replace the files content while keeping its filename and tfp. So all
+reference stay valid and now point to the new content.</p>
+<p>To remove a file physically from the repository, you have to use the <code>DELETE /files</code> interface. Please be aware that
+there is no check for existing references, so you may create invalid reference by deleting a file.</p>
+<p>You can attach meta information to a twinsphere file at
+<code>https://{tenant_url}/sphere/api/v1.0/files/{tfp}/metadata</code> endpoint.</p>
+<pre><code class="language-json">{
+  &quot;displayName&quot;: &quot;Document Display Name&quot;,
+  &quot;classification&quot;: &quot;01-01&quot;,
+  &quot;attributes&quot;: {
+    { &quot;key&quot;: &quot;external-id&quot;, &quot;value&quot;: &quot;1&quot; },
+    { &quot;key&quot;: &quot;country&quot;, &quot;value&quot;: &quot;germany&quot; },
+    { &quot;key&quot;: &quot;priority&quot;, &quot;value&quot;: &quot;important&quot; }
+  }
+}
+</code></pre>
+<ul>
+<li><strong>displayName</strong>: Custom name for the file.</li>
+<li><strong>classification</strong>: Must be a valid class ID as defined in <strong>VDI 2770</strong>.</li>
+<li><strong>Attributes</strong>: Custom key–value metadata.</li>
+<li><strong>Attributes Limit</strong>: Up to 50 attributes per file.</li>
+<li><strong>Attribute Size</strong>: Keys and values can each be up to 2048 characters.</li>
+</ul>
+<h3 id="adaption-of-standard-operations">Adaption of standard operations</h3>
+<p>The introduction of our file repository made it necessary to adapt the behavior of standard operations working with
+files:</p>
+<ul>
+<li><code>DELETE /attachment</code> and <code>DELETE /thumbnail</code><ul>
+<li>Only removes file references from SM/AAS.</li>
+<li>Deletion of file itself is only possible via <code>DELETE /files</code> (see above)</li>
+</ul>
+</li>
+<li><code>PUT /attachment</code> and <code>PUT /thumbnail</code><ul>
+<li>Uploads new file to repo and updates this single reference with new twinsphere File Path.</li>
+<li>Former file stays unchanged, still exists on file repo and its twinsphere File Path is still valid.</li>
+<li>All other references to the former file stay untouched.</li>
+</ul>
+</li>
+<li><code>GET /serialization</code> for AASX packages<ul>
+<li>Packs all referenced files of resolvable tfps (file exists in tenant's file repository) and ignores invalid
+twinsphere File Paths (non-existing files)</li>
+</ul>
+</li>
+</ul>
+<p>Implications of this adapted behavior:</p>
+<ul>
+<li>If you (re-)upload a thumbnail or attachment via standard endpoints all referencing shells/submodels which used the
+  previous file must be updated as well to use the updated file.</li>
+<li>A better way to update all references of an old file is to reupload the file via PUT /files. Its filename cannot be
+  changed in this way though.</li>
+<li>If you update the thumbnail or attachment file value/path entry in the metamodel to something that does not resemble a
+  twinsphere file path (e.g., <code>file:/aasx/file/thumbnail.jpg</code>), the download of the file will no longer work.</li>
+<li>If you update references to a file in a single submodel element (with "PUT attachment" or "PUT thumbnail"), all other
+  references will still be valid but are not updated and point to the former file.</li>
+</ul>
+<hr />
+<h2 id="import">Import</h2>
+<p>An AASX package can be uploaded via the import function. Currently, only one shell is supported. The import process is
+not transactional, so the shell, submodels, and files may be partially created even in the event of an error. It is
+important to note that an import always overwrites existing data.</p>
+<p>A package is considered valid if:</p>
+<ul>
+<li>Successful validation</li>
+<li>Exactly one shell</li>
+<li>Other elements are optional</li>
+</ul>
+<p>If a thumbnail is required, an asset thumbnail must be provided. Package thumbnails are ignored.</p>
+<p>Currently, there is a limitation in "[Content_Types].xml". All paths are case-sensitive and must exactly match the
+folder path within the package.</p>
+<hr />
+<h2 id="serialization">Serialization</h2>
+<h3 id="serialization_1">/serialization</h3>
+<p>The serialization endpoint returns an environment that contains specified asset administration shells, submodels and
+concept descriptions (see
+<a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01002-3-0_SpecificationAssetAdministrationShell_Part2_API_.pdf#page=43">part 2 of the AAS specification&nbsp;⧉</a>).</p>
+<p>The desired return type can be specified using the "Accept" header parameter of the request. Valid return types include</p>
+<ul>
+<li><em>application/xml</em> (default),</li>
+<li><em>application/json</em>, and</li>
+<li><em>application/asset-administration-shell-package+json</em>.</li>
+</ul>
+<p>Packages currently contain the environment as JSON – XML coming soon.</p>
+<!-- markdownlint-disable code-block-style -->
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use the serialization in the Swagger UI there is one problem, you cannot set the accept header in the UI. You
+have to go down to the <code>Responses</code> section and there, in the <code>200</code> section, choose the accept header value from the
+drop down and send the request. Now you will get your correct serialized shell.</p>
+<p>As mentioned in <a href="https://github.com/swagger-api/swagger-ui/issues/9400">this issue on github&nbsp;⧉</a>, this is a Swagger UI /
+OpenApi problem and can not be fixed.</p>
+<p>As mentioned in <a href="https://github.com/swagger-api/swagger-ui/issues/5217">this issue on github&nbsp;⧉</a>, Swagger UI produces an
+corrupt File on using the Accept Header "<em>application/asset-administration-shell-package+json</em>". Using the API direct
+with for example Postman or CURL gives the correct File.</p>
+</div>
+<!-- markdownlint-enable code-block-style -->
+
+<h3 id="serialization-modifiers">Serialization Modifiers</h3>
+<h4 id="level-modifier">Level Modifier</h4>
+<blockquote>
+<p><em>Not yet available, coming soon...</em></p>
+</blockquote>
+<h4 id="content-modifier">Content Modifier</h4>
+<p>You can use special content modifiers to get special serializations of the requested data, e.g. only the metadata of an
+object.</p>
+<h5 id="metadata-metadata">Metadata ($metadata)</h5>
+<p>From IDTA Spec Part 2: <em>"Only metadata of an element or child elements is returned; the value is not."</em></p>
+<p>This is implemented for the following endpoints:</p>
+<ul>
+<li>GET <code>/submodel/{submodelIdentifier}/$metadata</code></li>
+</ul>
+<p>Let us give you an example for this endpoint with the nameplate submodel.</p>
+<pre><code class="language-json">{
+  &quot;idShort&quot;: &quot;Nameplate&quot;,
+  &quot;id&quot;: &quot;https://company.com/ids/sm/nameplate&quot;,
+  &quot;kind&quot;: &quot;Instance&quot;,
+  &quot;semanticId&quot;: {
+    &quot;type&quot;: &quot;ExternalReference&quot;,
+    &quot;keys&quot;: [
+      {
+        &quot;type&quot;: &quot;GlobalReference&quot;,
+        &quot;value&quot;: &quot;https://admin-shell.io/zvei/nameplate/2/0/Nameplate&quot;
+      }
+    ]
+  },
+  &quot;modelType&quot;: &quot;Submodel&quot;
+}
+</code></pre>
+<h5 id="value-value">Value ($value)</h5>
+<blockquote>
+<p><em>Not yet available, coming soon...</em></p>
+</blockquote>
+<h5 id="reference-reference">Reference ($reference)</h5>
+<p>This gives you the Reference object of an object or a list of reference objects on endpoints which works with many
+objects. For example the shellIds of all shells in your repository.</p>
+<p>From IDTA Spec Part 2: <em>"Only applicable to Referables. Only the reference to the found element is returned; potential
+child elements are ignored."</em></p>
+<p>Actually it is not implemented for the for the Asset Administration Shell and Submodel endpoints</p>
+<ul>
+<li>/shells/{aasIdentifier}/$reference</li>
+<li>/shells/{aasIdentifier}/submodels/{submodelIdentifier}/$reference</li>
+<li>/shells/{aasIdentifier}/submodels/{submodelIdentifier}/submodel-elements/{idShortPath}/$reference</li>
+</ul>
+<h5 id="path-path">Path ($path)</h5>
+<p>From IDTA Spec Part 2: <em>"Returns the idShort of the requested element and a list of idShort paths to child elements if
+the requested element is a Submodel, a SubmodelElementCollection, a SubmodelElementList, a AnnotatedRelationshipElement,
+or an Entity."</em></p>
+<p>This is implemented for the following endpoints:</p>
+<ul>
+<li>GET <code>/submodel/{submodelIdentifier}/$path</code></li>
+</ul>
+<p>The return value for our Nameplate Submodel would be:</p>
+<pre><code class="language-json">[
+  &quot;URIOfTheProduct&quot;,
+  &quot;ManufacturerName&quot;,
+  &quot;ManufacturerProductDesignation&quot;,
+  &quot;ContactInformation&quot;,
+  &quot;ContactInformation.Company&quot;,
+  &quot;ContactInformation.CityTown&quot;,
+  &quot;ContactInformation.Phone&quot;,
+  &quot;ContactInformation.Phone.TelephoneNumber&quot;,
+  &quot;ContactInformation.Phone.TypeOfTelephone&quot;,
+  &quot;ContactInformation.Fax&quot;,
+  &quot;ContactInformation.Fax.FaxNumber&quot;,
+  &quot;ContactInformation.Fax.TypeOfFaxNumber&quot;,
+  &quot;ContactInformation.Street&quot;,
+  &quot;ContactInformation.Zipcode&quot;,
+  &quot;ContactInformation.AddressOfAdditionalLink&quot;,
+  &quot;ManufacturerProductRoot&quot;,
+  &quot;ManufacturerProductFamily&quot;,
+  &quot;OrderCodeOfManufacturer&quot;,
+  &quot;ProductArticleNumberOfManufacturer&quot;,
+  &quot;Markings&quot;,
+  &quot;Markings.Marking01&quot;,
+  &quot;Markings.Marking01.MarkingName&quot;,
+  &quot;Markings.Marking02&quot;,
+  &quot;Markings.Marking02.MarkingName&quot;,
+  &quot;Markings.Marking03&quot;,
+  &quot;Markings.Marking03.MarkingName&quot;
+]
+</code></pre>
+<h4 id="extent-modifier">Extent Modifier</h4>
+<p>Only applicable to BLOB elements.</p>
+<p>The "extent" parameter controls whether embedded data is returned in base64 format or not. By default, if the parameter
+is not provided, no embedded data is returned. The possible values are "WithBLOBValue" and "WithoutBLOBValue". The
+default is "WithoutBlobValue".</p>
+<p>There are only a few submodels that have BLOBs inside. But we can give you a generally example how the result with this
+modifier will look like. The name of the BLOB is "Library".</p>
+<p>Please note that this modifier is given as a query parameter on the endpoints.</p>
+<p>This is implemented for the following endpoints:</p>
+<ul>
+<li>GET <code>/submodel/{submodelIdentifier}?extent=</code></li>
+</ul>
+<p><code>WithoutBLOBValue</code></p>
+<pre><code class="language-json">{
+    &quot;Library&quot;: {
+        &quot;contentType&quot;: &quot;application/octet-stream&quot;
+    }
+}
+</code></pre>
+<p><code>WithBLOBValue</code></p>
+<pre><code class="language-json">{
+    &quot;Library&quot;: {
+        &quot;contentType&quot;: &quot;application/octet-stream&quot;
+        &quot;value&quot;: &quot;VGhpcyBpcyBteSBibG9i&quot;
+    }
+}
+</code></pre>
+<hr />
+<h2 id="pagination">Pagination</h2>
+<p>Some data can be retrieved page by page. For this, you can pass a limit and a cursor.</p>
+<p>The limit determines the maximum size of a page, and the cursor specifies the position from which data retrieval starts.
+The result object of such a request contains the cursor value for the next request/page under paging_metadata.cursor.</p>
+<p>Interface example:</p>
+<pre><code class="language-csharp">public async Task&lt;IActionResult&gt; GetAllAssetAdministrationShells(
+        [FromQuery] List&lt;string&gt;? assetIds = null,
+        [FromQuery] string? idShort = null,
+        [FromQuery] int? limit = null,
+        [FromQuery] string? cursor = null,
+        [FromQuery] Core.AssetKind? assetKind = null)
+</code></pre>
+<p>Result Model:</p>
+<pre><code class="language-json">{
+    &quot;result&quot;: {},
+    &quot;paging_metadata&quot;: {
+        &quot;cursor&quot;: &quot;&quot;
+    }
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../id-service-accounts/" class="btn btn-neutral float-left" title="Service accounts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cloud-proprietary-features/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../id-service-accounts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-proprietary-features/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

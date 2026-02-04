@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/studio-catalog/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Catalog - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Catalog";
+        var mkdocs_page_input_path = "studio-catalog.md";
+        var mkdocs_page_url = "/studio-catalog/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Catalog</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#general-information">General Information</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#catalog-of-twins">Catalog of Twins</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#asset-administration-shells">Asset Administration Shells</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-twin-dialog">Delete Twin Dialog</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#duplication-of-instance-twins">Duplication of Instance Twins</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodels">Submodels</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#catalog-of-concept-descriptions">Catalog of Concept Descriptions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#catalog-of-submodel-templates">Catalog of Submodel Templates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#catalog-of-drafts">Catalog of Drafts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#catalog-of-files">Catalog of Files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#upload-file">Upload File</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#edit-file-properties">Edit File Properties</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation Rules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Studio</li>
+      <li class="breadcrumb-item active">Catalog</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="twinstudio-catalog">twinstudio Catalog</h1>
+<h2 id="general-information">General Information</h2>
+<p>The catalog is a view on all the content of twinsphere like twins, submodel templates, concept description
+and more.</p>
+<p>Each object type has its own catalog. Its records are displayed as a list. On most items you may invoke actions, like
+viewing or editing a twin or displaying the detailed definitions of a concept description.</p>
+<p>If there are more entries than displayed (indicated by a <em>"+"</em> sign in the list header) a <em>load more</em> button is visible
+at the bottom of the list. Each load will add up to 50 entries.</p>
+<p><img alt="Catalog plus entries" src="../img/twinstudio_catalog_plus-entries.png" width="800" /></p>
+<p>Every catalog has a <em>refresh</em> button which reloads the first 50 entries with the selected
+filters if any are available and set.</p>
+<p>Each <strong>id</strong> column contains a button that displays the shortened id.
+On click the full id is shown and can be copied to your clipboard.</p>
+<p><img alt="Catalog Id column" src="../img/twinstudio_catalog_id.png" width="400" /></p>
+<p><strong>Version</strong> is only displayed if the version of the entry's administration is set,
+else there is just a <em>"-"</em> visible.
+If no revision is given it will be assumed as <em>0</em>.</p>
+<h2 id="catalog-of-twins">Catalog of Twins</h2>
+<p>The catalog of twins has a toggle on top to switch between <em>asset administration shells</em> and <em>submodels</em>.</p>
+<h3 id="asset-administration-shells">Asset Administration Shells</h3>
+<p><img alt="Twin Catalog - Shells" src="../img/twinstudio_catalog_twins_shells.png" width="800" /></p>
+<p>The <strong>quick filter</strong> at the top allows you to display only twins of the selected <em>asset kind</em> (types or instances).</p>
+<p>On the right a <strong>filter</strong> for the shells can be set:</p>
+<ul>
+<li>Filters are combined with a logical AND, so twins have to fulfill all set filter criteria to be in the result list.</li>
+<li>Text filters are case-insensitive.</li>
+<li>A partially qualified value can be specified for all attributes listed as
+  <a href="../cloud-shell-filter-queries/#regex-support">regex supported filter properties</a>.</li>
+</ul>
+<p>The <strong>submodel column</strong> shows the count of submodels the respective twin has. A click opens a dialog listing them
+with some basic information.</p>
+<p>The action represented by an <strong>eye symbol</strong> (or the "Show" button in the more menu) opens the twin in our
+<a href="../viewer-overview/">twinsphere Viewer</a> for viewing all of its data in detail.</p>
+<p>The action represented by a <strong>pen symbol</strong> (or the "Edit" button in the more menu) opens the twin in our
+<a href="../studio-twin-builder/">Twin Builder</a> for editing.</p>
+<p><img alt="Twin Catalog" src="../img/twinstudio_catalog_twins_moremenu.png" width="350" /></p>
+<p>The more menu offers two further features:</p>
+<ul>
+<li>The <strong>export</strong> of twins as JSON or XML to a file or directly to your system's clipboard.</li>
+<li>The <strong>duplication</strong> of <em>instance</em> twins (not types).</li>
+<li>The <strong>deletion</strong> of twins.</li>
+</ul>
+<h4 id="delete-twin-dialog">Delete Twin Dialog</h4>
+<p>After clicking on the <strong>deletion</strong> entry, a dialog appears. There you can see which twin will get deleted.
+You also have the possibility to deselect certain submodels of the twin, if you do not want them to be deleted.
+Submodels which are referenced by other twins, cannot be selected for deletion. If you want to delete a type twin,
+you will get a warning about its implications.</p>
+<p><img alt="Twin Catalog" src="../img/twinstudio_catalog_twins_delete_twin_dialog.png" width="350" /></p>
+<h4 id="duplication-of-instance-twins">Duplication of Instance Twins</h4>
+<p>When duplicating an existing twin all of its data (shell and referenced submodels) are duplicated. New IDs are created
+and assigned to the copies. We highly recommend using the studio's
+<a href="../studio-general-features/#id-generator">ID Generator feature</a> here. Otherwise, you'll be asked to enter an AAS-ID
+and GlobalAssetID manually and we will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel
+IDs.</p>
+<h3 id="submodels">Submodels</h3>
+<p><img alt="Twin Catalog - Submodels" src="../img/twinstudio_catalog_twins_submodels.png" width="800" /></p>
+<p>The Submodels view of the Twin Catalog lists all existing submodels of the connected tenant.</p>
+<p>The <strong>export</strong> of a submodel is available as action in the more menu of each record.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The twin catalog of submodels is work in progress. There are more feature to come here.</p>
+</div>
+<h2 id="catalog-of-concept-descriptions">Catalog of Concept Descriptions</h2>
+<p><img alt="CD Catalog" src="../img/twinstudio_catalog_conceptdescriptions.png" width="800" /></p>
+<p>This catalog lists all concept descriptions available in the corresponding repository of your twinsphere tenant.</p>
+<p>Since a concept description may consist of multiple data specifications the according catalog column shows which types
+of specification are included in each record. Currently only the type <em>IEC61360</em> is recognized and displayed by name.
+Every other specification will be labeled as "unknown". <a href="../contact/#support-channels">Please give us a hint</a> if you
+experience this value so we can improve our recognition here.</p>
+<p>If it is an <em>IEC61360</em> data specification you can inspect the details of it by clicking on the <em>eye</em> button.</p>
+<p>The <strong>export</strong> of a concept description is available as action in the more menu of each record.</p>
+<p><em>Preferred Name</em>, <em>Short Name</em> and <em>Definition</em> display an initial value from
+the available languages according to following criteria:</p>
+<ol>
+<li>the data language</li>
+<li>containing the data language</li>
+<li>the ui language</li>
+<li>containing the ui language</li>
+<li>english (en)</li>
+<li>containing english (en)</li>
+</ol>
+<p>You can select another language value by clicking on the corresponding language tag.
+Hovering over a tag will display an indicator above it.
+The selected language is highlighted with a gray background.</p>
+<h2 id="catalog-of-submodel-templates">Catalog of Submodel Templates</h2>
+<p><img alt="Submodel Template Catalog" src="../img/twinstudio_catalog_submodeltemplates.png" width="800" /></p>
+<p>This catalog displays all <em>submodels</em> in your twinsphere repository that are of kind <strong>template</strong>.
+These are the ones you can choose from when adding new submodel to your twin in
+<a href="../studio-twin-builder/#addremove-submodels">Twin Builder</a>.</p>
+<p>The <strong>export</strong> of a submodel template is available as action in the more menu of each record.</p>
+<h2 id="catalog-of-drafts">Catalog of Drafts</h2>
+<p><img alt="Draft Catalog" src="../img/twinstudio-catalog-drafts.png" width="800" /></p>
+<p>Your personal <strong>twin drafts</strong> are shown here.</p>
+<p>They are sorted by the <em>last modified</em> column in descending order.
+The state column shows if your draft has still issues (issue count as tooltip) or is valid already.</p>
+<p>You may continue editing the twin draft by clicking on the <strong>pen symbol</strong> or choosing "<strong>Edit</strong>" in the more menu.
+This is as well where you may "<strong>Delete</strong>" the draft or "<strong>Export</strong>" it.</p>
+<p>For valid drafts only the more menu offers a "<strong>Publish</strong>" action. This will publish the twin to the connect
+twinsphere tenant's repository and delete the draft afterward.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With introduction of the upcoming twinstudio modules <strong>Template Designer</strong> and <strong>Blueprint Editor</strong> further draft
+types will become available and shown in this catalog as well.</p>
+</div>
+<h2 id="catalog-of-files">Catalog of Files</h2>
+<p>This catalog lists all <em>files</em> of <a href="../cloud-documentation/#file-repository">twinsphere's file repository</a>.</p>
+<p>The classification value is displayed according to
+VDI 2770 Blatt 1: 2020, see respective table at <a href="https://industrialdigitaltwin.io/idta-submodel-templates/Handover%20Documentation/v2.0/index.html#_annex_b_how_does_the_submodel_handover_documentation_relates_to_the_submodel_intelligent_information_for_use">Handover Documentation Submodel&nbsp;⧉</a>.
+Values that are not in this list will be displayed as <em>invalid</em> and empty values are represented by a dash (<em>-</em>).</p>
+<p>The file size is given in kilo bytes for values below 100 kB and in mega bytes if larger.</p>
+<p><img alt="File Catalog" src="../img/twinstudio_catalog_file_overview.png" width="1000" /></p>
+<p>The custom attributes column displays the amount of configured attributes. If greater than 0 it gets clickable. A popup
+dialog shows the keys and values of all custom attributes. An <em>edit</em> button enables you to directly edit them.</p>
+<p><img alt="Custom Attributes" src="../img/twinstudio_catalog_file_customattributes.png" width="400" /></p>
+<p>Each file has a more menu (represented by three vertical dots) offering the following actions:
+<em>Download File</em>, <em>Copy File Path</em>, <em>Edit Properties</em> and in future iterations the option to <em>Delete</em>.</p>
+<p><img alt="File Actions" src="../img/twinstudio_catalog_file_actions.png" width="400" /></p>
+<p><em>Set Filter</em> opens a dialog which allows to filter the file list.<br />
+The <em>Display Name</em> and <em>File Name</em> filter check for the inclusion of text ignoring casing.<br />
+The two date selects are for start and end date.
+Start date the time 00:00:00 will be added and to the end date 23:59:59.<br />
+Added custom attributes will be matched exactly.
+If either a key or a value is empty this pair will be ignored for filtering the files.</p>
+<p><img alt="Filterdialog" src="../img/twinstudio_catalog_file_filterdialog.png" width="600" /></p>
+<h3 id="upload-file">Upload File</h3>
+<p>To start an upload for a file you have to go to the file catalog an click on the upload button.</p>
+<p><img alt="UploadButtonInCatalog" src="../img/twinstudio_catalog_file_upload_button.png" width="600" /></p>
+<p>First you have to choose a file by clicking on the drag and drop zone and choose the file from the dialog.</p>
+<p><img alt="UploadDialog" src="../img/twinstudio_catalog_file_upload_dialog.png" /></p>
+<p>You can add a file name, a display name and a classification to the file. You can also store user-defined attributes
+for the file.
+An attribute consists of a key and a value, which both must not be longer than 2048 characters.
+A key must be unique in the list of attributes.
+For example the key could be "type" and the value could be "logo".
+If you do this with every logo you could find all logos with the filter function in the file catalog.</p>
+<h3 id="edit-file-properties">Edit File Properties</h3>
+<p>To edit the properties of a file, you can click on the pencil icon or on the "Edit Properties" entry in the menu.</p>
+<p><img alt="FilePropertiesEditButton" src="../img/twinstudio_catalog_file_edit_buttons.png" width="600" /></p>
+<p>You can change the display name and classification of the file. You can also store user-defined attributes for a file.
+An attribute consists of a key and a value, which both must not be longer than 2048 characters.
+A key must be unique in the list of attributes.</p>
+<p><img alt="FilePropertiesEditDialog" src="../img/twinstudio_catalog_file_edit_properties_dialog.png" width="600" /></p>
+<p>Each key and each value must be filled in, or the attribute must be removed completely.
+If the Save button is not activated or is deactivated when clicked, a validation rule has been violated.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../studio-general-features/" class="btn btn-neutral float-left" title="General Features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../studio-twin-builder/" class="btn btn-neutral float-right" title="Twin Builder">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../studio-general-features/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../studio-twin-builder/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

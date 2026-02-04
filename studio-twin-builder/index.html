@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/studio-twin-builder/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Twin Builder - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Twin Builder";
+        var mkdocs_page_input_path = "studio-twin-builder.md";
+        var mkdocs_page_url = "/studio-twin-builder/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Twin Builder</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#general-information">General Information</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#twin-creation-wizard">Twin Creation Wizard</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-basis-selection">Step 1 - Basis Selection</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#option-1-new-digital-twin-from-scratch">Option 1 - New Digital Twin from Scratch</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#option-2-duplicate-existing-instance">Option 2 - Duplicate Existing Instance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-add-ids-and-basic-information">Step 2 - Add IDs and Basic Information</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-add-description-optional">Step 3 - Add Description (Optional)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-4-adding-submodels-optional">Step 4 - Adding Submodels (Optional)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#edit-shell-properties">Edit Shell Properties</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#addremove-submodels">Add/Remove Submodels</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#addremove-submodel-elements">Add/Remove Submodel Elements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#arbitrary-properties">Arbitrary Properties</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fill-in-submodel-element-values">Fill-In Submodel Element Values</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#properties">Properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#default">Default</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#date">Date</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#time">Time</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#date-time">Date-Time</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-language-properties">Multi Language Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file-elements">File Elements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#range">Range</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reference-elements">Reference Elements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#validation-issue-list">Validation Issue List</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#save-draft">Save Draft</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#publish-to-repo">Publish to Repo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#branding">Branding</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#save-state">Save State</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#unsaved-changes">Unsaved Changes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#draft-saved">Draft Saved</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#published">Published</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#show-twin-in-aas-viewer">Show Twin in AAS Viewer</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation Rules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Studio</li>
+      <li class="breadcrumb-item active">Twin Builder</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="twinstudio-twin-builder">twinstudio Twin Builder</h1>
+<h2 id="general-information">General Information</h2>
+<p>The <strong>Twin Builder</strong> is used to edit the content of digital twins. It allows users to conveniently fill in and change
+the values of all elements, while increasing accessibility by hiding the complex details of the meta model as much as
+possible.</p>
+<h2 id="twin-creation-wizard">Twin Creation Wizard</h2>
+<p>The Creation Wizard helps you to create a digital twin.
+You can open the Creation Wizard by clicking on the <em>Create New Digital Twin</em> buttons
+in the <a href="../studio-catalog/" width="600">catalog</a> or on the dashboard.</p>
+<p><img alt="Dashboard Builder Card" src="../img/twinstudio-dashboard-digital-twin-builder.png" width="600" /></p>
+<p>The Creation Wizard offers two options for creating a digital twin.</p>
+<h3 id="step-1-basis-selection">Step 1 - Basis Selection</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We plan to include more options for creating twins here, like deriving an instance from a type twin or using a
+blueprint as basis. For now you can choose "from scratch" or "duplicate an existing instance" Stay tuned :)</p>
+</div>
+<h4 id="option-1-new-digital-twin-from-scratch">Option 1 - New Digital Twin from Scratch</h4>
+<p><img alt="Creation Wizard Scratch" src="../img/twinstudio-creation-wizard-from-scratch.png" width="800" /></p>
+<p>If you create a digital twin from scratch you can choose the <em>asset kind</em> in the right radio button list.
+If you are unsure which <em>asset kind</em> is appropriate for your situation (<em>Instance/Type/Undefined</em>), the help texts
+describing the options may be of assistance.</p>
+<h4 id="option-2-duplicate-existing-instance">Option 2 - Duplicate Existing Instance</h4>
+<p><img alt="Creation Wizard Duplicate" src="../img/twinstudio-creation-wizard-duplicate-existing-instance.png" width="800" /></p>
+<p>If you duplicate an existing instance you can search for an instance, which you want to duplicate.
+Your entered search term will be matched via a regular expression against following attributes:</p>
+<ul>
+<li>displayName</li>
+<li>globalAssetId</li>
+<li>idShort</li>
+<li>AAS Id</li>
+</ul>
+<p>If there are more than 10 matches, you have to redefine the search, to narrow down the match count.
+When you select a result, it will be automatically expanded, and you can see where the instance matched the search term.</p>
+<p><img alt="CreationDuplicateHighlight" src="../img/twinstudio-creation-wizard-duplicate-existing-instance-highlight.png" width="600" /></p>
+<p>If you select this option, the wizard will only guide you to step 2 below. No further information is required; it will
+be taken from the original copy.</p>
+<h3 id="step-2-add-ids-and-basic-information">Step 2 - Add IDs and Basic Information</h3>
+<p><img alt="Creation Wizard Basic Information" src="../img/twinstudio-creation-wizard-step-2.png" width="800" /></p>
+<p>In the second step you have to set an id for the digital twin, add a display name and refer to your physical asset
+by adding an asset identifier.</p>
+<p>The id for the digital twin has to be unique.
+The asset identifier could be common because you could create many digital twins for one physical asset.
+The display name is required because it is used to determine the name of the shell in the catalog.</p>
+<p>Depending on your usage of the <a href="../studio-general-features/#id-generator">ID Generator</a> feature twinstudio may already
+have filled-in some of the inputs above automatically for you.</p>
+<h3 id="step-3-add-description-optional">Step 3 - Add Description (Optional)</h3>
+<p><img alt="Creation Wizard Basic Information" src="../img/twinstudio-creation-wizard-step-3.png" width="800" /></p>
+<p>This step in the creation of a digital twin is optional.
+You may add a textual description for the new digital twin here. This might help you and other users later on to
+understand the content or purpose of this twin.
+Please only use English language here. You may add more/other languages later in the editor.</p>
+<h3 id="step-4-adding-submodels-optional">Step 4 - Adding Submodels (Optional)</h3>
+<p><img alt="Creation Wizard Basic Information" src="../img/twinstudio-creation-wizard-step-4.png" width="800" /></p>
+<p>In the last step of the digital twin creation you can add the submodels you need.
+The submodels you can choose from are submodel templates, which are stored in your
+<a href="../cloud-documentation/">twinsphere cloud</a>.</p>
+<p>If you click the <em>Create Digital Twin</em> button every selected submodel template will be transformed
+into a submodel instance, given a unique ID and added to your digital twin.</p>
+<p>We highly recommend using the studio's <a href="../studio-general-features/#id-generator">ID Generator</a> feature here. Otherwise,
+will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel IDs to be created.</p>
+<h2 id="edit-shell-properties">Edit Shell Properties</h2>
+<p><img alt="Edit Shell Properties" src="../img/twinstudio_shellproperties.png" width="600" /></p>
+<p>If you want to edit properties (<em>asset kind, global asset id and specific asset ids</em>) of your shell
+the editing has to be unlocked.</p>
+<p><img alt="Add Specific Asset Ids" src="../img/twinstudio_shellproperties_addremove.png" width="200" /></p>
+<p>Via the dropdown you can add specific asset ids, if the editing has been enabled.</p>
+<p>The asset type of the shell is shown in the row below these properties.
+If the URL points to an existing twin in your current tenant, a link to it will be displayed.</p>
+<h2 id="addremove-submodels">Add/Remove Submodels</h2>
+<p>The Submodels of your currently opened twin can be edited via the <em>edit submodel</em> button in the top right corner.</p>
+<p><img alt="Edit Submodels dialog" src="../img/twinstudio_addremove_submodels.png" width="600" /></p>
+<p>The current submodels of your twin are at the top of the list.
+The rest of the list contains all available submodel templates from your current tenant.
+To select the same template multiple times you have to add them one at a time.</p>
+<p>If a new submodel template is added it will be converted to a submodel of type instance
+and its elements are modified to reflect this change.</p>
+<h2 id="addremove-submodel-elements">Add/Remove Submodel Elements</h2>
+<p>In the navigation list a symbol is displayed in every submodel entry.
+This states if the template for your submodel has been found in your tenant.</p>
+<p>If this is the case you can find the <em>add element</em> button on some of the submodel elements.
+There are an <em>add to navigation</em> and <em>add to page</em> section.</p>
+<p><img alt="Add SME Dialog" src="../img/twinstudio_addremove_sme.png" width="200" /></p>
+<p>Adding a navigation element will insert a child in the navigation tree. To delete this element you have to visit the node.</p>
+<p>Adding an element to the page will cluster similar elements. Next to them there will be a trashcan to delete each entry.</p>
+<p>Some templates specify cardinality of <em>one</em> or <em>onetomany</em> then the last element cannot be removed.</p>
+<h2 id="arbitrary-properties">Arbitrary Properties</h2>
+<p>Some templates specify arbitrary properties. At the moment twinstudio only supports editing the first.
+Twinstudio cannot assume in good faith the correct idShort for additional elements.</p>
+<p><img alt="Arbitray Properties Add Dialog" src="../img/twinstudio_arbitrary.png" width="500" /></p>
+<p>In the add dialog these entries are grayed out and display the info.</p>
+<h2 id="fill-in-submodel-element-values">Fill-In Submodel Element Values</h2>
+<h3 id="properties">Properties</h3>
+<p>Property elements have a valueType according to which the different selection elements will be displayed.
+The types of time, date, and datetime have a custom representation, all others are shown in a default input field.</p>
+<h4 id="default">Default</h4>
+<p><img alt="Properties" src="../img/twinstudio-builder-property.png" /></p>
+<p>The value of a property is represented by an input field.
+Please make sure that the datatype of the property matches the value you set into the input field.
+The <em>Validation Issue List</em> will have an issue if the datatype of the value does not match
+the datatype of the property.
+The input field expands up to 5 rows and a scrollbar will be displayed for longer content.</p>
+<h4 id="date">Date</h4>
+<p><img alt="Date Control" src="../img/twinstudio_builder_property_date.png" /></p>
+<p><img alt="Date Control Popup" src="../img/twinstudio_builder_property_date_dropdown.png" /></p>
+<p>The selected value will be displayed in local date (according to browser locale, in the image the locale was set to <strong>de</strong>).
+In the calendar popup you can navigate between months with the arrow buttons.<br />
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to <em>null</em>.</p>
+<h4 id="time">Time</h4>
+<p><img alt="Time Control" src="../img/twinstudio_builder_property_time.png" /></p>
+<p><img alt="TIme Control Popup" src="../img/twinstudio_builder_property_time_dropdown.png" /></p>
+<p>The selected value will be displayed in local time (according to browser locale, in the image the locale was set to <strong>de</strong>).
+In the time popup you can select hours, minutes and seconds. AM PM selection will only be shown if your locale suggests it.
+The columns are scrollable to reach desired values.<br />
+By clicking the month-year the year selection will be
+shown and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to <em>null</em>.</p>
+<h4 id="date-time">Date-Time</h4>
+<p><img alt="Date Time Control" src="../img/twinstudio_builder_property_datetime.png" /></p>
+<p><img alt="Date Time Control Popup" src="../img/twinstudio_builder_property_datetime_dropdown.png" /></p>
+<p>The selected value will be displayed in local date time
+(according to browser locale, in the image the locale was set to <strong>de</strong>).
+In the dropdown there is a combination of the calendar and the time selection.<br />
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to <em>null</em>.</p>
+<h3 id="multi-language-properties">Multi Language Properties</h3>
+<p><img alt="MultiLanguageProperty_Collapsed" src="../img/twinstudio_builder_mlp_collapsed.png" /></p>
+<p>The Multi Language Properties displays all languages for which a value is set, with tags above the value.
+The initially displayed value in the field is determined as follows using the languages of an entry
+and match it with (ISO 639-1):</p>
+<ol>
+<li>the data language</li>
+<li>containing the data language</li>
+<li>the ui language</li>
+<li>containing the ui language</li>
+<li>english (en)</li>
+<li>containing english (en)</li>
+</ol>
+<p>You can select another language value by clicking on the corresponding language tag.
+Hovering over a tag will display an indicator above it.
+The selected language is highlighted with a gray background.</p>
+<p><img alt="MultiLanguageProperty_Dialog" src="../img/twinstudio_builder_mlp_dialog.png" width="800" /></p>
+<p>The dialog box that opens when you click on the pencil icon shows all the values
+that have been set for the Multi Language Property.
+You can add new values and delete existing ones. Make sure that at least one value is set.
+The value input fields expands up to 5 rows and a scrollbar will be displayed for longer content.
+At the top, you can see which value will be displayed when you click <em>Save</em>.
+If you click on the info icon, you will see an explanation of why this value was selected.</p>
+<h3 id="file-elements">File Elements</h3>
+<p><img alt="FileProperty_Collapsed" src="../img/twinstudio-builder-file-collapsed.png" /></p>
+<p>You can fill in the <em>file</em> elements by clicking on the <em>Add File</em> button.</p>
+<p><img alt="FileProperty_Collapsed" src="../img/twinstudio-builder-file-expanded.png" width="800" /></p>
+<p>In the dialog box, you can now choose whether you want to upload a file or store an external file.
+If you upload a file, it will be stored in the twinsphere file storage and a reference will be written to the element.
+If you store an external file, the link will be stored as a value.
+If no content type is specified in the template, the content type is set to octet-stream.
+File links that would overflow the input will be clipped.</p>
+<h3 id="range">Range</h3>
+<p><img alt="RangeProperty" src="../img/twinstudio-builder-range.png" /></p>
+<p>The <em>Range</em> can set minimum and maximum as values.
+If it is required, either a minimum or maximum value has to be set to satisfy the validation.
+If the data type describes a number (according to <a href="https://www.w3.org/TR/xmlschema11-2/#built-in-primitive-datatypes">xsd schema&nbsp;⧉</a>),
+it is validated whether the minimum is smaller than the maximum.</p>
+<h3 id="reference-elements">Reference Elements</h3>
+<p>To set the value of a <em>reference</em> element, click the <em>Add Reference</em> button
+and then select an asset administration shell.
+You can then refer to a submodel or submodel element and save the reference.
+The reference is displayed as shown below.</p>
+<p><img alt="ReferenceElement" src="../img/twinstudio-builder-reference-collapsed.png" /></p>
+<p><img alt="ReferenceElement" src="../img/twinstudio-builder-reference-extended-choose-asset.png" /></p>
+<p><img alt="ReferenceElement" src="../img/twinstudio-builder-reference-extended-choose-sme.png" /></p>
+<p><img alt="ReferenceElement" src="../img/twinstudio-builder-reference-collapsed-filled.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Current limitations</p>
+<p>Reference Elements only support referencing submodels and submodel elements within the same twin.
+This behavior will be changed in future releases.</p>
+</div>
+<h3 id="entity">Entity</h3>
+<p>This element is displayed in the tree on the left. On the page you can select to set a reference to an existing twin.
+If selected an input field is shown in which the <em>globalAssetId</em> of a twin has to be entered.
+When the twin exists in the twinsphere a link to the <strong>AAS-Viewer</strong> is activated.</p>
+<p><img alt="Entity" src="../img/twinstudio_builder_entity_overview.png" width="800" /></p>
+<p>The button with the <em>magnifying glass</em> icon opens a dialog in which it is possible to search for a twin.
+Only 10 results will be shown. Twins without a <em>globalAssetId</em> will be disabled for selection.</p>
+<p><img alt="Entity Twin Selection Dialog" src="../img/twinstudio_builder_entity_selection.png" width="400" /></p>
+<h2 id="validation-issue-list">Validation Issue List</h2>
+<p><img alt="Validation Issue List" src="../img/twinstudio_issuelist_withpath.png" width="300" /></p>
+<p>After each value change your twin gets validated.
+The count of issues will be displayed atop of the list.</p>
+<p>The errors are grouped by their path which can be displayed with the show issue path toggle.</p>
+<p>Clicking on an issue will navigat you to the element and the edit mode will be opened.</p>
+<h2 id="save-draft">Save Draft</h2>
+<p>To save a draft, simply click on the <em>Save Draft</em> button. Once saved, a toast message will appear
+in the upper left corner. Drafts are only visible to you and can only be edited or deleted by you.
+You can view all your drafts in the <a href="../studio-catalog/">draft catalog</a>.</p>
+<h2 id="publish-to-repo">Publish to Repo</h2>
+<p>To publish a digital twin, all errors in the error list must be corrected.
+Once all errors have been corrected, the twin can be published by clicking the "Publish" button.
+Once the twin has been successfully published, a dialog box displays the ID, name, and tenant
+to which the twin was uploaded.
+Once the twin has been published, the corresponding draft is deleted from the draft catalog.</p>
+<h2 id="branding">Branding</h2>
+<p>Each twin and all of its submodels that are edited with <em>twinstudio</em> will receive an extension which contains
+the <em>twinstudio</em> branding with its current version.</p>
+<h2 id="save-state">Save State</h2>
+<p>The save state display shows you the current state of the draft or twin you are working on.
+There are three save states for a twin:</p>
+<ul>
+<li>Unsaved Changes</li>
+<li>Draft Saved</li>
+<li>Published</li>
+</ul>
+<h3 id="unsaved-changes">Unsaved Changes</h3>
+<p>The Unsaved changes status indicates that changes have been made to the twin or draft that have not yet been saved.
+These can be saved by <a href="#publish-to-repo">publishing</a> or <a href="#save-draft">saving</a>.</p>
+<p><img alt="UnsavedChanges" src="../img/twinstudio-builder-save-state-unsaved-changes.png" /></p>
+<h3 id="draft-saved">Draft Saved</h3>
+<p>The Draft Saved status indicates that the draft has been saved as a draft.</p>
+<p><img alt="DraftSaved" src="../img/twinstudio-builder-save-state-saved.png" /></p>
+<h3 id="published">Published</h3>
+<p>The Published status indicates that the draft/twin has been published
+in your repository or has been loaded from the repository in this state.</p>
+<p><img alt="Published" src="../img/twinstudio-builder-save-state-published.png" /></p>
+<h2 id="show-twin-in-aas-viewer">Show Twin in AAS Viewer</h2>
+<p>If you have a design/twin with the status Published open in the editor,
+you can click on the eye icon next to the memory status display to open the design/twin in AASViewer.</p>
+<p><img alt="Published" src="../img/twinstudio-builder-save-state-published.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../studio-catalog/" class="btn btn-neutral float-left" title="Catalog"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../studio-release-notes/" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../studio-catalog/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../studio-release-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

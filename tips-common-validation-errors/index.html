@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/tips-common-validation-errors/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Common Validation Errors - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Common Validation Errors";
+        var mkdocs_page_input_path = "tips-common-validation-errors.md";
+        var mkdocs_page_url = "/tips-common-validation-errors/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation Rules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Common Validation Errors</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-content">Table of Content</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#errors-with-the-metamodel">Errors with the Metamodel</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#general-metamodel-errors">General Metamodel Errors</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#supported-version">Supported Version</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#common-attributes">Common Attributes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#idshort">idShort</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#asset-information">Asset Information</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#asset-identifier">Asset Identifier</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodel">Submodel</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#submodelidss">SubmodelIdss</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodel-elements">Submodel Elements</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#data-element">Data Element</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#file">File</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#property">Property</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#multilanguageproperty">MultiLanguageProperty</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#references">References</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#submodels-references">Submodels References</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#errors-with-specific-submodels">Errors with Specific Submodels</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#handover-documentation">Handover Documentation</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#general-errors">General Errors</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#errors-with-submodelelements-of-document">Errors with SubmodelElements of Document</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#errors-with-submodelelements-of-documentid">Errors with SubmodelElements of DocumentID</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#errors-with-submodelelements-of-documentversion">Errors with SubmodelElements of DocumentVersion</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#errors-related-to-exchange-data-formats">Errors related to Exchange Data Formats</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#xml-serialization">XML Serialization</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#empty-xml-nodes">Empty XML Nodes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#package-file-format-aasx">Package File Format (AASX)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#relationships">Relationships</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#supplemental-files-aas-suppl">Supplemental Files (aas-suppl)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#document-change-history">Document Change History</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#version-11-06-aug-2024">Version 1.1 (06-Aug-2024)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#version-10-15-jan-2024">Version 1.0 (15-Jan-2024)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tips & Tricks</li>
+      <li class="breadcrumb-item active">Common Validation Errors</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!-- markdownlint-disable-file first-line-heading -->
+<!-- markdownlint-disable-file no-duplicate-heading -->
+
+<!--- In order to enable readers having an easy introduction to the document its chapter structure is based on the one
+of part 1 and on structure of AAS itself.
+
+The chapters (heading1 to heading3) structure error classes (heading4).
+
+Each error class is preceded by a horizontal line --- in order to visually separate them from each other.
+
+An error class is represented by a speaking headline and is broken down in the following sub-chapters (heading5):
+* Error Message OR Problem Description
+* Specification Reference
+* Remarks
+* Recommended Solution
+
+The Error Message should be prioritized over Problem Description, if a corresponding error message exists. Only if there
+is no error message the problem should be described instead (mainly needed for semantic problems where no validation is
+implemented or possible and thus no error message exists).
+
+The error message has to be formatted as > blockquote.
+
+The problem description has to be formatted as an * unordered list of description aspects.
+
+The Specification Reference has to be a link to a suitable part to the specification documents which demonstrates the
+legitimacy of the error. The name of the link has to be human-readable and enable a person to identify and find the
+exact reference without following the link directly.
+
+Remarks are optional and have to be formatted as an * unordered list (even if there is only one remark).
+
+Having a Recommended Solution is mandatory. It has to be formatted as an * unordered list of tips/steps for solving the
+error (even if there is only one point).
+
+Table of Content was created with "Auto Markdown TOC" Plugin for Visual Studio Code by Hunter Tran
+(huntertran.auto-markdown-toc). --->
+
+<p><a href="https://www.conplement.de/twinsphere" target="_blank"><img alt="twinsphere logo" src="../img/twinsphere-logo.png" width="300" /></a>
+<a href="https://www.conplement.de" target="_blank"><img alt="conplement AG logo" src="../img/CP_BildWortmarke.svg" width="300" /></a></p>
+<h1 id="common-validation-errors-of-aas">Common Validation Errors of AAS</h1>
+<p>A guide to understand, avoid and handle AAS validation errors.</p>
+<!-- markdownlint-disable no-emphasis-as-heading -->
+
+<p><em>by Fabian Gumbrecht and Christian Körber</em></p>
+<!-- markdownlint-enable no-emphasis-as-heading -->
+
+<p>Version 1.1 (06-Aug-2024)</p>
+<!-- TOC ignore:true -->
+
+<h2 id="introduction">Introduction</h2>
+<p>Asset Administration Shell (AAS) is a fairly complex data standard that is still evolving and maturing. The tools that
+support it are also still in development and, in some cases, do not yet have support for the latest specification. The
+creators of AAS are under immense pressure in this situation. They must adapt their data using incomplete tools to a
+standard that is both difficult to access and constantly changing. Not surprisingly, data quality problems emerge.</p>
+<p>At conplement AG, we are proud to provide twinsphere, a software suite for the creation, hosting, and distribution of
+asset administration shells. As its provider, we often encounter data quality issues when customers try to upload their
+AAS to our platform.</p>
+<p>The purpose of this guide is to explain the meaning and reason behind validation errors in terms of the AAS
+specification and to provide support for handling them. It focuses on the most commonly encountered validation errors on
+our end, but it is not exhaustive. Additional errors may be added in the future.</p>
+<p>We hope this guide will assist you on your Asset Administration Shell journey!</p>
+<!-- TOC ignore:true -->
+
+<h2 id="table-of-content">Table of Content</h2>
+<!-- TOC -->
+
+<ul>
+<li><a href="#errors-with-the-metamodel">Errors with the Metamodel</a><ul>
+<li><a href="#general-metamodel-errors">General Metamodel Errors</a><ul>
+<li><a href="#supported-version">Supported Version</a></li>
+</ul>
+</li>
+<li><a href="#common-attributes">Common Attributes</a><ul>
+<li><a href="#idshort">idShort</a></li>
+</ul>
+</li>
+<li><a href="#asset-information">Asset Information</a><ul>
+<li><a href="#asset-identifier">Asset Identifier</a></li>
+</ul>
+</li>
+<li><a href="#submodel">Submodel</a><ul>
+<li><a href="#submodelidss">SubmodelIdss</a></li>
+</ul>
+</li>
+<li><a href="#submodel-elements">Submodel Elements</a><ul>
+<li><a href="#data-element">Data Element</a></li>
+<li><a href="#file">File</a></li>
+<li><a href="#property">Property</a></li>
+<li><a href="#multilanguageproperty">MultiLanguageProperty</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#submodels-references">Submodels References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#errors-with-specific-submodels">Errors with Specific Submodels</a><ul>
+<li><a href="#handover-documentation">Handover Documentation</a><ul>
+<li><a href="#general-errors">General Errors</a></li>
+<li><a href="#errors-with-submodelelements-of-document">Errors with SubmodelElements of Document</a></li>
+<li><a href="#errors-with-submodelelements-of-documentid">Errors with SubmodelElements of DocumentID</a></li>
+<li><a href="#errors-with-submodelelements-of-documentversion">Errors with SubmodelElements of DocumentVersion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#errors-related-to-exchange-data-formats">Errors related to Exchange Data Formats</a><ul>
+<li><a href="#xml-serialization">XML Serialization</a><ul>
+<li><a href="#empty-xml-nodes">Empty XML Nodes</a></li>
+</ul>
+</li>
+<li><a href="#package-file-format-aasx">Package File Format AASX</a><ul>
+<li><a href="#relationships">Relationships</a></li>
+<li><a href="#supplemental-files-aas-suppl">Supplemental Files aas-suppl</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#document-change-history">Document Change History</a></li>
+</ul>
+<!-- /TOC -->
+
+<h2 id="errors-with-the-metamodel">Errors with the Metamodel</h2>
+<h3 id="general-metamodel-errors">General Metamodel Errors</h3>
+<h4 id="supported-version">Supported Version</h4>
+<hr />
+<h5 id="twinsphere-only-supports-aas-in-the-recent-version-3">twinsphere only supports AAS in the recent version 3</h5>
+<h6 id="problem-description">Problem Description</h6>
+<ul>
+<li>twinsphere is a platform for asset administration shells conform to the metamodel specification version 3.</li>
+<li>If you try to upload an asset administration shell of an earlier version the platform will deny it.</li>
+</ul>
+<h6 id="specification-reference">Specification Reference</h6>
+<ul>
+<li><a href="https://www.conplement.de/de-de/produktbeschreibung-twinsphere">Product Description twinsphere&nbsp;⧉</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf">Part 1 v3.0&nbsp;⧉</a></li>
+</ul>
+<h6 id="recommended-solution">Recommended Solution</h6>
+<ul>
+<li>The Eclipse AASX Package Explorer is able to convert v2 packages into the v3 format.</li>
+<li>Try to upgrade your package with the current <a href="https://github.com/eclipse-aaspe/aaspe">Eclipse AASX Package Explorer&nbsp;⧉</a><ul>
+<li>Open the Asset Administration Shell with the AasxPackageExplorer</li>
+<li>Save the Asset Administration Shell as a new Asset Administration Shell</li>
+</ul>
+</li>
+<li>Re-Upload the converted AASX package to twinsphere</li>
+</ul>
+<h3 id="common-attributes">Common Attributes</h3>
+<h4 id="idshort">idShort</h4>
+<hr />
+<h5 id="idshort-has-to-be-unique-within-the-same-namespace">idShort has to be unique within the same namespace</h5>
+<h6 id="error-message">Error Message</h6>
+<blockquote>
+<p>Constraint AASd-022: ID-short of non-identifiable referables within the same name space shall be unique (case-sensitive).
+</p>
+</blockquote>
+<h6 id="specification-reference_1">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=57">Part 1 v3.0, 5.3.2.10 Referable Attributes, P. 56&nbsp;⧉</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=106">Part 1 v3.0, 5.3.12.2 Constraints for Referables and Identifiables, Constraint AASd-022, P. 105&nbsp;⧉</a></li>
+</ul>
+<h6 id="remarks">Remarks</h6>
+<ul>
+<li><em>idShort</em> is case-sensitive.</li>
+<li>A name space is defined as the parent element(s), which an element is part of and that
+is either referable or identifiable.</li>
+<li>Constraint is necessary in order to address an element via API by an unique <em>idShortPath</em>.</li>
+</ul>
+<h6 id="recommended-solution_1">Recommended Solution</h6>
+<ul>
+<li>Change <em>idShort</em> to a unique value or number identical values from 01 to n (i.e. DigitalFile -&gt; DigitalFile01).</li>
+</ul>
+<hr />
+<h5 id="idshort-of-referables-shall-only-feature-letters-digits-underscore">idShort of Referables shall only feature letters, digits, underscore</h5>
+<h6 id="error-message_1">Error Message</h6>
+<blockquote>
+<p>ID-Short of Referables shall only feature letters, digits, underscore ( _ ); starting mandatory with a letter, i.e. [a-zA-Z][a-zA-Z0-9_]*.
+</p>
+</blockquote>
+<h6 id="specification-reference_2">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=58">Part 1 v3.0, 5.3.2.10 Referable Attributes, Constraint AASd-002,
+  P.57</a></li>
+</ul>
+<h6 id="remarks_1">Remarks</h6>
+<ul>
+<li>Hyphen is NOT allowed as of v3.0.1 of the specification.</li>
+<li>Hyphen will be allowed with upcoming version v3.1 of the specification, see <a href="https://github.com/admin-shell-io/aas-specs-metamodel/issues/295">Issue #295 of aas-specs-metamodel in
+  Github</a> for details.</li>
+</ul>
+<h6 id="recommended-solution_2">Recommended Solution</h6>
+<ul>
+<li>Replace separators like hyphens, dots or commas in the <em>idShort</em> with an underscore.</li>
+</ul>
+<h3 id="asset-information">Asset Information</h3>
+<h4 id="asset-identifier">Asset Identifier</h4>
+<hr />
+<h5 id="at-least-one-asset-identifier-has-to-be-defined">At least one Asset Identifier has to be defined</h5>
+<h6 id="error-message_2">Error Message</h6>
+<blockquote>
+<p>Constraint AASd-131: Either the global asset ID shall be defined or at least one specific asset ID.
+</p>
+</blockquote>
+<h6 id="specification-reference_3">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=61">Part 1 v3.0, 5.3.4 Asset Information Attributes, Constraint AASd-131, P.
+  60</a>)</li>
+</ul>
+<h6 id="remarks_2">Remarks</h6>
+<ul>
+<li>Since <em>globalAssetId</em> and (the value of) <em>specificAssetId</em> are both identifiers they have to be GLOBALLY unique.</li>
+</ul>
+<h6 id="recommended-solution_3">Recommended Solution</h6>
+<ul>
+<li>Define one <em>globalAssetId</em> or add at least a <em>specificAssetId</em> to the asset information.</li>
+</ul>
+<h3 id="submodel">Submodel</h3>
+<h4 id="submodelidss">SubmodelIdss</h4>
+<hr />
+<h5 id="do-not-use-semanticid-as-submodelid-of-submodel">Do not use SemanticId as SubmodelId of Submodel</h5>
+<h6 id="problem-description_1">Problem Description</h6>
+<ul>
+<li>Submodels require to have globally unique ids to be identifiable in any given scenario.</li>
+<li>Sometimes we encounter the <em>semanticId</em> of the submodel template being used as <em>SubmodelId</em> for a concrete submodel
+  instance.</li>
+<li>This is not valid since the <em>semanticId</em> does not identify a single submodel instance and therefore is not a valid
+  identifier.</li>
+</ul>
+<h6 id="specification-reference_4">Specification Reference</h6>
+<p><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=63">Part 1 v3.0, 5.3.5 Submodel Attributes, P.
+62</a></p>
+<h6 id="remarks_3">Remarks</h6>
+<ul>
+<li><em>Submodels</em> are <em>Identifiables</em> and therefore must have globally unique ids.</li>
+</ul>
+<h6 id="recommended-solution_4">Recommended Solution</h6>
+<!-- markdown-link-check-disable -->
+<ul>
+<li>You should use URNs (e.g. urn:GMA:7.20:contractnegotiation:1:1#001) or URIs (e.g. <a href="http://www.vdi.de/gma720/">http://www.vdi.de/gma720/&nbsp;⧉</a>
+  contractnegotiation/1/1#001) to create such a (submodel) identifier.</li>
+</ul>
+<!-- markdown-link-check-enable -->
+<ul>
+<li>See <a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=125">Part 1, Annex A, <em>How Are New Identifiers Created?</em> and <em>Best Practice for Creating URI Identifiers</em>, P.
+  124</a>
+  for more information.</li>
+</ul>
+<h3 id="submodel-elements">Submodel Elements</h3>
+<h4 id="data-element">Data Element</h4>
+<hr />
+<h5 id="valid-values-for-data-element-category">Valid values for Data Element Category</h5>
+<h6 id="error-message_3">Error Message</h6>
+<blockquote>
+<p>Constraint AASd-090: For data elements category shall be one of the following values: CONSTANT, PARAMETER or
+VARIABLE.: {position}
+</p>
+</blockquote>
+<h6 id="specification-reference_5">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=70">Part 1 v3.0, 5.3.7.6 Data Element and Overview of Data Element Types, Constraint AASd-090, P.
+  69</a></li>
+</ul>
+<h6 id="remarks_4">Remarks</h6>
+<ul>
+<li>Default value is VARIABLE.</li>
+<li>Categories are deprecated and should no longer be used.</li>
+</ul>
+<h6 id="recommended-solution_5">Recommended Solution</h6>
+<ul>
+<li>Remove the category attribute from the data element.</li>
+</ul>
+<h4 id="file">File</h4>
+<hr />
+<h5 id="wrong-uri-scheme-for-referenced-files">Wrong URI Scheme for referenced files</h5>
+<h6 id="error-message_4">Error Message</h6>
+<blockquote>
+<p>The value must represent a valid file URI scheme according to RFC 8089.
+</p>
+</blockquote>
+<h6 id="specification-reference_6">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=98">Part 1 v3.0, 5.3.11.2 Primitive Data Types, Primitive "PathType", P.
+  97</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8089">RFC 8089 - The "file" URI Scheme&nbsp;⧉</a></li>
+</ul>
+<h6 id="remarks_5">Remarks</h6>
+<ul>
+<li>All submodel elements "file" have to use the <em>PathType</em> which demand a URI according to RFC 8089.</li>
+<li>This also applies to the path of <em>defaultThumbnail</em> within <em>AssetInformation</em>.</li>
+<li>RFC 8089 or "The 'file' URI Scheme" demands a leading file-scheme for an URI, so it has to start with "file:".</li>
+<li>AASX Package Explorer (v2023-11-17 and earlier) is not able to handle <em>PathTypes</em> with correctly referenced files
+  (file:/...) and will not be shown them.</li>
+<li>The specification currently is not consistent since the examples for <em>PathType</em> given in Part 1 v3.0 are not all valid
+  (./Specification.pdf).</li>
+<li>The upcoming specification Part 1 v3.1 will address this issue by allowing more generic URIs. See <a href="https://github.com/admin-shell-io/aas-specs-metamodel/issues/299">Issue #299 of
+  aas-specs-metamodel on Github</a> for details.</li>
+</ul>
+<h6 id="recommended-solution_6">Recommended Solution</h6>
+<ul>
+<li>For now: Change the file path from /aasx/files/example.pdf to file:/aasx/files/example.pdf.</li>
+</ul>
+<hr />
+<h5 id="empty-file-path">Empty File Path</h5>
+<h6 id="error-message_5">Error Message</h6>
+<blockquote>
+<p>Filepath can not be null
+</p>
+</blockquote>
+<h6 id="specification-reference_7">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=98">Part 1 v3.0, 5.3.11.2 Primitive Data Types, Primitive "PathType", P. 97&nbsp;⧉</a></li>
+</ul>
+<h6 id="remarks_6">Remarks</h6>
+<ul>
+<li>Since the <em>PathType</em> of a <em>file</em> value is an identifier, it must contain a valid reference identifying something.</li>
+<li>Same applies to the <em>path</em> attribute on a <em>defaultThumbnail</em> in <em>AssetInformation</em>.</li>
+</ul>
+<h6 id="recommended-solution_7">Recommended Solution</h6>
+<ul>
+<li>Add a valid and existing file path to the file property or remove the property.</li>
+</ul>
+<hr />
+<h5 id="valid-content-type-of-file">Valid Content Type of File</h5>
+<h6 id="error-message_6">Error Message</h6>
+<blockquote>
+<p>The value must represent a valid content MIME type according to RFC 2046.
+</p>
+</blockquote>
+<h6 id="specification-reference_8">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=72">Part 1 v3.0, 5.3.7.9 File Attributes, P.
+  71</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=97">Part 1 v3.0, 5.3.11.2 Primitive Data Types, Primitive "ContentType", P.
+  96</a></li>
+</ul>
+<h6 id="remarks_7">Remarks</h6>
+<ul>
+<li>Valid MIME types for the contentType attribute are defined in <a href="https://www.rfc-editor.org/info/rfc2046">RFC 2046&nbsp;⧉</a>.</li>
+</ul>
+<h6 id="recommended-solution_8">Recommended Solution</h6>
+<ul>
+<li>Assign a MIME type to the file that is RFC 2046 compliant.</li>
+</ul>
+<h4 id="property">Property</h4>
+<hr />
+<h5 id="value-must-be-consistent-with-the-value-type-of-the-property">Value must be consistent with the value type of the property</h5>
+<h6 id="error-message_7">Error Message</h6>
+<blockquote>
+<p>Value must be consistent with the value type.
+</p>
+</blockquote>
+<h6 id="specification-reference_9">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=96">Part 1 v3.0, 5.3.11 Primitive and Simple Data Types, P.
+  95</a></li>
+</ul>
+<h6 id="remarks_8">Remarks</h6>
+<ul>
+<li>Part 1's chapter on primitive and simple data types helps to determine the data type of the respective property.</li>
+</ul>
+<h6 id="recommended-solution_9">Recommended Solution</h6>
+<ul>
+<li>Apply values with the right data type to the property.</li>
+</ul>
+<h4 id="multilanguageproperty">MultiLanguageProperty</h4>
+<hr />
+<h5 id="value-specifies-duplicate-languages">Value specifies duplicate languages</h5>
+<h6 id="error-message_8">Error Message</h6>
+<blockquote>
+<p>Value specifies no duplicate languages.
+</p>
+</blockquote>
+<h6 id="specification-reference_10">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=73">Part 1 v3.0, 5.3.7.10 Multi Language Property Attributes, P.
+  72</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=98">Part 1 v3.0, 5.3.11.2 Primitive Data Types, Primitive "MultiLanguageTextType", P.
+  97</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=97">Part 1 v3.0, 5.3.11.2 Primitive Data Types, Primitive "LangStringSet", P.
+  96</a></li>
+</ul>
+<h6 id="remarks_9">Remarks</h6>
+<ul>
+<li>The value of the MultiLanguageProperty depends on the serialization and has a similar structure like a dictionary.</li>
+<li>So the indices in the multi language value have to be unique.</li>
+<li>The error message is currently somewhat misleading. A corresponding <a href="https://github.com/aas-core-works/aas-core-meta/issues/299">aas-core-works
+  issue</a> has already been created.</li>
+</ul>
+<h6 id="recommended-solution_10">Recommended Solution</h6>
+<ul>
+<li>Check that the langStrings do not have overlapping languages.</li>
+<li>Remove entries with duplicate keys so each language has exactly one entry.</li>
+</ul>
+<hr />
+<h5 id="valid-language-tags">Valid language tags</h5>
+<h6 id="error-message_9">Error Message</h6>
+<blockquote>
+<p>The value must represent a value language tag conformant to BCP 47.
+</p>
+</blockquote>
+<h6 id="specification-reference_11">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=104">Part 1 v3.0, 5.3.11.3 Enumeration for Submodel Element Value Types, Enumeration "DataTypeDefRdf", P. 103f&nbsp;⧉</a></li>
+</ul>
+<h6 id="remarks_10">Remarks</h6>
+<ul>
+<li>RDF requires <a href="https://www.rfc-editor.org/rfc/bcp/bcp47.txt">IETF BCP 4729 language tags&nbsp;⧉</a>.</li>
+<li>Simple two-letter language tags for locales like "de" conformant to ISO 639-1 are allowed, as well as language tags
+  plus extension like "de-DE" for country code, dialect, etc. like in "en-US" for English (United States) or "en-GB" for
+  English (United Kingdom).</li>
+</ul>
+<h6 id="recommended-solution_11">Recommended Solution</h6>
+<ul>
+<li>Make sure that all uses language tags in the <em>MultiLanguageProperty</em> value are valid as described above.</li>
+</ul>
+<h4 id="references">References</h4>
+<hr />
+<h5 id="empty-keys">Empty Keys</h5>
+<h6 id="error-message_10">Error Message</h6>
+<blockquote>
+<p>Keys must contain at least one item.
+</p>
+</blockquote>
+<h6 id="specification-reference_12">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=82">Part 1 v3.0, 5.3.10.2 Reference Attributes, P.
+  81</a></li>
+</ul>
+<h6 id="remarks_11">Remarks</h6>
+<ul>
+<li>Cardinality of attribute 'key' is 1..*.</li>
+</ul>
+<h6 id="recommended-solution_12">Recommended Solution</h6>
+<ul>
+<li>Add at least one key to the reference or remove the whole reference.</li>
+</ul>
+<h4 id="submodels-references">Submodels References</h4>
+<hr />
+<h5 id="all-submodel-references-must-be-model-references-to-a-submodel">All submodel references must be model references to a submodel</h5>
+<h6 id="error-message_11">Error Message</h6>
+<blockquote>
+<p>All submodels must be model references to a submodel.
+</p>
+</blockquote>
+<h6 id="specification-reference_13">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=60">Part 1 v3.0, 5.3.3 Asset Administration Shell Attributes, P.
+  59</a></li>
+</ul>
+<h6 id="recommended-solution_13">Recommended Solution</h6>
+<ul>
+<li>Make sure that the <em>type</em> of every submodel reference is set to <em>ModelReference</em>.</li>
+<li>Make sure that the <em>type</em> of every key of the submodel reference is set to <em>Submodel</em>.</li>
+</ul>
+<hr />
+<h5 id="valid-types-of-first-reference-key">Valid types of first reference key</h5>
+<h6 id="error-message_12">Error Message</h6>
+<blockquote>
+<p>Constraint AASd-121: For References the value of type of the first key of keys shall be one of Globally Identifiables
+</p>
+</blockquote>
+<h6 id="specification-reference_14">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=94">Part 1, 5.3.10.4 Constraints, Constraint AASd-121, P.
+  93</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=89">Part 1, 5.3.10.3 Key Attributes, Enumeration "GloballyIdentifiables", P.
+  88</a></li>
+</ul>
+<h6 id="remarks_12">Remarks</h6>
+<ul>
+<li>For <em>References</em>, the value of <em>Key/type</em> of the first key of <em>Reference/keys</em> shall be one of
+  <em>GloballyIdentifiables</em>.</li>
+<li>Part 1 v3.0.1 specifies the following literals in the enumeration <em>GloballyIdentifiables</em>: "AssetAdministrationShell",
+  "ConceptDescription", "GlobalReference", "Identifiable" and "Submodel".</li>
+<li>Be aware that more restrictive constraints exist for other, more specific reference types , i.e. external or model
+  references.</li>
+</ul>
+<h6 id="recommended-solution_14">Recommended Solution</h6>
+<ul>
+<li>Make sure the type value of the first key of your reference is one of the afore mentioned literals.</li>
+</ul>
+<hr />
+<h5 id="type-of-first-external-reference-key-has-to-be-globalreference">Type of first external reference key has to be 'GlobalReference'</h5>
+<h6 id="error-message_13">Error Message</h6>
+<blockquote>
+<p>Constraint AASd-122: For external references the value of type of the first key of keys shall be one of Generic
+Globally Identifiables.
+</p>
+</blockquote>
+<h5 id="specification-reference_15">Specification Reference</h5>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=94">Part 1, 5.3.10.4 Constraints, Constraint AASd-122, P.
+  93</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=94">Part 1, 5.3.10.3 Key Attributes, Enumeration "GenericGloballyIdentifiables", P.
+  93</a></li>
+</ul>
+<h6 id="remarks_13">Remarks</h6>
+<ul>
+<li>For external references, i.e. References with <em>Reference/type</em> = <em>ExternalReference</em>, the value of <em>Key/type</em> of the
+  first key of <em>Reference/keys</em> shall be one of <em>GenericGloballyIdentifiables</em>.</li>
+<li>Part 1 v3.0.1 defines exactly one literal in the enumeration <em>GenericGloballyIdentifiables</em> which is
+  "GlobalReference".</li>
+</ul>
+<h6 id="recommended-solution_15">Recommended Solution</h6>
+<ul>
+<li>Make sure the first key of your external reference is of type <em>GlobalReference</em>.</li>
+</ul>
+<hr />
+<h5 id="valid-types-of-first-model-reference-key">Valid types of first model reference key</h5>
+<h6 id="error-message_14">Error Message</h6>
+<blockquote>
+<p>Constraint AASd-123: For model references the value of type of the first key of keys shall be one of AAS
+identifiables.
+</p>
+</blockquote>
+<h6 id="specification-reference_16">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=94">Part 1, 5.3.10.4 Constraints, Constraint AASd-123, P.
+  93</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=93">Part 1, 5.3.10.3 Key Attributes, Enumeration "AasIdentifiables", P.
+  92</a></li>
+</ul>
+<h6 id="remarks_14">Remarks</h6>
+<ul>
+<li>For model references, i.e. <em>References</em> with <em>Reference/type</em> = <em>ModelReference</em>, the value of <em>Key/type</em> of the first
+  key of <em>Reference/keys</em> shall be one of <em>AasIdentifiables</em>.</li>
+<li>Part 1 v3.0.1 specifies the following literals in the enumeration <em>AasIdentifiables</em>: "AssetAdministrationShell",
+  "ConceptDescription", "Identifiable" and "Submodel".</li>
+</ul>
+<h6 id="recommended-solution_16">Recommended Solution</h6>
+<ul>
+<li>Make sure the type value of the first key of your model reference is one of the afore mentioned literals.</li>
+</ul>
+<hr />
+<h5 id="valid-types-of-last-external-reference-key">Valid types of last external reference key</h5>
+<h6 id="error-message_15">Error Message</h6>
+<blockquote>
+<p>Constraint AASd-124: For external references the last key of keys shall be either one of Generic Globally
+Identifiables or one of Generic Fragment Keys.
+</p>
+</blockquote>
+<h6 id="specification-reference_17">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=94">Part 1, 5.3.10.4 Constraints, Constraint AASd-124, P.
+  93</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=93">Part 1, 5.3.10.3 Key Attributes, Enumeration "GenericFragmentKeys", P.
+  92</a></li>
+</ul>
+<h6 id="remarks_15">Remarks</h6>
+<ul>
+<li>For external references, i.e. References with <em>Reference/type</em> = <em>ExternalReference</em>, the last key of <em>Reference/keys</em>
+  shall be either one of <em>GenericGloballyIdentifiables</em> or one of <em>GenericFragmentKeys</em>.</li>
+<li>Part 1 v3.0.1 defines exactly one literal in the enumeration <em>GenericGloballyIdentifiables</em> which is
+  "GlobalReference".</li>
+<li>Part 1 v3.0.1 defines exactly one literal in the enumeration <em>GenericFragmentKeys</em> which is "FragmentReference".</li>
+</ul>
+<h6 id="recommended-solution_17">Recommended Solution</h6>
+<ul>
+<li>Make sure the type value of the last key of your external reference is one of the mentioned two literals.</li>
+</ul>
+<h2 id="errors-with-specific-submodels">Errors with Specific Submodels</h2>
+<h3 id="handover-documentation">Handover Documentation</h3>
+<h4 id="general-errors">General Errors</h4>
+<hr />
+<h5 id="no-cardinality-counters-in-eclass-irdi-path-of-semanticids">No Cardinality Counters in ECLASS IRDI Path of SemanticIds</h5>
+<h6 id="problem-description_2">Problem Description</h6>
+<ul>
+<li>The <em>semanticId</em> of a Submodel Elements like <em>DocumentId</em>, <em>DocumentClassification</em> or <em>DocumentVersion</em> has a defined
+  ECLASS IRDI path.</li>
+<li>This is a fixed exact value in each case, e.g. "0173-1#02-ABI501#001/0173-1#01- AHF580#001", "
+0173-1#02-ABI502#001/0173-1#01-AHF581#001" or "0173-1#02-ABI503#001/0173-1#01-AHF582#001".</li>
+<li>Sometimes we encounter a <em>semanticId</em> for those elements with an additional attached string like
+  "0173-1#02-ABI501#001/0173-1#01-AHF580#001*01", "0173-1#02-ABI502#001/0173-1#01-AHF581#001*01" or
+  "0173-1#02-ABI503#001/0173-1#01-AHF582#001*01".</li>
+<li>These are no valid semanticId as specified in the Handover Documentation submodel template.</li>
+</ul>
+<h6 id="specification-reference_18">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=14">Handover Documentation v1.2, 2.6 SubmodelElements of DocumentID, P.
+  16</a></li>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=17">Handover Documentation v1.2, 2.7 SubmodelElements of DocumentClassification, P.
+  17</a></li>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=19">Handover Documentation v1.2, 2.8 SubmodelElements of DocumentVersion, P.
+  19</a></li>
+</ul>
+<h6 id="remarks_16">Remarks</h6>
+<ul>
+<li>According to <a href="https://eclass.eu/support/technical-specification/data-model/irdi-path">ECLASS's IRDI Path definition&nbsp;⧉</a>
+  the star character (*) is a separator between reference property and cardinality counter.</li>
+</ul>
+<h6 id="recommended-solution_18">Recommended Solution</h6>
+<ul>
+<li>Do not use cardinality counters in <em>semanticIds</em>.</li>
+<li>Make sure the <em>semanticId</em> of each Submodel Element has the exact value as defined in the submodel template
+  specification.</li>
+</ul>
+<h4 id="errors-with-submodelelements-of-document">Errors with SubmodelElements of Document</h4>
+<hr />
+<h5 id="semanticid-of-submodelelement-document">SemanticId of SubmodelElement Document</h5>
+<h6 id="problem-description_3">Problem Description</h6>
+<ul>
+<li>The <em>semanticId</em> of a <em>Document</em> should be 0173-1#02-ABI500#001/0173-1#01-AHF579#001.</li>
+<li>Sometimes it is mistaken with the ECLASS IRDI for number of DocumentIds 0173-1#02-ABH990#001.</li>
+</ul>
+<h6 id="specification-reference_19">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=13">Handover Documentation v1.2, 2.4 Attributes of the Submodel instance, idShort "Document{00}", P.
+  13</a></li>
+</ul>
+<h6 id="remarks_17">Remarks</h6>
+<ul>
+<li>0173-1#02-ABI500#001 (property) is defined as "This SubmodelElementCollection holds the information for a document
+  entity"</li>
+<li>0173-1#01-AHF579#001 (class) is defined as "Each SubmodelElementCollection describes a document by standard, which is
+  associated to the particular Asset Administration Shell"</li>
+<li>0173-1#02-ABH990#001 (property) is defined as "Number of documents (handover documentation)"</li>
+</ul>
+<h6 id="recommended-solution_19">Recommended Solution</h6>
+<ul>
+<li>Make sure the <em>semanticId</em> of the <em>Document</em> Submodel Element Collection has the value
+  "0173-1#02-ABI500#001/0173-1#01-AHF579#001".</li>
+</ul>
+<h4 id="errors-with-submodelelements-of-documentid">Errors with SubmodelElements of DocumentID</h4>
+<hr />
+<h5 id="mandatory-property-valueid-in-submodel-element-documentid">Mandatory property ValueId in Submodel Element DocumentId</h5>
+<h6 id="problem-description_4">Problem Description</h6>
+<ul>
+<li><em>ValueId</em> is a required value in the <em>DocumentId</em>.</li>
+<li>Sometimes we encounter handover documentation submodel instances where <em>ValueId</em> is missing in some or all
+  <em>DocumentIds</em>.</li>
+</ul>
+<h6 id="specification-reference_20">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=16">Handover Documentation v1.2, 2.6 SubmodelElements of DocumentID, shortId "ValueId", P.
+  16</a></li>
+</ul>
+<h6 id="remarks_18">Remarks</h6>
+<ul>
+<li><em>ValueId</em> is an identification number of the Document within a given domain, e.g. the providing organization</li>
+<li>Example values for <em>ValueId</em>: 1213455566, XF90-884</li>
+</ul>
+<h6 id="recommended-solution_20">Recommended Solution</h6>
+<ul>
+<li>Make sure there is a value set for each <em>ValueId</em> of each <em>DocumentId</em> representing an identifier which clearly
+  identifies the document within your organization.</li>
+</ul>
+<h4 id="errors-with-submodelelements-of-documentversion">Errors with SubmodelElements of DocumentVersion</h4>
+<hr />
+<h5 id="semanticid-of-submodelelement-digitalfile">SemanticId of SubmodelElement DigitalFile</h5>
+<h6 id="problem-description_5">Problem Description</h6>
+<ul>
+<li>The semanticId of a digital file should be 0173-1#02-ABI504#001/0173-1#01-AHF583#001.</li>
+<li>Sometimes it is mistaken with the ECLASS IRDI for the document path 0173-1#02-ABI005#001, which doesn't describe the
+  whole file.</li>
+</ul>
+<h6 id="specification-reference_21">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=21">Handover Documentation v1.2, 2.8 SubmodelElements of DocumentVersion, idShort "DigitalFile{00}", P.
+  21</a></li>
+</ul>
+<h6 id="remarks_19">Remarks</h6>
+<ul>
+<li>0173-1#02-ABI504#001 (property) is defined as "MIME-Type, file name and file contents given by the file
+SubmodelElement". 0173-1#01-AHF583#001 (class) is defined as "MIME-Type, file name and file contents given by the file
+SubmodelElement".</li>
+<li>0173-1#02-ABI005#001 (property) is defined as "Path of the document".</li>
+</ul>
+<h6 id="recommended-solution_21">Recommended Solution</h6>
+<ul>
+<li>Replace the <em>semanticId</em> of the <em>DigitalFile</em> element with the IRDI path "0173-1#02-ABI504#001/0173-1#01-AHF583#001".</li>
+</ul>
+<hr />
+<h5 id="idshort-of-submodelelement-digitalfile">IdShort of SubmodelElement DigitalFile</h5>
+<h6 id="problem-description_6">Problem Description</h6>
+<ul>
+<li>IdShorts for digital files have to be unique within the DocumentVersion.</li>
+<li>It is recommended to name them "DigitalFile" with a following two-digit number.</li>
+</ul>
+<h6 id="specification-reference_22">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=21">Handover Documentation v1.2, 2.8 SubmodelElements of DocumentVersion, idShort "DigitalFile{00}", P.
+  21</a></li>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/03/IDTA-02004-1-2_Submodel_Handover-Documentation.pdf#page=23">Handover Documentation v1.2, Annex A. Explanations of table formats used, 2. Tables on Submodels and
+  SubmodelElements, P.
+  23</a></li>
+</ul>
+<h6 id="remarks_20">Remarks</h6>
+<ul>
+<li>IdShorts for digital files have to be unique within the DocumentVersion.</li>
+<li>It is recommended to name them "DigitalFile" with a following two-digit number: DigitalFile{00}.</li>
+<li>If an idShort ends with ‘{00}’, this indicates a suffix of the respective length (here: 2) of decimal digits to make
+the idShort unique.</li>
+<li>A different idShort might be chosen, as long as it is unique in the parent’s context.</li>
+</ul>
+<h6 id="recommended-solution_22">Recommended Solution</h6>
+<ul>
+<li>Name the idShort of digital files of one document version "DigitalFile" and add a number from 01 to XX.</li>
+<li>Example: DigitalFile01, DigitalFile02, ...</li>
+</ul>
+<h2 id="errors-related-to-exchange-data-formats">Errors related to Exchange Data Formats</h2>
+<h3 id="xml-serialization">XML Serialization</h3>
+<p>Relevant if you use XML in the aas-spec file of your AASX package, e.g. by using the AASX Package Explorer to generate
+packages.</p>
+<h4 id="empty-xml-nodes">Empty XML Nodes</h4>
+<p>Main error source here is that the official XML schema is demanding that most XML nodes need to contain something
+(item/value) or be non-existent. So, in many cases empty XML nodes are not allowed by the schema.</p>
+<hr />
+<h5 id="empty-embeddeddataspecification">Empty EmbeddedDataSpecification</h5>
+<h6 id="error-message_16">Error Message</h6>
+<blockquote>
+<p>Embedded data specifications must be either not set or have at least one item.: {position}
+</p>
+</blockquote>
+<h6 id="specification-reference_23">Specification Reference</h6>
+<ul>
+<li><a href="https://github.com/admin-shell-io/aas-specs-metamodel/issues/296">Issue #296 of admin-shell-io/aas-specs on Github&nbsp;⧉</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=116">Part 1 v3.0, 7.2.5 Embedded Data Specifications, Figure 58 Realization of Embedded Data Specifications, P.
+  115</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136">Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
+  135</a></li>
+<li><a href="https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L278">XML-Schema v3.0.7, <xs:group name="embeddedDataSpecification">, line 278
+  ff.</a></li>
+</ul>
+<h6 id="remarks_21">Remarks</h6>
+<ul>
+<li><em>EmbeddedDataSpecifications</em> must contain both, a <em>DataSpecification</em> and a <em>DataSpecificationContent</em> node.</li>
+<li>Cardinality is wrongly documented in Part 1 v3.0, see linked issue.</li>
+</ul>
+<h6 id="recommended-solution_23">Recommended Solution</h6>
+<ul>
+<li>Remove the empty node from the XML file or add <em>DataSpecificationContent</em> to it.</li>
+</ul>
+<hr />
+<h5 id="empty-submodelelementcollectionvalue">Empty SubmodelElementCollection/Value</h5>
+<h6 id="error-message_17">Error Message</h6>
+<blockquote>
+<p>Value must be either not set or have at least one item.
+</p>
+</blockquote>
+<h6 id="specification-reference_24">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=77">Part 1 v3.0, 5.3.7.16 Submodel Element Collection Attributes, P.
+  76</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136">Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
+  135</a></li>
+<li><a href="https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L869">XML-Schema v3.0.7, <xs:group name="embeddedDataSpecification">, line 869
+  ff.</a></li>
+</ul>
+<h6 id="remarks_22">Remarks</h6>
+<ul>
+<li>The attribute <em>value</em> of a <em>SubmodelElementCollection</em> is optional.</li>
+<li>But if there is a <em>value</em> it must contain at least one <em>SubmodelElement</em> item to it.</li>
+</ul>
+<h6 id="recommended-solution_24">Recommended Solution</h6>
+<ul>
+<li>Remove the empty <em>SubmodelElementCollection</em> node from the XML file or add at least one <em>SubmodelElement</em> to it.</li>
+</ul>
+<hr />
+<h5 id="empty-submodelelementdescription">Empty SubmodelElement/Description</h5>
+<h6 id="error-message_18">Error Message</h6>
+<blockquote>
+<p>Description must be either not set or have at least one item.
+</p>
+</blockquote>
+<h6 id="specification-reference_25">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=57">Part 1 v3.0, 5.3.2.10 Referable Attributes, P.
+  56</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136">Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
+  135</a></li>
+<li><a href="https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L739">XML-Schema v3.0.7, <xs:element name="description"...>, line 739
+  ff.</a></li>
+</ul>
+<h6 id="remarks_23">Remarks</h6>
+<ul>
+<li>The attribute <em>description</em> of any <em>Referable</em> is optional.</li>
+<li>Among others all <em>SubmodelElements</em> (like Properties) are <em>Referables</em>.</li>
+<li>If the description attribute is set it must contain at least one item.</li>
+</ul>
+<h6 id="recommended-solution_25">Recommended Solution</h6>
+<ul>
+<li>Remove the empty <em>description</em> node from the XML file or add at least one item to it.</li>
+</ul>
+<hr />
+<h5 id="empty-entitystatements">Empty Entity/Statements</h5>
+<h6 id="error-message_19">Error Message</h6>
+<blockquote>
+<p>Statements must be either not set or have at least one item.
+</p>
+</blockquote>
+<h6 id="specification-reference_26">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=71">Part 1 v3.0, 5.3.7.7 Entity Attributes, P.
+  70</a></li>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136">Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 3, P.
+  135</a></li>
+<li><a href="https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L293">XML-Schema v3.0.7, <xs:element name="description"...>, line 293
+  ff.</a></li>
+</ul>
+<h6 id="remarks_24">Remarks</h6>
+<ul>
+<li>The attribute <em>statements</em> of an <em>entity</em> is optional.</li>
+<li>If the statements attribute is set it must contain at least one statement.</li>
+</ul>
+<h6 id="recommended-solution_26">Recommended Solution</h6>
+<ul>
+<li>Remove the empty <em>statements</em> node from submodel in the XML file or add at least one statement item to it.</li>
+</ul>
+<hr />
+<h5 id="empty-qualifiers">Empty Qualifiers</h5>
+<h6 id="error-message_20">Error Message</h6>
+<blockquote>
+<p>Qualifiers must be either not set or have at least one item.
+</p>
+</blockquote>
+<h6 id="specification-reference_27">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=54">Part 1 v3.0, 5.3.2.8 Qualifiable Attributes, P.
+  53</a></li>
+<li><a href="https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L659">XML-Schema v3.0.7, <xs:element name="description"...>, line 659
+  ff.</a></li>
+</ul>
+<h6 id="remarks_25">Remarks</h6>
+<ul>
+<li>"A qualifiable element may be further qualified by one or more qualifiers. "</li>
+<li>The XML element <em>qualifiers</em> of a <em>submodel element</em> is optional.</li>
+<li>If the <em>qualifiers</em> element is present it must contain at least one <em>qualifier</em> element.</li>
+</ul>
+<h6 id="recommended-solution_27">Recommended Solution</h6>
+<ul>
+<li>Remove the empty <em>qualifiers</em> node from the submodel in the XML file or add at least one <em>qualifier</em> element to it.</li>
+</ul>
+<hr />
+<h5 id="empty-language-strings">Empty (Language) Strings</h5>
+<h6 id="error-message_21">Error Message</h6>
+<blockquote>
+<p>The value must not be empty.
+</p>
+</blockquote>
+<h6 id="specification-reference_28">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/en/wp-content/uploads/sites/2/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=136">Part 1 v3.0, Annex D. Templates for UML Tables, Template for Classes, Note 2, P.
+  135</a></li>
+<li><a href="https://github.com/admin-shell-io/aas-specs-metamodel/blob/master/schemas/xml/AAS.xsd#L15">XML-Schema v3.0.7, <xs:element name="description"...>, line 659
+  ff.</a></li>
+</ul>
+<h6 id="remarks_26">Remarks</h6>
+<ul>
+<li>Please note that the above schema reference is just one example among many.</li>
+<li>ALL occurrences of "xs:string" in the XML schema are provided with a restriction of minLength=1.</li>
+</ul>
+<h6 id="recommended-solution_28">Recommended Solution</h6>
+<ul>
+<li>Add a content of at least 1 character length to the attribute or remove it completely from the XML file.</li>
+</ul>
+<h3 id="package-file-format-aasx">Package File Format (AASX)</h3>
+<p>The AASX package file format is based on the Open Packaging Conventions and specified in <a href="https://industrialdigitaltwin.org/wp-content/uploads/2024/06/IDTA-01005-3-0-1_SpecificationAssetAdministrationShell_Part5_AASXPackageFileFormat.pdf">Specification of the Asset
+Administration Shell, Part 5: Package File Format
+(AASX)</a>.</p>
+<h4 id="relationships">Relationships</h4>
+<p>Relationships are used within an AASX package to connect the package to files, and to connect various files in the
+package. They form the logical model of the package.</p>
+<hr />
+<h5 id="no-origin-part-found-for-aasx-origin">No origin part found for aasx-origin</h5>
+<h6 id="error-message_22">Error Message</h6>
+<blockquote>
+<p>No origin part found
+</p>
+</blockquote>
+<h6 id="specification-reference_29">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2024/06/IDTA-01005-3-0-1_SpecificationAssetAdministrationShell_Part5_AASXPackageFileFormat.pdf#page=17">Part 5 v3.0.1, 5.2 Conventions for the Asset Administration Shell Package File Format (AASX), P.
+  16</a></li>
+</ul>
+<h6 id="remarks_27">Remarks</h6>
+<ul>
+<li>'aasx-origin' is the entry point when processing an AASX package.</li>
+<li>It is defined in the relationship file /_rels/.rels within the package and has to be of relationship type
+  '<a href="http://admin-shell.io/aasx/relationships/aasx-origin">http://admin-shell.io/aasx/relationships/aasx-origin&nbsp;⧉</a>'.</li>
+<li>It has been '<a href="http://www.admin-shell.io/aasx/relationships">http://www.admin-shell.io/aasx/relationships&nbsp;⧉</a>' in advance to v3, but this type with 'www.' is now
+  deprecated and will lead to the stated error for v3 packages.</li>
+<li>See also <a href="https://github.com/aas-core-works/aas-package3-csharp/pull/40">Fix URIs for V3 by mristin · Pull Request #40 ·
+  aas-core-works/aas-package3-csharp</a>.</li>
+<li>Be aware that the AASX Package Explorer didn't handle the relationship type for v3 packages correctly for some time.
+  This issue should fixed by now, see <a href="https://github.com/eclipse-aaspe/package-explorer/issues/184">v2024-03-05.alpha release reintroduces bug that was fixed in v2024-02-27.alpha ·
+  Issue #184 · eclipse-aaspe/package-explorer
+  (github.com)</a>.</li>
+</ul>
+<h6 id="recommended-solution_29">Recommended Solution</h6>
+<ul>
+<li>Make sure that the relationship type for the aasx-origin in the /_rels/.rels file is
+  '<a href="http://admin-shell.io/aasx/relationships/aasx-origin">http://admin-shell.io/aasx/relationships/aasx-origin&nbsp;⧉</a>' (without 'www.').</li>
+<li>Make sure that the target property is filled with the correct relative path.</li>
+</ul>
+<h4 id="supplemental-files-aas-suppl">Supplemental Files (aas-suppl)</h4>
+<hr />
+<h5 id="incorrect-file-path">Incorrect File Path</h5>
+<h6 id="error-message_23">Error Message</h6>
+<blockquote>
+<p>Document with value {filepath} could not be found in the aasx package
+</p>
+</blockquote>
+<h6 id="specification-reference_30">Specification Reference</h6>
+<ul>
+<li><a href="https://industrialdigitaltwin.org/wp-content/uploads/2023/04/IDTA-01005-3-0_SpecificationAssetAdministrationShell_Part5_AASXPackageFileFormat.pdf#page=21">Part 5 v3.0, 5.3 ECMA-376 Relationships, Relationship Type "aas-suppl", P.
+  20</a></li>
+</ul>
+<h6 id="remarks_28">Remarks</h6>
+<ul>
+<li>When a relative URI is used to reference a file from within the data of an AAS this file has to be part of the AASX
+  package (must exists).</li>
+</ul>
+<h6 id="recommended-solution_30">Recommended Solution</h6>
+<ul>
+<li>Make sure all referenced files exist in the package and the folder and file names are correct.</li>
+<li>Make sure that all relatively referenced files are listed as aas-suppl targets in the relationship part file (e.g.
+  /aasx/_rels/data.json.rels) of the aasx package.</li>
+<li>Check if unused references exist in the relationship file.</li>
+</ul>
+<h2 id="document-change-history">Document Change History</h2>
+<!-- TOC ignore:true -->
+
+<h3 id="version-11-06-aug-2024">Version 1.1 (06-Aug-2024)</h3>
+<ul>
+<li>Added 'No origin part found for aasx-origin' error and its containing 'Relationships' chapter.</li>
+</ul>
+<!-- TOC ignore:true -->
+
+<h3 id="version-10-15-jan-2024">Version 1.0 (15-Jan-2024)</h3>
+<ul>
+<li>Initial Version by Fabian Gumbrecht and Christian Körber.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../validators-overview/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../validators-overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

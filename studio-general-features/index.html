@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/studio-general-features/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>General Features - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "General Features";
+        var mkdocs_page_input_path = "studio-general-features.md";
+        var mkdocs_page_url = "/studio-general-features/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">General Features</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#id-generator">ID Generator</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#language-settings">Language Settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tenant-switch">Tenant Switch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dashboard">Dashboard</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#object-naming">Object Naming</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#drafts">Drafts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#feedback">Feedback</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation Rules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Studio</li>
+      <li class="breadcrumb-item active">General Features</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="twinstudio-general-features">twinstudio General Features</h1>
+<h2 id="id-generator">ID Generator</h2>
+<p>You can specify generator patterns for several ID types:</p>
+<ul>
+<li>Global Asset ID</li>
+<li>Shell/AAS ID (aka Twin ID)</li>
+<li>Submodel ID</li>
+</ul>
+<p><img alt="twinstudio General IdGenerator" src="../img/twinstudio-general-idgenerator.png" width="600" /></p>
+<p>If set respective IDs are automatically generated when needed (mainly on twin and submodel creation) and
+twinstudio will not ask you to manually fill-in IDs anymore.<br />
+Generally the {ULID} token has to be used trying to ensure a unique ID. If the <em>globalAssetId</em> is active
+it is possible to use {ASSET-ULID} instead of {ULID} for the <em>aasId</em> and if you use this and generate
+a new twin the <em>globalAssetId</em> and the <em>aasId</em> will contain the same generated <em>ulid</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">ID patterns have tenant scope</p>
+<p>The ID generator patterns are applied at the tenant level, not just to your user account.
+They are centrally stored in twinstudio. So other users will automatically create IDs according to the specified
+pattern when they are logged in to the relevant tenant.</p>
+</div>
+<h2 id="language-settings">Language Settings</h2>
+<p>twinstudio supports the following languages for its user interface:</p>
+<ul>
+<li>German</li>
+<li>English</li>
+</ul>
+<p>Furthermore you may set a preferred languages to represent the data content of your twins.</p>
+<p><img alt="twinstudio General IdGenerator" src="../img/twinstudio-general-language.png" width="400" /></p>
+<p>All language settings have user scope and are stored locally in your browser.</p>
+<h2 id="tenant-switch">Tenant Switch</h2>
+<p>twinstudio can connect to different twinsphere cloud tenants (access rights required).
+The tenants are hereby grouped into organizations. You can switch the tenant in the menu.</p>
+<p><img alt="twinstudio Tenant Swich" src="../img/twinstudio-general-switchtenant.png" width="400" /></p>
+<p>twinstudio remembers (locally in the browser) the last tenant you logged in with and automatically uses this for your
+next session.</p>
+<h2 id="dashboard">Dashboard</h2>
+<p>The dashboard of twinstudio serves as an entry point to the application.
+You can easily switch to the twin catalog or to any other module of the application.</p>
+<p><img alt="twinstudio ID Generator" src="../img/twinstudio-general-dashboard.png" width="500" /></p>
+<p>Via <strong>open digital twin from file</strong> you can upload a twin from a *.json, *.xml or *.aasx file.
+If the file contains multiple twins, you are presented a dialog to select the desired one.
+All submodels that are of type <strong>template</strong> will be filtered out and all contained files will be ignored.
+After the selection you will be redirected to the twinbuilder so you can start editing your twin.</p>
+<h2 id="object-naming">Object Naming</h2>
+<p>The AAS metamodel offers various options for selecting a display name for its objects. All of these options are
+optional data fragments, i.e., it cannot be assumed that an object to be displayed actually has the desired
+information. Many of the options are also language-dependent, and it is uncertain whether data records are actually
+maintained for certain languages.</p>
+<p>For twinstudio — or any user interface in this sense — a certain hierarchy of fallbacks is required to determine the
+best option for naming the respective object. This is the only way to ensure, regardless of data quality, that a
+object name is available at all, which ideally enables the user to recognize what they are dealing with.</p>
+<p>In twinstudio the same object naming logic applies to the following AAS metamodel objects:</p>
+<ul>
+<li>shells</li>
+<li>concept descriptions</li>
+<li>submodels</li>
+<li>submodel elements</li>
+</ul>
+<p>The name of those objects is determined in the following order (first available value wins):</p>
+<ul>
+<li>Object's property <em>displayName</em>, language value in the following order:<ul>
+<li>studio's language setting "preferred data language"</li>
+<li>studio's language setting "UI language"</li>
+<li>language "EN"</li>
+</ul>
+</li>
+<li>list index (only if object is a list element of a submodel list)</li>
+<li>Object's property <em>idShort</em></li>
+<li>Object's property <em>id</em></li>
+<li>Object's Propropertyperty <em>displayName</em>, first existing value (can be of any language)</li>
+<li>"Unknown Property" / "Unbekannte Eigenschaft"</li>
+</ul>
+<p>Explanation:</p>
+<ul>
+<li>The <em>displayName</em> is the preferred value for each object.<ul>
+<li>Since this is data from the twin, we first use the data language selected by the user.</li>
+<li>The user interface language comes second, as the user obviously understands this as well.</li>
+<li>The last resort is EN, which is neither the data language nor the user interface language of the user, but is
+  nevertheless generally understood.</li>
+</ul>
+</li>
+<li>A submodel list item must not have an <em>idShort</em> (specification v3.0) and, as an SME, it also has no <em>id</em>.
+  Therefore, we use its list index as the name if no <em>displayName</em> is available.</li>
+<li>For all other objects, an <em>idShort</em> is recommended, although this is not mandatory. Even though it is a technical
+  property, its value is in English in most cases and has semantic meaning. Therefore, we also consider it as a name.</li>
+<li>Shells, submodels, and concept descriptions must have an <em>id</em>, so we use this as the last resort for these objects.</li>
+<li>However, this does not apply to SMEs, as they do not have an <em>id</em>. The last option for SMEs is therefore any other
+  existing <em>displayName</em> value other than those mentioned above.</li>
+<li>If none of these work, we use a constant for naming SMEs as a last resort.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Concept Description are not yet used by twinstudio for the time being.
+It is planned tough to take them into consideration for determination of an object's display name as well (e.g.
+<em>preferredName</em> of the data specification).</p>
+</div>
+<h2 id="drafts">Drafts</h2>
+<p>twinstudio is able to save your unfinished work as a so called <em>draft</em>.
+These <em>drafts</em> belong exclusively to the user who saved them. They cannot be accessed by anyone else.
+<em>Drafts</em> are stored in twinstudio and not in your twinsphere tenant/repository. Therefore, they may not yet be fully
+valid and may still contain validation errors.</p>
+<h2 id="feedback">Feedback</h2>
+<p>Feel free to provide feedback to the application so we can continuously improve your experience
+and add features that matter most to you.
+You can open the feedback form on the right of the screen.</p>
+<p><img alt="twinstudio General IdGenerator" src="../img/twinstudio-general-feedback.png" width="400" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../studio-overview/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../studio-catalog/" class="btn btn-neutral float-right" title="Catalog">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../studio-overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../studio-catalog/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

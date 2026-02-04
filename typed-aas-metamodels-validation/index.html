@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/typed-aas-metamodels-validation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Validation Rules - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Validation Rules";
+        var mkdocs_page_input_path = "typed-aas-metamodels-validation.md";
+        var mkdocs_page_url = "/typed-aas-metamodels-validation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Validation Rules</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#general-rules">General Rules</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#name-not-set-for-property-cant-convert-object-models-without-valid-id-short">Name not set for property. Can't convert object models without valid id short</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodel-element-has-elements-with-duplicate-id-shorts">Submodel element has elements with duplicate id shorts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodel-element-has-wrong-type-expected-xyz">Submodel element has wrong type, expected XYZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodel-element-has-unset-value">Submodel element has unset value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file-has-unset-contenttype">File has unset ContentType</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mimetype-of-a-file-must-be-correct">MimeType of a File must be correct</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file-specified-contenttype-does-not-match-that-of-file-reference">File specified ContentType does not match that of file reference</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#property-has-wrong-value-type-expected-xyz">Property has wrong value type, expected XYZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#property-value-is-invalid-cannot-be-interpreted-as-xyz">Property Value is invalid. Cannot be interpreted as XYZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#property-value-is-not-supported-by-constraints">Property value is not supported by constraints</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#unknown-property-for-instance-of-xyz">Unknown property for instance of XYZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#missing-mandatory-property-for-instance-of-xyz">Missing mandatory property for instance of XYZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#missing-list-elements-for-xyz-for-instance-of-xyz">Missing list elements for XYZ for instance of XYZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#id-must-be-set-and-non-empty">Id must be set and non-empty</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#submodel-specific-rules">Submodel Specific Rules</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#idta-02023-carbon-footprint-09">IDTA 02023 Carbon Footprint 0.9</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#value-is-not-a-valid-pcfcalculationmethod">Value is not a valid PCFCalculationMethod</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#tcfreferencevalueforcalculation-must-be-valid">TcfReferenceValueForCalculation must be valid</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#processesforgreenhousegasemissioninatransportservices-must-be-valid">ProcessesForGreenhouseGasEmissionInATransportServices must be valid</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#idta-02002-1-0-submodel-for-contact-information-10">IDTA 02002-1-0 Submodel for Contact Information 1.0</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#idta-02006-2-0-digital-nameplate-for-industrial-equipment-20">IDTA 02006-2-0 Digital Nameplate for industrial equipment 2.0</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#countryoforigin-needs-to-be-a-valid-country-code">CountryOfOrigin needs to be a valid country code</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#specificconditionsforuse-must-be-x-if-set">SpecificConditionsForUse must be X if set</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#incompletedevice-must-be-u-if-set">IncompleteDevice must be U if set</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#idta-02004-1-2-handover-documentation-12">IDTA 02004-1-2 Handover Documentation 1.2</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#preview-file-must-match-the-correct-mime-type-allowed-file-types-are-jpg-png-bmp">Preview File must match the correct MIME-Type. Allowed file types are JPG, PNG, BMP</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#digital-files-must-contain-at-least-one-pdf">Digital files must contain at least one PDF</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#constraint-for-each-language-dependent-title-summary-and-at-least-one-keyword-shall-exist-for-the-given-language">Constraint: for each language-dependent Title, Summary and at least one KeyWord shall exist for the given language</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#invalid-classification-id-type">Invalid classification ID type</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#invalid-documentclassification-unsupported-classification">Invalid DocumentClassification: unsupported classification</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#only-one-primary-documentid-is-allowed">Only one primary DocumentId is allowed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#idta-02011-1-1-hierarchical-structures-enabling-bills-of-material-11">IDTA 02011-1-1 Hierarchical Structures enabling Bills of Material 1.1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#idta-02003-1-2-generic-frame-for-technical-data-for-industrial-equipment-in-manufacturing-12">IDTA 02003-1-2 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 1.2</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#semantic-id-not-set-for-property-properties-are-expected-to-carry-a-valid-semantic-id">Semantic Id not set for property. Properties are expected to carry a valid semantic id</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Development libraries (DevKit)</li>
+      <li class="breadcrumb-item active">Validation Rules</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="validation-rules-in-twinspheretypedaasmetamodels">Validation Rules in twinsphere.TypedAasMetamodels</h1>
+<h2 id="overview">Overview</h2>
+<p>The following will lay out the validations that are implemented in twinsphere.TypedAasMetamodels. It consists of two
+parts: in the first part general structural rules are discussed. The second part describes validations that are specific
+for individual submodel types.</p>
+<h3 id="example">Example</h3>
+<p>Validations are described in this document in the form of rules. Each rule entry consists of the same parts:</p>
+<ul>
+<li>a unique rule name</li>
+<li>a description of the respective rule</li>
+</ul>
+<h2 id="general-rules">General Rules</h2>
+<h3 id="name-not-set-for-property-cant-convert-object-models-without-valid-id-short">Name not set for property. Can't convert object models without valid id short</h3>
+<p>The id short of a submodel element is not set, although it is not an element of a submodel element list. Each submodel
+element in the submodel (except for submodel element list elements) is expected to have an id short to facilitate
+correct interpretation.</p>
+<h3 id="submodel-element-has-elements-with-duplicate-id-shorts">Submodel element has elements with duplicate id shorts</h3>
+<p>There are multiple submodel elements in the same namespace that have the same id short. As per
+<a href="https://industrialdigitaltwin.org/wp-content/uploads/2025/03/IDTA-01001-3-0-2_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=105">AASd-022&nbsp;⧉</a>,
+id shorts of non-identifiables must be unique within their respective namespace.</p>
+<h3 id="submodel-element-has-wrong-type-expected-xyz">Submodel element has wrong type, expected XYZ</h3>
+<p>The type of submodel element differs from that, that the submodel template describes.</p>
+<h3 id="submodel-element-has-unset-value">Submodel element has unset value</h3>
+<p>Submodel elements in submodel instances are expected to carry a non-empty value. Optional unset submodel elements should
+be signified by elision from the submodel.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a submodel element to be optional, it must have a SMT/Cardinality qualifier like <code>ZeroToOne</code> or <code>ZeroToMany</code>.</p>
+</div>
+<h3 id="file-has-unset-contenttype">File has unset ContentType</h3>
+<p>File elements in submodel instances are expected to carry a non-empty ContentType. Optional unset file elements should
+be signified by elision from the submodel.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a submodel element to be optional, it must have a SMT/Cardinality qualifier like <code>ZeroToOne</code> or <code>ZeroToMany</code>.</p>
+</div>
+<h3 id="mimetype-of-a-file-must-be-correct">MimeType of a File must be correct</h3>
+<p>The content type specified in a file element does not match to the content type derived by referenced file's extension.</p>
+<h3 id="file-specified-contenttype-does-not-match-that-of-file-reference">File specified ContentType does not match that of file reference</h3>
+<p>The content type specified in a file element does not match to the content type derived by referenced file's extension.</p>
+<h3 id="property-has-wrong-value-type-expected-xyz">Property has wrong value type, expected XYZ</h3>
+<p>The value type of a property element does not match the value type described in the submodel template. If the submodel
+template demands a specific value type, instances of the property must adhere to said value type.</p>
+<h3 id="property-value-is-invalid-cannot-be-interpreted-as-xyz">Property Value is invalid. Cannot be interpreted as XYZ</h3>
+<p>The value of a property element cannot correctly be interpreted as a value of the value type specified in the property.</p>
+<h3 id="property-value-is-not-supported-by-constraints">Property value is not supported by constraints</h3>
+<p>The value of a property element does not adhere to constraints as given by qualifiers or the submodel template
+specification. This, for example, is the case if the property acts as a sort of enumeration with a limited set of valid
+values.</p>
+<h3 id="unknown-property-for-instance-of-xyz">Unknown property for instance of XYZ</h3>
+<p>The submodel template does not specify a property with the id short of this submodel element.</p>
+<h3 id="missing-mandatory-property-for-instance-of-xyz">Missing mandatory property for instance of XYZ</h3>
+<p>The submodel instance lacks a submodel element that the submodel template specifies with the qualifier SMT/Cardinality
+of <code>One</code>.</p>
+<h3 id="missing-list-elements-for-xyz-for-instance-of-xyz">Missing list elements for XYZ for instance of XYZ</h3>
+<p>The number of elements in submodel element list in the submodel instance does not match the minimum number of elements
+as specified in the SMT/Cardinality qualifier for the list in the submodel template.</p>
+<h3 id="id-must-be-set-and-non-empty">Id must be set and non-empty</h3>
+<p>The id of a submodel is unset.</p>
+<h2 id="submodel-specific-rules">Submodel Specific Rules</h2>
+<p>Submodel specific rules are rules and restrictions that are specific to individual submodel templates.</p>
+<h3 id="idta-02023-carbon-footprint-09">IDTA 02023 Carbon Footprint 0.9</h3>
+<h4 id="value-is-not-a-valid-pcfcalculationmethod">Value is not a valid PCFCalculationMethod</h4>
+<p>The value of the property PCFCalculationMethod is not one of the valid PCF calculation methods. The value must be one of
+the following:</p>
+<ul>
+<li>EN 15804</li>
+<li>GHG Protocol</li>
+<li>IEC TS 63058</li>
+<li>ISO 14040</li>
+<li>ISO 14044</li>
+<li>ISO 14067</li>
+<li>IEC 63366</li>
+<li>PEP Ecopassport</li>
+</ul>
+<h4 id="tcfreferencevalueforcalculation-must-be-valid">TcfReferenceValueForCalculation must be valid</h4>
+<p>The value of the property TCFReferenceValueForCalculation is not one of the valid PCF calculation methods. The value
+must be one of the following:</p>
+<ul>
+<li>g</li>
+<li>kg</li>
+<li>t</li>
+<li>ml</li>
+<li>l</li>
+<li>cbm</li>
+<li>qm</li>
+<li>piece</li>
+</ul>
+<h4 id="processesforgreenhousegasemissioninatransportservices-must-be-valid">ProcessesForGreenhouseGasEmissionInATransportServices must be valid</h4>
+<p>The value of the property TCFReferenceValueForCalculation is not one of the valid PCF calculation methods. The value
+must be one of the following:</p>
+<ul>
+<li>WTT - Well-to-Tank</li>
+<li>TTW - Tank-to-Wheel</li>
+<li>WTW - Well-to-Wheel</li>
+</ul>
+<h3 id="idta-02002-1-0-submodel-for-contact-information-10">IDTA 02002-1-0 Submodel for Contact Information 1.0</h3>
+<p>There are no submodel specific rules for contact information 1.0.</p>
+<h3 id="idta-02006-2-0-digital-nameplate-for-industrial-equipment-20">IDTA 02006-2-0 Digital Nameplate for industrial equipment 2.0</h3>
+<h4 id="countryoforigin-needs-to-be-a-valid-country-code">CountryOfOrigin needs to be a valid country code</h4>
+<p>The value of CountryOfOrigin is not a valid DIN EN ISO 3166-1 alpha-2 code. The value must be a country code according
+to DIN EN ISO 3166-1 alpha-2 codes.</p>
+<h4 id="specificconditionsforuse-must-be-x-if-set">SpecificConditionsForUse must be X if set</h4>
+<p>The value of SpecificConditionsForUse is not "X". If SpecificConditionsForUse is set, its value must be "X".</p>
+<h4 id="incompletedevice-must-be-u-if-set">IncompleteDevice must be U if set</h4>
+<p>The value of IncompleteDevice is not "U". If IncompleteDevice is set, its value must be "U".</p>
+<h3 id="idta-02004-1-2-handover-documentation-12">IDTA 02004-1-2 Handover Documentation 1.2</h3>
+<!-- markdownlint-disable line-length -->
+
+<h4 id="preview-file-must-match-the-correct-mime-type-allowed-file-types-are-jpg-png-bmp">Preview File must match the correct MIME-Type. Allowed file types are JPG, PNG, BMP</h4>
+<!-- markdownlint-enable line-length -->
+
+<p>The MIME-type of the preview file is not that of a JPG, PNG, or BMP file. The preview file only allows JPG, PNG, or BMP
+MIME-types.</p>
+<h4 id="digital-files-must-contain-at-least-one-pdf">Digital files must contain at least one PDF</h4>
+<p>Digital files does not contain at least one file that is a PDF/A file. At least one PDF/A file type shall be provided.</p>
+<!-- markdownlint-disable line-length -->
+
+<h4 id="constraint-for-each-language-dependent-title-summary-and-at-least-one-keyword-shall-exist-for-the-given-language">Constraint: for each language-dependent Title, Summary and at least one KeyWord shall exist for the given language</h4>
+<!-- markdownlint-enable line-length -->
+
+<p>There is a title or summary for which there is no keyword in the same language. For each language-dependent keyword, a
+title and summary shall exist for the given language.</p>
+<h4 id="invalid-classification-id-type">Invalid classification ID type</h4>
+<p>The ClassId type is not one of the valid classification id types.</p>
+<h4 id="invalid-documentclassification-unsupported-classification">Invalid DocumentClassification: unsupported classification</h4>
+<p>The Classification System type is not one of the valid classification system types.</p>
+<h4 id="only-one-primary-documentid-is-allowed">Only one primary DocumentId is allowed</h4>
+<p>There is more than one document id that set as primary. Only one document id may be the primary document id.</p>
+<h3 id="idta-02011-1-1-hierarchical-structures-enabling-bills-of-material-11">IDTA 02011-1-1 Hierarchical Structures enabling Bills of Material 1.1</h3>
+<p>There are no submodel specific rules for Hierarchical Structures enabling Bills of Material 1.1.</p>
+<!-- markdownlint-disable line-length -->
+
+<h3 id="idta-02003-1-2-generic-frame-for-technical-data-for-industrial-equipment-in-manufacturing-12">IDTA 02003-1-2 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 1.2</h3>
+<h4 id="semantic-id-not-set-for-property-properties-are-expected-to-carry-a-valid-semantic-id">Semantic Id not set for property. Properties are expected to carry a valid semantic id</h4>
+<!-- markdownlint-enable line-length -->
+
+<p>There is no semantic id set for a property of TechnicalData, MainSection, or SubSection. Each entry in TechnicalData,
+MainSection, and SubSection needs a semantic id.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../typed-aas-metamodels-submodels/" class="btn btn-neutral float-left" title="Supported Submodels"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../typed-aas-metamodels-release_notes/" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../typed-aas-metamodels-submodels/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../typed-aas-metamodels-release_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
