@@ -136,6 +136,20 @@ sources of potential errors where possible. To this end, it employs some basic d
 - Hide metadata from the user: any SMT metadata, such as SemanticIds, IdShorts, ValueTypes, ... is handled internally.
   Users don't have to worry about them.
 
+### Design Considerations for Unset Values
+
+Our design considerations imply some restrictions wrt. to the expressiveness of the meta model. The meta model marks
+many attributes of SubmodelElements as optional. In many cases, this is only sensible for submodel templates but not for
+instances: for example, the DigitalNameplate 3.0 has a mandatory Property element `URIOfTheProduct`, however, in the
+meta model the value attribute of Property elements is optional. This raises the question whether a Property without
+value *really* is set? Sadly, the specification does not provide a clear answer.
+
+In terms of this library, we interpret a SubmodelElement with an unset value as if the SubmodelElement was not set. This
+decision implies the following:
+
+- An instance where a *mandatory* SubmodelElement has an unset value is considered incorrect.
+- The library does not provide functionality to create instances in which *mandatory* SubmodelElements have unset values.
+
 ## Working with Shells and Packages
 
 ### Shell Abstractions
@@ -453,9 +467,40 @@ Aas3_0.ISubmodel digitalNameplateMetamodel;
 var jsonString = ValueOnlySerializer.ToValueOnly(digitalNameplateMetamodel);
 ```
 
-### Caveats and Notes on Usage
+## Caveats and Notes on Usage
 
-#### Deviations From SMT Specifications
+### Non-stable IdShorts for SubmodelElements with Cardinality *ZeroToMany* or *OneToMany*
+
+This caveat requires some background information, for a brief summary of the consequences, see the [limitations section](#limitation)
+below.
+
+#### Background
+
+The representation of lists of SubmodelElements has changed significantly with different versions of the specifications.
+Initially (before version 3) of the specification, lists have been modelled by annotating SubmodelElements with
+different flavors of cardinality qualifiers; these SubmodelElements can typically be recognized by their IdShort, as it
+carries a suffix such as `__00___`. Version 3 of the spec introduced with SubmodelElementLists a better alternative to
+model lists and [IDTA endorses the use of SubmodelElementLists
+instead](https://github.com/admin-shell-io/aas-specs-metamodel/issues/435#issuecomment-2416992497).
+
+In the transition from v2 to v3, many SMTs adopted the older modeling approach, e.g., in DigitalNameplate 2.0, there is
+the SubmodelElementCollection `IPCommunication__00__`, with a cardinality of `ZeroToMany`. Instances of this
+SubmodelElementCollection would end up as `IPCommunication00`, `IPCommunication01`, ..., in the final instance (to
+satisfy the constraint that IdShorts of SubmodelElements must be unique in their context). However, in the light
+of SubmodelElementLists, this pattern becomes less frequent in more recent versions of templates.
+
+#### Limitation
+
+When deserializing a submodel from its meta model representation, the TypedAasMetamodels library does not store the
+respective IdShort, as this information is implicitly available from the respective context and can be generated
+on-the-fly when converting to meta model. For SubmodelElements with multiplicity (as is the case for the
+`IPCommunication__00__` example above), however, the matter is not so simple. Here, the library automatically generates
+suitable IdShorts, thus potentially renaming the elements.
+
+In general, this is no problem. However, one consequence of this approach, is, that it breaks IdShort paths and Model
+References, if they contain an element that is renamed.
+
+### Deviations From SMT Specifications
 
 In some cases the library deviates from the properties as described in the officially released SMTs. These changes are
 typically editorial in nature to fix issues in the SMTs. We adopt editorial changes if we can easily identify what the
