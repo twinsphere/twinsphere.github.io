@@ -11,7 +11,7 @@ viewing or editing a twin or displaying the detailed definitions of a concept de
 If there are more entries than displayed (indicated by a *"+"* sign in the list header) a *load more* button is visible
 at the bottom of the list. Each load will add up to 50 entries.
 
-![Catalog plus entries](img/twinstudio_catalog_plus-entries.png){: width='800'}
+![Catalog plus entries](img/twinstudio_catalog_plus_entries.png){: width='800'}
 
 Every catalog has a *refresh* button which reloads the first 50 entries with the selected
 filters if any are available and set.
@@ -51,11 +51,15 @@ The action represented by an **eye symbol** (or the "Show" button in the more me
 The action represented by a **pen symbol** (or the "Edit" button in the more menu) opens the twin in our
 [Twin Builder](studio-twin-builder.md) for editing.
 
-![Twin Catalog](img/twinstudio_catalog_twins_moremenu.png){: width='350'}
+![Twin Catalog](img/twinstudio_catalog_twins_moremenu.png){: width='200'}
 
 The more menu offers two further features:
 
-- The **export** of twins as JSON or XML to a file or directly to your system's clipboard.
+- The **export** of twins opens a dialog where you can choose the format, the target,
+which submodels to include and if concept descriptions should be added
+
+![Twin Catalog Export Twin](img/twinstudio_catalog_export_shell.png){: width='350'}
+
 - The **duplication** of *instance* twins (not types).
 - The **deletion** of twins.
 
@@ -82,7 +86,10 @@ IDs.
 
 The Submodels view of the Twin Catalog lists all existing submodels of the connected tenant.
 
-The **export** of a submodel is available as action in the more menu of each record.
+The **export** of a submodel is available as action in the more menu of each record,
+which opens a dialog to select format and destination for your export.
+
+![Twin Catalog - Submodels Export](img/twinstudio_catalog_export_submodel.png){: width='350'}
 
 !!! Note
     The twin catalog of submodels is work in progress. There are more feature to come here.
@@ -128,7 +135,7 @@ The **export** of a submodel template is available as action in the more menu of
 
 ## Catalog of Drafts
 
-![Draft Catalog](img/twinstudio-catalog-drafts.png){: width='800'}
+![Draft Catalog](img/twinstudio_catalog_drafts.png){: width='800'}
 
 Your personal **twin drafts** are shown here.
 

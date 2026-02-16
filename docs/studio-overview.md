@@ -9,4 +9,4 @@ there is so much more to come!
 
 For more information please visit our [twinsphere landing page](https://www.conplement.de/en/twinsphere).
 
-![twinstudio Blueprint Editor](img/twinstudio-blueprint-editor.png){: width='400' }
+![twinstudio Blueprint Editor](img/twinstudio_blueprint_editor.png){: width='400' }

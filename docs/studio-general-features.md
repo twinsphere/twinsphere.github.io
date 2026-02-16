@@ -8,7 +8,7 @@ You can specify generator patterns for several ID types:
 - Shell/AAS ID (aka Twin ID)
 - Submodel ID
 
-![twinstudio General IdGenerator](img/twinstudio-general-idgenerator.png){: width='600' }
+![twinstudio General IdGenerator](img/twinstudio_general_idgenerator.png){: width='600' }
 
 If set respective IDs are automatically generated when needed (mainly on twin and submodel creation) and
 twinstudio will not ask you to manually fill-in IDs anymore.  
@@ -30,7 +30,7 @@ twinstudio supports the following languages for its user interface:
 
 Furthermore you may set a preferred languages to represent the data content of your twins.
 
-![twinstudio General IdGenerator](img/twinstudio-general-language.png){: width='400' }
+![twinstudio General IdGenerator](img/twinstudio_general_language.png){: width='400' }
 
 All language settings have user scope and are stored locally in your browser.
 
@@ -39,7 +39,7 @@ All language settings have user scope and are stored locally in your browser.
 twinstudio can connect to different twinsphere cloud tenants (access rights required).
 The tenants are hereby grouped into organizations. You can switch the tenant in the menu.
 
-![twinstudio Tenant Swich](img/twinstudio-general-switchtenant.png){: width='400' }
+![twinstudio Tenant Swich](img/twinstudio_general_switchtenant.png){: width='400' }
 
 twinstudio remembers (locally in the browser) the last tenant you logged in with and automatically uses this for your
 next session.
@@ -49,7 +49,7 @@ next session.
 The dashboard of twinstudio serves as an entry point to the application.
 You can easily switch to the twin catalog or to any other module of the application.
 
-![twinstudio ID Generator](img/twinstudio-general-dashboard.png){: width='500' }
+![twinstudio ID Generator](img/twinstudio_general_dashboard.png){: width='500' }
 
 Via **open digital twin from file** you can upload a twin from a \*.json, \*.xml or \*.aasx file.
 If the file contains multiple twins, you are presented a dialog to select the desired one.
@@ -120,4 +120,4 @@ Feel free to provide feedback to the application so we can continuously improve 
 and add features that matter most to you.
 You can open the feedback form on the right of the screen.
 
-![twinstudio General IdGenerator](img/twinstudio-general-feedback.png){: width='400' }
+![twinstudio General IdGenerator](img/twinstudio_general_feedback.png){: width='400' }
