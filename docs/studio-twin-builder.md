@@ -12,7 +12,7 @@ The Creation Wizard helps you to create a digital twin.
 You can open the Creation Wizard by clicking on the *Create New Digital Twin* buttons
 in the [catalog](studio-catalog.md){: width='600' } or on the dashboard.
 
-![Dashboard Builder Card](img/twinstudio-dashboard-digital-twin-builder.png){: width='600' }
+![Dashboard Builder Card](img/twinstudio_dashboard_digital_twin_builder.png){: width='600' }
 
 The Creation Wizard offers two options for creating a digital twin.
 
@@ -24,7 +24,7 @@ The Creation Wizard offers two options for creating a digital twin.
 
 #### Option 1 - New Digital Twin from Scratch
 
-![Creation Wizard Scratch](img/twinstudio-creation-wizard-from-scratch.png){: width='800' }
+![Creation Wizard Scratch](img/twinstudio_creation_wizard_from_scratch.png){: width='800' }
 
 If you create a digital twin from scratch you can choose the *asset kind* in the right radio button list.
 If you are unsure which *asset kind* is appropriate for your situation (*Instance/Type/Undefined*), the help texts
@@ -32,7 +32,7 @@ describing the options may be of assistance.
 
 #### Option 2 - Duplicate Existing Instance
 
-![Creation Wizard Duplicate](img/twinstudio-creation-wizard-duplicate-existing-instance.png){: width='800' }
+![Creation Wizard Duplicate](img/twinstudio_creation_wizard_duplicate_existing_instance.png){: width='800' }
 
 If you duplicate an existing instance you can search for an instance, which you want to duplicate.
 Your entered search term will be matched via a regular expression against following attributes:
@@ -45,14 +45,14 @@ Your entered search term will be matched via a regular expression against follow
 If there are more than 10 matches, you have to redefine the search, to narrow down the match count.
 When you select a result, it will be automatically expanded, and you can see where the instance matched the search term.
 
-![CreationDuplicateHighlight](img/twinstudio-creation-wizard-duplicate-existing-instance-highlight.png){: width='600' }
+![CreationDuplicateHighlight](img/twinstudio_creation_wizard_duplicate_existing_instance_highlight.png){: width='600' }
 
 If you select this option, the wizard will only guide you to step 2 below. No further information is required; it will
 be taken from the original copy.
 
 ### Step 2 - Add IDs and Basic Information
 
-![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-2.png){: width='800' }
+![Creation Wizard Basic Information](img/twinstudio_creation_wizard_step_2.png){: width='800' }
 
 In the second step you have to set an id for the digital twin, add a display name and refer to your physical asset
 by adding an asset identifier.
@@ -66,7 +66,7 @@ have filled-in some of the inputs above automatically for you.
 
 ### Step 3 - Add Description (Optional)
 
-![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-3.png){: width='800' }
+![Creation Wizard Basic Information](img/twinstudio_creation_wizard_step_3.png){: width='800' }
 
 This step in the creation of a digital twin is optional.
 You may add a textual description for the new digital twin here. This might help you and other users later on to
@@ -75,7 +75,7 @@ Please only use English language here. You may add more/other languages later in
 
 ### Step 4 - Adding Submodels (Optional)
 
-![Creation Wizard Basic Information](img/twinstudio-creation-wizard-step-4.png){: width='800' }
+![Creation Wizard Basic Information](img/twinstudio_creation_wizard_step_4.png){: width='800' }
 
 In the last step of the digital twin creation you can add the submodels you need.
 The submodels you can choose from are submodel templates, which are stored in your
@@ -148,13 +148,18 @@ The types of time, date, and datetime have a custom representation, all others a
 
 #### Default
 
-![Properties](img/twinstudio-builder-property.png)
+![Properties](img/twinstudio_builder_property.png)
 
 The value of a property is represented by an input field.
 Please make sure that the datatype of the property matches the value you set into the input field.
 The *Validation Issue List* will have an issue if the datatype of the value does not match
 the datatype of the property.
 The input field expands up to 5 rows and a scrollbar will be displayed for longer content.
+
+If the submodel template specifies a qualifier of type **FormChoices** the values
+of this qualifier can be selected via dropdown.
+
+![Properties with formchoices](img/twinstudio_builder_property_choices.png)
 
 #### Date
 
@@ -224,11 +229,11 @@ If you click on the info icon, you will see an explanation of why this value was
 
 ### File Elements
 
-![FileProperty_Collapsed](img/twinstudio-builder-file-collapsed.png)
+![FileProperty_Collapsed](img/twinstudio_builder_file_collapsed.png)
 
 You can fill in the *file* elements by clicking on the *Add File* button.
 
-![FileProperty_Collapsed](img/twinstudio-builder-file-expanded.png){: width='800' }
+![FileProperty_Collapsed](img/twinstudio_builder_file_expanded.png){: width='800' }
 
 In the dialog box, you can now choose whether you want to upload a file or store an external file.
 If you upload a file, it will be stored in the twinsphere file storage and a reference will be written to the element.
@@ -238,7 +243,7 @@ File links that would overflow the input will be clipped.
 
 ### Range
 
-![RangeProperty](img/twinstudio-builder-range.png)
+![RangeProperty](img/twinstudio_builder_range.png)
 
 The *Range* can set minimum and maximum as values.
 If it is required, either a minimum or maximum value has to be set to satisfy the validation.
@@ -252,13 +257,13 @@ and then select an asset administration shell.
 You can then refer to a submodel or submodel element and save the reference.
 The reference is displayed as shown below.
 
-![ReferenceElement](img/twinstudio-builder-reference-collapsed.png)
+![ReferenceElement](img/twinstudio_builder_reference_collapsed.png)
 
-![ReferenceElement](img/twinstudio-builder-reference-extended-choose-asset.png)
+![ReferenceElement](img/twinstudio_builder_reference_extended_choose_asset.png)
 
-![ReferenceElement](img/twinstudio-builder-reference-extended-choose-sme.png)
+![ReferenceElement](img/twinstudio_builder_reference_extended_choose_sme.png)
 
-![ReferenceElement](img/twinstudio-builder-reference-collapsed-filled.png)
+![ReferenceElement](img/twinstudio_builder_reference_collapsed_filled.png)
 
 !!!note "Current limitations"
     Reference Elements only support referencing submodels and submodel elements within the same twin.
@@ -321,24 +326,38 @@ There are three save states for a twin:
 The Unsaved changes status indicates that changes have been made to the twin or draft that have not yet been saved.
 These can be saved by [publishing](#publish-to-repo) or [saving](#save-draft).
 
-![UnsavedChanges](img/twinstudio-builder-save-state-unsaved-changes.png)
+![UnsavedChanges](img/twinstudio_builder_save_state_unsaved_changes.png)
 
 ### Draft Saved
 
 The Draft Saved status indicates that the draft has been saved as a draft.
 
-![DraftSaved](img/twinstudio-builder-save-state-saved.png)
+![DraftSaved](img/twinstudio_builder_save_state_saved.png)
 
 ### Published
 
 The Published status indicates that the draft/twin has been published
 in your repository or has been loaded from the repository in this state.
 
-![Published](img/twinstudio-builder-save-state-published.png)
+![Published](img/twinstudio_builder_save_state_published.png)
 
 ## Show Twin in AAS Viewer
 
 If you have a design/twin with the status Published open in the editor,
 you can click on the eye icon next to the memory status display to open the design/twin in AASViewer.
 
-![Published](img/twinstudio-builder-save-state-published.png)
+![Published](img/twinstudio_builder_save_state_published.png)
+
+## Export Twin
+
+In the top-right corner, you can open a menu with multiple options.
+One is to **export** your current twin.
+
+![Twin Menu](img/twinstudio_builder_menu.png)
+
+In this menu you can select the format, the target, which submodels to include and
+if concept descriptions should be included.
+The **AASX** can only be selected if the target is **file** and your twin is *published*.
+Concept descriptions can only be included if your twin is *published*.
+
+![Twin Export Menu](img/twinstudio_builder_twin_export.png){ : width='350' }
