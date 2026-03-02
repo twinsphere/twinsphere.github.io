@@ -5,6 +5,17 @@ The twinsphere Viewer follows the semantic versioning format in the form major.m
 
 ---
 
+## Viewer 2.3
+
+*Released on 25-Feb-2026*.
+
+- Added support for the following latest submodel template releases:
+    - IDTA 02003 - Generic Frame for Technical Data for Industrial Equipment in Manufacturing, Version 2.0
+    - IDTA 02004 - Handover Documentation, Version 2.0
+    - IDTA 02023 - Carbon Footprint, Version 1.0
+
+---
+
 ## Viewer 2.2
 
 *Released on 02-Jun-2025*.
