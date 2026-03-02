@@ -282,6 +282,13 @@ Only 10 results will be shown. Twins without a *globalAssetId* will be disabled 
 
 ![Entity Twin Selection Dialog](img/twinstudio_builder_entity_selection.png){: width='400' }
 
+### Relationship Elements
+
+A relationship element contains two references, referred to as the first and second references.
+Filling in a relationship element reference works exactly the same as filling in a [reference element](#reference-elements).
+
+![Relationship Element](img/twinstudio_builder_relationship_element.png){: width='800' }
+
 ## Validation Issue List
 
 ![Validation Issue List](img/twinstudio_issuelist_withpath.png){: width='300' }
