@@ -187,25 +187,19 @@ You can attach meta information to a twinsphere file at
 {
   "displayName": "Document Display Name",
   "classification": "01-01",
-  "attributes": [
-    {
-      "key": "string",
-      "value": "string"
-    },
-    {
-      "key": "string",
-      "value": "string"
-    }
-  ]
+  "attributes": {
+    { "key": "external-id", "value": "1" },
+    { "key": "country", "value": "germany" },
+    { "key": "priority", "value": "important" }
+  }
 }
 ```
 
-- **displayName**: Custom name for the file
-- **classification**: Must be a valid class ID as defined in **VDI 2770**. For more information,
-  refer for example to the IDTA Submodel Handover documentation
-- **Attributes**: Custom key–value metadata. Each key must be unique within the files meta data
-- **Attributes Limit**: Up to 50 attributes per file
-- **Attribute Size**: Keys and values can each be up to 2048 characters
+- **displayName**: Custom name for the file.
+- **classification**: Must be a valid class ID as defined in **VDI 2770**.
+- **Attributes**: Custom key–value metadata.
+- **Attributes Limit**: Up to 50 attributes per file.
+- **Attribute Size**: Keys and values can each be up to 2048 characters.
 
 ### Adaption of standard operations
 

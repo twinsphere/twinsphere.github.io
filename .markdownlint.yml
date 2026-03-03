@@ -8,6 +8,9 @@ MD004:
 MD007:
   indent: 4
 
+MD009:
+  br_spaces: 2
+
 # line-length
 MD013:
   line_length: 120

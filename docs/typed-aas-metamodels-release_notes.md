@@ -8,6 +8,34 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.1.5
+
+*Released on 02-Mar-2026*.
+
+- **[TAM]** TAM now has support for older `.aasx` packages still using the deprecated `_rels` format.
+- **[Exp]** Add experimental package for testing to-be-released SMTs:
+    - Digital Quality Document 1.0
+    - Digital Battery Passport
+    - Digital Nameplate 1.0
+    - Product Carbon Footprint 1.0
+    - Handover Documentation 1.0
+    - Technical Data 1.0
+    - Product Condition 1.0
+    - Material Composition 1.0
+    - Circularity 1.0
+- **[Bugfix]** Fix representation of semantic Ids in meta model conversion for multiple SMTs
+- **[Bugfix]** Fix too strict validations in CarbonFootprint 0.9
+- **[Bugfix]** Add missing constraint on Path types [Bugfix] Fix null dereference in validation of Handover
+  Documentation 1.2
+
+- **[TAM]** Update to most recent specification versions for several submodels
+    - Contact Informations 1.0
+    - Technical Data 2.0
+    - Handover Documentation 2.0
+    - Hierarchical Structures enabling Bill of Materials 1.1
+- **[Bugfix]** Packaging and conversion now ensures that file paths/values are properly percent encoded in conformity
+  with RFC2396.
+
 ## twinsphere.TypedAasMetamodels 1.1.4
 
 *Released on 20-Nov-2025*.

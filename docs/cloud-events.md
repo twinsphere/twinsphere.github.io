@@ -1,7 +1,68 @@
-# Change Events
+# Events
 
-Besides the HTTP/REST based API endpoint, twinsphere also offers a MQTT based API for receiving events about shells and
-submodels.
+> ⚠️ **Experimental**
+> This is an experimental feature and usage in productive systems is not advised!
+
+<!-- -->
+
+> **Note**
+> Submodel element operations do not produce any events!
+
+Besides the HTTP/REST based API endpoint, twinsphere also offers a MQTT based API for receiving events about
+shells and submodels.
+
+## Configuration
+
+All shell changes are published.
+
+Submodel events are published only for configured semantic IDs. This configuration can be modified in the "Events"
+section of the `/sphere/swagger/index.html`.
+
+![Events Configuration](img/twinsphere_cloud_events_configuration.png)
+
+The default configuration will look something like this:
+
+``` json
+{
+  "publish": {
+    "submodels": {
+      "semanticIds": [
+        "https://admin-shell.io/zvei/nameplate/1/0/ContactInformations",
+        "0173-1#01-AHF578#001",
+        "0173-1#01-AHF578#003",
+        "https://admin-shell.io/zvei/nameplate/2/0/Nameplate",
+        "https://admin-shell.io/idta/nameplate/3/0/Nameplate",
+        "https://admin-shell.io/ZVEI/TechnicalData/Submodel/1/2",
+        "0173-1#01-AHX837#002"
+      ]
+    }
+  }
+}
+```
+
+Per default, only the common submodels (nameplate / handover docs / tech data) are included.
+
+### Regex
+
+To use regular expressions instead of exact matches, prefix your semantic ID with "**$regex=**" and provide a
+valid regex expression. If you need to use special characters in your pattern (such as *$ / . @ >*) you'll
+need to escape them with double backslashes (\\\\).
+
+For example, to match all submodels whose Semantic ID includes "test":
+
+``` json
+{
+  "publish": {
+    "submodels": {
+      "semanticIds": [
+        "$regex=^test$"
+      ]
+    }
+  }
+}
+```
+
+Multiple regex expressions, as well as matching with static strings, is possible.
 
 ## Connecting to the broker
 

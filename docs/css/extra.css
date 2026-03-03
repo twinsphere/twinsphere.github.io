@@ -27,3 +27,32 @@ blockquote {
     background-color: #f0f0f0;
     border-left: 4px solid #d6d6d6;
 }
+
+/* Fix navigation jumping issue - prevent items from scrolling to top */
+.wy-menu-vertical li.current {
+    /* Center items instead of forcing to top, with reasonable offset */
+    scroll-margin-top: 40vh;
+    scroll-margin-bottom: 40vh;
+}
+
+/* Smooth scrolling for navigation */
+.wy-menu-vertical a {
+    scroll-behavior: smooth;
+}
+
+/* Prevent active items from jumping to the very top of the sidebar */
+.wy-menu-vertical li.current > a {
+    scroll-margin-block-start: 40vh;
+    scroll-margin-block-end: 40vh;
+}
+
+/* Keep the navigation scroll position stable and smooth */
+.wy-side-scroll {
+    scroll-behavior: smooth;
+    overflow-y: auto;
+}
+
+/* Additional fix: prevent scroll snap behavior */
+.wy-nav-side {
+    scroll-padding-top: 40vh;
+}
