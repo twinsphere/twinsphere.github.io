@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/cloud-search/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Search - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Search";
+        var mkdocs_page_input_path = "cloud-search.md";
+        var mkdocs_page_url = "/cloud-search/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Proprietary Features</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Search</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#shell-technical-classifications">Shell Technical classifications</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#general-querying-guidelines">General querying guidelines</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-building-a-product-search">Example building a product search</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pagination">Pagination</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#formatting-of-values">Formatting of values</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#special-cases">Special cases</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation Rules</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud</li>
+          <li class="breadcrumb-item">Proprietary Features</li>
+      <li class="breadcrumb-item active">Search</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="search">Search</h1>
+<p>twinsphere search is a feature that allows you to use Mongo Atlas Search queries to search for shells based on their
+submodel data. A list of defined indexes and their schema is given below. Each index is language-specific and contains
+only strings in a given language. We currently support English (en-US) and German (de-DE) languages only.</p>
+<p>To search using one of the indexes, send a query via POST on the <code>/api/v3/sphere/search</code> endpoint. Take a look at the
+Swagger for more API documentation around each parameter and return value.</p>
+<h2 id="shell-technical-classifications">Shell Technical classifications</h2>
+<p>Index names:</p>
+<ul>
+<li>English: <code>search_shell_technical_classifications_en_index</code></li>
+<li>German: <code>search_shell_technical_classifications_de_index</code></li>
+</ul>
+<blockquote>
+<p>When writing queries, you need to include the language in both the index name and as a query string parameter for the
+HTTP request!</p>
+</blockquote>
+<p><strong>Defined mappings</strong>:</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>field type</th>
+<th>explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>classifications</td>
+<td>token</td>
+<td>Classifications is an array of string identifiers.</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>stringFacet</td>
+<td>Properties in an array so that you can perform facet queries to find most used properties.</td>
+</tr>
+<tr>
+<td>0 ... N properties extracted from the technical data submodels</td>
+<td>token, stringFacet</td>
+<td>Indexed as token to be used for filtering, and as a stringFacet to enable facets for each property.</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>Data returned in the queries as results looks something like this (based on the language, example for German):</p>
+<pre><code class="language-json">{
+   &quot;_id&quot;: &quot;shell-id-1&quot;,
+    &quot;classifications&quot;: [
+      &quot;24-11&quot;,
+      &quot;24-12&quot;,
+      &quot;24-15-22&quot;
+    ],
+    &quot;Breite&quot;: &quot;17,6 mm&quot;,
+    &quot;Länge&quot;: &quot;128,0 mm&quot;,
+    &quot;Nennstrom&quot;: &quot;50,0 mA&quot;,
+
+    // further properties ...
+
+    &quot;properties&quot;: [
+        &quot;Breite&quot;,
+        &quot;Länge&quot;,
+        &quot;Nennstrom&quot;
+
+        // all properties are also listed here in this list by their name
+    ]
+},
+{
+   &quot;_id&quot;: &quot;shell-id-2&quot;,
+    &quot;classifications&quot;: [
+      &quot;2-16&quot;,
+      &quot;24-12&quot;,
+      &quot;ABC&quot;
+    ],
+    &quot;Breite&quot;: &quot;12,0 mm&quot;,
+    &quot;Länge&quot;: &quot;12,0 mm&quot;,
+    &quot;Einbautiefe&quot;: &quot;138,3 mm&quot;,
+
+    // further properties ...
+
+    &quot;properties&quot;: [
+        &quot;Breite&quot;,
+        &quot;Länge&quot;,
+        &quot;Einbautiefe&quot;
+    ]
+},
+
+// ...
+...
+</code></pre>
+<h3 id="general-querying-guidelines">General querying guidelines</h3>
+<ul>
+<li>You can use <code>$search</code> or <code>$searchMeta</code> pipeline operators. <code>$search</code> returns the source objects, while <code>$searchMeta</code>
+  only returns the metadata like facet counts.</li>
+<li>You can use aggregation pipelines in your queries, simply provide an JSON array:</li>
+</ul>
+<pre><code class="language-json">[
+   // stage 1
+   {
+      &quot;$search&quot;:{
+         &quot;index&quot;:&quot;...&quot;
+      }
+   },
+   // stage 2
+   {
+      &quot;$project&quot;:{
+         &quot;_id&quot;:1
+      }
+   },
+   // ...
+]
+</code></pre>
+<h3 id="example-building-a-product-search">Example building a product search</h3>
+<p>Let's say you want to build a classical product search, in which you want to show top used properties on the left side
+of the screen in a tree view, and the results on the right side.</p>
+<h4 id="most-used-properties">Most used properties</h4>
+<p>First, you could run a query to find all most used property for a given classification:</p>
+<pre><code class="language-json">{
+  &quot;$searchMeta&quot;: {
+    &quot;index&quot;: &quot;search_shell_technical_classifications_de_index&quot;,
+    &quot;facet&quot;: {
+      &quot;operator&quot;: {
+        &quot;in&quot;: {
+          &quot;path&quot;: &quot;classifications&quot;,
+          &quot;value&quot;: &quot;24-11&quot;
+        }
+      },
+      &quot;facets&quot;: {
+        &quot;mostUsedProperties&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;path&quot;: &quot;properties&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<h4 id="count-the-hits-per-property">Count the hits per property</h4>
+<p>Then, based on the results, you could calculate facets by including these N most used properties in a new query like
+this:</p>
+<pre><code class="language-json">{
+  &quot;$searchMeta&quot;: {
+    &quot;index&quot;:
+      &quot;search_shell_technical_classifications_de_index&quot;,
+    &quot;facet&quot;: {
+      &quot;operator&quot;: {
+        &quot;in&quot;: {
+          &quot;path&quot;: &quot;classifications&quot;,
+          &quot;value&quot;: &quot;24-11&quot;,
+        },
+      },
+      &quot;facets&quot;: {
+        &quot;Breite&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;path&quot;: &quot;Breite&quot;,
+        },
+        &quot;Länge&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;path&quot;: &quot;Länge&quot;,
+        },
+        &quot;Nennstrom&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;path&quot;: &quot;Nennstrom&quot;,
+        },
+      },
+    },
+  }
+}
+</code></pre>
+<p>To get the actual data and not only facets, you can run the same exact query with the $search operator. However, for
+performance reasons, you can actually fetch both the data and the metadata in a single query like this:</p>
+<pre><code class="language-json">[
+  {
+    &quot;$search&quot;: {
+      &quot;index&quot;:
+        &quot;search_shell_technical_classifications_de_index&quot;,
+      &quot;facet&quot;: {
+        &quot;operator&quot;: {
+          &quot;in&quot;: {
+            &quot;path&quot;: &quot;classifications&quot;,
+            &quot;value&quot;: &quot;24-11&quot;,
+          },
+        },
+        &quot;facets&quot;: {
+          &quot;Breite&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;path&quot;: &quot;Breite&quot;,
+          },
+          &quot;Länge&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;path&quot;: &quot;Länge&quot;,
+          },
+          &quot;Nennstrom&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;path&quot;: &quot;Nennstrom&quot;,
+          },
+        },
+      },
+    },
+  },
+  {
+    &quot;$facet&quot;: {
+      &quot;docs&quot;: [
+        {
+          &quot;$replaceRoot&quot;: {
+            &quot;newRoot&quot;: &quot;$$ROOT&quot;,
+          },
+        },
+      ],
+      &quot;meta&quot;: [
+        {
+          &quot;$replaceWith&quot;: &quot;$$SEARCH_META&quot;,
+        },
+        {
+          &quot;$limit&quot;: 1,
+        },
+      ],
+    },
+  },
+  {
+    &quot;$set&quot;: {
+      &quot;meta&quot;: {
+        &quot;$arrayElemAt&quot;: [&quot;$meta&quot;, 0],
+      },
+    },
+  },
+]
+</code></pre>
+<p>Please check the <a href="https://www.mongodb.com/docs/atlas/atlas-search/facet/">Mongo Atlas Search facet documentation&nbsp;⧉</a> for
+reference.</p>
+<h4 id="further-subquerying">Further subquerying</h4>
+<p>If you allow the user to apply further criteria to search, such as a combination of AND and OR conditions on certain
+properties and values, then you can construct your queries using multiple nested compound operators. The query below
+uses <code>should</code> for OR conditions and nests them under a <code>must</code> operator to perform an AND condition. All hits where
+<code>Länge</code> is either <code>101 mm</code> or <code>105 mm</code> and <code>Breite</code> is <code>50 mm</code> are returned.</p>
+<pre><code class="language-json">// ...
+      &quot;facet&quot;: {
+        &quot;operator&quot;: {
+          &quot;compound&quot;: {
+            &quot;filter&quot;: {
+              &quot;in&quot;: {
+                &quot;path&quot;: &quot;classifications&quot;,
+                &quot;value&quot;: &quot;24-11&quot;,
+              },
+            },
+
+            &quot;must&quot;: [
+              {
+                &quot;compound&quot;: {
+                  &quot;should&quot;: [
+                    {
+                      &quot;equals&quot;: {
+                        &quot;path&quot;: &quot;Länge&quot;,
+                        &quot;value&quot;: &quot;101 mm&quot;,
+                      },
+                    },
+                    {
+                      &quot;equals&quot;: {
+                        &quot;path&quot;: &quot;Länge&quot;,
+                        &quot;value&quot;: &quot;105 mm&quot;,
+                      },
+                    },
+                  ],
+                  &quot;minimumShouldMatch&quot;: 1,
+                },
+              },
+              {
+                &quot;compound&quot;: {
+                  &quot;should&quot;: [
+                    {
+                      &quot;equals&quot;: {
+                        &quot;path&quot;: &quot;Breite&quot;,
+                        &quot;value&quot;: &quot;50 mm&quot;,
+                      },
+                    },
+                  ],
+                  &quot;minimumShouldMatch&quot;: 1,
+                },
+              },
+            ],
+          },
+        },
+        &quot;facets&quot;: {
+  // ...
+</code></pre>
+<h3 id="pagination">Pagination</h3>
+<p>To get only certain amount of <code>docs</code> but all of the metadata, in-build search pagination feature can be used. Mongo
+search pagination is cursor-based, which means that every returned document has an unique position which you could use
+in your next query to request searching before or after this position.</p>
+<p>To extend on our last query from above, we could use pagination like this:</p>
+<pre><code class="language-json">[
+  {
+    &quot;$search&quot;: {
+      &quot;index&quot;:
+        &quot;search_shell_technical_classifications_de_index&quot;,
+
+      // this is a token from a document retrieved in the previous query (can be the last document on the last page)
+      &quot;searchAfter&quot;: &quot;CABCVABCCAPw==&quot;,
+
+      &quot;facet&quot;: {
+        &quot;operator&quot;: {
+          &quot;in&quot;: {
+            &quot;path&quot;: &quot;classifications&quot;,
+            &quot;value&quot;: &quot;24-11&quot;,
+          },
+        },
+        &quot;facets&quot;: {
+          &quot;Breite&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;path&quot;: &quot;Länge&quot;,
+          },
+          &quot;Länge&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;path&quot;: &quot;Länge&quot;,
+          },
+          &quot;Nennstrom&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;path&quot;: &quot;Nennstrom&quot;,
+          },
+        },
+      },
+    },
+  },
+  {
+    // for each of the returned documents we want to also include the cursor in a new field called paginationToken
+    &quot;$addFields&quot;: {
+      &quot;paginationToken&quot; : { &quot;$meta&quot; : &quot;searchSequenceToken&quot; }
+    }
+  },
+  {
+    // page of 20 documents
+    &quot;$limit&quot;: 20
+  },
+  {
+    &quot;$facet&quot;: {
+      &quot;docs&quot;: [
+        {
+          &quot;$replaceRoot&quot;: {
+            &quot;newRoot&quot;: &quot;$$ROOT&quot;,
+          },
+        },
+      ],
+      &quot;meta&quot;: [
+        {
+          &quot;$replaceWith&quot;: &quot;$$SEARCH_META&quot;,
+        },
+        {
+          &quot;$limit&quot;: 1,
+        },
+      ],
+    },
+  },
+  {
+    &quot;$set&quot;: {
+      &quot;meta&quot;: {
+        &quot;$arrayElemAt&quot;: [&quot;$meta&quot;, 0],
+      },
+    },
+  },
+]
+</code></pre>
+<h3 id="formatting-of-values">Formatting of values</h3>
+<p>Values delivered by search are preformatted for the language requested. For example, "de" index would deliver 100.000,99
+and "en" index would deliver "100,000.99". Formatting rules are based on the XSD data type declared on the valueType
+property (of the SubmodelElement). Our logic is implemented as follows:</p>
+<ul>
+<li>Values are formatted depending on the target culture numerical, datetime and other settings.</li>
+<li>We keep all the decimals, no rounding will be performed.</li>
+<li>We drop the trailing zeroes (e.g. 100.000,00 becomes 100.000) for all numerical types.</li>
+<li>Unit of measure from the concept descriptions is always added on the end of the value.</li>
+</ul>
+<h3 id="special-cases">Special cases</h3>
+<h4 id="indexing">Indexing</h4>
+<ul>
+<li>We currently only support <strong>Property</strong> and <strong>MultiLanguageProperty</strong> submodel elements.</li>
+<li>For property names, concept descriptions data from the repository is used. Matching is done based on the semantic
+  identifier of each of the properties.</li>
+<li>For values we use the value from the property itself and combine it with the <strong>unit</strong> from the concept description
+  data.</li>
+<li>Multiple properties with the same property name are NOT supported. This situation could occur for several reasons:<ul>
+<li>shell reference multiple technical data submodels with same properties</li>
+<li>two properties with different semantic identifiers have same text in a given language</li>
+<li>if <strong>same</strong> properties are found, only the first one will be used and the rest will not be indexed</li>
+</ul>
+</li>
+</ul>
+<h4 id="querying">Querying</h4>
+<ul>
+<li>When querying, it is important to note that the property names could contain special Mongo symbols such as <code>.</code> or <code>$</code>.
+  Most queries should work without problem since Mongo supports such property names, but some operators, like <code>$project</code>
+  might not work correctly.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cloud-events/" class="btn btn-neutral float-left" title="Events"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cloud-push-service/" class="btn btn-neutral float-right" title="Push Service">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cloud-events/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-push-service/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
