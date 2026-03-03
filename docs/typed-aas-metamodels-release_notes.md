@@ -25,8 +25,8 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
     - Circularity 1.0
 - **[Bugfix]** Fix representation of semantic Ids in meta model conversion for multiple SMTs
 - **[Bugfix]** Fix too strict validations in CarbonFootprint 0.9
-- **[Bugfix]** Add missing constraint on Path types [Bugfix] Fix null dereference in validation of Handover
-  Documentation 1.2
+- **[Bugfix]** Add missing constraint on Path types
+- **[Bugfix]** Fix null dereference in validation of Handover Documentation 1.2
 
 - **[TAM]** Update to most recent specification versions for several submodels
     - Contact Informations 1.0
