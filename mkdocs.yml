@@ -26,6 +26,7 @@ nav:
       - Semantic Connector: cloud-semantic-connector.md
       - Shell Filter Queries: cloud-shell-filter-queries.md
       - File Filter Queries: cloud-file-filter-queries.md
+      - ABAC (Attribute Based Access Control): cloud-abac.md
     - Authentication: cloud-auth.md
     - Client Generation: cloud-client-generation.md
     - Release Notes: cloud-release-notes.md

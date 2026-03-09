@@ -52,10 +52,7 @@ You can also call the API with any HTTP client (e.g., curl). Using the Swagger U
 ## Inviting users
 
 You can invite any user to your organization using their twinsphere ID.
-If the user does not yet have one, please submit a [support ticket](contact.md).
-
-!!! note
-    User self-registration in twinsphere ID is coming soon.
+If the user does not yet have one, they can [register themselves](id-new-user-registration.md).
 
 To invite a user, use: `POST /api/v{version}/organizations/{organizationId}/users/invite`
 
@@ -113,6 +110,9 @@ Add a secret to a service account:
 ## User groups
 
 User groups provide an easier way to assign roles to multiple users or service accounts at once.
+
+!!! important
+    User group names must start with the `group@` prefix (e.g., `group@factory-admins`).
 
 Create a user group:
 `POST /api/v{version}/organizations/{organizationId}/user-groups`

@@ -6,7 +6,7 @@ Here is a list of all available roles and their permissions, that you can set th
 | Role | Scope | Explanation |
 |------|-------|-------------|
 | organization-owner | organization | Full access rights across the organization |
-| tenant-administrator | cloud tenant | Full access rights for a given tenant |
+| tenant-administrator | cloud tenant | Full access rights for a given tenant. Required for security-relevant endpoints (e.g. ABAC policies) |
 | tenant-global-writer | cloud tenant | Read and write permissions on all endpoints |
 | tenant-global-reader | cloud tenant | Read permissions on all endpoints |
 | tenant-metadata-writer | cloud tenant | Read and write permissions on all registry, discovery and concept descriptions endpoints (AAS metadata) |
