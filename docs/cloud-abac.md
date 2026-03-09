@@ -7,10 +7,12 @@ authorization of resources. Unlike traditional Role-Based Access Control (RBAC),
 access requests based on attributes of the principal (user/service), the action being performed,
 and the resource being accessed.
 
+<!-- markdownlint-disable code-block-style -->
 !!! note "Cloud-Only Feature"
 
     ABAC is a feature of the twinsphere Cloud AAS Repository only. In contrast,
     [RBAC roles](management-roles.md) apply across the entire twinsphere platform.
+<!-- markdownlint-enable code-block-style -->
 
 Both RBAC and ABAC can be used together to provide a robust security model. Keep in mind that
 RBAC roles are evaluated first, and if access is granted via RBAC, ABAC policies are not checked.
@@ -72,12 +74,14 @@ Security attributes are defined in the resource's `extensions` array with the pr
 }
 ```
 
+<!-- markdownlint-disable code-block-style -->
 !!! note "Supported Extensions"
 
     Security attribute extensions are supported on **Asset Administration Shells**
     and **Submodels** at the top (root) level of each entity.
     For **Files**, security attributes are defined via
     [file attributes](cloud-documentation.md#usage-of-file-api) instead of extensions.
+<!-- markdownlint-enable code-block-style -->
 
 ### Policies
 
@@ -129,6 +133,8 @@ Some operations exhibit special behavior when ABAC policies are in effect:
   files the principal cannot access are **replaced with a placeholder access-denied file**.
 
 ## Example Scenario
+
+<!-- markdownlint-disable no-emphasis-as-heading blanks-around-fences -->
 
 ### Resources (Shells)
 
@@ -218,6 +224,8 @@ Some operations exhibit special behavior when ABAC policies are in effect:
   }
 }
 ```
+
+<!-- markdownlint-enable no-emphasis-as-heading blanks-around-fences -->
 
 ### Access Evaluation Examples
 
@@ -312,9 +320,11 @@ Once all resources have been migrated to include the new attribute, remove the o
 
 ## Policy Management API
 
+<!-- markdownlint-disable code-block-style -->
 !!! info "Required Roles"
 
     Policy management endpoints require the **`tenant-administrator`** or **`organization-owner`** role.
+<!-- markdownlint-enable code-block-style -->
 
 | Operation | Method | Endpoint | Description |
 |-----------|--------|----------|-------------|

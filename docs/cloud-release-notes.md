@@ -6,6 +6,15 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ---
 
+## Cloud 1.25
+
+*Released on 09-Mar-2026*.
+
+- **[Security]** Introduced [Attribute-Based Access Control (ABAC)](cloud-abac.md) for fine-grained authorization
+    of Shells, Submodels and Files based on security attributes
+
+---
+
 ## Cloud 1.24
 
 *Released on 02-Feb-2026*.
