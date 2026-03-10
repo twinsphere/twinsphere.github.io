@@ -125,8 +125,8 @@ Some operations exhibit special behavior when ABAC policies are in effect:
   response.
 - **Retrieving a single resource**: Returns `403 Forbidden` if the principal is not authorized
   to access the requested resource.
-- **Import**: If any of the imported Shells or Submodels are not granted by the principal's
-  ABAC policies, the import will **partially fail** -- only the authorized entities are imported.
+- **Import**: Returns `403 Forbidden` if any of the imported Shells or Submodels are not
+  granted by the principal's ABAC policies -- nothing will be imported.
 - **Serialization by ID**: Returns `403 Forbidden` if the principal is not authorized to
   access the requested resource. This is an explicit opt-in operation, not a filter.
 - **Files**: File contents are always filtered based on the principal's access rights. Any
