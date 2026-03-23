@@ -279,6 +279,39 @@ Packages currently contain the environment as JSON – XML coming soon.
     with for example Postman or CURL gives the correct File.
 <!-- markdownlint-enable code-block-style -->
 
+### File Inclusion in AASX Packages
+
+When using the `application/asset-administration-shell-package+json` format, files referenced within the selected
+shells and submodels are automatically included in the package. There is no dedicated parameter to explicitly
+include or exclude files — inclusion is determined by the content of the selected AAS and submodels.
+
+#### Which files are included
+
+- **Submodel File elements** — All `File` submodel elements within the selected submodels that have a valid
+  twinsphere file path are resolved and included under `/aasx/files/` in the package.
+- **Default thumbnail** — The default thumbnail from the first selected shell's `AssetInformation` is included if
+  it has a valid twinsphere file path.
+
+#### External links vs twinsphere file paths
+
+- File elements with a **twinsphere file path** (e.g., `file:/dHdpbnNwaGVyZS1maWxl/cp/18ef5516-618b-4a97-ac4b-d47f5d5ee823/image.jpg`)
+  are downloaded from blob storage and packed into the AASX.
+- File elements with an **external URL** (e.g., `https://example.com/file.pdf`) are left as-is in the serialized
+  environment metadata. The referenced file is not downloaded or included in the package.
+- File elements with **invalid or non-existing** twinsphere file paths are silently skipped.
+
+#### Access-restricted files (ABAC)
+
+When ABAC security is enabled, each file's security attributes are checked before inclusion. If the requesting user
+does not have sufficient permissions for a specific file:
+
+- The original file is **not** included in the package.
+- A placeholder file named `{original-filename}.access-restricted.txt` is included instead.
+- The file element's `value` in the serialized environment points to the placeholder, and its `contentType` is set
+  to `text/plain`.
+
+Users with a role-based (RBAC) grant bypass file-level ABAC checks and receive all files.
+
 ### Serialization Modifiers
 
 #### Level Modifier
