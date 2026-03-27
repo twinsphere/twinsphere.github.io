@@ -6,6 +6,15 @@ The twinsphere Server follows the semantic versioning format in the form major.m
 
 ---
 
+## Cloud 1.26
+
+*Released on 26-Mar-2026*.
+
+- **[SphereAPI]** Introduced Statistics API endpoint for retrieving historical timeseries data about statistics,
+    see [Statistics](cloud-documentation.md#statistics) for more information
+
+---
+
 ## Cloud 1.25
 
 *Released on 09-Mar-2026*.
