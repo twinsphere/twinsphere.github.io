@@ -255,22 +255,21 @@ it is validated whether the minimum is smaller than the maximum.
 To set the value of a *reference* element, click the *Add Reference* button
 and then select a type.
 
+- Current Twin (An element of the current Twin)
+- Twin in twinsphere (An element of another Twin in the connected twinsphere tenant)
+- External Element (An external element e.g. ISBN)
+
 #### Current Twin
 
-Select an asset administration shell from your currently loaded twin.
+Select an element from your currently loaded twin, the twin itself, a submodel or an submodel element.
 
-You can then refer to a submodel or submodel element and save the reference.
 The reference is displayed as shown below.
 
 ![ReferenceElement](img/twinstudio_builder_reference_collapsed.png)
 
-![ReferenceElement](img/twinstudio_builder_reference_extended_choose_type.png)
+![ReferenceElement](img/twinstudio_builder_reference_extended_current_twin_element.png)
 
-![ReferenceElement](img/twinstudio_builder_reference_extended_choose_asset.png)
-
-![ReferenceElement](img/twinstudio_builder_reference_extended_choose_sme.png)
-
-![ReferenceElement](img/twinstudio_builder_reference_collapsed_filled.png)
+![ReferenceElement](img/twinstudio_builder_reference_collapsed_filled_current_twin.png)
 
 #### Twin in twinsphere
 
@@ -278,19 +277,19 @@ You can search a twin in the repository of the current tenant.
 If you select the twin you can set a reference to a submodel or a
 submodel element that the twin contains or the twin itself.
 
-![ReferenceElement](img/twinstudio_builder_reference_extended_choose_type.png)
+![ReferenceElement](img/twinstudio_builder_reference_collapsed.png)
 
-![ReferenceElement](img/twinstudio_builder_reference_extended_choose_search_shell.png)
+![ReferenceElement](img/twinstudio_builder_reference_expanded_twin_in_twinsphere_shell.png)
 
-![ReferenceElement](img/twinstudio_builder_reference_extended_choose_sme.png)
+![ReferenceElement](img/twinstudio_builder_reference_expanded_twin_in_twinsphere_element.png)
 
-![ReferenceElement](img/twinstudio_builder_reference_collapsed_filled.png)
+![ReferenceElement](img/twinstudio_builder_reference_collapsed_twin_in_twinsphere_filled.png)
 
 #### External Twin
 
 You can set an external reference by writing the value into the input field.
 
-![ReferenceElement](img/twinstudio_builder_reference_extended_choose_type.png)
+![ReferenceElement](img/twinstudio_builder_reference_extended_external.png)
 
 ![ReferenceElement](img/twinstudio_builder_reference_extended_choose_fill_external.png)
 
