@@ -27,7 +27,7 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 -   **[Statistics]:**
 
-    -   Introduced Tenant Statistics page, providing a beautiful dashboard with vizualizations of tenant-level
+    -   Introduced Tenant Statistics page, providing a beautiful dashboard with visualizations of tenant-level
         usage data.
 
 **Fixes:**
