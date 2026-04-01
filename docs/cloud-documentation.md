@@ -552,6 +552,10 @@ The response granularity is selected automatically based on the requested time r
 | `asset_links_count` | Number of asset links in a Discovery instance | Discovery instance name |
 | `shell_descriptors_count` | Number of shell descriptors in a Registry instance | Registry instance name |
 
+!!! note "Monitoring objects"
+    In each twinsphere tenant exist one shell and one submodel for operational monitoring purposes. You are not able
+    to access them via API but they are included in the numbers of the tenant statistics.
+
 !!! note "Storage values"
     `used_db_storage` and `used_blob_storage` values are stored and returned in **bytes**.
     Convert to GB by dividing by 1,073,741,824 (1024³).
