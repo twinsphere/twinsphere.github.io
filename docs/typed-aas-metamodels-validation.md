@@ -1,202 +1,295 @@
-# Validation Rules in twinsphere.TypedAasMetamodels
+# Validation in twinsphere.TypedAasMetamodels
 
 ## Overview
 
-The following will lay out the validations that are implemented in twinsphere.TypedAasMetamodels. It consists of two
-parts: in the first part general structural rules are discussed. The second part describes validations that are specific
-for individual submodel types.
+The DevKit validation subsystem identifies and reports defects in AAS data, from critical errors and structural
+issues to anti-patterns. Its goal is to give you the means to correct and lint your data.
 
-### Example
-
-Validations are described in this document in the form of rules. Each rule entry consists of the same parts:
-
-- a unique rule name
-- a description of the respective rule
-
-## General Rules
-
-### Name not set for property. Can't convert object models without valid id short
-
-The id short of a submodel element is not set, although it is not an element of a submodel element list. Each submodel
-element in the submodel (except for submodel element list elements) is expected to have an id short to facilitate
-correct interpretation.
-
-### Submodel element has elements with duplicate id shorts
-
-There are multiple submodel elements in the same namespace that have the same id short. As per
-[AASd-022](https://industrialdigitaltwin.org/wp-content/uploads/2025/03/IDTA-01001-3-0-2_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf#page=105),
-id shorts of non-identifiables must be unique within their respective namespace.
-
-### Submodel element has wrong type, expected XYZ
-
-The type of submodel element differs from that, that the submodel template describes.
-
-### Submodel element has unset value
-
-Submodel elements in submodel instances are expected to carry a non-empty value. Optional unset submodel elements should
-be signified by elision from the submodel.
+Each defect is represented by a rule with a unique identifier and description.
 
 !!! note
-    For a submodel element to be optional, it must have a SMT/Cardinality qualifier like `ZeroToOne` or `ZeroToMany`.
+    A comprehensive rule catalogue — with examples and resolution hints for each rule — will be released in a future
+    update.
 
-### File has unset ContentType
+Validation covers two main areas:
 
-File elements in submodel instances are expected to carry a non-empty ContentType. Optional unset file elements should
-be signified by elision from the submodel.
+**AASX Package**:
+
+- Missing files
+- Deprecated packaging features
+- Invalid structure
+
+**Meta Model Data**:
+
+- Syntax errors
+- Deprecated data
+- Anti-patterns
+- Type-specific problems for submodel templates and instances
+- Conformity of submodel instances to their respective submodel templates
+
+!!! important
+    This validation supersedes the previous validation interfaces. The old interfaces remain available for now but
+    have been officially marked as obsolete.
+
+## Validators
+
+The DevKit provides two validators. Both are configured via a builder and report issues as `Diagnostic` instances.
+
+<!-- markdownlint-disable line-length -->
+
+| Validator | Access via | Use when |
+|---|---|---|
+| `Validator` | `twinsphere.TypedAasMetamodels.Validator` | Validating packages, environments, or identifiables in general |
+| `SubmodelConformityValidator` | `twinsphere.TypedAasMetamodels.SubmodelConformityValidator` | Explicitly checking whether an instance conforms to a specific template |
+
+<!-- markdownlint-enable line-length -->
+
+### Validator
+
+`Validator` is the general-purpose validator. It performs every applicable validation for the provided input and,
+if a template resolver strategy is configured, additionally runs conformity validation for any submodel instance
+for which a template can be resolved.
 
 !!! note
-    For a submodel element to be optional, it must have a SMT/Cardinality qualifier like `ZeroToOne` or `ZeroToMany`.
+    `Validator` attempts to resolve templates *on its own* — you have no control over which template it validates
+    against. If you need to specify the template explicitly, use `SubmodelConformityValidator` instead.
 
-### MimeType of a File must be correct
+### Submodel Conformity Validator
 
-The content type specified in a file element does not match to the content type derived by referenced file's extension.
+`SubmodelConformityValidator` validates against the same error categories as `Validator`. However, it gives you
+explicit control over which submodel template to validate against. Use this when you want to assert that a given
+submodel instance is a valid instance of a particular template.
 
-### File specified ContentType does not match that of file reference
+## Diagnostics
 
-The content type specified in a file element does not match to the content type derived by referenced file's extension.
+Issues are reported as instances of `Diagnostic`. Among other information, each diagnostic carries:
 
-### Property has wrong value type, expected XYZ
+- A short description
+- An error code and name
+- The path to the offending element
+- A severity level
 
-The value type of a property element does not match the value type described in the submodel template. If the submodel
-template demands a specific value type, instances of the property must adhere to said value type.
+!!! note
+    The section about [validating a package](#validating-a-package) shows how to render a diagnostic path to
+    human-readable form.
 
-### Property Value is invalid. Cannot be interpreted as XYZ
+### Severity Profiles
 
-The value of a property element cannot correctly be interpreted as a value of the value type specified in the property.
+The severity of each rule can be adjusted via the `Profile` property on the validator instance. Four levels are
+available: `None`, `Error`, `Warning`, and `Info`.
 
-### Property value is not supported by constraints
+`Profile` provides two factory methods for creating presets:
 
-The value of a property element does not adhere to constraints as given by qualifiers or the submodel template
-specification. This, for example, is the case if the property acts as a sort of enumeration with a limited set of valid
-values.
+- `Profile.ForInstance()` — appropriate defaults for validating submodel instances
+- `Profile.ForTemplate()` — appropriate defaults for validating submodel templates
 
-### Unknown property for instance of XYZ
+!!! note
+    Not every rule is meaningful in every context. For example, incomplete submodel elements are acceptable in a
+    template but not in an instance. The profile presets account for this distinction.
 
-The submodel template does not specify a property with the id short of this submodel element.
+To override individual rule severities after creating a validator, see
+[Adjusting Severity Profiles](#adjusting-severity-profiles).
 
-### Missing mandatory property for instance of XYZ
+## Resolving Submodel Templates
 
-The submodel instance lacks a submodel element that the submodel template specifies with the qualifier SMT/Cardinality
-of `One`.
+Conformity validation requires the validator to look up the template for a given submodel instance. Implement
+`ITemplateResolverStrategy` to provide this lookup:
 
-### Missing list elements for XYZ for instance of XYZ
+```csharp
+public interface ITemplateResolverStrategy
+{
+    /// <summary>
+    /// Resolves a semantic id to the corresponding submodel template.
+    /// </summary>
+    /// <param name="semanticId">The semanticId of the submodel template to resolve.</param>
+    /// <returns>The resolved template, or null if not found.</returns>
+    Task<Core.ISubmodel?> ResolveTemplate(Core.IReference semanticId);
+}
+```
 
-The number of elements in submodel element list in the submodel instance does not match the minimum number of elements
-as specified in the SMT/Cardinality qualifier for the list in the submodel template.
+Pass the implementation to the builder via `WithTemplateResolverStrategy(...)`. Where templates use drop-ins[^1],
+the validator resolves them recursively (for example, Digital Nameplate 3.0 uses drop-ins).
 
-### Id must be set and non-empty
+## Conformity Validation Features
 
-The id of a submodel is unset.
+The conformity validator checks the structural correspondence between a submodel instance and its template,
+including:
 
-## Submodel Specific Rules
+- Correct element naming and cardinalities (mandatory, optional, and multi-cardinality properties)
+- Arbitrary elements
+- Enumeration patterns
+- `SMT/AllowedValue` qualifier
+- `SMT/AllowedRange` qualifier
+- `SMT/IdShort` qualifier
+- `SMT/RequiredLangs` qualifier
+- `SMT/EitherOr` qualifier
+- Consistency of submodel element types, id shorts, and semantic ids
 
-Submodel specific rules are rules and restrictions that are specific to individual submodel templates.
+For the [submodels supported by the DevKit](typed-aas-metamodels-submodels.md), the validator additionally applies
+template-specific constraints that are only described in textual form in the respective specifications.
 
-### IDTA 02023 Carbon Footprint 0.9
+## Examples
 
-#### Value is not a valid PCFCalculationMethod
+### Validating a Package
 
-The value of the property PCFCalculationMethod is not one of the valid PCF calculation methods. The value must be one of
-the following:
+`Reporting.ToNamePath` converts a diagnostic path to a human-readable string; equivalent helpers exist for JSON
+and XML paths.
 
-- EN 15804
-- GHG Protocol
-- IEC TS 63058
-- ISO 14040
-- ISO 14044
-- ISO 14067
-- IEC 63366
-- PEP Ecopassport
+```csharp
+using twinsphere.TypedAasMetamodels.Validation;
+using twinsphere.TypedAasMetamodels.Common.Reporting;
 
-#### TcfReferenceValueForCalculation must be valid
+var validator = await Validator.Builder().Build().Value;
 
-The value of the property TCFReferenceValueForCalculation is not one of the valid PCF calculation methods. The value
-must be one of the following:
+foreach (var diag in validator.Validate("path/to/my/package.aasx"))
+{
+    var path = Reporting.ToNamePath(diag.Path);
+    Console.WriteLine($"{diag.Rule}: {diag.Name} at {path}");
+}
+```
 
-- g
-- kg
-- t
-- ml
-- l
-- cbm
-- qm
-- piece
+To include conformity validation, provide a template resolver strategy on the builder:
 
-#### ProcessesForGreenhouseGasEmissionInATransportServices must be valid
+```csharp
+public class MyTemplateResolverStrategy : ITemplateResolverStrategy
+{
+    public async Task<Core.ISubmodel?> ResolveTemplate(Core.IReference semanticId)
+    {
+        return await Directory.LookUpTemplate(semanticId);
+    }
+}
 
-The value of the property TCFReferenceValueForCalculation is not one of the valid PCF calculation methods. The value
-must be one of the following:
+var validator = await Validator.Builder()
+    .WithTemplateResolverStrategy(new MyTemplateResolverStrategy())
+    .Build()
+    .Value;
+```
 
-- WTT - Well-to-Tank
-- TTW - Tank-to-Wheel
-- WTW - Well-to-Wheel
+### Submodel Conformity Validation
 
-### IDTA 02002-1-0 Submodel for Contact Information 1.0
+```csharp
+using twinsphere.TypedAasMetamodels.Validation;
+using twinsphere.TypedAasMetamodels.Common.Reporting;
 
-There are no submodel specific rules for contact information 1.0.
+var instance = ...;
+var template = ...;
 
-### IDTA 02006-2-0 Digital Nameplate for industrial equipment 2.0
+var validator = await SubmodelConformityValidator(template)
+    .WithTemplateResolverStrategy(new MyTemplateResolverStrategy()) // only needed for templates with drop-ins
+    .Build()
+    .Value;
 
-#### CountryOfOrigin needs to be a valid country code
+foreach (var diag in validator.Validate(instance))
+{
+    var path = Reporting.ToNamePath(diag.Path);
+    Console.WriteLine($"{diag.Rule}: {diag.Name} at {path}");
+}
+```
 
-The value of CountryOfOrigin is not a valid DIN EN ISO 3166-1 alpha-2 code. The value must be a country code according
-to DIN EN ISO 3166-1 alpha-2 codes.
+### Adjusting Severity Profiles
 
-#### SpecificConditionsForUse must be X if set
+Both validators expose the active profile via the `Profile` property. The following example disables all rules
+except package-related ones:
 
-The value of SpecificConditionsForUse is not "X". If SpecificConditionsForUse is set, its value must be "X".
+```csharp
+var validator = await Validator.Builder().Build().Value;
 
-#### IncompleteDevice must be U if set
+foreach (var rule in CoreRules.All)
+{
+    if (rule.IsPackageError())
+    {
+        validator.Profile.SetError(rule);
+    }
+    else
+    {
+        validator.Profile.SetDisabled(rule);
+    }
+}
+```
 
-The value of IncompleteDevice is not "U". If IncompleteDevice is set, its value must be "U".
+## Extending the Validator
 
-### IDTA 02004-1-2 Handover Documentation 1.2
+### Extending with Custom Rules and Validators
+
+The validator operates as an ordered pipeline of five steps. You can inject your own validators into any of them:
 
 <!-- markdownlint-disable line-length -->
 
-#### Preview File must match the correct MIME-Type. Allowed file types are JPG, PNG, BMP
+| Step | Interface | Covers |
+|---|---|---|
+| Package validation | `IPackageValidator` | Issues with the `.aasx` file itself |
+| Meta model validation | `IMetaModelValidator` | Syntactic errors, invalid references |
+| Template validation | `ITemplateValidator` | Errors specific to submodels of kind template (e.g., missing semantic ids) |
+| Instance validation | `IInstanceValidator` | Errors specific to submodels of kind instance (e.g., incomplete elements) |
+| Template-specific validation | `ITemplateSpecificValidations` | Constraints specific to individual submodel templates |
 
 <!-- markdownlint-enable line-length -->
 
-The MIME-type of the preview file is not that of a JPG, PNG, or BMP file. The preview file only allows JPG, PNG, or BMP
-MIME-types.
+Use the corresponding `With...` builder method to register your validator. To raise diagnostics from it, define
+your `Rule` instances and register them via `WithRulesFrom<T>()`.
 
-#### Digital files must contain at least one PDF
+!!! important
+    Validators return `Finding` instances, not `Diagnostic` instances. A `Finding` is mapped to a `Diagnostic`
+    according to the active validation profile.
 
-Digital files does not contain at least one file that is a PDF/A file. At least one PDF/A file type shall be provided.
+The following example enforces that id shorts in templates must be camelCase:
 
-<!-- markdownlint-disable line-length -->
+```csharp
+// CamelCaseIdShortValidator.cs
+using twinsphere.TypedAasMetamodels.Validation.Types;
+using twinsphere.TypedAasMetamodels.Validation.Template.Validation;
 
-#### Constraint: for each language-dependent Title, Summary and at least one KeyWord shall exist for the given language
+public sealed class CamelCaseIdShortValidator : ITemplateValidator
+{
+    public IEnumerable<Finding> Validate(Core.ISubmodel submodel)
+    {
+        foreach (var element in submodel.Descend().OfType<AasCore.Aas3_1.IReferable>())
+        {
+            if (string.IsNullOrEmpty(element.IdShort))
+            {
+                continue;
+            }
 
-<!-- markdownlint-enable line-length -->
+            if (!Regex.IsMatch(element.IdShort, @"^[a-z]+(?:[A-Z][a-z0-9]*)*$"))
+            {
+                yield return new Finding(CustomRules.NonCamelCaseIdShort, cause: element.IdShort);
+            }
+        }
+    }
+}
 
-There is a title or summary for which there is no keyword in the same language. For each language-dependent keyword, a
-title and summary shall exist for the given language.
+// CustomRules.cs
+[RuleDefinition]
+public sealed class CustomRules
+{
+    public static readonly Rule NonCamelCaseIdShort = new(
+        "CUSTOM000",
+        "NonCamelCaseIdShort",
+        "IdShorts must be in camelCase",
+        "Design guidelines mandate that id shorts are camelCase only.",
+        RuleCategory.Template,
+        AutoFixability.Never);
+}
 
-#### Invalid classification ID type
+// Registration
+var validator = await Validator.Builder()
+    .WithRulesFrom<CustomRules>()
+    .WithTemplateValidator<CamelCaseIdShortValidator>()
+    .Build()
+    .Value;
+```
 
-The ClassId type is not one of the valid classification id types.
+## Limitations
 
-#### Invalid DocumentClassification: unsupported classification
+- **Template data quality**: Conformity validation depends on the quality of template data. Many published submodel
+    templates contain syntactic or structural defects that complicate validation. For example, Digital Nameplate
+    3.0 still uses an incorrect reference to Contact Information (as of 2026-04-07).
 
-The Classification System type is not one of the valid classification system types.
+- **Textual constraints**: Many submodel template specifications describe additional constraints in natural language
+    only. These cannot be enforced automatically. The DevKit ships explicit implementations for the
+    [submodels it supports](typed-aas-metamodels-submodels.md), but for others you can add your own via the
+    [extension mechanism above](#extending-with-custom-rules-and-validators).
 
-#### Only one primary DocumentId is allowed
-
-There is more than one document id that set as primary. Only one document id may be the primary document id.
-
-### IDTA 02011-1-1 Hierarchical Structures enabling Bills of Material 1.1
-
-There are no submodel specific rules for Hierarchical Structures enabling Bills of Material 1.1.
-
-<!-- markdownlint-disable line-length -->
-
-### IDTA 02003-1-2 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 1.2
-
-#### Semantic Id not set for property. Properties are expected to carry a valid semantic id
-
-<!-- markdownlint-enable line-length -->
-
-There is no semantic id set for a property of TechnicalData, MainSection, or SubSection. Each entry in TechnicalData,
-MainSection, and SubSection needs a semantic id.
+[^1]: Drop-ins are a Submodel Template modeling concept that allows a template to reference and reuse definitions
+    from other submodel templates. In the context of validation, this means the validator may need to resolve and
+    process multiple submodel templates before it can fully evaluate the structure of a submodel instance.

@@ -46,7 +46,7 @@ nav:
   - Development libraries (DevKit):
     - Overview: typed-aas-metamodels-overview.md
     - Supported Submodels: typed-aas-metamodels-submodels.md
-    - Validation Rules: typed-aas-metamodels-validation.md
+    - Validation: typed-aas-metamodels-validation.md
     - Release Notes: typed-aas-metamodels-release_notes.md
   - Validators:
     - Overview: validators-overview.md
