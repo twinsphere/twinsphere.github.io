@@ -1,12 +1,6 @@
 # twinsphere Validator Documentation
 
-We currently offer two tools for checking the conformity of AAS artifacts with the specification.
-
-## twinsphere AAS Validator
-
-A CLI tool exclusively available to our customers.
-
-![twinfix AAS validator](img/twinsphere_aas_validator.png){: width='400' }
+We currently offer a tool for checking the conformity of AAS artifacts with the specification.
 
 ## twinsphere twinfix
 
