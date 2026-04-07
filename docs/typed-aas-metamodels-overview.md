@@ -185,10 +185,10 @@ var shell = new AssetAdministrationShellBuilder("9A8F8B66-5AA7-4528-AA17-1CC128A
 Additionally, there is also the ability to load from and convert to shells of the AasCore types:
 
 ```csharp
-using AasCore.Aas3_0;
+using AasCore.Aas3_1;
 using twinsphere.TypedAasMetamodels.Types.Shell;
 
-Aas3_0.IShell metamodelShell;
+Aas3_1.IShell metamodelShell;
 // load, e.g. from a repository
 
 // convert to the TypedAasMetamodels representation
@@ -231,8 +231,10 @@ Creating `.aasx` packages from scratch typically is complex and involves a numbe
 - Collect files for packaging
 - Collect the thumbnail file of the shell
 
+#### Simple Package Creation
+
 While you can do these steps manually, for most cases it should suffice to use the `AasxPackageBuilder`, that
-automatically takes care of the above steps:
+automatically takes care of the above steps. In the simplest form, the following code will suffice:
 
 ```csharp
 using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0;
@@ -252,18 +254,38 @@ nameplate.CompanyLogo = new FileReference("https://some.tld/some/image.png");
 // 3.2. alternatively, include a reference to a local file
 nameplate.CompanyLogo = new PackageFileReference("/home/user/some/image.png");
 
-// 4. we can now create an.aasx package out of all of this
+// 5. we can now create an.aasx package out of all of this
 // Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
 // referenced concept descriptions, and files to include into the paths, if available.
 var packagingInfo = PackagePreprocessor.ProcessShell(shell, [digitalNameplate]);
-var aasxPackage = new AasxPackageBuilder(packagingInfo).Build();
+var aasxPackage = new AasxPackageBuilder(packagingInfo)
+    .SetThumbnail("some-image.png", "image/png")
+    .Build();
 ```
+
+This will automatically resolve all Concept Descriptions that are available in the submodel template definition,
+as well as all files for which you've added PackageFileReferences.
 
 !!! note
     Take care to use the `PackageFileReference` type if you want to include local files into your package. This
     type wraps a reference to a file on disk. In the packaging step `PackageFileReference` elements will be included into
     the package and their links will resolved accordingly. See [Submodel Elements](typed-aas-metamodels-overview.md#submodel-elements)
     for more details on the built-in types of the library.
+
+#### Extended Package Creation
+
+However, you may find yourself in a situation, where you want to have more control over the packaging process. To this end,
+the `AasxPackageBuilder` additionally offers and interface that allows you to specify how Concept Descriptions and Files
+(either File Submodel Elements, as well as Resources) should be resolved. This is particularly useful for situations where
+you plan to poll these resources from other locations.
+
+To this end, you can implement the `IFileResolver` and `IConceptDescriptionResolver` interfaces. Either create a factory
+function for a `Stream` object from their respective resources. You can then pass the resolvers into the `AasxPackageBuilder`
+upon creation with the `PackageResolvers` type.
+
+!!! note
+    `PackageResolver` accepts a list of `IFileResolver`/`IConceptDescriptionResolver` object. This way you can specify multiple
+    resolvers. The `AasxPackageBuilder` then picks the first resolver that successfully resolves the respective resource.
 
 ## Working with Submodels
 
@@ -361,43 +383,7 @@ validations for:
 - correct cardinality of submodel elements
 - valid type representation of properties
 
-!!! note
-    The page on [validations](typed-aas-metamodels-validation.md) contains an exhaustive list of the respective
-    validations with descriptions.
-
-Each submodel type exposes a validator class that can be used to validate instances of the submodel. These validators
-return enumerators with the found validation errors:
-
-```csharp
-using AasCore.Aas3_0;
-using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0;
-using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0.Validation;
-
-Aas3_0.ISubmodel digitalNameplateMetamodel;
-// ... load a Digital Nameplate from some source, e.g., from a repository.
-
-var errors = DigitalNameplateValidator.Validate(digitalNameplateMetamodel);
-
-if (errors.Count() == 0)
-{
-    Console.WriteLine("✨ Correct Digital Nameplate.")
-}
-else
-{
-    Console.WriteError("🐛 Broken Digital Nameplate:")
-    foreach (var error in errors)
-    {
-        Console.WriteError(error.Reason);
-    }
-}
-```
-
-!!! note
-    These validations are to be understood as an extension of the terrific validations provided by the
-    aas\_core\_works team. Whereas the validations in the AasCore SDK addresses the correctness of shells and submodels on
-    syntactical level, the validations in twinsphere.TypedMetaModels are instead concerned with the correctness of
-    submodels in respect to their respective submodel templates, i.e., whether submodels fulfill the requirements given by
-    their submodel templates. Thus, the validation is limited to submodel instances.
+See [Validation](typed-aas-metamodels-validation.md) for a detailed description of the validation system.
 
 ### Conversion
 
@@ -407,10 +393,10 @@ models in the generic meta model representation and the typed submodel, and vice
 To this end, submodels implement `FromMetamodel()` and `ToMetamodel()`:
 
 ```csharp
-using AasCore.Aas3_0;
+using AasCore.Aas3_1;
 using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0;
 
-Aas3_0.ISubmodel digitalNameplateMetamodel;
+Aas3_1.ISubmodel digitalNameplateMetamodel;
 // ... load a Digital Nameplate from some source, e.g., from a repository.
 
 // 1. convert to its typed representation
@@ -458,10 +444,10 @@ The twinsphere.TypedAasMetamodels library allows to convert arbitrary submodels,
 the [supported submodels](typed-aas-metamodels-submodels.md) to the value-only representation.
 
 ```csharp
-using AasCore.Aas3_0;
+using AasCore.Aas3_1;
 using twinsphere.TypedAasMetamodels.Conversion.ValueOnly;
 
-Aas3_0.ISubmodel digitalNameplateMetamodel;
+Aas3_1.ISubmodel digitalNameplateMetamodel;
 // ... load a Digital Nameplate from some source, e.g., from a repository.
 
 var jsonString = ValueOnlySerializer.ToValueOnly(digitalNameplateMetamodel);
