@@ -8,7 +8,7 @@ issues to anti-patterns. Its goal is to give you the means to correct and lint y
 Each defect is represented by a rule with a unique identifier and description.
 
 !!! note
-    A comprehensive rule catalogue — with examples and resolution hints for each rule — will be released in a future
+    A comprehensive rule catalog with examples and resolution hints for each rule will be released in a future
     update.
 
 Validation covers two main areas:
