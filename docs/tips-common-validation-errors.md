@@ -39,6 +39,10 @@ Table of Content was created with "Auto Markdown TOC" Plugin for Visual Studio C
 
 # Common Validation Errors of AAS
 
+!!! warning
+    This document will be superseded in the near future. See the
+    [Validation documentation](typed-aas-metamodels-validation.md) for the current validation interface.
+
 A guide to understand, avoid and handle AAS validation errors.
 
 <!-- markdownlint-disable no-emphasis-as-heading -->
