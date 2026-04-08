@@ -75,7 +75,7 @@ This section displays metrics for your Discovery and Registry instances.
     instance configured. Each instance gets its own KPI card.
 
 | Metric | Description |
-|--------|-------------|
+| ------ | ----------- |
 | **Shell Descriptors** *(per Registry instance)* | Number of shell descriptors registered |
 | **Asset Links** *(per Discovery instance)* | Number of asset links registered |
 
@@ -96,12 +96,12 @@ You can customize each chart:
 !!! note "Automatic granularity"
     The data resolution is chosen automatically based on your selected time range:
 
-    | Time Range | Data Granularity |
-    |------------|-----------------|
-    | Up to 7 days | Hourly |
-    | Up to 30 days | Every 6 hours |
-    | Up to 1 year | Daily |
-    | Over 1 year (up to 5 years) | Weekly |
+| Time Range | Data Granularity |
+| ---------- | ---------------- |
+| Up to 7 days | Hourly |
+| Up to 30 days | Every 6 hours |
+| Up to 1 year | Daily |
+| Over 1 year (up to 5 years) | Weekly |
 
 ### Twin Development
 

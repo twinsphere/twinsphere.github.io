@@ -11,29 +11,29 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 **New Features:**
 
--   **[General]:**
+- **[General]:**
 
-    -   Enhanced toast messages and notifications for improved user feedback.
-    -   New export dialog for configuring the scope, format and target of exports.
+    - Enhanced toast messages and notifications for improved user feedback.
+    - New export dialog for configuring the scope, format and target of exports.
 
--   **[TwinBuilder]:**
+- **[TwinBuilder]:**
 
-    -   Added form support for submodel elements of type *RelationshipElement*.
-    -   Introduced icons in the navigation tree representing different submodel element (SME) types *[experimental]*.
-    -   Values of a *FormChoices* template qualifiers are now offered as dropdown options in forms.
-    -   Boolean datatypes of *Property* SMEs are now represented as dropdown options in forms.
-    -   Enhanced support for *ReferenceElement* enabling pointing to elements of other twins (*ModelReference*) and to
+    - Added form support for submodel elements of type *RelationshipElement*.
+    - Introduced icons in the navigation tree representing different submodel element (SME) types *[experimental]*.
+    - Values of a *FormChoices* template qualifiers are now offered as dropdown options in forms.
+    - Boolean datatypes of *Property* SMEs are now represented as dropdown options in forms.
+    - Enhanced support for *ReferenceElement* enabling pointing to elements of other twins (*ModelReference*) and to
         external resources (*ExternalReference*).
 
--   **[Statistics]:**
+- **[Statistics]:**
 
-    -   Introduced Tenant Statistics page, providing a beautiful dashboard with visualizations of tenant-level
+    - Introduced Tenant Statistics page, providing a beautiful dashboard with visualizations of tenant-level
         usage data.
 
 **Fixes:**
 
--   **[TwinBuilder]** Fixed wrong tooltip displayed on submodels with unavailable template.
--   **[TwinBuilder]** Removing items from a *SubmodelElementList* now removes the selected element instead of
+- **[TwinBuilder]** Fixed wrong tooltip displayed on submodels with unavailable template.
+- **[TwinBuilder]** Removing items from a *SubmodelElementList* now removes the selected element instead of
     always removing the first one.
 
 ---
