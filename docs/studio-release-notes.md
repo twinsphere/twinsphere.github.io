@@ -5,6 +5,39 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ---
 
+## Studio 0.7
+
+*Released on 01-Apr-2026*.
+
+**New Features:**
+
+- **[General]:**
+
+    - Enhanced toast messages and notifications for improved user feedback.
+    - New export dialog for configuring the scope, format and target of exports.
+
+- **[TwinBuilder]:**
+
+    - Added form support for submodel elements of type *RelationshipElement*.
+    - Introduced icons in the navigation tree representing different submodel element (SME) types *[experimental]*.
+    - Values of a *FormChoices* template qualifiers are now offered as dropdown options in forms.
+    - Boolean datatypes of *Property* SMEs are now represented as dropdown options in forms.
+    - Enhanced support for *ReferenceElement* enabling pointing to elements of other twins (*ModelReference*) and to
+        external resources (*ExternalReference*).
+
+- **[Statistics]:**
+
+    - Introduced Tenant Statistics page, providing a beautiful dashboard with visualizations of tenant-level
+        usage data.
+
+**Fixes:**
+
+- **[TwinBuilder]** Fixed wrong tooltip displayed on submodels with unavailable template.
+- **[TwinBuilder]** Removing items from a *SubmodelElementList* now removes the selected element instead of
+    always removing the first one.
+
+---
+
 ## Studio 0.6
 
 *Released on 04-Feb-2026*.

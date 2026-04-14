@@ -33,6 +33,7 @@ nav:
   - Studio:
     - Overview: studio-overview.md
     - General Features: studio-general-features.md
+    - Statistics: studio-statistics.md
     - Catalog: studio-catalog.md
     - Twin Builder: studio-twin-builder.md
     - Release Notes: studio-release-notes.md
