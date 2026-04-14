@@ -8,6 +8,30 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.2.0
+
+*Released on 14-Apr-2026*.
+
+- **[TAM]** Added migrations to convert between Handover Documentation v1.2 and v2.0 (and vice versa)
+- **[TAM]** AASX Packaging interface now allows users to specify file and concept description resolving strategies
+- **[TAM]** Added an extensible validation interface
+    - Package validation
+    - Meta model constraint validation
+    - Submodel specific (template/instance) validations
+    - Dynamic Submodel  conformity validations that check  whether submodel instances conform to  constraints specified in
+      their templates
+- **[TAM]** Switch to AAS v3.1: TAM now consumes, produces, and validates to v3.1 of the AAS specification
+- **[TAM]** Added a AAS 3.0 compatibility layer that allows the consumption and on-the-fly conversion of of v3.0 data
+- **[TAM]** HandoverDoucmentation v1.2 and v2.0: make DocumentClassifications extensible for further translations
+- **[Bugfix]** Make `numberOfDocuments` of Handover Documentation v1.2 optional
+- **[Bugfix]** In HandoverDocumentation v1.2 and v2.0 use `VDI 2770 Blatt 1:2020` instead of `VDI2770 Blatt 1:2020`
+- **[Bugfix]** Unrecognized languages in language code checks
+- **[Bugfix]** DigitalNameplate v2.0 and 3.0: unrecognized country codes in countries of origins check
+- **[Bugfix]** Failure to validate valid MIME types for extensions with multiple possible MIME types
+- **[Bugfix] [Exp]** Rename namespace of `DigitalQualityDocument` to
+  `twinsphere.TypedAasMetamodels.Experimental.Types.Submodels.DigitalQualityDocument.V1_0`
+  (was `twinsphere.TypedAasMetamodels.Types.Submodels.DigitalQualityDocument.V1_0`)
+
 ## twinsphere.TypedAasMetamodels 1.1.5
 
 *Released on 02-Mar-2026*.
