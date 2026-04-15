@@ -428,7 +428,7 @@ catch (SubmodelConversionException conversionException)
 string submodelJson;
 string submodelXml;
 
-// 1b. convert Json to typed representation
+// 1b. convert JSON to typed representation
 DigitalNameplate digitalNameplate;
 try
 {
@@ -450,7 +450,7 @@ catch (SubmodelConversionException conversionException)
     Console.Error($"Failed to convert from Xml: {conversionException}");
 }
 
-// while converting from XML both Namespaces `https://admin-shell.io/aas/3/1` 
+// while converting from XML both Namespaces `https://admin-shell.io/aas/3/1`
 // and `https://admin-shell.io/aas/3/0` are viable
 
 // 2. perform operations on the Digital Nameplate
@@ -470,12 +470,17 @@ catch (SubmodelConversionException conversionException)
 ```
 
 !!! note
-    `FromMetamodel(), FromJsonString() and FromXmlString()` will use the validation mechanism to check whether the submodel is a valid instance of its
-    SMT. If it is not, it will throw a `SubmodelConversionException` with the encountered errors.
+    `FromMetamodel()`, `FromJsonString()`, and `FromXmlString()` will use the validation mechanism
+    to check whether the submodel is a valid instance of its SMT.
+    If it is not, it will throw a `SubmodelConversionException` with the encountered errors.
 
-For Convenience you can also use `twinsphere.TypedAasMetamodels.Common.Conversion.FromStringConversion` to convert 
-serialized XML or JSON to Metamodel or Typed Models.
-Also you can create an XML Reader that converts the 3.0 Namespace to 3.1.
+`FromJsonString()` and `FromXmlString()` use `twinsphere.TypedAasMetamodels.Common.Conversion.FromStringConversion`
+to convert serialized XML or JSON to Metamodel and Typed Models:
+`TMeta MetaModelFromXml<TMeta>(string xmlString)` converts to the given Metamodel from Xml.
+`TMeta MetaModelFromJson<TMeta>(string jsonString)` converts to the given Metamodel from JSON.
+`TType TypedModelFromXml<TType, TMeta>(string xmlString)` converts to the given Typedmodel from Xml.
+`TType TypedModelFromJson<TType, TMeta>(string jsonString)` converts to the given Typedmodel from JSON.
+`XmlReader ConvertFrom30To31(XmlReader reader)` creates an XmlReader with corrected 3.1 Xml Namespace.
 
 ## Additional Features
 
