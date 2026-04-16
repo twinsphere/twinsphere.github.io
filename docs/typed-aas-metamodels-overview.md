@@ -390,7 +390,7 @@ See [Validation](typed-aas-metamodels-validation.md) for a detailed description 
 The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](typed-aas-metamodels-validation.md))
 models in the generic meta model representation and the typed submodel, and vice versa.
 
-To this end, submodels implement `FromMetamodel()` and `ToMetamodel()`:
+To this end, submodels implement `FromMetamodel()` and `ToMetamodel()` as well as `FromXmlString` and `FromJsonString`:
 
 ```csharp
 using AasCore.Aas3_1;
@@ -399,7 +399,7 @@ using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0;
 Aas3_1.ISubmodel digitalNameplateMetamodel;
 // ... load a Digital Nameplate from some source, e.g., from a repository.
 
-// 1. convert to its typed representation
+// 1a. convert a Metamodel to its typed representation
 DigitalNameplate digitalNameplate;
 try
 {
@@ -409,6 +409,35 @@ catch (SubmodelConversionException conversionException)
 {
     Console.Error($"Failed to convert from erroneous submodel: {conversionException}");
 }
+
+// or load a string representation in JSON or XML format
+string submodelJson;
+string submodelXml;
+
+// 1b. convert JSON to typed representation
+DigitalNameplate digitalNameplate;
+try
+{
+    digitalNameplate = DigitalNameplate.FromJsonString(submodelJson);
+}
+catch (SubmodelConversionException conversionException)
+{
+    Console.Error($"Failed to convert from Json: {conversionException}");
+}
+
+// 1c. convert Xml to typed representation
+DigitalNameplate digitalNameplate;
+try
+{
+    digitalNameplate = DigitalNameplate.FromXmlString(submodelXml);
+}
+catch (SubmodelConversionException conversionException)
+{
+    Console.Error($"Failed to convert from Xml: {conversionException}");
+}
+
+// while converting from XML both Namespaces `https://admin-shell.io/aas/3/1`
+// and `https://admin-shell.io/aas/3/0` are viable
 
 // 2. perform operations on the Digital Nameplate
 digitalNameplate.SoftwareVersion = "1.0.0".ToMultiLanguageString("en");
@@ -427,8 +456,17 @@ catch (SubmodelConversionException conversionException)
 ```
 
 !!! note
-    `FromMetamodel()` will use the validation mechanism to check whether the submodel is a valid instance of its
-    SMT. If it is not, it will throw a `SubmodelConversionException` with the encountered errors.
+    `FromMetamodel()`, `FromJsonString()`, and `FromXmlString()` will use the validation mechanism
+    to check whether the submodel is a valid instance of its SMT.
+    If it is not, it will throw a `SubmodelConversionException` with the encountered errors.
+
+`FromJsonString()` and `FromXmlString()` use `twinsphere.TypedAasMetamodels.Common.Conversion.FromStringConversion`
+to convert serialized XML or JSON to Metamodel and Typed Models:
+`TMeta MetaModelFromXml<TMeta>(string xmlString)` converts to the given Metamodel from Xml.
+`TMeta MetaModelFromJson<TMeta>(string jsonString)` converts to the given Metamodel from JSON.
+`TType TypedModelFromXml<TType, TMeta>(string xmlString)` converts to the given Typedmodel from Xml.
+`TType TypedModelFromJson<TType, TMeta>(string jsonString)` converts to the given Typedmodel from JSON.
+`XmlReader ConvertFrom30To31(XmlReader reader)` creates an XmlReader with corrected 3.1 Xml Namespace.
 
 ## Additional Features
 
