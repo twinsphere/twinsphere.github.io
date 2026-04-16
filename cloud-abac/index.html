@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/cloud-abac/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ABAC (Attribute Based Access Control) - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ABAC (Attribute Based Access Control)";
+        var mkdocs_page_input_path = "cloud-abac.md";
+        var mkdocs_page_url = "/cloud-abac/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Proprietary Features</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">ABAC (Attribute Based Access Control)</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#key-concepts">Key Concepts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#principals">Principals</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#actions">Actions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#resources-and-security-attributes">Resources and Security Attributes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#policies">Policies</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#files">Files</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#strict-attribute-matching">Strict Attribute Matching</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#special-behaviors-with-abac">Special Behaviors with ABAC</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-scenario">Example Scenario</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#resources-shells">Resources (Shells)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#policies_1">Policies</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#access-evaluation-examples">Access Evaluation Examples</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#best-practices">Best Practices</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#policy-design-guidelines">Policy Design Guidelines</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#attribute-naming-conventions">Attribute Naming Conventions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#introducing-new-security-attributes">Introducing New Security Attributes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#policy-management-api">Policy Management API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#access-check-api">Access Check API</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-statistics/">Statistics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud</li>
+          <li class="breadcrumb-item">Proprietary Features</li>
+      <li class="breadcrumb-item active">ABAC (Attribute Based Access Control)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="attribute-based-access-control-abac">Attribute-Based Access Control (ABAC)</h1>
+<h2 id="overview">Overview</h2>
+<p>Twinsphere implements an Attribute-Based Access Control (ABAC) system for fine-grained
+authorization of resources. Unlike traditional Role-Based Access Control (RBAC), ABAC evaluates
+access requests based on attributes of the principal (user/service), the action being performed,
+and the resource being accessed.</p>
+<!-- markdownlint-disable code-block-style -->
+<div class="admonition note">
+<p class="admonition-title">Cloud-Only Feature</p>
+<p>ABAC is a feature of the twinsphere Cloud AAS Repository only. In contrast,
+<a href="../management-roles/">RBAC roles</a> apply across the entire twinsphere platform.</p>
+</div>
+<!-- markdownlint-enable code-block-style -->
+
+<p>Both RBAC and ABAC can be used together to provide a robust security model. Keep in mind that
+RBAC roles are evaluated first, and if access is granted via RBAC, ABAC policies are not checked.</p>
+<h2 id="key-concepts">Key Concepts</h2>
+<h3 id="principals">Principals</h3>
+<p>A <strong>principal</strong> is the entity requesting access. This can be:</p>
+<ul>
+<li>A user identified by email (e.g., <code>alice@example.com</code>)</li>
+<li>A service account identified by a UUID (e.g., <code>a1b2c3d4-e5f6-7890-abcd-ef1234567890</code>)</li>
+<li>A <a href="../management-overview/#user-groups">group</a> (e.g., <code>group@factory-admins</code>)</li>
+</ul>
+<p>Policies can target specific principals or use special values:</p>
+<ul>
+<li><code>*</code> (wildcard) - Matches any <strong>authenticated</strong> principal</li>
+<li><code>$ANONYMOUS</code> - Matches <strong>unauthenticated</strong> (anonymous) requests</li>
+</ul>
+<p><strong>Important</strong>: The wildcard <code>*</code> only matches authenticated users. To allow anonymous access,
+you must explicitly use <code>$ANONYMOUS</code>.</p>
+<h3 id="actions">Actions</h3>
+<p>An <strong>action</strong> represents what the principal wants to do with the resource. Supported actions are:</p>
+<ul>
+<li><code>READ</code> - View/retrieve the resource</li>
+<li><code>WRITE</code> - Create or update the resource</li>
+<li><code>DELETE</code> - Remove the resource</li>
+<li><code>*</code> (wildcard) - Matches any action</li>
+</ul>
+<h3 id="resources-and-security-attributes">Resources and Security Attributes</h3>
+<p><strong>Resources</strong> are the entities being protected (e.g., Asset Administration Shells).
+Each resource can have <strong>security attributes</strong> that define its security classification.</p>
+<p>Security attributes are defined in the resource's <code>extensions</code> array with the prefix
+<code>twinsphere.io/security-attribute/</code>:</p>
+<pre><code class="language-json">{
+  &quot;extensions&quot;: [
+    {
+      &quot;name&quot;: &quot;twinsphere.io/security-attribute/location&quot;,
+      &quot;value&quot;: &quot;berlin&quot;
+    },
+    {
+      &quot;name&quot;: &quot;twinsphere.io/security-attribute/confidentiality&quot;,
+      &quot;value&quot;: &quot;high&quot;
+    }
+  ],
+  &quot;idShort&quot;: &quot;EXAMPLE_SHELL&quot;,
+  &quot;id&quot;: &quot;526028ed-e52e-42ac-87e0-7e202c957468&quot;,
+  &quot;assetInformation&quot;: {
+    &quot;assetKind&quot;: &quot;Instance&quot;,
+    &quot;globalAssetId&quot;: &quot;urn:conplement:aas:type:526028ed-e52e-42ac-87e0-7e202c957468&quot;
+  },
+  &quot;modelType&quot;: &quot;AssetAdministrationShell&quot;
+}
+</code></pre>
+<!-- markdownlint-disable code-block-style -->
+<div class="admonition note">
+<p class="admonition-title">Supported Extensions</p>
+<p>Security attribute extensions are supported on <strong>Asset Administration Shells</strong>
+and <strong>Submodels</strong> at the top (root) level of each entity.
+For <strong>Files</strong>, security attributes are defined via
+<a href="../cloud-documentation/#usage-of-file-api">file attributes</a> instead of extensions.</p>
+</div>
+<!-- markdownlint-enable code-block-style -->
+
+<h3 id="policies">Policies</h3>
+<p>A <strong>policy</strong> defines who (principals) can do what (actions) on which resources
+(defined by resource attributes). A policy consists of:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Human-readable policy identifier</td>
+</tr>
+<tr>
+<td><code>principals</code></td>
+<td>List of principal identifiers or <code>*</code> for any</td>
+</tr>
+<tr>
+<td><code>actions</code></td>
+<td>List of allowed actions (<code>READ</code>, <code>WRITE</code>, <code>DELETE</code>) or <code>*</code> for any</td>
+</tr>
+<tr>
+<td><code>resources</code></td>
+<td>Dictionary of security attribute key-value pairs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="files">Files</h3>
+<p>Files in the <a href="../cloud-documentation/#file-repository">file repository</a> can also be protected by
+security attributes. Unlike Shells and Submodels, file security attributes are defined via
+<a href="../cloud-documentation/#usage-of-file-api">file attributes</a> rather than extensions.</p>
+<ul>
+<li>When uploading files as <strong>attachments</strong> or <strong>thumbnails</strong>, they initially <strong>inherit the security
+  attributes</strong> of their parent (Shell or Submodel). These inherited attributes can be changed
+  afterwards for each file individually.</li>
+</ul>
+<h3 id="strict-attribute-matching">Strict Attribute Matching</h3>
+<p>The ABAC system uses <strong>strict exact matching</strong> for resource attributes:</p>
+<ul>
+<li>A policy matches a resource <strong>only if</strong> the policy and resource have the <strong>exact same attribute keys</strong></li>
+<li>All attribute values must match (policy wildcards <code>*</code> match any value)</li>
+<li>Partial matches are <strong>not allowed</strong> - a policy with 2 attributes will never match a resource with 1 or 3 attributes</li>
+</ul>
+<p><strong>This design ensures predictable access control behavior and prevents accidental access grants.</strong></p>
+<h3 id="special-behaviors-with-abac">Special Behaviors with ABAC</h3>
+<p>Some operations exhibit special behavior when ABAC policies are in effect:</p>
+<ul>
+<li><strong>Listing resources</strong>: Always returns <code>200 OK</code>, but the result set only contains
+  resources the principal is authorized to access. Specifying IDs as a filter on a list
+  endpoint does <strong>not</strong> result in <code>403</code> -- unauthorized resources are simply excluded from the
+  response.</li>
+<li><strong>Retrieving a single resource</strong>: Returns <code>403 Forbidden</code> if the principal is not authorized
+  to access the requested resource.</li>
+<li><strong>Import</strong>: Returns <code>403 Forbidden</code> if any of the imported Shells or Submodels are not
+  granted by the principal's ABAC policies -- nothing will be imported.</li>
+<li><strong>Serialization by ID</strong>: Returns <code>403 Forbidden</code> if the principal is not authorized to
+  access the requested resource. This is an explicit opt-in operation, not a filter.</li>
+<li><strong>Files</strong>: File contents are always filtered based on the principal's access rights. Any
+  files the principal cannot access are <strong>replaced with a placeholder access-denied file</strong>.</li>
+</ul>
+<h2 id="example-scenario">Example Scenario</h2>
+<!-- markdownlint-disable no-emphasis-as-heading blanks-around-fences -->
+
+<h3 id="resources-shells">Resources (Shells)</h3>
+<p><strong>Shell 1: Berlin Factory Sensor (High Confidentiality)</strong></p>
+<pre><code class="language-json">{
+  &quot;extensions&quot;: [
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/location&quot;, &quot;value&quot;: &quot;berlin&quot; },
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/confidentiality&quot;, &quot;value&quot;: &quot;high&quot; }
+  ],
+  &quot;idShort&quot;: &quot;BerlinSensor001&quot;,
+  &quot;id&quot;: &quot;sensor-001&quot;
+}
+</code></pre>
+<p><strong>Shell 2: Munich Factory Sensor (Normal Confidentiality)</strong></p>
+<pre><code class="language-json">{
+  &quot;extensions&quot;: [
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/location&quot;, &quot;value&quot;: &quot;munich&quot; },
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/confidentiality&quot;, &quot;value&quot;: &quot;normal&quot; }
+  ],
+  &quot;idShort&quot;: &quot;MunichSensor001&quot;,
+  &quot;id&quot;: &quot;sensor-002&quot;
+}
+</code></pre>
+<p><strong>Shell 3: Public Documentation</strong></p>
+<pre><code class="language-json">{
+  &quot;extensions&quot;: [
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/visibility&quot;, &quot;value&quot;: &quot;public&quot; }
+  ],
+  &quot;idShort&quot;: &quot;PublicDocs&quot;,
+  &quot;id&quot;: &quot;docs-001&quot;
+}
+</code></pre>
+<h3 id="policies_1">Policies</h3>
+<p><strong>Policy 1: Berlin Engineers - READ High Confidentiality</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;berlin-engineers-read-high&quot;,
+  &quot;principals&quot;: [&quot;alice@example.com&quot;, &quot;bob@example.com&quot;],
+  &quot;actions&quot;: [&quot;READ&quot;],
+  &quot;resources&quot;: {
+    &quot;twinsphere.io/security-attribute/location&quot;: &quot;berlin&quot;,
+    &quot;twinsphere.io/security-attribute/confidentiality&quot;: &quot;high&quot;
+  }
+}
+</code></pre>
+<p><strong>Policy 2: Factory Admins - Full Access to Any Location and Any Confidentiality</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;factory-admins-full-access&quot;,
+  &quot;principals&quot;: [&quot;group@factory-admins&quot;],
+  &quot;actions&quot;: [&quot;*&quot;],
+  &quot;resources&quot;: {
+    &quot;twinsphere.io/security-attribute/location&quot;: &quot;*&quot;,
+    &quot;twinsphere.io/security-attribute/confidentiality&quot;: &quot;*&quot;
+  }
+}
+</code></pre>
+<p><strong>Policy 3: Anyone Authenticated Can READ Internal Content</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;internal-read&quot;,
+  &quot;principals&quot;: [&quot;*&quot;],
+  &quot;actions&quot;: [&quot;READ&quot;],
+  &quot;resources&quot;: {
+    &quot;twinsphere.io/security-attribute/visibility&quot;: &quot;internal&quot;
+  }
+}
+</code></pre>
+<p><strong>Policy 4: Anonymous Users Can READ Public Content</strong></p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;anonymous-public-read&quot;,
+  &quot;principals&quot;: [&quot;$ANONYMOUS&quot;],
+  &quot;actions&quot;: [&quot;READ&quot;],
+  &quot;resources&quot;: {
+    &quot;twinsphere.io/security-attribute/visibility&quot;: &quot;public&quot;
+  }
+}
+</code></pre>
+<!-- markdownlint-enable no-emphasis-as-heading blanks-around-fences -->
+
+<h3 id="access-evaluation-examples">Access Evaluation Examples</h3>
+<!-- markdownlint-disable line-length -->
+<table>
+<thead>
+<tr>
+<th>Principal</th>
+<th>Action</th>
+<th>Resource</th>
+<th>Result</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alice@example.com</code></td>
+<td>READ</td>
+<td>Shell 1 (berlin, high)</td>
+<td>✅ Allowed</td>
+<td>Matches Policy 1 exactly</td>
+</tr>
+<tr>
+<td><code>alice@example.com</code></td>
+<td>WRITE</td>
+<td>Shell 1 (berlin, high)</td>
+<td>❌ Denied</td>
+<td>Policy 1 only allows READ</td>
+</tr>
+<tr>
+<td><code>alice@example.com</code></td>
+<td>READ</td>
+<td>Shell 2 (munich, normal)</td>
+<td>❌ Denied</td>
+<td>Location doesn't match Policy 1</td>
+</tr>
+<tr>
+<td><code>group@factory-admins</code></td>
+<td>DELETE</td>
+<td>Shell 1 (berlin, high)</td>
+<td>✅ Allowed</td>
+<td>Matches Policy 2 (wildcards)</td>
+</tr>
+<tr>
+<td><code>group@factory-admins</code></td>
+<td>READ</td>
+<td>Shell 3 (public)</td>
+<td>❌ Denied</td>
+<td>Attribute keys don't match Policy 2</td>
+</tr>
+<tr>
+<td><code>random@user.com</code></td>
+<td>READ</td>
+<td>Shell with visibility=internal</td>
+<td>✅ Allowed</td>
+<td>Matches Policy 3 (wildcard principal)</td>
+</tr>
+<tr>
+<td><code>random@user.com</code></td>
+<td>READ</td>
+<td>Shell 1 (berlin, high)</td>
+<td>❌ Denied</td>
+<td>No policy matches</td>
+</tr>
+<tr>
+<td>(anonymous)</td>
+<td>READ</td>
+<td>Shell with visibility=public</td>
+<td>✅ Allowed</td>
+<td>Matches Policy 4 ($ANONYMOUS principal)</td>
+</tr>
+<tr>
+<td>(anonymous)</td>
+<td>READ</td>
+<td>Shell with visibility=internal</td>
+<td>❌ Denied</td>
+<td>Policy 3 only applies to authenticated users</td>
+</tr>
+<tr>
+<td><code>alice@example.com</code></td>
+<td>READ</td>
+<td>Shell with visibility=public</td>
+<td>❌ Denied</td>
+<td>Policy 4 only applies to anonymous users</td>
+</tr>
+<tr>
+<td><code>alice@example.com</code> (member of <code>group@factory-admins</code>)</td>
+<td>READ</td>
+<td>Shell with location=usa, confidentiality=secret</td>
+<td>✅ Allowed</td>
+<td>Matches Policy 2 via group membership (wildcard confidentiality)</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="policy-design-guidelines">Policy Design Guidelines</h3>
+<ol>
+<li><strong>Use Specific Policies</strong>: Prefer multiple specific policies over broad wildcard policies</li>
+<li><strong>Principle of Least Privilege</strong>: Grant only the minimum access required</li>
+<li><strong>Group Similar Access</strong>: Use groups for principals with identical access needs</li>
+<li><strong>Document Policy Intent</strong>: Use descriptive policy names that explain the purpose</li>
+<li><strong>Test Before Production</strong>: Validate access patterns in a test environment first</li>
+</ol>
+<h3 id="attribute-naming-conventions">Attribute Naming Conventions</h3>
+<ul>
+<li>Use lowercase with hyphens: <code>department</code>, <code>data-type</code>, <code>access-level</code></li>
+<li>Be consistent across your organization</li>
+<li>Document all valid attribute values</li>
+<li>Consider using enums for attribute values where possible</li>
+</ul>
+<h3 id="introducing-new-security-attributes">Introducing New Security Attributes</h3>
+<p>When adding a new security attribute to your system, follow this migration strategy to avoid access disruptions:</p>
+<h4 id="step-1-create-new-policies-first">Step 1: Create New Policies First</h4>
+<p>Before adding the new attribute to resources, create policies that include the new attribute combination:</p>
+<pre><code class="language-json">// Existing policy (keep active)
+{
+  &quot;name&quot;: &quot;berlin-read-v1&quot;,
+  &quot;principals&quot;: [&quot;alice@example.com&quot;],
+  &quot;actions&quot;: [&quot;READ&quot;],
+  &quot;resources&quot;: {
+    &quot;twinsphere.io/security-attribute/location&quot;: &quot;berlin&quot;
+  }
+}
+
+// New policy with additional attribute (add this)
+{
+  &quot;name&quot;: &quot;berlin-read-department-v2&quot;,
+  &quot;principals&quot;: [&quot;alice@example.com&quot;],
+  &quot;actions&quot;: [&quot;READ&quot;],
+  &quot;resources&quot;: {
+    &quot;twinsphere.io/security-attribute/location&quot;: &quot;berlin&quot;,
+    &quot;twinsphere.io/security-attribute/department&quot;: &quot;engineering&quot;
+  }
+}
+</code></pre>
+<h4 id="step-2-migrate-resources-gradually">Step 2: Migrate Resources Gradually</h4>
+<p>Update resources to include the new attribute:</p>
+<pre><code class="language-json">// Before
+{
+  &quot;extensions&quot;: [
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/location&quot;, &quot;value&quot;: &quot;berlin&quot; }
+  ]
+}
+
+// After
+{
+  &quot;extensions&quot;: [
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/location&quot;, &quot;value&quot;: &quot;berlin&quot; },
+    { &quot;name&quot;: &quot;twinsphere.io/security-attribute/department&quot;, &quot;value&quot;: &quot;engineering&quot; }
+  ]
+}
+</code></pre>
+<h4 id="step-3-clean-up-old-policies">Step 3: Clean Up Old Policies</h4>
+<p>Once all resources have been migrated to include the new attribute, remove the old policies.</p>
+<h2 id="policy-management-api">Policy Management API</h2>
+<!-- markdownlint-disable code-block-style -->
+<div class="admonition info">
+<p class="admonition-title">Required Roles</p>
+<p>Policy management endpoints require the <strong><code>tenant-administrator</code></strong> or <strong><code>organization-owner</code></strong> role.</p>
+</div>
+<!-- markdownlint-enable code-block-style -->
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create Policy</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/access-policies</code></td>
+<td>Create a new access policy</td>
+</tr>
+<tr>
+<td>List Policies</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/access-policies</code></td>
+<td>Retrieve all access policies</td>
+</tr>
+<tr>
+<td>Get Policy</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/access-policies/{policyId}</code></td>
+<td>Retrieve a specific policy by ID</td>
+</tr>
+<tr>
+<td>Update Policy</td>
+<td><code>PUT</code></td>
+<td><code>/sphere/api/v1/access-policies/{policyId}</code></td>
+<td>Update an existing policy</td>
+</tr>
+<tr>
+<td>Delete Policy</td>
+<td><code>DELETE</code></td>
+<td><code>/sphere/api/v1/access-policies/{policyId}</code></td>
+<td>Delete a policy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="access-check-api">Access Check API</h2>
+<!-- markdownlint-disable line-length -->
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Check Access by Principal</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/security/check?principal={principal}</code></td>
+<td>Returns all resource attribute combinations and RBAC roles for a given principal</td>
+</tr>
+<tr>
+<td>Check My Access</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/security/check/me</code></td>
+<td>Returns all resource attribute combinations and RBAC roles for the currently authenticated user</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cloud-file-filter-queries/" class="btn btn-neutral float-left" title="File Filter Queries"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cloud-auth/" class="btn btn-neutral float-right" title="Authentication">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cloud-file-filter-queries/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-auth/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/studio-statistics/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Statistics - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Statistics";
+        var mkdocs_page_input_path = "studio-statistics.md";
+        var mkdocs_page_url = "/studio-statistics/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-abac/">ABAC (Attribute Based Access Control)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Statistics</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#time-range-selection">Time Range Selection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quick-presets">Quick Presets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#custom-date-range">Custom Date Range</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-performance-indicators">Key Performance Indicators</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#twin-data">Twin Data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#storage">Storage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lookup-data">Lookup Data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#charts">Charts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#twin-development">Twin Development</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#storage-development">Storage Development</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lookup-data-development">Lookup Data Development</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#export">Export</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Studio</li>
+      <li class="breadcrumb-item active">Statistics</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="twinstudio-statistics">twinstudio Statistics</h1>
+<p>The <strong>Statistics</strong> page gives you an overview of your tenant's current state and historical development.
+You can monitor how your twin data, storage usage, and lookup data evolve over time — all in one place.</p>
+<hr />
+<h2 id="time-range-selection">Time Range Selection</h2>
+<p>At the top of the page you can select the time period you want to analyze.</p>
+<h3 id="quick-presets">Quick Presets</h3>
+<p>Four preset buttons let you quickly switch between common time ranges:</p>
+<ul>
+<li><strong>7 days</strong> – Last 7 days</li>
+<li><strong>28 days</strong> – Last 28 days</li>
+<li><strong>6 months</strong> – Last 180 days</li>
+<li><strong>1 year</strong> – Last 365 days</li>
+</ul>
+<p>The active preset is highlighted. Clicking a preset immediately loads the corresponding data.</p>
+<h3 id="custom-date-range">Custom Date Range</h3>
+<p>You can also define a custom time range using the <em>From</em> and <em>To</em> date inputs. After entering your
+dates, click <strong>Apply</strong> to load the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Time range limits</p>
+<p>The <em>From</em> date must be before the <em>To</em> date. The maximum supported range is <strong>5 years</strong>.</p>
+</div>
+<p><img alt="Time range" src="../img/twinstudio_statistics_time_range.png" /></p>
+<hr />
+<h2 id="key-performance-indicators">Key Performance Indicators</h2>
+<p>Below the time range controls, KPI cards give you a quick snapshot of your tenant's current state.</p>
+<p>Each card shows:</p>
+<ul>
+<li>The <strong>current value</strong> of the metric</li>
+<li>A <strong>trend indicator</strong> showing the percentage change compared to the start of the selected period
+  (↑ green = increase, ↓ red = decrease)</li>
+<li>A <strong>sparkline</strong> — a small background chart visualizing the metric's trend over the selected period</li>
+</ul>
+<p><img alt="Twin Data Kpi" src="../img/twinstudio_statistics_twin_data_kpi.png" width="800" /></p>
+<h3 id="twin-data">Twin Data</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shells</strong></td>
+<td>Number of Asset Administration Shells in the repository</td>
+</tr>
+<tr>
+<td><strong>Submodels</strong></td>
+<td>Number of Submodels in the repository</td>
+</tr>
+<tr>
+<td><strong>Concept Descriptions</strong></td>
+<td>Number of Concept Descriptions in the repository</td>
+</tr>
+<tr>
+<td><strong>Files</strong></td>
+<td>Number of files stored in the file repository</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Monitoring objects</p>
+<p>In each twinsphere tenant exist one shell and one submodel for operational monitoring purposes. You are not able
+to access them via API but they are included in the numbers of the tenant statistics.</p>
+</div>
+<h3 id="storage">Storage</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DB Storage</strong></td>
+<td>GB</td>
+<td>Current database storage consumption</td>
+</tr>
+<tr>
+<td><strong>Blob Storage</strong></td>
+<td>GB</td>
+<td>Current blob (file) storage consumption</td>
+</tr>
+<tr>
+<td><strong>Average File Size</strong></td>
+<td>MB</td>
+<td>Average size of stored files (no trend indicator)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lookup-data">Lookup Data</h3>
+<p>This section displays metrics for your Discovery and Registry instances.</p>
+<div class="admonition note">
+<p class="admonition-title">Conditional section</p>
+<p>The Lookup Data section is only visible if your tenant has at least one Registry or Discovery
+instance configured. Each instance gets its own KPI card.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shell Descriptors</strong> <em>(per Registry instance)</em></td>
+<td>Number of shell descriptors registered</td>
+</tr>
+<tr>
+<td><strong>Asset Links</strong> <em>(per Discovery instance)</em></td>
+<td>Number of asset links registered</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="charts">Charts</h2>
+<p>Three interactive charts visualize how your metrics have developed over the selected time period.</p>
+<p>You can customize each chart:</p>
+<ul>
+<li><strong>Toggle series</strong>: Use the checkboxes next to each series name to show or hide individual metrics</li>
+<li><strong>Zoom</strong>: Use the slider at the bottom of the chart or your mouse wheel to zoom into a specific
+  time range</li>
+<li><strong>Pan</strong>: Click and drag to move through the timeline</li>
+<li><strong>Hover tooltip</strong>: Hover over the chart to see exact values for all series at a given point in time</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Automatic granularity</p>
+<p>The data resolution is chosen automatically based on your selected time range:</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Time Range</th>
+<th>Data Granularity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Up to 7 days</td>
+<td>Hourly</td>
+</tr>
+<tr>
+<td>Up to 30 days</td>
+<td>Every 6 hours</td>
+</tr>
+<tr>
+<td>Up to 1 year</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>Over 1 year (up to 5 years)</td>
+<td>Weekly</td>
+</tr>
+</tbody>
+</table>
+<h3 id="twin-development">Twin Development</h3>
+<p>Shows how the counts of your twin data objects change over time.</p>
+<p>Available series (all enabled by default):</p>
+<ul>
+<li>Shells</li>
+<li>Submodels</li>
+<li>Concept Descriptions</li>
+<li>Files</li>
+</ul>
+<p><img alt="Twin Data over time" src="../img/twinstudio_statistics_twin_data_over_time.png" width="800" /></p>
+<h3 id="storage-development">Storage Development</h3>
+<p>Shows how your storage consumption evolves over time.</p>
+<p>Available series (all enabled by default):</p>
+<ul>
+<li>DB Storage</li>
+<li>Blob Storage</li>
+</ul>
+<p><img alt="Storage over time" src="../img/twinstudio_statistics_storage_over_time.png" width="800" /></p>
+<h3 id="lookup-data-development">Lookup Data Development</h3>
+<p>Shows how the number of shell descriptors and asset links changes over time across your instances.</p>
+<div class="admonition note">
+<p class="admonition-title">Conditional chart</p>
+<p>This chart is only displayed if your tenant has at least one Registry or Discovery instance.
+If more than four instances are available, only the first four are pre-selected on initial load.</p>
+</div>
+<p><img alt="Lookup Data over time" src="../img/twinstudio_statistics_lookup_data_over_time.png" width="800" /></p>
+<hr />
+<h2 id="export">Export</h2>
+<p>You can export the entire Statistics page — including all KPI cards and charts — as a PNG image
+by clicking the <strong>Download</strong> button in the top-right corner.</p>
+<p>The exported file is named: <code>stats-{tenantId}-{date}.png</code></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../studio-general-features/" class="btn btn-neutral float-left" title="General Features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../studio-catalog/" class="btn btn-neutral float-right" title="Catalog">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../studio-general-features/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../studio-catalog/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

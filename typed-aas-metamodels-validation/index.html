@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/typed-aas-metamodels-validation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Validation - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Validation";
+        var mkdocs_page_input_path = "typed-aas-metamodels-validation.md";
+        var mkdocs_page_url = "/typed-aas-metamodels-validation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-new-user-registration/">New user registration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-users/">Users</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Proprietary Features</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-abac/">ABAC (Attribute Based Access Control)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-statistics/">Statistics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Validation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#validators">Validators</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#validator">Validator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodel-conformity-validator">Submodel Conformity Validator</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#diagnostics">Diagnostics</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#severity-profiles">Severity Profiles</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#resolving-submodel-templates">Resolving Submodel Templates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conformity-validation-features">Conformity Validation Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#validating-a-package">Validating a Package</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submodel-conformity-validation">Submodel Conformity Validation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#adjusting-severity-profiles">Adjusting Severity Profiles</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extending-the-validator">Extending the Validator</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#extending-with-custom-rules-and-validators">Extending with Custom Rules and Validators</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Development libraries (DevKit)</li>
+      <li class="breadcrumb-item active">Validation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="validation-in-twinspheretypedaasmetamodels">Validation in twinsphere.TypedAasMetamodels</h1>
+<h2 id="overview">Overview</h2>
+<p>The DevKit validation subsystem identifies and reports defects in AAS data, from critical errors and structural
+issues to anti-patterns. Its goal is to give you the means to correct and lint your data.</p>
+<p>Each defect is represented by a rule with a unique identifier and description.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A comprehensive rule catalog with examples and resolution hints for each rule will be released in a future
+update.</p>
+</div>
+<p>Validation covers two main areas:</p>
+<p><strong>AASX Package</strong>:</p>
+<ul>
+<li>Missing files</li>
+<li>Deprecated packaging features</li>
+<li>Invalid structure</li>
+</ul>
+<p><strong>Meta Model Data</strong>:</p>
+<ul>
+<li>Syntax errors</li>
+<li>Deprecated data</li>
+<li>Anti-patterns</li>
+<li>Type-specific problems for submodel templates and instances</li>
+<li>Conformity of submodel instances to their respective submodel templates</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This validation supersedes the previous validation interfaces. The old interfaces remain available for now but
+have been officially marked as obsolete.</p>
+</div>
+<h2 id="validators">Validators</h2>
+<p>The DevKit provides two validators. Both are configured via a builder and report issues as <code>Diagnostic</code> instances.</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Validator</th>
+<th>Access via</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Validator</code></td>
+<td><code>twinsphere.TypedAasMetamodels.Validator</code></td>
+<td>Validating packages, environments, or identifiables in general</td>
+</tr>
+<tr>
+<td><code>SubmodelConformityValidator</code></td>
+<td><code>twinsphere.TypedAasMetamodels.SubmodelConformityValidator</code></td>
+<td>Explicitly checking whether an instance conforms to a specific template</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<h3 id="validator">Validator</h3>
+<p><code>Validator</code> is the general-purpose validator. It performs every applicable validation for the provided input and,
+if a template resolver strategy is configured, additionally runs conformity validation for any submodel instance
+for which a template can be resolved.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>Validator</code> attempts to resolve templates <em>on its own</em> — you have no control over which template it validates
+against. If you need to specify the template explicitly, use <code>SubmodelConformityValidator</code> instead.</p>
+</div>
+<h3 id="submodel-conformity-validator">Submodel Conformity Validator</h3>
+<p><code>SubmodelConformityValidator</code> validates against the same error categories as <code>Validator</code>. However, it gives you
+explicit control over which submodel template to validate against. Use this when you want to assert that a given
+submodel instance is a valid instance of a particular template.</p>
+<h2 id="diagnostics">Diagnostics</h2>
+<p>Issues are reported as instances of <code>Diagnostic</code>. Among other information, each diagnostic carries:</p>
+<ul>
+<li>A short description</li>
+<li>An error code and name</li>
+<li>The path to the offending element</li>
+<li>A severity level</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The section about <a href="#validating-a-package">validating a package</a> shows how to render a diagnostic path to
+human-readable form.</p>
+</div>
+<h3 id="severity-profiles">Severity Profiles</h3>
+<p>The severity of each rule can be adjusted via the <code>Profile</code> property on the validator instance. Four levels are
+available: <code>None</code>, <code>Error</code>, <code>Warning</code>, and <code>Info</code>.</p>
+<p><code>Profile</code> provides two factory methods for creating presets:</p>
+<ul>
+<li><code>Profile.ForInstance()</code> — appropriate defaults for validating submodel instances</li>
+<li><code>Profile.ForTemplate()</code> — appropriate defaults for validating submodel templates</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not every rule is meaningful in every context. For example, incomplete submodel elements are acceptable in a
+template but not in an instance. The profile presets account for this distinction.</p>
+</div>
+<p>To override individual rule severities after creating a validator, see
+<a href="#adjusting-severity-profiles">Adjusting Severity Profiles</a>.</p>
+<h2 id="resolving-submodel-templates">Resolving Submodel Templates</h2>
+<p>Conformity validation requires the validator to look up the template for a given submodel instance. Implement
+<code>ITemplateResolverStrategy</code> to provide this lookup:</p>
+<pre><code class="language-csharp">public interface ITemplateResolverStrategy
+{
+    /// &lt;summary&gt;
+    /// Resolves a semantic id to the corresponding submodel template.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;semanticId&quot;&gt;The semanticId of the submodel template to resolve.&lt;/param&gt;
+    /// &lt;returns&gt;The resolved template, or null if not found.&lt;/returns&gt;
+    Task&lt;Core.ISubmodel?&gt; ResolveTemplate(Core.IReference semanticId);
+}
+</code></pre>
+<p>Pass the implementation to the builder via <code>WithTemplateResolverStrategy(...)</code>. Where templates use drop-ins[^1],
+the validator resolves them recursively (for example, Digital Nameplate 3.0 uses drop-ins).</p>
+<h2 id="conformity-validation-features">Conformity Validation Features</h2>
+<p>The conformity validator checks the structural correspondence between a submodel instance and its template,
+including:</p>
+<ul>
+<li>Correct element naming and cardinalities (mandatory, optional, and multi-cardinality properties)</li>
+<li>Arbitrary elements</li>
+<li>Enumeration patterns</li>
+<li><code>SMT/AllowedValue</code> qualifier</li>
+<li><code>SMT/AllowedRange</code> qualifier</li>
+<li><code>SMT/IdShort</code> qualifier</li>
+<li><code>SMT/RequiredLangs</code> qualifier</li>
+<li><code>SMT/EitherOr</code> qualifier</li>
+<li>Consistency of submodel element types, id shorts, and semantic ids</li>
+</ul>
+<p>For the <a href="../typed-aas-metamodels-submodels/">submodels supported by the DevKit</a>, the validator additionally applies
+template-specific constraints that are only described in textual form in the respective specifications.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="validating-a-package">Validating a Package</h3>
+<p><code>Reporting.ToNamePath</code> converts a diagnostic path to a human-readable string; equivalent helpers exist for JSON
+and XML paths.</p>
+<pre><code class="language-csharp">using twinsphere.TypedAasMetamodels.Validation;
+using twinsphere.TypedAasMetamodels.Common.Reporting;
+
+var validator = await Validator.Builder().Build().Value;
+
+foreach (var diag in validator.Validate(&quot;path/to/my/package.aasx&quot;))
+{
+    var path = Reporting.ToNamePath(diag.Path);
+    Console.WriteLine($&quot;{diag.Rule}: {diag.Name} at {path}&quot;);
+}
+</code></pre>
+<p>To include conformity validation, provide a template resolver strategy on the builder:</p>
+<pre><code class="language-csharp">public class MyTemplateResolverStrategy : ITemplateResolverStrategy
+{
+    public async Task&lt;Core.ISubmodel?&gt; ResolveTemplate(Core.IReference semanticId)
+    {
+        return await Directory.LookUpTemplate(semanticId);
+    }
+}
+
+var validator = await Validator.Builder()
+    .WithTemplateResolverStrategy(new MyTemplateResolverStrategy())
+    .Build()
+    .Value;
+</code></pre>
+<h3 id="submodel-conformity-validation">Submodel Conformity Validation</h3>
+<pre><code class="language-csharp">using twinsphere.TypedAasMetamodels.Validation;
+using twinsphere.TypedAasMetamodels.Common.Reporting;
+
+var instance = ...;
+var template = ...;
+
+var validator = await SubmodelConformityValidator(template)
+    .WithTemplateResolverStrategy(new MyTemplateResolverStrategy()) // only needed for templates with drop-ins
+    .Build()
+    .Value;
+
+foreach (var diag in validator.Validate(instance))
+{
+    var path = Reporting.ToNamePath(diag.Path);
+    Console.WriteLine($&quot;{diag.Rule}: {diag.Name} at {path}&quot;);
+}
+</code></pre>
+<h3 id="adjusting-severity-profiles">Adjusting Severity Profiles</h3>
+<p>Both validators expose the active profile via the <code>Profile</code> property. The following example disables all rules
+except package-related ones:</p>
+<pre><code class="language-csharp">var validator = await Validator.Builder().Build().Value;
+
+foreach (var rule in CoreRules.All)
+{
+    if (rule.IsPackageError())
+    {
+        validator.Profile.SetError(rule);
+    }
+    else
+    {
+        validator.Profile.SetDisabled(rule);
+    }
+}
+</code></pre>
+<h2 id="extending-the-validator">Extending the Validator</h2>
+<h3 id="extending-with-custom-rules-and-validators">Extending with Custom Rules and Validators</h3>
+<p>The validator operates as an ordered pipeline of five steps. You can inject your own validators into any of them:</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Interface</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Package validation</td>
+<td><code>IPackageValidator</code></td>
+<td>Issues with the <code>.aasx</code> file itself</td>
+</tr>
+<tr>
+<td>Meta model validation</td>
+<td><code>IMetaModelValidator</code></td>
+<td>Syntactic errors, invalid references</td>
+</tr>
+<tr>
+<td>Template validation</td>
+<td><code>ITemplateValidator</code></td>
+<td>Errors specific to submodels of kind template (e.g., missing semantic ids)</td>
+</tr>
+<tr>
+<td>Instance validation</td>
+<td><code>IInstanceValidator</code></td>
+<td>Errors specific to submodels of kind instance (e.g., incomplete elements)</td>
+</tr>
+<tr>
+<td>Template-specific validation</td>
+<td><code>ITemplateSpecificValidations</code></td>
+<td>Constraints specific to individual submodel templates</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>Use the corresponding <code>With...</code> builder method to register your validator. To raise diagnostics from it, define
+your <code>Rule</code> instances and register them via <code>WithRulesFrom&lt;T&gt;()</code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Validators return <code>Finding</code> instances, not <code>Diagnostic</code> instances. A <code>Finding</code> is mapped to a <code>Diagnostic</code>
+according to the active validation profile.</p>
+</div>
+<p>The following example enforces that id shorts in templates must be camelCase:</p>
+<pre><code class="language-csharp">// CamelCaseIdShortValidator.cs
+using twinsphere.TypedAasMetamodels.Validation.Types;
+using twinsphere.TypedAasMetamodels.Validation.Template.Validation;
+
+public sealed class CamelCaseIdShortValidator : ITemplateValidator
+{
+    public IEnumerable&lt;Finding&gt; Validate(Core.ISubmodel submodel)
+    {
+        foreach (var element in submodel.Descend().OfType&lt;AasCore.Aas3_1.IReferable&gt;())
+        {
+            if (string.IsNullOrEmpty(element.IdShort))
+            {
+                continue;
+            }
+
+            if (!Regex.IsMatch(element.IdShort, @&quot;^[a-z]+(?:[A-Z][a-z0-9]*)*$&quot;))
+            {
+                yield return new Finding(CustomRules.NonCamelCaseIdShort, cause: element.IdShort);
+            }
+        }
+    }
+}
+
+// CustomRules.cs
+[RuleDefinition]
+public sealed class CustomRules
+{
+    public static readonly Rule NonCamelCaseIdShort = new(
+        &quot;CUSTOM000&quot;,
+        &quot;NonCamelCaseIdShort&quot;,
+        &quot;IdShorts must be in camelCase&quot;,
+        &quot;Design guidelines mandate that id shorts are camelCase only.&quot;,
+        RuleCategory.Template,
+        AutoFixability.Never);
+}
+
+// Registration
+var validator = await Validator.Builder()
+    .WithRulesFrom&lt;CustomRules&gt;()
+    .WithTemplateValidator&lt;CamelCaseIdShortValidator&gt;()
+    .Build()
+    .Value;
+</code></pre>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>
+<p><strong>Template data quality</strong>: Conformity validation depends on the quality of template data. Many published submodel
+    templates contain syntactic or structural defects that complicate validation. For example, Digital Nameplate
+    3.0 still uses an incorrect reference to Contact Information (as of 2026-04-07).</p>
+</li>
+<li>
+<p><strong>Textual constraints</strong>: Many submodel template specifications describe additional constraints in natural language
+    only. These cannot be enforced automatically. The DevKit ships explicit implementations for the
+    <a href="../typed-aas-metamodels-submodels/">submodels it supports</a>, but for others you can add your own via the
+    <a href="#extending-with-custom-rules-and-validators">extension mechanism above</a>.</p>
+</li>
+</ul>
+<p>[^1]: Drop-ins are a Submodel Template modeling concept that allows a template to reference and reuse definitions
+    from other submodel templates. In the context of validation, this means the validator may need to resolve and
+    process multiple submodel templates before it can fully evaluate the structure of a submodel instance.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../typed-aas-metamodels-submodels/" class="btn btn-neutral float-left" title="Supported Submodels"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../typed-aas-metamodels-release_notes/" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../typed-aas-metamodels-submodels/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../typed-aas-metamodels-release_notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
