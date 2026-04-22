@@ -99,7 +99,9 @@ var shell = new AssetAdministrationShell("9A8F8B66-5AA7-4528-AA17-1CC128AF64C2",
 // 3. we can now create an.aasx package out of all of this
 // Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
 // referenced concept descriptions, and files to include into the paths, if available.
-var packagingInfo = PackagePreprocessor.ProcessShell(shell, [digitalNameplate]);
+var packagingInfo = AasxPackagingInformation.Builder()
+    .WithTypedShell(shell, [digitalNameplate])
+    .Build();
 var aasxPackage = new AasxPackage(packagingInfo).Build();
 
 // 4. you can save the package to disk for analysis with the https://github.com/admin-shell-io/aasx-package-explorer
@@ -116,7 +118,7 @@ twinsphere.TypedAasMetamodels is with the following goals:
 - Convenience for developers to reduce the necessary study of the AAS meta model specifications. For example, XML code
   documentation is heavily used to describe AAS semantics in the library.
 - Definition of meta models for selected submodels, such as Digital Nameplate.
-- Offering packaging functionality based on the.aasx format.
+- Offering packaging functionality based on the `.aasx` format.
 
 In its design, the library is designed to make the creation of shells and submodels as easy, as possible, while reducing
 sources of potential errors where possible. To this end, it employs some basic design rules:
@@ -257,7 +259,9 @@ nameplate.CompanyLogo = new PackageFileReference("/home/user/some/image.png");
 // 5. we can now create an.aasx package out of all of this
 // Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
 // referenced concept descriptions, and files to include into the paths, if available.
-var packagingInfo = PackagePreprocessor.ProcessShell(shell, [digitalNameplate]);
+var packagingInfo = AasxPackagingInformation.Builder()
+    .WithTypedShell(shell, [digitalNameplate])
+    .Build();
 var aasxPackage = new AasxPackageBuilder(packagingInfo)
     .SetThumbnail("some-image.png", "image/png")
     .Build();
