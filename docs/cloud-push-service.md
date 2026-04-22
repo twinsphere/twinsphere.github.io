@@ -107,6 +107,45 @@ To connect to Sharecat, you need to create a target with a configuration as give
     - The destination's `workspaceId` and `parentId` are specific Ids of the Sharecat eco-system.
     - A name is not required in the request body when calling the update target endpoint.
 
+#### SAP Business Network Asset Collaboration
+
+To connect to SAP Business Network Asset Collaboration (SAP BNAC), you need an SAP Asset Intelligence Network
+subscription with API access. Create a target with a configuration as given in the example below:
+
+```json
+{
+  "name": "{your-custom-target-name}",
+  "type": "sap-bnac",
+  "configuration": {
+    "credentials": {
+      "accessTokenUrl": "https://{domain}/oauth/token",
+      "clientId": "{id}",
+      "clientSecret": "{secret}"
+    },
+    "destination": {
+      "apiBaseUrl": "https://{domain}",
+      "businessPartnerId": "{your-business-partner-id}"
+    }
+  }
+}
+```
+
+!!! note
+    - SAP BNAC only supports the `application/asset-administration-shell-package+json` serialization format.
+    - The `apiBaseUrl` is the base URL of your SAP BNAC API instance
+      (e.g. `https://ain.{landscape}.business-network.cloud.sap`).
+    - The `businessPartnerId` identifies your organization in SAP BNAC and is sent as the
+      `x-businesspartner-id` header.
+    - For OAuth credentials, only SAP service keys of type `instance-secret` (default) or
+      `binding-secret` are supported.
+    - Supported submodel types:
+        - Handover Documentation V1.2 (SemanticId `0173-1#01-AHF578#001`)
+        - Handover Documentation V2.0 (SemanticId `0173-1#01-AHF578#003`) —
+          automatically converted to V1.2 before upload
+        - Nameplate V3.0 (SemanticId `https://admin-shell.io/idta/nameplate/3/0/Nameplate`)
+    - SAP BNAC requires exactly one Nameplate V3.0 submodel per shell in the push job.
+    - A name is not required in the request body when calling the update target endpoint.
+
 ## Job management
 
 To perform a push from twinsphere repository to one of your targets, you have to create a push job.
@@ -130,3 +169,52 @@ network connectivity issues between the twinsphere service and the target itself
 
 If you can not do anything with the error in the message,
 [please contact our support](contact.md) and ask for more detailed help.
+
+### SAP BNAC push jobs
+
+When creating a push job for an SAP BNAC target, you can provide additional options:
+
+```json
+{
+  "pushTargetName": "{your-sap-bnac-target-name}",
+  "serializationFormat": "application/asset-administration-shell-package+json",
+  "shellIds": ["{shell-id}"],
+  "submodelIds": ["{nameplate-submodel-id}", "{handover-doc-submodel-id}"],
+  "includeConceptDescriptions": true,
+  "sapBnacOptions": {
+    "publishAndTransfer": false,
+    "partnerId": "{partner-organization-id}"
+  }
+}
+```
+
+The `partnerId` identifies the partner organization in SAP BNAC and is always required,
+since it cannot be specified in later steps.
+
+**Upload only** (`publishAndTransfer: false`): The AASX package is uploaded to SAP BNAC
+and processed asynchronously. Once completed, the job response contains a `handleId`
+that identifies the uploaded package in SAP BNAC.
+
+**Publish and transfer** (`publishAndTransfer: true`): After upload, the equipment is
+automatically published and transferred to the partner organization.
+Once completed, the job response contains the resolved `equipmentIds`.
+
+#### Manual publish and transfer
+
+If you prefer to control publish and transfer separately, use upload-only first, then call these endpoints:
+
+- `POST /sphere/push/jobs/{id}/publish` — publishes the equipment in SAP BNAC
+- `POST /sphere/push/jobs/{id}/transfer` — transfers the equipment to the partner organization
+
+The transfer endpoint accepts an optional body:
+
+```json
+{
+  "description": "Transfer description"
+}
+```
+
+#### Handover Documentation conversion
+
+If a Handover Documentation V2.0 submodel is included in the push job, it is automatically converted to V1.2
+format before the AASX package is uploaded to SAP BNAC.
