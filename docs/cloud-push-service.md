@@ -107,7 +107,10 @@ To connect to Sharecat, you need to create a target with a configuration as give
     - The destination's `workspaceId` and `parentId` are specific Ids of the Sharecat eco-system.
     - A name is not required in the request body when calling the update target endpoint.
 
-#### SAP Business Network Asset Collaboration
+#### SAP Business Network Asset Collaboration (experimental)
+
+!!! warning
+    The SAP BNAC target is currently in **experimental** state and may be modified or removed in future releases.
 
 To connect to SAP Business Network Asset Collaboration (SAP BNAC), you need an SAP Asset Intelligence Network
 subscription with API access. Create a target with a configuration as given in the example below:
@@ -131,7 +134,8 @@ subscription with API access. Create a target with a configuration as given in t
 ```
 
 !!! note
-    - SAP BNAC only supports the `application/asset-administration-shell-package+json` serialization format.
+    - SAP BNAC always uses the `application/asset-administration-shell-package+json` serialization format.
+      The `serializationFormat` field in the push job request is ignored for SAP BNAC targets.
     - The `apiBaseUrl` is the base URL of your SAP BNAC API instance
       (e.g. `https://ain.{landscape}.business-network.cloud.sap`).
     - The `businessPartnerId` identifies your organization in SAP BNAC and is sent as the
@@ -144,6 +148,7 @@ subscription with API access. Create a target with a configuration as given in t
           automatically converted to V1.2 before upload
         - Nameplate V3.0 (SemanticId `https://admin-shell.io/idta/nameplate/3/0/Nameplate`)
     - SAP BNAC requires exactly one Nameplate V3.0 submodel per shell in the push job.
+    - SAP BNAC only supports exactly one shell per push job. The `shellIds` array must contain exactly one entry.
     - A name is not required in the request body when calling the update target endpoint.
 
 ## Job management
@@ -170,9 +175,9 @@ network connectivity issues between the twinsphere service and the target itself
 If you can not do anything with the error in the message,
 [please contact our support](contact.md) and ask for more detailed help.
 
-### SAP BNAC push jobs
+### SAP BNAC push jobs (experimental)
 
-When creating a push job for an SAP BNAC target, you can provide additional options:
+When creating a push job for an SAP BNAC target, create a standard push job request:
 
 ```json
 {
@@ -180,39 +185,17 @@ When creating a push job for an SAP BNAC target, you can provide additional opti
   "serializationFormat": "application/asset-administration-shell-package+json",
   "shellIds": ["{shell-id}"],
   "submodelIds": ["{nameplate-submodel-id}", "{handover-doc-submodel-id}"],
-  "includeConceptDescriptions": true,
-  "sapBnacOptions": {
-    "publishAndTransfer": false,
-    "partnerId": "{partner-organization-id}"
-  }
+  "includeConceptDescriptions": true
 }
 ```
 
-The `partnerId` identifies the partner organization in SAP BNAC and is always required,
-since it cannot be specified in later steps.
+The AASX package is uploaded to SAP BNAC and processed asynchronously. twinsphere polls the SAP BNAC
+processing status internally and waits for completion before marking the push job as done.
 
-**Upload only** (`publishAndTransfer: false`): The AASX package is uploaded to SAP BNAC
-and processed asynchronously. Once completed, the job response contains a `handleId`
-that identifies the uploaded package in SAP BNAC.
+Once completed, the push job's `metadata` field contains:
 
-**Publish and transfer** (`publishAndTransfer: true`): After upload, the equipment is
-automatically published and transferred to the partner organization.
-Once completed, the job response contains the resolved `equipmentIds`.
-
-#### Manual publish and transfer
-
-If you prefer to control publish and transfer separately, use upload-only first, then call these endpoints:
-
-- `POST /sphere/push/jobs/{id}/publish` — publishes the equipment in SAP BNAC
-- `POST /sphere/push/jobs/{id}/transfer` — transfers the equipment to the partner organization
-
-The transfer endpoint accepts an optional body:
-
-```json
-{
-  "description": "Transfer description"
-}
-```
+- `handleId` — identifies the uploaded package in SAP BNAC
+- `sapBnacStatus` — the full SAP BNAC status response as a JSON string, useful for diagnosing validation errors
 
 #### Handover Documentation conversion
 
