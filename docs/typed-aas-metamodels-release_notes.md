@@ -8,6 +8,39 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.3.0
+
+*Released on 05-May-2026*.
+
+- **[TAM]** Improved `AasxPackagingInformation` API as a replacement of the `PackagePreprocessor`.
+    - Provides a fluent API for package creation
+    - Allows the creation of packages without shells
+- **[TAM]** Arbitrary elements now allow users to specify supplemental semantic ids.
+- **[TAM] [Bugfix]** Conversion of arbitrary elements to the typed representation no longer silently drops supplemental
+  semantic ids.
+- **[TAM] [Bugfix]** Resolving DropIns now removes the `https://admin-shell.io/smt-dropin/smt-dropin-use/1/0`
+  supplemental semantic id.
+- **[TAM] [Bugfix]** Conversion of empty submodel element collections (i.e. submodel element collections for which all
+  elements are optional) to their typed model representation no longer fails.
+- **[TAM] [Bugfix]** Creation of typed models and validation no longer fails due to the submodel templates not being
+  accessible.
+- **[TAM] [Bugfix]** Multiple escaping issues in DisplayNames and Descriptions.
+- **[TAM] [Bugfix]** Resolve multiple inconsistencies in conformity validation due to incorrect submodel templates.
+- **[TAM] [Bugfix]** Packaging now properly encodes file paths containing special characters.
+- **[TAM] [Bugfix]** Packaging on Windows no longer uses incorrect path separators.
+- **[TAM] [Bugfix]** Setters on list properties no longer throw.
+- **[TAM] [Bugfix]** Fix conversion problems for Property values to C# representation and vice versa.
+- **[TAM] [Bugfix]** Numeric boundaries are now properly checked for ValueOnly conversion.
+- **[TAM] [Bugfix] [DigitalNameplate 3.0]** `AssetSpecificProperties` and `GuidelineSpecificProperties` now allow users
+  to specify no arbitrary element, as well.
+- **[TAM] [Bugfix] [HandoverDocumentation 2.0]** `KeyWords` now is an optional property.
+- **[Semantics] [Bugfix]** Add missing attributes for arbitrary property type in schema.
+- **[Semantics] [Bugfix]** Conversion of base64 Blob values no longer corrupts data.
+- **[Semantics] [Bugfix]** Serialization no longer fails with exhausted `XmlWriter`.
+- **[Semantics] [Bugfix]** Exceptions no longer hide the full stack trace.
+- **[Semantics] [Bugfix]** Serialization of empty lists of arbitrary elements no longer fails.
+- **[Semantics] [Bugfix]** Serialization to semantics representation no longer modifies the submodel.
+
 ## twinsphere.TypedAasMetamodels 1.2.0
 
 *Released on 14-Apr-2026*.
