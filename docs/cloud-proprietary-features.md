@@ -11,6 +11,7 @@ In addition to the IDTA AAS API Specification, twinsphere offers supplementary p
 - [Search](cloud-search.md)
 - [Semantic Connector](cloud-semantic-connector.md)
 - [Shell Filter Queries](cloud-shell-filter-queries.md)
+- [Statistics](cloud-statistics.md)
 - twinsphere Files
     - [File Repository](cloud-documentation.md#file-repository)
     - [File Filter Queries](cloud-file-filter-queries.md)
