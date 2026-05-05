@@ -38,6 +38,7 @@ The Management API currently allows:
 - RBAC at organization and cloud (per cloud tenant) levels
     - on users and service accounts
     - on user groups
+- audit trail of all management operations
 
 ## Authentication
 
@@ -57,6 +58,45 @@ If the user does not yet have one, they can [register themselves](id-new-user-re
 To invite a user, use: `POST /api/v{version}/organizations/{organizationId}/users/invite`
 
 ![Swagger UI: Invite User](img/manage_user_invite.png)
+
+## Audit trail
+
+The audit trail provides a chronological record of all management operations performed in your
+organization. It is accessible only to organization owners.
+
+`GET /api/v{version}/organizations/{organizationId}/audit-trail`
+
+### Query parameters
+
+| Parameter      | Type     | Required | Description                              |
+|----------------|----------|----------|------------------------------------------|
+| `resourceType` | string   | No       | Filter by resource type (see table below) |
+| `principalId`  | string   | No       | Filter by who performed the action       |
+| `from`         | DateTime | No       | Start of time range (ISO 8601, inclusive) |
+| `to`           | DateTime | No       | End of time range (ISO 8601, exclusive)  |
+| `pageSize`     | int      | No       | Items per page (default: 50, max: 200)   |
+| `cursor`       | string   | No       | Pagination cursor from previous response |
+
+Results are sorted by timestamp descending (newest first).
+
+### Recorded operations
+
+<!-- markdownlint-disable line-length -->
+
+| Resource type              | Actions                | Description                                   |
+|----------------------------|------------------------|-----------------------------------------------|
+| `user`                     | invite, remove         | User invitations and removals                 |
+| `group`                    | create, delete         | User group lifecycle                          |
+| `group-membership`         | assign, remove         | Adding or removing members from a group       |
+| `org-role-assignment`      | assign, unassign       | Organization-level role assignments            |
+| `tenant-role-assignment`   | assign, unassign       | Tenant-level role assignments                  |
+| `service-account`          | create, delete         | Service account lifecycle                     |
+| `service-account-secret`   | create, delete         | Service account secret lifecycle              |
+
+<!-- markdownlint-enable line-length -->
+
+Each audit entry includes the timestamp, the principal who performed the action, the affected
+resource, and optional contextual details (e.g. role name, tenant ID, target principal).
 
 ## Role-based access control (RBAC)
 
