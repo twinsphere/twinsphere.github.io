@@ -4,6 +4,12 @@ This documentation complements the [swagger documentation of our
 API](https://conplement.cloud.twinsphere.io/swagger/index.html) and contains addition information and background to the
 endpoints.
 
+## API Versioning
+
+twinsphere supports API versions `v3`, `v3.0`, and `v3.1`. All three route to the same implementation
+and are functionally identical. Clients should prefer `v3` in their base URL — this always points to the
+latest supported minor version.
+
 ---
 
 ## Discovery
@@ -22,7 +28,7 @@ distributed scenarios you need to use a standard discovery.
 The endpoints of our implicit discovery feature match IDTA's read service profile SSP-002 of the Discovery Service
 Specification and are located at the top level of our api path:
 
-> https://*{twinsphereTenantURL}*/api/*{api_version}*/lookup/shells
+> https://*{twinsphereTenantURL}*/api/*{api_version}*/lookup/shellsByAssetLink
 
 ### Standard ("Explicit") Discovery
 
@@ -32,9 +38,18 @@ instances of discoveries with different sets of shell descriptors within one ten
 All endpoints of our discovery feature match IDTA's full service profile SSP-001 of the Discovery Service Specification
 and are separated under a freely definable instance name:
 
-> https://*{twinsphereTenantURL}*/***{instanceName}***/api/*{api_version}*/lookup/shells
+> https://*{twinsphereTenantURL}*/***{instanceName}***/api/*{api_version}*/lookup/shellsByAssetLink
 
 In order to obtain a new discovery instance please contact our [support team](contact.md).
+
+To search for shells by asset identifiers, send a `POST` request with a list of `SpecificAssetId`
+objects (`name` and `value`) in the request body. To search by global asset ID, set `name` to
+`globalAssetId` (per Constraint AASd-116). Pagination is supported via `limit` and `cursor`
+query parameters.
+
+!!! attention "Deprecation of GET /lookup/shells"
+    The previous `GET /lookup/shells` endpoint (query-parameter based) is deprecated and will
+    be removed in a future release. Please migrate to `POST /lookup/shellsByAssetLink`.
 
 ---
 
