@@ -103,16 +103,33 @@ If the URL points to an existing twin in your current tenant, a link to it will 
 
 ## Add/Remove Submodels
 
-The Submodels of your currently opened twin can be edited via the *edit submodel* button in the top right corner.
+To edit the submodels of the currently opened twin, click the *Edit Submodel* button next
+to the shell name or use the dropdown menu.
 
-![Edit Submodels dialog](img/twinstudio_addremove_submodels.png){: width='600' }
+The top row of the dialog shows all submodels currently assigned to your twin. Existing submodels are listed first —
+clicking one marks it for removal, which is highlighted visually. New submodels can be added from three sources: a template,
+an existing twin, or an existing submodel. The same submodel can be added more than once.
 
-The current submodels of your twin are at the top of the list.
-The rest of the list contains all available submodel templates from your current tenant.
-To select the same template multiple times you have to add them one at a time.
+![Edit Submodels dialog — Templates tab](img/twinstudio_submodeldialog_templates.png){: width='600' }
 
-If a new submodel template is added it will be converted to a submodel of type instance
-and its elements are modified to reflect this change.
+In the **Templates** tab, click the "plus" icon next to a template to add it.
+
+![Edit Submodels dialog — Existing Twin tab](img/twinstudio_submodeldialog_existingtwin.png){: width='600' }
+
+In the **Existing Twin** tab, use the search field to find a twin. The first five matches are shown.
+after selecting a twin, you can choose which of its submodels to add.
+
+![Edit Submodels dialog — Existing Submodel tab](img/twinstudio_submodeldialog_existingsubmodel.png){: width='600' }
+
+In the **Existing Submodel** tab, you can look up a submodel by its full ID. Partial IDs are not supported —
+if no match is found, a corresponding message is displayed.
+
+![Edit Submodels dialog — Summary](img/twinstudio_submodeldialog_result.png){: width='600' }
+
+The final page summarizes all pending changes. For any existing submodel you are adding, you can choose between two modes:
+
+- **Reference** — the submodel is shared across all twins that reference it. Changes to it will affect all of them.
+- **Copy** — the submodel is duplicated with new IDs, making it fully independent from the source.
 
 ## Add/Remove Submodel Elements
 
