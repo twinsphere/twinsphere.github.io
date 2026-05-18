@@ -8,6 +8,23 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.3.1
+
+*Released on 11-May-2026*.
+
+- **[TAM]** Allow construction and validation of TechnicalData 1.2 `TechnicalProperties`, `MainSection`, and
+  `SubSection` with any element type. With the new validation, the creation and validation of these types with
+  SubmodelElement types other than `MultiLanguageProperties` would fail due to the way that these properties are
+  modelled in the submodel.
+- **[TAM]** Add graceful error handling for errors during the validation of submodel data. This fixes crashes on broken
+  submodel templates in the conformity validation.
+- **[TAM]** Add validation of matching semantic ids for all submodel element types. Until now, the correctness of
+  semantic ids would only be checked for submodel element collections and submodel element list.
+- **[TAM]** Resolve crashes due to unsupported types in validation.
+- **[TAM]** Ensure that any semantic id is covered in packaging. To this end, we now invoke the concept description:
+  resolver in packaging also for supplemental semantic ids.
+- **[TAM]** Fix a crash when creating packages with an empty shell list.
+
 ## twinsphere.TypedAasMetamodels 1.3.0
 
 *Released on 05-May-2026*.
