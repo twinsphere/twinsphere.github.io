@@ -1,8 +1,39 @@
 <!-- markdownlint-disable no-emphasis-as-heading -->
-# Release Notes of twinsphere Server / API
+# Release Notes of the twinsphere Cloud Platform
 
-The twinsphere Server follows the semantic versioning format in the form major.minor.patch:
+The twinsphere Cloud Platform follows the semantic versioning format in the form major.minor.patch:
 [https://semver.org/](https://semver.org/).
+
+---
+
+## Cloud 1.27
+
+*Released on 18-May-2026*.
+
+**Breaking changes:**
+
+- **[API]** AASX package import now requires AAS 3.1 XML namespace (`https://admin-shell.io/aas/3/1`).
+    Packages using the AAS 3.0 namespace (`https://admin-shell.io/aas/3/0`) will be rejected during import
+    with a namespace mismatch error. Re-export affected packages from their source tool in AAS 3.1 format
+    before importing.
+- **[API]** Swagger/OpenAPI documents have been updated to reflect the AAS 3.1 specification. Browsers may
+    serve a cached version of the old document — clear the browser cache if the Swagger UI shows outdated
+    schemas or endpoints.
+
+**What's new:**
+
+- **[API]** AAS 3.1 full metamodel support
+- **[API]** AAS 3.1 [Query Language](cloud-documentation.md#query-language) — structured JSON queries
+    for shells and submodels with cross-entity filtering
+- **[API]** AAS 3.1 asynchronous bulk operations for shell descriptors (Registry API)
+- **[API]** AAS 3.1 search asset links via Discovery API
+- **[API]** AAS 3.1 full API update for all minor specification changes up to the latest v3.1.2
+- **[API]** Referable file path validation enforcement and improved validation messages
+- **[ManageAPI]** Audit trail for organization management operations
+- **[PushService]** SAP Business Network Asset Collaboration (SAP BNAC) push target (experimental),
+    see [Push Service](cloud-push-service.md#sap-bnac-push-jobs-experimental) for more information
+- **[General]** Engineering blog available at [https://blog.twinsphere.io](https://blog.twinsphere.io)
+- **[General]** Status page available at [https://status.twinsphere.io](https://status.twinsphere.io)
 
 ---
 

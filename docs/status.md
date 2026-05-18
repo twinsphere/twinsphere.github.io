@@ -19,7 +19,7 @@ The status information is also available as a JSON API. No authentication is req
 
 ### Current Status
 
-```
+```text
 GET https://status.twinsphere.io/api/v1/status
 ```
 
@@ -27,16 +27,18 @@ Returns the current status of all services, any active incidents, and active mai
 
 ### Status History
 
-```
+```text
 GET https://status.twinsphere.io/api/v1/status/history?days=90
 ```
 
-Returns resolved incidents and completed maintenance within the specified time window. The `days` parameter is optional and defaults to 90 (range: 1–365).
+Returns resolved incidents and completed maintenance within the specified time window.
+The `days` parameter is optional and defaults to 90 (range: 1–365).
 
 ### Uptime
 
-```
+```text
 GET https://status.twinsphere.io/api/v1/status/uptime?days=90
 ```
 
-Returns per-service uptime percentages and daily status breakdown. The `days` parameter is optional and defaults to 90 (range: 1–365).
+Returns per-service uptime percentages and daily status breakdown.
+The `days` parameter is optional and defaults to 90 (range: 1–365).
