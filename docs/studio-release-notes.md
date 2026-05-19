@@ -7,7 +7,7 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ## Studio 0.8
 
-*Released on 18-May-2026*.
+*Released on 19-May-2026*.
 
 **New Features:**
 
