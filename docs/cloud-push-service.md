@@ -79,6 +79,9 @@ To connect to the AASX File Server, you need to create a target with a configura
 
 #### Sharecat (experimental)
 
+!!! warning
+    The Sharecat target is currently in **experimental** state and should only be used for prototypes / experimentation.
+
 To connect to Sharecat, you need to create a target with a configuration as given in the example below:
 
 ```json
@@ -101,10 +104,53 @@ To connect to Sharecat, you need to create a target with a configuration as give
 ```
 
 !!! note
-    - The Sharecat target is currently in **experimental** state and may be modified or removed in future releases.
     - Sharecat only supports the `application/asset-administration-shell-package+json` serialization format.
     - All URLs must be absolute and point to your access token or push target resource.
     - The destination's `workspaceId` and `parentId` are specific Ids of the Sharecat eco-system.
+    - A name is not required in the request body when calling the update target endpoint.
+
+#### SAP Business Network Asset Collaboration (experimental)
+
+!!! warning
+    The SAP BNAC target is currently in **experimental** state and should only be used for prototypes / experimentation.
+
+To connect to SAP Business Network Asset Collaboration (SAP BNAC), you need an SAP Asset Intelligence Network
+subscription with API access. Create a target with a configuration as given in the example below:
+
+```json
+{
+  "name": "{your-custom-target-name}",
+  "type": "sap-bnac",
+  "configuration": {
+    "credentials": {
+      "accessTokenUrl": "https://{domain}/oauth/token",
+      "clientId": "{id}",
+      "clientSecret": "{secret}"
+    },
+    "destination": {
+      "apiBaseUrl": "https://{domain}",
+      "businessPartnerId": "{your-business-partner-id}"
+    }
+  }
+}
+```
+
+!!! note
+    - SAP BNAC always uses the `application/asset-administration-shell-package+json` serialization format.
+      The `serializationFormat` field in the push job request is ignored for SAP BNAC targets.
+    - The `apiBaseUrl` is the base URL of your SAP BNAC API instance
+      (e.g. `https://ain.{landscape}.business-network.cloud.sap`).
+    - The `businessPartnerId` identifies your organization in SAP BNAC and is sent as the
+      `x-businesspartner-id` header.
+    - For OAuth credentials, only SAP service keys of type `instance-secret` (default) or
+      `binding-secret` are supported.
+    - Supported submodel types:
+        - Handover Documentation V1.2 (SemanticId `0173-1#01-AHF578#001`)
+        - Handover Documentation V2.0 (SemanticId `0173-1#01-AHF578#003`) —
+          automatically converted to V1.2 before upload
+        - Nameplate V3.0 (SemanticId `https://admin-shell.io/idta/nameplate/3/0/Nameplate`)
+    - SAP BNAC requires exactly one Nameplate V3.0 submodel per shell in the push job.
+    - SAP BNAC only supports exactly one shell per push job. The `shellIds` array must contain exactly one entry.
     - A name is not required in the request body when calling the update target endpoint.
 
 ## Job management
@@ -130,3 +176,30 @@ network connectivity issues between the twinsphere service and the target itself
 
 If you can not do anything with the error in the message,
 [please contact our support](contact.md) and ask for more detailed help.
+
+### SAP BNAC push jobs (experimental)
+
+When creating a push job for an SAP BNAC target, create a standard push job request:
+
+```json
+{
+  "pushTargetName": "{your-sap-bnac-target-name}",
+  "serializationFormat": "application/asset-administration-shell-package+json",
+  "shellIds": ["{shell-id}"],
+  "submodelIds": ["{nameplate-submodel-id}", "{handover-doc-submodel-id}"],
+  "includeConceptDescriptions": true
+}
+```
+
+The AASX package is uploaded to SAP BNAC and processed asynchronously. twinsphere polls the SAP BNAC
+processing status internally and waits for completion before marking the push job as done.
+
+Once completed, the push job's `metadata` field contains:
+
+- `handleId` — identifies the uploaded package in SAP BNAC
+- `sapBnacStatus` — the full SAP BNAC status response as a JSON string, useful for diagnosing validation errors
+
+#### Handover Documentation conversion
+
+If a Handover Documentation V2.0 submodel is included in the push job, it is automatically converted to V1.2
+format before the AASX package is uploaded to SAP BNAC.

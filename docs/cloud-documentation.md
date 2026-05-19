@@ -4,6 +4,12 @@ This documentation complements the [swagger documentation of our
 API](https://conplement.cloud.twinsphere.io/swagger/index.html) and contains addition information and background to the
 endpoints.
 
+## API Versioning
+
+twinsphere supports API versions `v3`, `v3.0`, and `v3.1`. All three route to the same implementation
+and are functionally identical. Clients should prefer `v3` in their base URL — this always points to the
+latest supported minor version.
+
 ---
 
 ## Discovery
@@ -22,7 +28,7 @@ distributed scenarios you need to use a standard discovery.
 The endpoints of our implicit discovery feature match IDTA's read service profile SSP-002 of the Discovery Service
 Specification and are located at the top level of our api path:
 
-> https://*{twinsphereTenantURL}*/api/*{api_version}*/lookup/shells
+> https://*{twinsphereTenantURL}*/api/*{api_version}*/lookup/shellsByAssetLink
 
 ### Standard ("Explicit") Discovery
 
@@ -32,9 +38,18 @@ instances of discoveries with different sets of shell descriptors within one ten
 All endpoints of our discovery feature match IDTA's full service profile SSP-001 of the Discovery Service Specification
 and are separated under a freely definable instance name:
 
-> https://*{twinsphereTenantURL}*/***{instanceName}***/api/*{api_version}*/lookup/shells
+> https://*{twinsphereTenantURL}*/***{instanceName}***/api/*{api_version}*/lookup/shellsByAssetLink
 
 In order to obtain a new discovery instance please contact our [support team](contact.md).
+
+To search for shells by asset identifiers, send a `POST` request with a list of `SpecificAssetId`
+objects (`name` and `value`) in the request body. To search by global asset ID, set `name` to
+`globalAssetId` (per Constraint AASd-116). Pagination is supported via `limit` and `cursor`
+query parameters.
+
+!!! attention "Deprecation of GET /lookup/shells"
+    The previous `GET /lookup/shells` endpoint (query-parameter based) is deprecated and will
+    be removed in a future release. Please migrate to `POST /lookup/shellsByAssetLink`.
 
 ---
 
@@ -452,113 +467,370 @@ This is implemented for the following endpoints:
 
 ---
 
-## Statistics
+## Query Language
 
-The Statistics API provides access to historical timeseries data about your tenant — including twin object counts,
-storage usage, and lookup data. Data is collected automatically every hour and stored for up to **5 years**.
+twinsphere implements the AAS Query Language as defined in the IDTA-01002-3 v3.1.1 specification. This feature
+allows you to query shells and submodels using structured JSON queries with support for filtering by any
+combination of shell, submodel, and submodel element attributes.
 
-### Get Statistics
+### Endpoints
 
-Retrieves downsampled statistics timeseries data for a given time range.
+#### Query Submodels
 
-> `GET https://{twinsphereTenantURL}/sphere/api/v1.0/statistics`
+`POST /api/v3.1/query/submodels`
+
+Returns submodels matching the query condition.
+
+#### Query Shells
+
+`POST /api/v3.1/query/shells`
+
+Returns asset administration shells matching the query condition.
+
+Both endpoints accept the same query language syntax and support the same operators.
+
+!!! note
+    The query language endpoints currently require role-based authorization. ABAC (Attribute-Based
+    Access Control) is **not yet supported** for query endpoints — all authenticated users with the
+    appropriate role can query all data in the tenant. If you rely on ABAC to restrict access to specific
+    shells or submodels, be aware that the query endpoints currently bypass those restrictions. ABAC
+    support for query endpoints will be added in a future release.
 
 #### Query Parameters
 
-| Parameter | Type | Required |
-|-----------|------|----------|
-| `from` | ISO 8601 UTC DateTime | Yes |
-| `to` | ISO 8601 UTC DateTime | Yes |
+| Parameter | Type   | Required | Description                                    |
+|-----------|--------|----------|------------------------------------------------|
+| `limit`   | int    | No       | Maximum number of results per page |
+| `cursor`  | string | No       | Pagination cursor from a previous response     |
 
-#### Validation Rules
+### Request Body
 
-- `from` must be strictly before `to`
-- The requested time range must not exceed **5 years**
-
-#### Example Request
-
-```http
-GET /sphere/api/v1.0/statistics?from=2024-01-01T00:00:00Z&to=2024-01-08T00:00:00Z
-Authorization: Bearer {token}
-```
-
-#### Example Response
+The request body is a JSON object with the following structure:
 
 ```json
 {
-  "from": "2024-01-01T00:00:00Z",
-  "to": "2024-01-08T00:00:00Z",
-  "granularity": "Hourly",
-  "series": [
-    {
-      "metricName": "shells_count",
-      "instanceName": null,
-      "dataPoints": [
-        { "timestamp": "2024-01-01T00:00:00Z", "value": 42.0 },
-        { "timestamp": "2024-01-01T01:00:00Z", "value": 42.0 }
-      ]
-    },
-    {
-      "metricName": "shell_descriptors_count",
-      "instanceName": "registry-prod",
-      "dataPoints": [
-        { "timestamp": "2024-01-01T00:00:00Z", "value": 128.0 }
-      ]
-    }
-  ]
+  "$condition": <expression>,
+  "$select": "id"
 }
 ```
 
-#### Response Fields
+| Property     | Type       | Required | Description                                        |
+|--------------|------------|----------|----------------------------------------------------|
+| `$condition` | expression | Yes      | The filter expression (see operators below)        |
+| `$select`    | string     | No       | Set to `"id"` to return only identifiers           |
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `from` | DateTime | Echoes the requested start of the time range |
-| `to` | DateTime | Echoes the requested end of the time range |
-| `granularity` | string | The applied data granularity (see table below) |
-| `series` | array | One entry per unique `(metricName, instanceName)` combination |
-| `series[].metricName` | string | Identifier of the statistic (see metric names below) |
-| `series[].instanceName` | string \| null | Registry/Discovery instance name; `null` for tenant-wide metrics |
-| `series[].dataPoints` | array | Data points ordered by timestamp ascending |
-| `series[].dataPoints[].timestamp` | DateTime | UTC timestamp of the start of the time bucket |
-| `series[].dataPoints[].value` | double | Last measured value within that time bucket |
+When `$select` is omitted, the full shell or submodel payload is returned.
 
-### Granularity
+### Response
 
-The response granularity is selected automatically based on the requested time range:
+```json
+{
+  "result": [ ... ],
+  "paging_metadata": {
+    "cursor": "<next-cursor-or-null>",
+    "resultType": "Submodel"
+  }
+}
+```
 
-| Time Range | Granularity | Bucket Size |
-|------------|-------------|-------------|
-| Up to 7 days | `Hourly` | 1 hour |
-| Up to 30 days | `SixHourly` | 6 hours |
-| Up to 180 days | `Daily` | 1 day |
-| Up to 1 year | `FourDaily` | 4 days |
-| Up to 5 years | `Weekly` | 1 week |
+The `resultType` is one of `"Submodel"`, `"AssetAdministrationShell"`, or `"Identifier"`
+(when using `$select: "id"`). If `cursor` is `null`, there are no more results.
 
-!!! note "Adaptive granularity fallback"
-    If fewer than 5 data points are found at the selected granularity, the API automatically retries
-    with `Hourly` granularity to ensure data is returned.
+### Field References
 
-### Metric Names
+Field references identify the attribute to query. The format is:
 
-| Metric Name | Description | Instance Name |
-|-------------|-------------|---------------|
-| `shells_count` | Number of Asset Administration Shells | `null` |
-| `submodels_count` | Number of Submodels | `null` |
-| `concept_descriptions_count` | Number of Concept Descriptions | `null` |
-| `files_count` | Number of files | `null` |
-| `used_db_storage` | Database storage consumption in **bytes** | `null` |
-| `used_blob_storage` | Blob storage consumption in **bytes** | `null` |
-| `asset_links_count` | Number of asset links in a Discovery instance | Discovery instance name |
-| `shell_descriptors_count` | Number of shell descriptors in a Registry instance | Registry instance name |
+```text
+$<root>#<attribute>
+```
 
-!!! note "Monitoring objects"
-    In each twinsphere tenant exist one shell and one submodel for operational monitoring purposes. You are not able
-    to access them via API but they are included in the numbers of the tenant statistics.
+Where `<root>` is `$sm` (submodel), `$sme` (submodel element), or `$aas` (shell).
 
-!!! note "Storage values"
-    `used_db_storage` and `used_blob_storage` values are stored and returned in **bytes**.
-    Convert to GB by dividing by 1,073,741,824 (1024³).
+#### Submodel Fields (`$sm`)
+
+| Field reference               | Description                          |
+|-------------------------------|--------------------------------------|
+| `$sm#id`                      | Submodel identifier                  |
+| `$sm#idShort`                 | Submodel short identifier            |
+| `$sm#semanticId`              | Semantic ID (shortcut for `semanticId.keys[0].value`) |
+| `$sm#semanticId.type`         | Semantic ID reference type           |
+| `$sm#semanticId.keys[N].type` | Type of the Nth semantic ID key      |
+| `$sm#semanticId.keys[N].value`| Value of the Nth semantic ID key     |
+| `$sm#semanticId.keys[].type`  | Type of any semantic ID key          |
+| `$sm#semanticId.keys[].value` | Value of any semantic ID key         |
+
+#### Submodel Element Fields (`$sme`)
+
+| Field reference                | Description                          |
+|--------------------------------|--------------------------------------|
+| `$sme#idShort`                 | Element short identifier             |
+| `$sme#value`                   | Element value                        |
+| `$sme#valueType`               | XSD value type (e.g. `xs:string`)    |
+| `$sme#language`                | Language tag (for MultiLanguageProperty) |
+| `$sme#semanticId`              | Semantic ID (shortcut for `semanticId.keys[0].value`) |
+| `$sme#semanticId.type`         | Semantic ID reference type           |
+| `$sme#semanticId.keys[N].type` | Type of the Nth semantic ID key      |
+| `$sme#semanticId.keys[N].value`| Value of the Nth semantic ID key     |
+| `$sme#semanticId.keys[].type`  | Type of any semantic ID key          |
+| `$sme#semanticId.keys[].value` | Value of any semantic ID key         |
+
+Submodel element fields can include an **idShort path** to target a specific element
+in the submodel tree:
+
+```text
+$sme.Collection.Property#value
+```
+
+This targets the element at path `Collection.Property` within the submodel.
+
+#### Shell Fields (`$aas`)
+
+<!-- markdownlint-disable line-length -->
+
+| Field reference                                                   | Description                        |
+|-------------------------------------------------------------------|------------------------------------|
+| `$aas#id`                                                         | Shell identifier                   |
+| `$aas#idShort`                                                    | Shell short identifier             |
+| `$aas#assetInformation.assetKind`                                 | Asset kind (`Instance` or `Type`)  |
+| `$aas#assetInformation.assetType`                                 | Asset type                         |
+| `$aas#assetInformation.globalAssetId`                             | Global asset identifier            |
+| `$aas#assetInformation.specificAssetIds[].name`                   | Specific asset ID name             |
+| `$aas#assetInformation.specificAssetIds[].value`                  | Specific asset ID value            |
+| `$aas#assetInformation.specificAssetIds[].externalSubjectId.type` | External subject ID reference type |
+| `$aas#assetInformation.specificAssetIds[N].name`                  | Name of the Nth specific asset ID  |
+| `$aas#assetInformation.specificAssetIds[N].value`                 | Value of the Nth specific asset ID |
+| `$aas#submodels[].type`                                           | Type of submodel reference         |
+| `$aas#submodels[].keys[].type`                                    | Type of reference keys             |
+| `$aas#submodels[].keys[].value`                                   | Value of reference keys            |
+
+<!-- markdownlint-enable line-length -->
+
+Where `[N]` is a zero-based index for positional access and `[]` matches any position (wildcard).
+
+### Operators
+
+#### Comparison Operators
+
+Comparison operators take exactly two operands (left and right):
+
+```json
+{ "$eq": [<left>, <right>] }
+```
+
+| Operator       | Description              | Notes                                |
+|----------------|--------------------------|--------------------------------------|
+| `$eq`          | Equals                   |                                      |
+| `$ne`          | Not equals               |                                      |
+| `$gt`          | Greater than             | Not allowed on booleans              |
+| `$lt`          | Less than                | Not allowed on booleans              |
+| `$ge`          | Greater than or equal    | Not allowed on booleans              |
+| `$le`          | Less than or equal       | Not allowed on booleans              |
+| `$contains`    | String contains          | Case-sensitive                       |
+| `$starts-with` | String starts with       | Case-sensitive                       |
+| `$ends-with`   | String ends with         | Case-sensitive                       |
+| `$regex`       | Regular expression match | POSIX regex, validated at parse time |
+
+#### Logical Operators
+
+```json
+{ "$and": [<expr1>, <expr2>, ...] }
+
+{ "$or": [<expr1>, <expr2>, ...] }
+
+{ "$not": <expr> }
+```
+
+`$and` and `$or` require at least two elements. `$not` takes a single expression.
+
+#### Match Operator
+
+`$match` scopes multiple conditions to the **same array element**. This is essential when querying
+array-valued attributes like submodel elements or specific asset IDs, where you need conditions
+to apply to the same entry rather than across different entries.
+
+```json
+{ "$match": [<comparison1>, <comparison2>, ...] }
+```
+
+Rules:
+
+- Requires at least one comparison
+- Cannot contain logical operators (`$and`, `$or`, `$not`) directly
+- All conditions inside a `$match` must reference the same array root
+
+### Operands
+
+#### Literals
+
+| Syntax                                      | Type     | Example                      |
+|---------------------------------------------|----------|------------------------------|
+| `{"$strVal": "text"}`                       | String   | `{"$strVal": "urn:example"}` |
+| `{"$numVal": 42.5}`                         | Numeric  | `{"$numVal": 100}`           |
+| `{"$boolean": true}`                        | Boolean  | `{"$boolean": false}`        |
+| `{"$dateTimeVal": "2024-01-15T00:00:00Z"}`  | DateTime | ISO 8601 format              |
+| `{"$timeVal": "14:30:00"}`                  | Time     | `{"$timeVal": "08:00:00"}`   |
+| `{"$hexVal": "16#FF0A"}`                    | Hex      | Must start with `16#`        |
+
+#### Type Cast Operators
+
+Cast operators convert a field value to a different type. If the conversion fails, the comparison
+evaluates to "invalid" (no match) rather than producing an error.
+
+| Syntax                          | Description    |
+|---------------------------------|----------------|
+| `{"$strCast": <operand>}`      | Cast to string |
+| `{"$numCast": <operand>}`      | Cast to number |
+| `{"$boolCast": <operand>}`     | Cast to boolean |
+| `{"$dateTimeCast": <operand>}` | Cast to DateTime |
+| `{"$timeCast": <operand>}`     | Cast to time   |
+| `{"$hexCast": <operand>}`      | Cast to hex    |
+
+#### DateTime Extraction Operators
+
+Extract a component from a DateTime value for numeric comparison:
+
+| Syntax                        | Description          | Range              |
+|-------------------------------|----------------------|--------------------|
+| `{"$year": <operand>}`       | Extract year         |                    |
+| `{"$month": <operand>}`      | Extract month        | 1-12               |
+| `{"$dayOfMonth": <operand>}` | Extract day of month | 1-31               |
+| `{"$dayOfWeek": <operand>}`  | Extract day of week  | 1 (Mon) - 7 (Sun) |
+
+### Examples
+
+#### Find submodels by semantic ID
+
+```json
+{
+  "$condition": {
+    "$eq": [
+      {"$field": "$sm#semanticId"},
+      {"$strVal": "https://admin-shell.io/zvei/nameplate/2/0/Nameplate"}
+    ]
+  }
+}
+```
+
+#### Find submodels by idShort substring
+
+```json
+{
+  "$condition": {
+    "$contains": [
+      {"$field": "$sm#idShort"},
+      {"$strVal": "Nameplate"}
+    ]
+  }
+}
+```
+
+#### Combine conditions with AND
+
+```json
+{
+  "$condition": {
+    "$and": [
+      {
+        "$eq": [
+          {"$field": "$sm#semanticId"},
+          {"$strVal": "https://admin-shell.io/zvei/nameplate/2/0/Nameplate"}
+        ]
+      },
+      {
+        "$contains": [
+          {"$field": "$sm#idShort"},
+          {"$strVal": "Nameplate"}
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### Find submodel elements with a specific value (using $match)
+
+Use `$match` to ensure that the semantic ID and value conditions apply to the **same**
+submodel element:
+
+```json
+{
+  "$condition": {
+    "$match": [
+      {
+        "$eq": [
+          {"$field": "$sme#semanticId"},
+          {"$strVal": "0173-1#02-AAO677#002"}
+        ]
+      },
+      {
+        "$eq": [
+          {"$field": "$sme#value"},
+          {"$strVal": "ACME Corp"}
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### Query shells by asset kind
+
+```json
+{
+  "$condition": {
+    "$eq": [
+      {"$field": "$aas#assetInformation.assetKind"},
+      {"$strVal": "Instance"}
+    ]
+  }
+}
+```
+
+#### Cross-entity query (shell + submodel attributes)
+
+Find submodels that belong to shells of a specific asset kind:
+
+```json
+{
+  "$condition": {
+    "$and": [
+      {
+        "$eq": [
+          {"$field": "$aas#assetInformation.assetKind"},
+          {"$strVal": "Instance"}
+        ]
+      },
+      {
+        "$eq": [
+          {"$field": "$sm#semanticId"},
+          {"$strVal": "https://admin-shell.io/zvei/nameplate/2/0/Nameplate"}
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### Return only identifiers
+
+Add `$select: "id"` to receive only IDs instead of full payloads:
+
+```json
+{
+  "$condition": {
+    "$eq": [
+      {"$field": "$sm#semanticId"},
+      {"$strVal": "https://admin-shell.io/zvei/nameplate/2/0/Nameplate"}
+    ]
+  },
+  "$select": "id"
+}
+```
+
+### Error Handling
+
+If the query is syntactically or semantically invalid, the endpoint returns HTTP 400 with an error
+message describing what is wrong.
 
 ---
 
