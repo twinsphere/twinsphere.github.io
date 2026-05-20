@@ -7,16 +7,16 @@ theme:
   palette:
     primary: green
 extra_css:
-- css/extra.css
+  - css/extra.css
 nav:
   - Home: index.md
   - Contact us: contact.md
   - Status: status.md
   - twinsphere ID:
-    - Overview: id-overview.md
-    - New user registration: id-new-user-registration.md
-    - Users: id-users.md
-    - Service accounts: id-service-accounts.md
+      - Overview: id-overview.md
+      - New user registration: id-new-user-registration.md
+      - Users: id-users.md
+      - Service accounts: id-service-accounts.md
   - Cloud:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
@@ -33,28 +33,29 @@ nav:
     - Client Generation: cloud-client-generation.md
     - Release Notes: cloud-release-notes.md
   - Studio:
-    - Overview: studio-overview.md
-    - General Features: studio-general-features.md
-    - Statistics: studio-statistics.md
-    - Catalog: studio-catalog.md
-    - Twin Builder: studio-twin-builder.md
-    - Release Notes: studio-release-notes.md
+      - Overview: studio-overview.md
+      - General Features: studio-general-features.md
+      - Statistics: studio-statistics.md
+      - Catalog: studio-catalog.md
+      - Twin Builder: studio-twin-builder.md
+      - Release Notes: studio-release-notes.md
   - Viewer:
-    - Overview: viewer-overview.md
-    - Features: viewer-features.md
-    - Release Notes: viewer-release-notes.md
+      - Overview: viewer-overview.md
+      - Features: viewer-features.md
+      - Release Notes: viewer-release-notes.md
   - Management API:
-    - Overview: management-overview.md
-    - Roles: management-roles.md
+      - Overview: management-overview.md
+      - Roles: management-roles.md
   - Development libraries (DevKit):
-    - Overview: typed-aas-metamodels-overview.md
-    - Supported Submodels: typed-aas-metamodels-submodels.md
-    - Validation: typed-aas-metamodels-validation.md
-    - Release Notes: typed-aas-metamodels-release_notes.md
+      - Overview: typed-aas-metamodels-overview.md
+      - Supported Submodels: typed-aas-metamodels-submodels.md
+      - Validation: typed-aas-metamodels-validation.md
+      - Release Notes DevKit: typed-aas-metamodels-release_notes.md
+      - Release Notes Rulebook: typed-aas-metamodels-rulebook-release_notes.md
   - Validators:
-    - Overview: validators-overview.md
+      - Overview: validators-overview.md
   - Tips & Tricks:
-    - Common Validation Errors: tips-common-validation-errors.md
+      - Common Validation Errors: tips-common-validation-errors.md
 copyright: Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
 validation:
   omitted_files: warn
@@ -71,8 +72,8 @@ plugins:
   - link-marker
   - spellcheck:
       backends:
-      - codespell:
-          dictionaries: [clear, rare, informal, usage, en-GB_to_en-US]
+        - codespell:
+            dictionaries: [clear, rare, informal, usage, en-GB_to_en-US]
       known_words: known_words.txt
       ignore_code: yes
       allow_unicode: yes
