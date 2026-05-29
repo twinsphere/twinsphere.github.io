@@ -5,6 +5,27 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ---
 
+## Studio 0.8
+
+*Released on 19-May-2026*.
+
+**New Features:**
+
+- **[TwinBuilder]:**
+
+    - Enhanced "edit submodels" dialog
+        - Add multiple instances from one template
+        - Add existing SM of another twin - as reference or copy
+        - Add existing SM by ID - as reference or copy
+
+- **Fixes:**
+
+    - **[TwinBuilder]** Fixed overlapping label of RelationshipElements
+    - **[TwinBuilder]** Show ModelReference to other Twin works again and not only darkens screen
+    - **[Catalog]** Tenant content now gets properly reloaded after session expiration
+
+---
+
 ## Studio 0.7
 
 *Released on 01-Apr-2026*.
