@@ -279,6 +279,39 @@ var validator = await Validator.Builder()
     .Value;
 ```
 
+## Rulebook Project
+
+You can access more comprehensive details on every rule via the `twinsphere.TypedAasMetamodels.Validation.Rulebook`
+companion package. This package provides additional helpful details formatted as markdown. These details include
+information, such as:
+
+- Examples for rule violations
+- Suggestions on how to resolve the rule violations
+- Links for further reading
+
+For example, you can access more details on rule `CONF000` as such:
+
+```csharp
+var details = RulebookLookup.Lookup("CONF000");
+var englishSolution = details.RecommendedSolution.First(x => x.Lang == "en").Text;
+Console.WriteLine(englishSolution);
+```
+
+Alternatively, you can also directly lookup via a `Rule` object:
+
+```csharp
+var validator = await Validator.Builder().Build().Value;
+var diagnostics = validator.Validate("path/to/my/package.aasx").First();
+var details = RulebookLookup.Lookup(diagnostics.Rule);
+var englishSolution = details.RecommendedSolution.First(x => x.Lang == "en").Text;
+Console.WriteLine(englishSolution);
+```
+
+Currently, the details are provided in english language, further translations are planned.
+
+!!! note
+    The rulebook project is versioned individually from the remaining DevKit projects.
+
 ## Limitations
 
 - **Template data quality**: Conformity validation depends on the quality of template data. Many published submodel
