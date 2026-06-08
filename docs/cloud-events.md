@@ -3,11 +3,6 @@
 > ⚠️ **Experimental**
 > This is an experimental feature and usage in productive systems is not advised!
 
-<!-- -->
-
-> **Note**
-> Submodel element operations do not produce any events!
-
 Besides the HTTP/REST based API endpoint, twinsphere also offers a MQTT based API for receiving events about
 shells and submodels.
 
