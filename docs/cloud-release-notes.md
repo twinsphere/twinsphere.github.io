@@ -6,6 +6,15 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.28
+
+*Released on TBD*.
+
+- **[Events]** Submodel element operations (create / update / delete on submodel element level) emit a submodel
+    `updated` [change event](cloud-events.md) for the containing submodel
+
+---
+
 ## Cloud 1.27
 
 *Released on 18-May-2026*.
