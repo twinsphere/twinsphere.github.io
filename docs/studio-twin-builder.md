@@ -409,3 +409,29 @@ The **AASX** can only be selected if the target is **file** and your twin is *pu
 Concept descriptions can only be included if your twin is *published*.
 
 ![Twin Export Menu](img/twinstudio_builder_twin_export.png){ : width='350' }
+
+## Document AI Wizard
+
+To add a document to the handover documentation, you can now use a
+wizard that analyzes the document using a language model and identifies the following properties:
+
+- Languages
+- Description
+- Keywords
+- Classification
+
+The AI can identify these characteristics with a certain degree of confidence.
+This confidence level is displayed in the wizard. You can then decide whether or not to add the document.
+Once you add the document, you'll be taken there immediately.
+
+!!! warning
+    You can only use documents in the pdf format for the document wizard.
+    The wizard can only add elements to the documentation handover 2.0.
+
+### Example
+
+![open wizard](./img/twinstudio_builder_document_wizard_open_button.png)
+![open wizard](./img/twinstudio_builder_document_wizard_upload_file.png)
+![open wizard](./img/twinstudio_builder_document_wizard_upload_process.png)
+![open wizard](./img/twinstudio_builder_document_wizard_confidence.png)
+![open wizard](./img/twinstudio_builder_document_wizard_navigated.png)
