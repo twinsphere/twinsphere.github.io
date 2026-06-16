@@ -33,14 +33,22 @@ The catalog of twins has a toggle on top to switch between *asset administration
 
 ![Twin Catalog - Shells](img/twinstudio_catalog_twins_shells.png){: width='800'}
 
-The **quick filter** at the top allows you to display only twins of the selected *asset kind* (types or instances).
+On the right a **filter** for twins can be set via a dialog
 
-On the right a **filter** for the shells can be set:
+![Twin Catalog - Filter first page](img/twinstudio_catalog_twinfilter_page1.png){: width='400'}
+![Twin Catalog - Filter second page](img/twinstudio_catalog_twinfilter_page2.png){: width='400'}
+![Twin Catalog - Filter third page](img/twinstudio_catalog_twinfilter_page3.png){: width='400'}
+![Twin Catalog - Filter third page](img/twinstudio_catalog_twinfilter_result.png){: width='200'}
 
-- Filters are combined with a logical AND, so twins have to fulfill all set filter criteria to be in the result list.
-- Text filters are case-insensitive.
-- A partially qualified value can be specified for all attributes listed as
-  [regex supported filter properties](cloud-shell-filter-queries.md/#regex-support).
+A filter can be created by adding elements to it.
+It will be applied if the dialog is closed by clicking the *apply filter* button.
+
+Filters for the same element will be be combined with or and all together will be combined with and.
+All string values are used as regex matches.
+The type will be matched exactly.
+Year of contruction entry will be matched with greater/lesser than the entered value.
+
+Each filter entry can be removed by clicking the cross symbol.
 
 The **submodel column** shows the count of submodels the respective twin has. A click opens a dialog listing them
 with some basic information.
