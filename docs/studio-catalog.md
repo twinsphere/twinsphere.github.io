@@ -31,6 +31,11 @@ The catalog of twins has a toggle on top to switch between *asset administration
 
 ### Asset Administration Shells
 
+You can switch between cards and the table by using the buttons **Show as Table** and **Show as Card**.
+A card and a table column provide the same actions.
+Additionaly a card can display the description and the thumbnail of an asset administration shell.
+
+![Twin Catalog - Shells - Cards](img/twinstudio_catalog_twins_shells_cards.png){: width='800'}
 ![Twin Catalog - Shells](img/twinstudio_catalog_twins_shells.png){: width='800'}
 
 On the right a **filter** for twins can be set via a dialog
