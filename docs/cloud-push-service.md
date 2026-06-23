@@ -203,25 +203,31 @@ subscription with API access. Create a target with a configuration as shown in t
     },
     "destination": {
       "apiBaseUrl": "https://{domain}",
-      "businessPartnerId": "{your-business-partner-id}"
+      "businessPartnerId": "{your-business-partner-id}",
+      "groupId": "{your-authorization-group-id}"
     }
   }
 }
 ```
 
 !!! note
+    - All configuration fields (`apiBaseUrl`, `businessPartnerId`, `groupId`, and the `credentials`)
+      are required.
     - SAP BNAC always uses the `application/asset-administration-shell-package+json` serialization format.
       The `serializationFormat` field in the push job request is ignored for SAP BNAC targets.
     - The `apiBaseUrl` is the base URL of your SAP BNAC API instance
       (e.g. `https://ain.{landscape}.business-network.cloud.sap`).
     - The `businessPartnerId` identifies your organization in SAP BNAC and is sent as the
       `x-businesspartner-id` header.
+    - The `groupId` is the SAP BNAC authorization group the created equipment is published and shared
+      with. Different targets can point at different authorization groups.
     - For OAuth credentials, only SAP service keys of type `instance-secret` (default) or
       `binding-secret` are supported.
     - Supported submodel types:
-        - Handover Documentation V1.2 (SemanticId `0173-1#01-AHF578#001`)
-        - Handover Documentation V2.0 (SemanticId `0173-1#01-AHF578#003`) —
-          automatically converted to V1.2 before upload
+        - Handover Documentation V2.0 (SemanticId `0173-1#01-AHF578#003`) — **recommended**.
+        - Handover Documentation V1.2 (SemanticId `0173-1#01-AHF578#001`) — supported, but SAP BNAC
+          currently accepts only a single primary `DocumentId` per Handover Documentation submodel,
+          so a V1.2 submodel may contain only one `Document`. Prefer V2.0, which has no such limit.
         - Nameplate V3.0 (SemanticId `https://admin-shell.io/idta/nameplate/3/0/Nameplate`)
     - SAP BNAC requires exactly one Nameplate V3.0 submodel per shell in the push job.
     - SAP BNAC only supports exactly one shell per push job. The `shellIds` array must contain exactly one entry.
@@ -368,7 +374,14 @@ Once completed, the push job's `metadata` field contains:
 - `handleId` — identifies the uploaded package in SAP BNAC
 - `sapBnacStatus` — the full SAP BNAC status response as a JSON string, useful for diagnosing validation errors
 
-#### Handover Documentation conversion
+#### Equipment publishing and sharing
 
-If a Handover Documentation V2.0 submodel is included in the push job, it is automatically converted to V1.2
-format before the AASX package is uploaded to SAP BNAC.
+After a successful upload, twinsphere resolves the equipment created from the package, publishes it,
+and shares it with the SAP BNAC authorization group configured as the target's `groupId`.
+
+!!! note
+    If any step in this chain (upload, processing, publish, or share) fails, the push job is marked
+    `failed`. Each step is idempotent, so you can simply create a new push job with the same shell and
+    submodels to retry the whole flow — re-running it does not create duplicates: SAP BNAC updates the
+    existing equipment instead of creating a second one, and re-publishing or re-sharing an already
+    published/shared equipment is a no-op.
