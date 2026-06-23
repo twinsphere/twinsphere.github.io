@@ -12,6 +12,10 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 - **[Events]** Submodel element operations (create / update / delete on submodel element level) emit a submodel
     `updated` [change event](cloud-events.md) for the containing submodel
+- **[PushService]** SAP BNAC (experimental): Handover Documentation V2.0 is now pushed natively instead of
+    being converted to V1.2, and the created equipment is published and shared with a SAP BNAC authorization
+    group via the now-required `groupId` target configuration, see
+    [Push Service](cloud-push-service.md#sap-business-network-asset-collaboration-experimental) for details
 
 ---
 
