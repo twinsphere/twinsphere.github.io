@@ -53,7 +53,7 @@ You can also call the API with any HTTP client (e.g., curl). Using the Swagger U
 ## Inviting users
 
 You can invite any user to your organization using their twinsphere ID.
-If the user does not yet have one, they can [register themselves](id-new-user-registration.md).
+If the user does not yet have one, they can [register themselves](id-registration.md).
 
 To invite a user, use: `POST /api/v{version}/organizations/{organizationId}/users/invite`
 
