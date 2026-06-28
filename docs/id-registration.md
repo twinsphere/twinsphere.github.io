@@ -1,4 +1,4 @@
-# New User Registration
+# Registration
 
 In order to obtain a new user in twinsphere ID, you can use the user self registration workflow.
 
