@@ -13,10 +13,12 @@ nav:
   - Contact us: contact.md
   - Status: status.md
   - twinsphere ID:
-      - Overview: id-overview.md
-      - New user registration: id-new-user-registration.md
-      - Users: id-users.md
-      - Service accounts: id-service-accounts.md
+    - Overview: id-overview.md
+    - Users:
+      - Registration: id-registration.md
+      - Login: id-login.md
+      - Password reset: id-password-reset.md
+    - Service accounts: id-service-accounts.md
   - Cloud:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
