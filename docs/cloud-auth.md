@@ -4,9 +4,13 @@ twinsphere cloud supports two authentication strategies:
 
 - using [twinsphere ID](id-overview.md), which is the default built-in authentication provider. Both user and service
 account authentication modes are supported, consult the [twinsphere ID documentation](id-overview.md) for more information.
-- using [identity federation](#identity-provider-federation) as an additional authentication provider
+- using [identity federation](#identity-provider-federation-deprecated) as an additional authentication provider
 
-## Identity provider federation
+## Identity provider federation (deprecated)
+
+!!! info "Deprecated"
+    This identity provider federation approach is deprecated and will be replaced by a global
+    federation of users directly on twinsphere ID.
 
 For tighter integration in your authentication and authorization systems, twinsphere cloud supports adding external identity
 provider configuration onto the platform.

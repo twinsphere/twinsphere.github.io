@@ -14,7 +14,7 @@ Our twinsphere suite consists of multiple applications and libraries:
 - [Cloud](cloud-documentation.md)
 - [Studio](studio-overview.md)
 - [Viewer](viewer-overview.md)
-- [Management API](management-overview.md)
+- [Management](management-overview.md)
 - [Development libraries (DevKit)](typed-aas-metamodels-overview.md)
 - [Validators](validators-overview.md)
 
