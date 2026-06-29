@@ -8,14 +8,32 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ## Cloud 1.28
 
-*Released on TBD*.
+*Released on 29-Jun-2026*.
 
-- **[Events]** Submodel element operations (create / update / delete on submodel element level) emit a submodel
-    `updated` [change event](cloud-events.md) for the containing submodel
+**Breaking changes:**
+
+- **[Deprecation]** Removed obsolete, superseded features:
+    - OAuth2 **machine clients** — replaced by [service accounts](id-service-accounts.md) managed via the Manage API
+    - Dedicated **Viewer user** account — replaced by twinsphere ID users
+- **[Deprecation]** Filter Queries (`POST /filter/shells`) are deprecated — please use the AAS
+    [Query Language](cloud-documentation.md#query-language) instead
+- **[ManageAPI]** API documentation UI switched from Swagger to Scalar — the Swagger UI at
+    `manage.twinsphere.io/swagger` is now served as Scalar UI at `manage.twinsphere.io/scalar`
 - **[PushService]** SAP BNAC (experimental): Handover Documentation V2.0 is now pushed natively instead of
-    being converted to V1.2, and the created equipment is published and shared with a SAP BNAC authorization
-    group via the now-required `groupId` target configuration, see
-    [Push Service](cloud-push-service.md#sap-business-network-asset-collaboration-experimental) for details
+    being converted to V1.2
+
+**What's new:**
+
+- **[ManageUI]** New twinsphere **Manage UI** — a web interface for organization-level data: users, groups,
+    service accounts and role assignment, see [Management](management-overview.md)
+- **[Resolver]** New **AAS ID Resolution** — twinsphere platform central ID resolver for registering rules in which
+    organization / tenant the data for a certain AAS or Asset ID can be found
+- **[PushService]** SAP Business Network Asset Collaboration (SAP BNAC) - support for Handover Documentation V2.0
+    and sharing equipment via BNAC Authorization Groups, see [Push Service](cloud-push-service.md) for more information
+- **[ManageAPI]** Tenant data endpoint now returns tenant **metadata** (display name, region, status, …) and
+    **feature flags** (change events, search, semantic connector, viewer)
+- **[ABAC]** Check endpoint now accepts `$ANONYMOUS` to preview anonymous access and validates that a given
+    principal actually exists
 
 ---
 
@@ -81,7 +99,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 *Released on 14-Jan-2026*.
 
-- **[ManageAPI]** Added [User registration](id-new-user-registration.md)
+- **[ManageAPI]** Added [User registration](id-registration.md)
 - **[RBAC]** organization-owner role now cascades and grants administrative rights in tenants of that organization
 - **[Events]** Configurable event publishing as a performance improvement
 - **[DevOps]** Internal optimizations regarding automation and stable operations
@@ -105,7 +123,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[Files]** Moved file interface (/files) from TwinAPI to SphereAPI service
 - **[SphereAPI]** New experimental DCC endpoint for converting digital calibration certificate XML documents into
     Digital Quality Document submodels
-- **[ManageAPI]** Introduced [user groups](management-overview.md#user-groups) for more convenient user management
+- **[ManageAPI]** Introduced [user groups](management-overview.md) for more convenient user management
 - **[Bugfix]** Fixed idShort path resolving for list elements
 
 !!! attention "File endpoints have moved"  
