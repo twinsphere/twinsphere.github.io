@@ -19,6 +19,10 @@ nav:
       - Login: id-login.md
       - Password reset: id-password-reset.md
     - Service accounts: id-service-accounts.md
+  - Management:
+    - Overview: management-overview.md
+    - API: management-api.md
+    - Roles: management-roles.md
   - Cloud:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
@@ -42,12 +46,9 @@ nav:
       - Twin Builder: studio-twin-builder.md
       - Release Notes: studio-release-notes.md
   - Viewer:
-      - Overview: viewer-overview.md
-      - Features: viewer-features.md
-      - Release Notes: viewer-release-notes.md
-  - Management API:
-      - Overview: management-overview.md
-      - Roles: management-roles.md
+    - Overview: viewer-overview.md
+    - Features: viewer-features.md
+    - Release Notes: viewer-release-notes.md
   - Development libraries (DevKit):
       - Overview: typed-aas-metamodels-overview.md
       - Supported Submodels: typed-aas-metamodels-submodels.md
