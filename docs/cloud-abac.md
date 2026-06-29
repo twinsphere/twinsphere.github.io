@@ -25,7 +25,7 @@ A **principal** is the entity requesting access. This can be:
 
 - A user identified by email (e.g., `alice@example.com`)
 - A service account identified by a UUID (e.g., `a1b2c3d4-e5f6-7890-abcd-ef1234567890`)
-- A [group](management-overview.md#user-groups) (e.g., `group@factory-admins`)
+- A [group](management-overview.md) (e.g., `group@factory-admins`)
 
 Policies can target specific principals or use special values:
 

@@ -1,6 +1,7 @@
 # twinsphere Roles
 
-Here is a list of all available roles and their permissions, that you can set through Management API role assignment APIs.
+Here is a list of all available roles and their permissions. You can assign them in the
+[Manage UI](management-overview.md) or via the [Management API](management-api.md).
 
 <!-- markdownlint-disable line-length -->
 | Role | Scope | Explanation |

@@ -1,14 +1,18 @@
 # Service accounts
 
-Service accounts can be created via the [Management API](management-overview.md).
+Service accounts can be created via the [Management API](management-api.md).
 
 ## Usage
 
-Service accounts user the common  [`client-credentials`](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4)
+!!! note
+    The example below shows a service account created via the [Management API](management-api.md).
+    The same data is also available in the [Manage UI](management-overview.md).
+
+Service accounts use the common  [`client-credentials`](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4)
 OAuth 2.0 flow type, which means that you have to call a special endpoint to get an access token for the certain
 application you are trying to access (also called *scope*).
 
-Once you create your service account through [Management API](management-overview.md), you will get a list of
+Once you create your service account through [Management API](management-api.md), you will get a list of
 available scopes as well as the endpoint (`tokenUri`) where you can get your token(s).
 
 <!-- markdownlint-disable line-length -->
@@ -37,7 +41,7 @@ available scopes as well as the endpoint (`tokenUri`) where you can get your tok
 ```
 <!-- markdownlint-enable line-length -->
 
-> Consult the [Management API](management-overview.md) documentation on how to create secrets which are also required
+> Consult the [Management API](management-api.md) documentation on how to create secrets which are also required
 for the `client_credentials` flow.
 > Both client ID and client secret are confidential and should be kept secret!
 
