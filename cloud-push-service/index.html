@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/cloud-push-service/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Push Service - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Push Service";
+        var mkdocs_page_input_path = "cloud-push-service.md";
+        var mkdocs_page_url = "/cloud-push-service/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../status/">Status</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Users</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../id-registration/">Registration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../id-login/">Login</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../id-password-reset/">Password reset</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Proprietary Features</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Push Service</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#target-management">Target management</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#create-target">Create Target</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#update-target">Update Target</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#supported-targets">Supported Targets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#job-management">Job management</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#create-job">Create Job</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get-job-status">Get Job Status</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sap-bnac-push-jobs-experimental">SAP BNAC push jobs (experimental)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-statistics/">Statistics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-abac/">ABAC (Attribute Based Access Control)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-statistics/">Statistics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes DevKit</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-rulebook-release_notes/">Release Notes Rulebook</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../validators-overview/">Overview</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud</li>
+          <li class="breadcrumb-item">Proprietary Features</li>
+      <li class="breadcrumb-item active">Push Service</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="push-service">Push Service</h1>
+<p>The twinsphere push service allows you to push serialized asset administration shells
+from your twinsphere tenant to any configured endpoint.
+Refer to the Swagger documentation (available at <code>/sphere/swagger/index.html</code>) for detailed
+information on each parameter and return value.</p>
+<p>To send AAS data to a desired target, follow these steps:</p>
+<ol>
+<li>Create a valid push target with<ol>
+<li>a unique name to identify the target (choose a URL-friendly name — e.g. lowercase alphanumeric with hyphens
+— since it is used as a path parameter in API URLs)</li>
+<li>the target type (e.g. <code>azure-blob-storage</code>, <code>aasx-file-server</code>, <code>sharecat</code>, <code>sap-bnac</code>)</li>
+<li>the type-specific configuration including connection details and credentials</li>
+</ol>
+</li>
+<li>Create a new push job with<ol>
+<li>the name of the target to push the data to</li>
+<li>the IDs of the shells and submodels you want to push</li>
+<li>the desired serialization format</li>
+<li>whether to include concept descriptions (boolean).</li>
+</ol>
+</li>
+</ol>
+<h2 id="target-management">Target management</h2>
+<p>Target management is performed through the <code>/sphere/api/v1/push/targets</code> endpoints.</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create target</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/push/targets</code></td>
+<td>Create a new push target</td>
+</tr>
+<tr>
+<td>List targets</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/push/targets</code></td>
+<td>Retrieve all configured push targets</td>
+</tr>
+<tr>
+<td>Get target</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/push/targets/{name}</code></td>
+<td>Retrieve a specific push target by name</td>
+</tr>
+<tr>
+<td>Update target</td>
+<td><code>PUT</code></td>
+<td><code>/sphere/api/v1/push/targets/{name}</code></td>
+<td>Update an existing push target</td>
+</tr>
+<tr>
+<td>Delete target</td>
+<td><code>DELETE</code></td>
+<td><code>/sphere/api/v1/push/targets/{name}</code></td>
+<td>Delete a push target</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>All credentials and secrets (SAS URLs, client secrets, access tokens) must be provided as <strong>plain text</strong>.
+Do not base64-encode or otherwise transform secret values before sending them.
+twinsphere will only store your credentials in encrypted form — they are never persisted as plain text.
+If a secret contains special characters like <code>"</code> or <code>\</code>, apply standard JSON string escaping
+(e.g. <code>\"</code>, <code>\\</code>). No additional encoding is required.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please make sure that the target is reachable from the internet!</p>
+</div>
+<h3 id="create-target">Create Target</h3>
+<blockquote>
+<p><code>POST https://{twinsphereTenantURL}/sphere/api/v1/push/targets</code></p>
+</blockquote>
+<p>To create a target, choose a unique name and provide the type-specific configuration
+(see <a href="#supported-targets">Supported Targets</a> below).</p>
+<h4 id="example-request">Example Request</h4>
+<pre><code class="language-http">POST /sphere/api/v1/push/targets
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  &quot;name&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;type&quot;: &quot;azure-blob-storage&quot;,
+  &quot;configuration&quot;: {
+    &quot;blobContainerSasUrl&quot;: &quot;https://...&quot;
+  }
+}
+</code></pre>
+<h4 id="example-response-201-created">Example Response (201 Created)</h4>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;type&quot;: &quot;azure-blob-storage&quot;,
+  &quot;configuration&quot;: {
+    &quot;blobContainerSasUrl&quot;: &quot;https://...&quot;
+  }
+}
+</code></pre>
+<h3 id="update-target">Update Target</h3>
+<blockquote>
+<p><code>PUT https://{twinsphereTenantURL}/sphere/api/v1/push/targets/{name}</code></p>
+</blockquote>
+<p>The update request uses the same configuration body as the create request, but the <code>name</code> field
+is not required — the target is identified by the <code>{name}</code> path parameter.</p>
+<h4 id="example-request_1">Example Request</h4>
+<pre><code class="language-http">PUT /sphere/api/v1/push/targets/{name}
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  &quot;type&quot;: &quot;azure-blob-storage&quot;,
+  &quot;configuration&quot;: {
+    &quot;blobContainerSasUrl&quot;: &quot;https://...&quot;
+  }
+}
+</code></pre>
+<p>The response is <code>204 No Content</code> — no body is returned on a successful update.</p>
+<h3 id="supported-targets">Supported Targets</h3>
+<h4 id="azure-blob-storage">Azure Blob Storage</h4>
+<p>To connect to Azure Blob Storage, you need to create a Blob container in advance.
+Issue a Shared Access Signature (SAS) token with full rights and provide the "Blob SAS URL"
+in the configuration body as shown in the example below:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;type&quot;: &quot;azure-blob-storage&quot;,
+  &quot;configuration&quot;: {
+    &quot;blobContainerSasUrl&quot;: &quot;https://...&quot;
+  }
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>blobContainerSasUrl</code> must include the host, blob container name, and the SAS token
+required for the connection. Make sure to use a URL starting with <em>https</em>.
+For more information on how to obtain your container SAS URL,
+visit: <a href="https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview">Azure Storage SAS Overview&nbsp;⧉</a></p>
+</div>
+<h4 id="aasx-file-server">AASX File Server</h4>
+<p>To connect to the AASX File Server, you need to create a target with a configuration as shown in the example below:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;type&quot;: &quot;aasx-file-server&quot;,
+  &quot;configuration&quot;: {
+    &quot;credentials&quot;: {
+      &quot;accessTokenUrl&quot;: &quot;https://{domain}/{path}/token&quot;,
+      &quot;clientId&quot;: &quot;{id}&quot;,
+      &quot;clientSecret&quot;: &quot;{secret}&quot;
+    },
+    &quot;destination&quot;: {
+      &quot;endpointUrl&quot;: &quot;https://{domain}/{path}/upload&quot;
+    }
+  }
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>The AASX File Server only supports the <code>application/asset-administration-shell-package+json</code> serialization format.</li>
+<li>All URLs must be absolute and point to your access token or push target resource.</li>
+</ul>
+</div>
+<h4 id="sharecat-experimental">Sharecat (experimental)</h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Sharecat target is currently in <strong>experimental</strong> state and should only be used for prototypes / experimentation.</p>
+</div>
+<p>To connect to Sharecat, you need to create a target with a configuration as shown in the example below:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;type&quot;: &quot;sharecat&quot;,
+  &quot;configuration&quot;: {
+    &quot;credentials&quot;: {
+      &quot;accessTokenUrl&quot;: &quot;https://{domain}/{path}/token&quot;,
+      &quot;clientId&quot;: &quot;{id}&quot;,
+      &quot;clientSecret&quot;: &quot;{secret}&quot;
+    },
+    &quot;destination&quot;: {
+      &quot;baseUrl&quot;: &quot;https://{domain}/{path}/workspaces&quot;,
+      &quot;workspaceId&quot;: &quot;{id}&quot;,
+      &quot;parentId&quot;: &quot;{id}&quot;
+    }
+  }
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Sharecat only supports the <code>application/asset-administration-shell-package+json</code> serialization format.</li>
+<li>All URLs must be absolute and point to your access token or push target resource.</li>
+<li>The destination's <code>workspaceId</code> and <code>parentId</code> are specific IDs of the Sharecat ecosystem.</li>
+</ul>
+</div>
+<h4 id="sap-business-network-asset-collaboration-experimental">SAP Business Network Asset Collaboration (experimental)</h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The SAP BNAC target is currently in <strong>experimental</strong> state and should only be used for prototypes / experimentation.</p>
+</div>
+<p>To connect to SAP Business Network Asset Collaboration (SAP BNAC), you need an SAP Asset Intelligence Network
+subscription with API access. Create a target with a configuration as shown in the example below:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;type&quot;: &quot;sap-bnac&quot;,
+  &quot;configuration&quot;: {
+    &quot;credentials&quot;: {
+      &quot;accessTokenUrl&quot;: &quot;https://{domain}/oauth/token&quot;,
+      &quot;clientId&quot;: &quot;{id}&quot;,
+      &quot;clientSecret&quot;: &quot;{secret}&quot;
+    },
+    &quot;destination&quot;: {
+      &quot;apiBaseUrl&quot;: &quot;https://{domain}&quot;,
+      &quot;businessPartnerId&quot;: &quot;{your-business-partner-id}&quot;,
+      &quot;groupId&quot;: &quot;{your-authorization-group-id}&quot;
+    }
+  }
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>All configuration fields (<code>apiBaseUrl</code>, <code>businessPartnerId</code>, <code>groupId</code>, and the <code>credentials</code>)
+  are required.</li>
+<li>SAP BNAC always uses the <code>application/asset-administration-shell-package+json</code> serialization format.
+  The <code>serializationFormat</code> field in the push job request is ignored for SAP BNAC targets.</li>
+<li>The <code>apiBaseUrl</code> is the base URL of your SAP BNAC API instance
+  (e.g. <code>https://ain.{landscape}.business-network.cloud.sap</code>).</li>
+<li>The <code>businessPartnerId</code> identifies your organization in SAP BNAC and is sent as the
+  <code>x-businesspartner-id</code> header.</li>
+<li>The <code>groupId</code> is the SAP BNAC authorization group the created equipment is published and shared
+  with. Different targets can point at different authorization groups.</li>
+<li>For OAuth credentials, only SAP service keys of type <code>instance-secret</code> (default) or
+  <code>binding-secret</code> are supported.</li>
+<li>Supported submodel types:<ul>
+<li>Handover Documentation V2.0 (SemanticId <code>0173-1#01-AHF578#003</code>) — <strong>recommended</strong>.</li>
+<li>Handover Documentation V1.2 (SemanticId <code>0173-1#01-AHF578#001</code>) — supported, but SAP BNAC
+  currently accepts only a single primary <code>DocumentId</code> per Handover Documentation submodel,
+  so a V1.2 submodel may contain only one <code>Document</code>. Prefer V2.0, which has no such limit.</li>
+<li>Nameplate V3.0 (SemanticId <code>https://admin-shell.io/idta/nameplate/3/0/Nameplate</code>)</li>
+</ul>
+</li>
+<li>SAP BNAC requires exactly one Nameplate V3.0 submodel per shell in the push job.</li>
+<li>SAP BNAC only supports exactly one shell per push job. The <code>shellIds</code> array must contain exactly one entry.</li>
+</ul>
+</div>
+<h2 id="job-management">Job management</h2>
+<p>To push data from your twinsphere repository to one of your targets, you need to create a push job.
+Push jobs are managed through the <code>/sphere/api/v1/push/jobs</code> endpoints.</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create job</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/push/jobs</code></td>
+<td>Create a new push job</td>
+</tr>
+<tr>
+<td>Get job status</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/push/jobs/{id}</code></td>
+<td>Query the state of a push job</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>Since push jobs can take some time to complete, an asynchronous REST pattern is used.
+A POST to <code>/sphere/api/v1/push/jobs</code> returns an identifier that you can use
+with a GET to <code>/sphere/api/v1/push/jobs/{id}</code> to query the state of the job.</p>
+<p>We currently support pushing of shells, submodels, and concept descriptions. The supported
+output serialization formats are:</p>
+<ul>
+<li>application/json</li>
+<li>application/xml</li>
+<li>application/asset-administration-shell-package+json</li>
+</ul>
+<h3 id="create-job">Create Job</h3>
+<blockquote>
+<p><code>POST https://{twinsphereTenantURL}/sphere/api/v1/push/jobs</code></p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>shellIds</code> and <code>submodelIds</code> must be provided as plain text identifiers — do not base64-encode
+or otherwise transform them.</p>
+</div>
+<h4 id="example-request_2">Example Request</h4>
+<pre><code class="language-http">POST /sphere/api/v1/push/jobs
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  &quot;pushTargetName&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;serializationFormat&quot;: &quot;application/json&quot;,
+  &quot;shellIds&quot;: [&quot;{shell-id}&quot;],
+  &quot;submodelIds&quot;: [&quot;{submodel-id-1}&quot;, &quot;{submodel-id-2}&quot;],
+  &quot;includeConceptDescriptions&quot;: true
+}
+</code></pre>
+<h4 id="example-response-201-created_1">Example Response (201 Created)</h4>
+<pre><code class="language-json">{
+  &quot;identifier&quot;: &quot;{job-id}&quot;,
+  &quot;state&quot;: &quot;processing&quot;,
+  &quot;createdOn&quot;: &quot;2025-05-28T12:00:00Z&quot;,
+  &quot;updatedOn&quot;: &quot;2025-05-28T12:00:00Z&quot;,
+  &quot;message&quot;: null,
+  &quot;pushTargetName&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;serializationFormat&quot;: &quot;application/json&quot;,
+  &quot;shellIds&quot;: [&quot;{shell-id}&quot;],
+  &quot;submodelIds&quot;: [&quot;{submodel-id-1}&quot;, &quot;{submodel-id-2}&quot;],
+  &quot;includeConceptDescriptions&quot;: true,
+  &quot;metadata&quot;: null
+}
+</code></pre>
+<p>Use the returned <code>identifier</code> to poll the job status.</p>
+<h3 id="get-job-status">Get Job Status</h3>
+<blockquote>
+<p><code>GET https://{twinsphereTenantURL}/sphere/api/v1/push/jobs/{id}</code></p>
+</blockquote>
+<h4 id="example-request_3">Example Request</h4>
+<pre><code class="language-http">GET /sphere/api/v1/push/jobs/{id}
+Authorization: Bearer {token}
+</code></pre>
+<h4 id="example-response-200-ok">Example Response (200 OK)</h4>
+<pre><code class="language-json">{
+  &quot;identifier&quot;: &quot;{job-id}&quot;,
+  &quot;state&quot;: &quot;completed&quot;,
+  &quot;createdOn&quot;: &quot;2025-05-28T12:00:00Z&quot;,
+  &quot;updatedOn&quot;: &quot;2025-05-28T12:01:30Z&quot;,
+  &quot;message&quot;: null,
+  &quot;pushTargetName&quot;: &quot;{your-custom-target-name}&quot;,
+  &quot;serializationFormat&quot;: &quot;application/json&quot;,
+  &quot;shellIds&quot;: [&quot;{shell-id}&quot;],
+  &quot;submodelIds&quot;: [&quot;{submodel-id-1}&quot;, &quot;{submodel-id-2}&quot;],
+  &quot;includeConceptDescriptions&quot;: true,
+  &quot;metadata&quot;: {}
+}
+</code></pre>
+<p>The <code>state</code> field indicates the current status of the job:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>processing</code></td>
+<td>The job is currently running</td>
+</tr>
+<tr>
+<td><code>completed</code></td>
+<td>The job finished successfully</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>The job failed — check the <code>message</code> field for the error reason</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>metadata</code> field may contain additional target-specific information once the job completes
+(see <a href="#sap-bnac-push-jobs-experimental">SAP BNAC push jobs</a>).</p>
+<p>If a job fails, the <code>message</code> field contains the error reason.
+Most issues occur due to invalid target configuration parameters or
+network connectivity issues between the twinsphere service and the target.</p>
+<p>If you cannot resolve the issue based on the error message,
+<a href="../contact/">please contact our support</a> for further assistance.</p>
+<h3 id="sap-bnac-push-jobs-experimental">SAP BNAC push jobs (experimental)</h3>
+<p>When creating a push job for an SAP BNAC target, create a standard push job request:</p>
+<pre><code class="language-http">POST /sphere/api/v1/push/jobs
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  &quot;pushTargetName&quot;: &quot;{your-sap-bnac-target-name}&quot;,
+  &quot;serializationFormat&quot;: &quot;application/asset-administration-shell-package+json&quot;,
+  &quot;shellIds&quot;: [&quot;{shell-id}&quot;],
+  &quot;submodelIds&quot;: [&quot;{nameplate-submodel-id}&quot;, &quot;{handover-doc-submodel-id}&quot;],
+  &quot;includeConceptDescriptions&quot;: true
+}
+</code></pre>
+<p>The AASX package is uploaded to SAP BNAC and processed asynchronously. twinsphere polls the SAP BNAC
+processing status internally and waits for completion before marking the push job as completed.</p>
+<p>Once completed, the push job's <code>metadata</code> field contains:</p>
+<ul>
+<li><code>handleId</code> — identifies the uploaded package in SAP BNAC</li>
+<li><code>sapBnacStatus</code> — the full SAP BNAC status response as a JSON string, useful for diagnosing validation errors</li>
+</ul>
+<h4 id="equipment-publishing-and-sharing">Equipment publishing and sharing</h4>
+<p>After a successful upload, twinsphere resolves the equipment created from the package, publishes it,
+and shares it with the SAP BNAC authorization group configured as the target's <code>groupId</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If any step in this chain (upload, processing, publish, or share) fails, the push job is marked
+<code>failed</code>. Each step is idempotent, so you can simply create a new push job with the same shell and
+submodels to retry the whole flow — re-running it does not create duplicates: SAP BNAC updates the
+existing equipment instead of creating a second one, and re-publishing or re-sharing an already
+published/shared equipment is a no-op.</p>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cloud-search/" class="btn btn-neutral float-left" title="Search"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cloud-semantic-connector/" class="btn btn-neutral float-right" title="Semantic Connector">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cloud-search/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-semantic-connector/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
