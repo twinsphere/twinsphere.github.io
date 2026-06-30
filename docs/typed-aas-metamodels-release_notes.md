@@ -8,6 +8,13 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.3.2-rc.2
+
+*Released on 29-May-2026*.
+
+- **[TAM]** Fixed a crash in the validation of dangling references. The validation would throw an exception on invalid
+  reference types.
+
 ## twinsphere.TypedAasMetamodels 1.3.2-rc.1
 
 *Released on 19-May-2026*.
