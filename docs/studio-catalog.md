@@ -27,9 +27,9 @@ If no revision is given it will be assumed as *0*.
 
 ## Catalog of Twins
 
-The catalog of twins has a toggle on top to switch between *asset administration shells* and *submodels*.
-
-### Asset Administration Shells
+You can switch between cards and the table by using the buttons **Show as Table** and **Show as Card**.
+A card and a table column provide the same actions.
+Additionaly a card can display the description and the thumbnail of an asset administration shell.
 
 You can switch between cards and the table by using the buttons **Show as Table** and **Show as Card**.
 A card and a table column provide the same actions.
@@ -76,7 +76,7 @@ which submodels to include and if concept descriptions should be added
 - The **duplication** of *instance* twins (not types).
 - The **deletion** of twins.
 
-#### Delete Twin Dialog
+### Delete Twin Dialog
 
 After clicking on the **deletion** entry, a dialog appears. There you can see which twin will get deleted.
 You also have the possibility to deselect certain submodels of the twin, if you do not want them to be deleted.
@@ -85,7 +85,7 @@ you will get a warning about its implications.
 
 ![Twin Catalog](img/twinstudio_catalog_twins_delete_twin_dialog.png){: width='350'}
 
-#### Duplication of Instance Twins
+### Duplication of Instance Twins
 
 When duplicating an existing twin all of its data (shell and referenced submodels) are duplicated. New IDs are created
 and assigned to the copies. We highly recommend using the studio's
@@ -93,11 +93,13 @@ and assigned to the copies. We highly recommend using the studio's
 and GlobalAssetID manually and we will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel
 IDs.
 
-### Submodels
+## Catalog of Submodels
 
-![Twin Catalog - Submodels](img/twinstudio_catalog_twins_submodels.png){: width='800'}
+![Twin Catalog - Submodels Submodel View](img/twinstudio_catalog_submodels_cards.png){: width='800'}
+![Twin Catalog - Submodels Table View](img/twinstudio_catalog_submodels_table.png){: width='800'}
 
-The Submodels view of the Twin Catalog lists all existing submodels of the connected tenant.
+The Submodels tab of the Catalog lists all existing submodels, either instance or template,
+of the connected tenant in a card or table view.
 
 The **export** of a submodel is available as action in the more menu of each record,
 which opens a dialog to select format and destination for your export.
@@ -135,16 +137,6 @@ the available languages according to following criteria:
 You can select another language value by clicking on the corresponding language tag.
 Hovering over a tag will display an indicator above it.
 The selected language is highlighted with a gray background.
-
-## Catalog of Submodel Templates
-
-![Submodel Template Catalog](img/twinstudio_catalog_submodeltemplates.png){: width='800'}
-
-This catalog displays all *submodels* in your twinsphere repository that are of kind **template**.
-These are the ones you can choose from when adding new submodel to your twin in
-[Twin Builder](studio-twin-builder.md/#addremove-submodels).
-
-The **export** of a submodel template is available as action in the more menu of each record.
 
 ## Catalog of Drafts
 
