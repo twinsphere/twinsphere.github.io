@@ -23,6 +23,7 @@ nav:
     - Overview: management-overview.md
     - API: management-api.md
     - Roles: management-roles.md
+    - Licensing: management-licensing.md
   - Cloud:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
