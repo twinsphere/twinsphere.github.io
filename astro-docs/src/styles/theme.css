@@ -1,0 +1,99 @@
+/*
+ * twinsphere / twinviewer brand theme for Starlight.
+ *
+ * Source of truth: the Claude Design handoff (`colors_and_type.css`),
+ * reverse-engineered from the Twinspector Angular app. The design is
+ * DARK-ONLY by intent, so the dark palette below is verbatim from the
+ * handoff and the light palette is derived from the same teal/green hues
+ * to keep Starlight's theme toggle working. See docs/adr/0002.
+ *
+ * Fonts are deliberately Starlight's system stack (not the handoff's
+ * Google-Fonts Inter/JetBrains import): faithful to the real product,
+ * and GDPR-clean.
+ *
+ * Design tokens mapped here:
+ *   --background #18353d  page      --primary #2f4950 card/raised
+ *   --accent     #91c464  green     --alert   #c42e5f negative
+ *   --gray       #97a4a7  muted     --fg-1    #ffffff text
+ */
+
+/* ---------- Dark mode (handoff palette, verbatim) ---------- */
+:root,
+::backdrop {
+	/* Teal-tinted neutral ramp: gray-6 = card surface, black = page bg. */
+	--sl-color-white: #ffffff; /* headings / high-emphasis (design --fg-1) */
+	--sl-color-gray-1: #eaf0f1;
+	--sl-color-gray-2: #c3cfd1; /* body text */
+	--sl-color-gray-3: #97a4a7; /* muted / meta (design --gray) */
+	--sl-color-gray-4: #6b7d81;
+	--sl-color-gray-5: #3d585f; /* hairline-light, inline-code bg */
+	--sl-color-gray-6: #2f4950; /* nav + sidebar surface (design --primary) */
+	--sl-color-black: #18353d; /* page background (design --background) */
+
+	/* Leaf-green accent (design --accent #91c464). */
+	--sl-color-accent-low: #2f4a1d;
+	--sl-color-accent: #91c464;
+	--sl-color-accent-high: #b4d992;
+
+	/* Links / highlights use the leaf green directly, per the design. */
+	--sl-color-text-accent: #91c464;
+
+	/* Negative / danger asides (design --alert #c42e5f). */
+	--sl-hue-red: 339;
+	--sl-color-red-low: #431223;
+	--sl-color-red: #c42e5f;
+	--sl-color-red-high: #f0a6bd;
+
+	--sl-color-backdrop-overlay: hsla(194, 43%, 12%, 0.7); /* design --bg-modal */
+}
+
+/* ---------- Light mode (derived from the same hues) ---------- */
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+	--sl-color-white: #16323a; /* darkest text */
+	--sl-color-gray-1: #1d3b43;
+	--sl-color-gray-2: #2f4950; /* body text (design --primary as ink) */
+	--sl-color-gray-3: #4a6169;
+	--sl-color-gray-4: #6f858a;
+	--sl-color-gray-5: #aab8bb;
+	--sl-color-gray-6: #d5dedf;
+	--sl-color-gray-7: #eef3f3;
+	--sl-color-black: #ffffff; /* page background */
+
+	/* Green must darken to stay AA-legible on white. */
+	--sl-color-accent-low: #dcebc9;
+	--sl-color-accent: #4f7a2e;
+	--sl-color-accent-high: #3a5d20;
+	--sl-color-text-accent: #3a5d20;
+
+	--sl-color-red-high: #8f1f43;
+	--sl-color-red: #c42e5f;
+	--sl-color-red-low: #f6d5df;
+
+	--sl-color-backdrop-overlay: hsla(194, 20%, 40%, 0.55);
+}
+
+/* ---------- Layout ---------- */
+:root {
+	/* Starlight caps prose at 45rem; widen it so the main column fills the
+	   horizontal space between sidebar and TOC on desktop. */
+	--sl-content-width: 82rem;
+}
+
+/* ---------- Chrome details (design radii/flatness) ---------- */
+@layer starlight.core {
+	/* Cards & asides echo the handoff's flat, softly-rounded surfaces. */
+	.card,
+	.starlight-aside {
+		border-radius: 6px; /* design --radius-md */
+	}
+
+	/* Current sidebar entry picks up the accent, matching the app's
+	   accent-green active states. */
+	:root a[aria-current='page'],
+	:root a[aria-current='page']:hover,
+	:root a[aria-current='page']:focus {
+		color: var(--sl-color-black);
+		background-color: var(--sl-color-accent);
+	}
+}

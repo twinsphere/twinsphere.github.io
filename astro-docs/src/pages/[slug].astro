@@ -1,0 +1,23 @@
+---
+// Minimal route that serves each product release-notes page (in the `releases`
+// collection) at its original flat slug, e.g. /cloud-release-notes/.
+// Uses the default Starlight page layout for now; a bespoke release-notes
+// layout is planned — see docs/adr/0001-release-notes-separate-collection.md
+import { getCollection, render } from 'astro:content';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+export async function getStaticPaths() {
+  const releases = await getCollection('releases');
+  return releases.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<StarlightPage frontmatter={{ title: entry.data.title }}>
+  <Content />
+</StarlightPage>

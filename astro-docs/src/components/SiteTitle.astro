@@ -1,0 +1,33 @@
+---
+// Brand wordmark for the header, following the handoff's pattern:
+// "twin" in accent green + the remainder in the foreground colour, bold.
+// The handoff ships no logo file (the mark is reproduced in code), so the
+// wordmark IS the site title/logo. See docs/adr/0002.
+const { siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title sl-flex" translate="no">
+	<span class="wordmark"><span class="accent">twin</span>sphere</span>
+</a>
+
+<style>
+	@layer starlight.core {
+		.site-title {
+			align-items: center;
+			gap: var(--sl-nav-gap);
+			font-size: var(--sl-text-h4);
+			font-weight: 700;
+			color: var(--sl-color-white);
+			text-decoration: none;
+			white-space: nowrap;
+			min-width: 0;
+		}
+		.wordmark {
+			overflow: hidden;
+			letter-spacing: -0.01em;
+		}
+		.accent {
+			color: var(--sl-color-accent);
+		}
+	}
+</style>

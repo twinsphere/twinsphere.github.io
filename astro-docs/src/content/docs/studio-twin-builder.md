@@ -1,0 +1,414 @@
+---
+title: "twinstudio Twin Builder"
+---
+
+## General Information
+
+The **Twin Builder** is used to edit the content of digital twins. It allows users to conveniently fill in and change
+the values of all elements, while increasing accessibility by hiding the complex details of the meta model as much as
+possible.
+
+## Twin Creation Wizard
+
+The Creation Wizard helps you to create a digital twin.
+You can open the Creation Wizard by clicking on the *Create New Digital Twin* buttons
+in the [catalog](/studio-catalog) or on the dashboard.
+
+<img src="/img/twinstudio_dashboard_digital_twin_builder.png" alt="Dashboard Builder Card" width="600">
+
+The Creation Wizard offers two options for creating a digital twin.
+
+### Step 1 - Basis Selection
+
+:::note
+We plan to include more options for creating twins here, like deriving an instance from a type twin or using a
+blueprint as basis. For now you can choose "from scratch" or "duplicate an existing instance" Stay tuned :)
+:::
+
+#### Option 1 - New Digital Twin from Scratch
+
+<img src="/img/twinstudio_creation_wizard_from_scratch.png" alt="Creation Wizard Scratch" width="800">
+
+If you create a digital twin from scratch you can choose the *asset kind* in the right radio button list.
+If you are unsure which *asset kind* is appropriate for your situation (*Instance/Type/Undefined*), the help texts
+describing the options may be of assistance.
+
+#### Option 2 - Duplicate Existing Instance
+
+<img src="/img/twinstudio_creation_wizard_duplicate_existing_instance.png" alt="Creation Wizard Duplicate" width="800">
+
+If you duplicate an existing instance you can search for an instance, which you want to duplicate.
+Your entered search term will be matched via a regular expression against following attributes:
+
+- displayName
+- globalAssetId
+- idShort
+- AAS Id
+
+If there are more than 10 matches, you have to redefine the search, to narrow down the match count.
+When you select a result, it will be automatically expanded, and you can see where the instance matched the search term.
+
+<img src="/img/twinstudio_creation_wizard_duplicate_existing_instance_highlight.png" alt="CreationDuplicateHighlight" width="600">
+
+If you select this option, the wizard will only guide you to step 2 below. No further information is required; it will
+be taken from the original copy.
+
+### Step 2 - Add IDs and Basic Information
+
+<img src="/img/twinstudio_creation_wizard_step_2.png" alt="Creation Wizard Basic Information" width="800">
+
+In the second step you have to set an id for the digital twin, add a display name and refer to your physical asset
+by adding an asset identifier.
+
+The id for the digital twin has to be unique.
+The asset identifier could be common because you could create many digital twins for one physical asset.
+The display name is required because it is used to determine the name of the shell in the catalog.
+
+Depending on your usage of the [ID Generator](studio-general-features.md/#id-generator) feature twinstudio may already
+have filled-in some of the inputs above automatically for you.
+
+### Step 3 - Add Description (Optional)
+
+<img src="/img/twinstudio_creation_wizard_step_3.png" alt="Creation Wizard Basic Information" width="800">
+
+This step in the creation of a digital twin is optional.
+You may add a textual description for the new digital twin here. This might help you and other users later on to
+understand the content or purpose of this twin.
+Please only use English language here. You may add more/other languages later in the editor.
+
+### Step 4 - Adding Submodels (Optional)
+
+<img src="/img/twinstudio_creation_wizard_step_4.png" alt="Creation Wizard Basic Information" width="800">
+
+In the last step of the digital twin creation you can add the submodels you need.
+The submodels you can choose from are submodel templates, which are stored in your
+[twinsphere cloud](/cloud-documentation).
+
+If you click the *Create Digital Twin* button every selected submodel template will be transformed
+into a submodel instance, given a unique ID and added to your digital twin.
+
+We highly recommend using the studio's [ID Generator](studio-general-features.md/#id-generator) feature here. Otherwise,
+will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel IDs to be created.
+
+## Edit Shell Properties
+
+<img src="/img/twinstudio_shellproperties.png" alt="Edit Shell Properties" width="600">
+
+If you want to edit properties (*asset kind, global asset id and specific asset ids*) of your shell
+the editing has to be unlocked.
+
+<img src="/img/twinstudio_shellproperties_addremove.png" alt="Add Specific Asset Ids" width="200">
+
+Via the dropdown you can add specific asset ids, if the editing has been enabled.
+
+The asset type of the shell is shown in the row below these properties.
+If the URL points to an existing twin in your current tenant, a link to it will be displayed.
+
+## Add/Remove Submodels
+
+To edit the submodels of the currently opened twin, click the *Edit Submodel* button next
+to the shell name or use the dropdown menu.
+
+The top row of the dialog shows all submodels currently assigned to your twin. Existing submodels are listed first —
+clicking one marks it for removal, which is highlighted visually. New submodels can be added from three sources: a template,
+an existing twin, or an existing submodel. The same submodel can be added more than once.
+
+<img src="/img/twinstudio_submodeldialog_templates.png" alt="Edit Submodels dialog — Templates tab" width="600">
+
+In the **Templates** tab, click the "plus" icon next to a template to add it.
+
+<img src="/img/twinstudio_submodeldialog_existingtwin.png" alt="Edit Submodels dialog — Existing Twin tab" width="600">
+
+In the **Existing Twin** tab, use the search field to find a twin. The first five matches are shown.
+after selecting a twin, you can choose which of its submodels to add.
+
+<img src="/img/twinstudio_submodeldialog_existingsubmodel.png" alt="Edit Submodels dialog — Existing Submodel tab" width="600">
+
+In the **Existing Submodel** tab, you can look up a submodel by its full ID. Partial IDs are not supported —
+if no match is found, a corresponding message is displayed.
+
+<img src="/img/twinstudio_submodeldialog_result.png" alt="Edit Submodels dialog — Summary" width="600">
+
+The final page summarizes all pending changes. For any existing submodel you are adding, you can choose between two modes:
+
+- **Reference** — the submodel is shared across all twins that reference it. Changes to it will affect all of them.
+- **Copy** — the submodel is duplicated with new IDs, making it fully independent from the source.
+
+## Add/Remove Submodel Elements
+
+In the navigation list a symbol is displayed in every submodel entry.
+This states if the template for your submodel has been found in your tenant.
+
+If this is the case you can find the *add element* button on some of the submodel elements.
+There are an *add to navigation* and *add to page* section.
+
+<img src="/img/twinstudio_addremove_sme.png" alt="Add SME Dialog" width="200">
+
+Adding a navigation element will insert a child in the navigation tree. To delete this element you have to visit the node.
+
+Adding an element to the page will cluster similar elements. Next to them there will be a trashcan to delete each entry.
+
+Some templates specify cardinality of *one* or *onetomany* then the last element cannot be removed.
+
+## Arbitrary Properties
+
+Some templates specify arbitrary properties. At the moment twinstudio only supports editing the first.
+Twinstudio cannot assume in good faith the correct idShort for additional elements.
+
+<img src="/img/twinstudio_arbitrary.png" alt="Arbitray Properties Add Dialog" width="500">
+
+In the add dialog these entries are grayed out and display the info.
+
+## Fill-In Submodel Element Values
+
+### Properties
+
+Property elements have a valueType according to which the different selection elements will be displayed.
+The types of time, date, and datetime have a custom representation, all others are shown in a default input field.
+
+#### Default
+
+![Properties](/img/twinstudio_builder_property.png)
+
+The value of a property is represented by an input field.
+Please make sure that the datatype of the property matches the value you set into the input field.
+The *Validation Issue List* will have an issue if the datatype of the value does not match
+the datatype of the property.
+The input field expands up to 5 rows and a scrollbar will be displayed for longer content.
+
+If the submodel template specifies a qualifier of type **FormChoices** the values
+of this qualifier can be selected via dropdown.
+
+![Properties with formchoices](/img/twinstudio_builder_property_choices.png)
+
+#### Date
+
+![Date Control](/img/twinstudio_builder_property_date.png)
+
+![Date Control Popup](/img/twinstudio_builder_property_date_dropdown.png)
+
+The selected value will be displayed in local date (according to browser locale, in the image the locale was set to **de**).
+In the calendar popup you can navigate between months with the arrow buttons.  
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
+#### Time
+
+![Time Control](/img/twinstudio_builder_property_time.png)
+
+![TIme Control Popup](/img/twinstudio_builder_property_time_dropdown.png)
+
+The selected value will be displayed in local time (according to browser locale, in the image the locale was set to **de**).
+In the time popup you can select hours, minutes and seconds. AM PM selection will only be shown if your locale suggests it.
+The columns are scrollable to reach desired values.  
+By clicking the month-year the year selection will be
+shown and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
+#### Date-Time
+
+![Date Time Control](/img/twinstudio_builder_property_datetime.png)
+
+![Date Time Control Popup](/img/twinstudio_builder_property_datetime_dropdown.png)
+
+The selected value will be displayed in local date time
+(according to browser locale, in the image the locale was set to **de**).
+In the dropdown there is a combination of the calendar and the time selection.  
+By clicking the month-year the year selection will be shown
+and after selecting a year you will be returned to the initial calendar.
+The clear button will set the value to *null*.
+
+### Multi Language Properties
+
+![MultiLanguageProperty_Collapsed](/img/twinstudio_builder_mlp_collapsed.png)
+
+The Multi Language Properties displays all languages for which a value is set, with tags above the value.
+The initially displayed value in the field is determined as follows using the languages of an entry
+and match it with (ISO 639-1):
+
+1. the data language
+2. containing the data language
+3. the ui language
+4. containing the ui language
+5. english (en)
+6. containing english (en)
+
+You can select another language value by clicking on the corresponding language tag.
+Hovering over a tag will display an indicator above it.
+The selected language is highlighted with a gray background.
+
+<img src="/img/twinstudio_builder_mlp_dialog.png" alt="MultiLanguageProperty_Dialog" width="800">
+
+The dialog box that opens when you click on the pencil icon shows all the values
+that have been set for the Multi Language Property.
+You can add new values and delete existing ones. Make sure that at least one value is set.
+The value input fields expands up to 5 rows and a scrollbar will be displayed for longer content.
+At the top, you can see which value will be displayed when you click *Save*.
+If you click on the info icon, you will see an explanation of why this value was selected.
+
+### File Elements
+
+![FileProperty_Collapsed](/img/twinstudio_builder_file_collapsed.png)
+
+You can fill in the *file* elements by clicking on the *Add File* button.
+
+<img src="/img/twinstudio_builder_file_expanded.png" alt="FileProperty_Collapsed" width="800">
+
+In the dialog box, you can now choose whether you want to upload a file or store an external file.
+If you upload a file, it will be stored in the twinsphere file storage and a reference will be written to the element.
+If you store an external file, the link will be stored as a value.
+If no content type is specified in the template, the content type is set to octet-stream.
+File links that would overflow the input will be clipped.
+
+### Range
+
+![RangeProperty](/img/twinstudio_builder_range.png)
+
+The *Range* can set minimum and maximum as values.
+If it is required, either a minimum or maximum value has to be set to satisfy the validation.
+If the data type describes a number (according to [xsd schema](https://www.w3.org/TR/xmlschema11-2/#built-in-primitive-datatypes)),
+it is validated whether the minimum is smaller than the maximum.
+
+### Reference Elements
+
+To set the value of a *reference* element, click the *Add Reference* button
+and then select a type.
+
+- Current Twin (An element of the current Twin)
+- Twin in twinsphere (An element of another Twin in the connected twinsphere tenant)
+- External Element (An external element e.g. ISBN)
+
+#### Current Twin
+
+Select an element from your currently loaded twin, the twin itself, a submodel or an submodel element.
+
+The reference is displayed as shown below.
+
+![ReferenceElement](/img/twinstudio_builder_reference_collapsed.png)
+
+![ReferenceElement](/img/twinstudio_builder_reference_extended_current_twin_element.png)
+
+![ReferenceElement](/img/twinstudio_builder_reference_collapsed_filled_current_twin.png)
+
+#### Twin in twinsphere
+
+You can search a twin in the repository of the current tenant.
+If you select the twin you can set a reference to a submodel or a
+submodel element that the twin contains or the twin itself.
+
+![ReferenceElement](/img/twinstudio_builder_reference_collapsed.png)
+
+![ReferenceElement](/img/twinstudio_builder_reference_expanded_twin_in_twinsphere_shell.png)
+
+![ReferenceElement](/img/twinstudio_builder_reference_expanded_twin_in_twinsphere_element.png)
+
+![ReferenceElement](/img/twinstudio_builder_reference_collapsed_twin_in_twinsphere_filled.png)
+
+#### External Twin
+
+You can set an external reference by writing the value into the input field.
+
+![ReferenceElement](/img/twinstudio_builder_reference_extended_external.png)
+
+![ReferenceElement](/img/twinstudio_builder_reference_extended_choose_fill_external.png)
+
+### Entity
+
+This element is displayed in the tree on the left. On the page you can select to set a reference to an existing twin.
+If selected an input field is shown in which the *globalAssetId* of a twin has to be entered.
+When the twin exists in the twinsphere a link to the **AAS-Viewer** is activated.
+
+<img src="/img/twinstudio_builder_entity_overview.png" alt="Entity" width="800">
+
+The button with the *magnifying glass* icon opens a dialog in which it is possible to search for a twin.
+Only 10 results will be shown. Twins without a *globalAssetId* will be disabled for selection.
+
+<img src="/img/twinstudio_builder_entity_selection.png" alt="Entity Twin Selection Dialog" width="400">
+
+### Relationship Elements
+
+A relationship element contains two references, referred to as the first and second references.
+Filling in a relationship element reference works exactly the same as filling in a [reference element](#reference-elements).
+
+<img src="/img/twinstudio_builder_relationship_element.png" alt="Relationship Element" width="800">
+
+## Validation Issue List
+
+<img src="/img/twinstudio_issuelist_withpath.png" alt="Validation Issue List" width="300">
+
+After each value change your twin gets validated.
+The count of issues will be displayed atop of the list.
+
+The errors are grouped by their path which can be displayed with the show issue path toggle.
+
+Clicking on an issue will navigat you to the element and the edit mode will be opened.
+
+## Save Draft
+
+To save a draft, simply click on the *Save Draft* button. Once saved, a toast message will appear
+in the upper left corner. Drafts are only visible to you and can only be edited or deleted by you.
+You can view all your drafts in the [draft catalog](/studio-catalog).
+
+## Publish to Repo
+
+To publish a digital twin, all errors in the error list must be corrected.
+Once all errors have been corrected, the twin can be published by clicking the "Publish" button.
+Once the twin has been successfully published, a dialog box displays the ID, name, and tenant
+to which the twin was uploaded.
+Once the twin has been published, the corresponding draft is deleted from the draft catalog.
+
+## Branding
+
+Each twin and all of its submodels that are edited with *twinstudio* will receive an extension which contains
+the *twinstudio* branding with its current version.
+
+## Save State
+
+The save state display shows you the current state of the draft or twin you are working on.
+There are three save states for a twin:
+
+- Unsaved Changes
+- Draft Saved
+- Published
+
+### Unsaved Changes
+
+The Unsaved changes status indicates that changes have been made to the twin or draft that have not yet been saved.
+These can be saved by [publishing](#publish-to-repo) or [saving](#save-draft).
+
+![UnsavedChanges](/img/twinstudio_builder_save_state_unsaved_changes.png)
+
+### Draft Saved
+
+The Draft Saved status indicates that the draft has been saved as a draft.
+
+![DraftSaved](/img/twinstudio_builder_save_state_saved.png)
+
+### Published
+
+The Published status indicates that the draft/twin has been published
+in your repository or has been loaded from the repository in this state.
+
+![Published](/img/twinstudio_builder_save_state_published.png)
+
+## Show Twin in AAS Viewer
+
+If you have a design/twin with the status Published open in the editor,
+you can click on the eye icon next to the memory status display to open the design/twin in AASViewer.
+
+![Published](/img/twinstudio_builder_save_state_published.png)
+
+## Export Twin
+
+In the top-right corner, you can open a menu with multiple options.
+One is to **export** your current twin.
+
+![Twin Menu](/img/twinstudio_builder_menu.png)
+
+In this menu you can select the format, the target, which submodels to include and
+if concept descriptions should be included.
+The **AASX** can only be selected if the target is **file** and your twin is *published*.
+Concept descriptions can only be included if your twin is *published*.
+
+![Twin Export Menu](/img/twinstudio_builder_twin_export.png){ : width='350' }

@@ -1,0 +1,555 @@
+---
+title: "Development libraries (DevKit)"
+---
+
+Our primary library that we offer is **twinsphere.TypedAasMetamodels**. It is a C# library providing a simplified
+work-flow for handling Shells and Submodels following the IDTA Asset Administration Shell standard.
+
+Currently supported version of the AAS Standard is [v3.0](https://industrialdigitaltwin.org/wp-content/uploads/2023/06/IDTA-01001-3-0_SpecificationAssetAdministrationShell_Part1_Metamodel.pdf).
+
+:::caution[Important]
+In the past we also offered a general twinsphere library called *Conplement.Sphere.SDK*. This library is deprecated
+and no longer maintained.
+:::
+
+## Download
+
+twinsphere.TypedAasMetamodels is available as a [NuGet package](https://www.nuget.org/packages/twinsphere.TypedAasMetamodels).
+You can add the feed to your project with ``dotnet add package``:
+
+```sh
+dotnet add package twinsphere.TypedAasMetamodels
+```
+
+## Example
+
+The following shows a brief, but full example of how a shell with submodels can be created and stored as `.aasx` package
+with twinsphere.TypedAasMetamodels.
+
+```csharp
+using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0;
+using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0.Builder;
+using twinsphere.TypedAasMetamodels.Types.Shell;
+using twinsphere.TypedAasMetamodels.Types.Shell.Builder;
+using twinsphere.TypedAasMetamodels.Common.Helpers;
+using twinsphere.TypedAasMetamodels.Packaging;
+// ...
+
+// 1. we build a digital nameplate for our product
+var digitalNameplateBuilder = new DigitalNameplateBuilder(
+    "nameplate-C4022",
+    "https://conplement.de/test",
+    "conplement AG".ToMultiLanguageString(),
+    "internal-product".ToMultiLanguageString(),
+    new ContactInformation(
+        "DE".ToMultiLanguageString(),
+        "Nürnberg".ToMultiLanguageString(),
+        "Südwestpark 92G".ToMultiLanguageString(),
+        "90449".ToMultiLanguageString()
+    ),
+    "2025");
+
+// 1.1 digital nameplate makes little sense without markings
+// Note: PackageFile wraps a reference to a file on disk. The file will then later be picked up for packaging.
+var mainMarking = new MarkingBuilder("main-image", new PackageFile("/some/local/path/main-marking.png", "image/png"))
+    .WithExplosionSafeties(new ExplosionSafeties([
+        new ExplosionSafety(
+            AmbientConditions: new AmbientConditions("external",
+                "maximum".ToMultiLanguageString("en"),
+                "ACME",
+                "maximum",
+                "highly-flammable",
+                "0",
+                "75",
+                "55",
+                "normal"
+            ),
+            ProcessConditions: new ProcessConditions("external",
+                "maximum".ToMultiLanguageString("en"),
+                "ACME",
+                "maximum",
+                "highly-flammable",
+                "0",
+                "75",
+                "55",
+                "normal"
+            )
+        )
+    ]).build();
+
+var secondMarking = new Marking("second-image", new PackageFile("/some/local/path/second-marking.png", "image/png"));
+
+var digitalNameplate = digitalNameplateBuilder
+    .WithCompanyLogo(new PackageFile("/some/other/local/path/conplement-logo.png", "image/png"))
+    .WithFirmwareVersion("en", "1.0.0")
+    .WithSerialNumber("09383-sf8843j4-4")
+    .WithCountryOfOrigin("Germany")
+    .WithDateOfManufacture(new DateOnly(2025, 5, 13))
+    .WithMarkings([mainMarking, secondMarking])
+    .Build();
+
+// 2. we need a shell for our product, too
+var shell = new AssetAdministrationShell("9A8F8B66-5AA7-4528-AA17-1CC128AF64C2",
+    new AssetInformation(
+        Core.AssetKind.Instance,
+        globalAssetId: "urn:conplement:aas:type:7689239_f0b4f6ff-6951-4614-b733-6da43db7af9a",
+        defaultThumbnail: new PackageFile("/some/local/path/conplement-product-thumbnail.png", "image/png")
+    ),
+    description: new MultiLanguageString([{"en-EN", "description"}, {"de-DE", "Beschreibung"}]));
+
+// 3. we can now create an.aasx package out of all of this
+// Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
+// referenced concept descriptions, and files to include into the paths, if available.
+var packagingInfo = AasxPackagingInformation.Builder()
+    .WithTypedShell(shell, [digitalNameplate])
+    .Build();
+var aasxPackage = new AasxPackage(packagingInfo).Build();
+
+// 4. you can save the package to disk for analysis with the https://github.com/admin-shell-io/aasx-package-explorer
+packageFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "my-package.aasx");
+await aasxPackage.SaveToFile(packageFilePath);
+```
+
+## Design Principles and Concepts
+
+twinsphere.TypedAasMetamodels is with the following goals:
+
+- Compatibility with the latest Asset Administration Shell (AAS) specification, as specified by the [Industrial Digital
+  Twin Association](https://industrialdigitaltwin.org), currently in version 3.0.
+- Convenience for developers to reduce the necessary study of the AAS meta model specifications. For example, XML code
+  documentation is heavily used to describe AAS semantics in the library.
+- Definition of meta models for selected submodels, such as Digital Nameplate.
+- Offering packaging functionality based on the `.aasx` format.
+
+In its design, the library is designed to make the creation of shells and submodels as easy, as possible, while reducing
+sources of potential errors where possible. To this end, it employs some basic design rules:
+
+- Use distinct types where possible:
+    - Submodels are class citizens: where possible (i.e., where submodel templates are not ambiguous), submodels and
+    their submodel elements are modelled, individual types.
+    - Enums to encode restricted properties.
+- Prevent illegal states where possible, both, with respect to the meta model specification, as well as, to the submodel
+  template specification:
+    - At compile time via signatures: creation methods enforce mandatory arguments, preventing incomplete submodel
+    elements.
+    - At runtime time via fail-fast principle: constraints enforce correct types and qualifiers, e.g., the number of
+    elements in lists.
+    - At runtime in conversion: meta models are validated in conversion. Validation errors cause the conversion to fail
+    early.
+- Hide metadata from the user: any SMT metadata, such as SemanticIds, IdShorts, ValueTypes, ... is handled internally.
+  Users don't have to worry about them.
+
+### Design Considerations for Unset Values
+
+Our design considerations imply some restrictions wrt. to the expressiveness of the meta model. The meta model marks
+many attributes of SubmodelElements as optional. In many cases, this is only sensible for submodel templates but not for
+instances: for example, the DigitalNameplate 3.0 has a mandatory Property element `URIOfTheProduct`, however, in the
+meta model the value attribute of Property elements is optional. This raises the question whether a Property without
+value *really* is set? Sadly, the specification does not provide a clear answer.
+
+In terms of this library, we interpret a SubmodelElement with an unset value as if the SubmodelElement was not set. This
+decision implies the following:
+
+- An instance where a *mandatory* SubmodelElement has an unset value is considered incorrect.
+- The library does not provide functionality to create instances in which *mandatory* SubmodelElements have unset values.
+
+## Working with Shells and Packages
+
+### Shell Abstractions
+
+The twinsphere.TypedAasMetamodels library provides all means for the creation, processing, and modification of AAS
+shells. Depending on your use case, you can either create a new shell, either by constructor call, or using the provided
+builder pattern:
+
+```csharp
+using twinsphere.TypedAasMetamodels.Types.Shell;
+using twinsphere.TypedAasMetamodels.Types.Shell.Builder;
+
+// via constructor
+var shell = new AssetAdministrationShell("9A8F8B66-5AA7-4528-AA17-1CC128AF64C2",
+    new AssetInformation(
+        Core.AssetKind.Instance,
+        globalAssetId: "urn:conplement:aas:type:7689239_f0b4f6ff-6951-4614-b733-6da43db7af9a",
+        defaultThumbnail: new PackageFile("/some/local/path/conplement-product-thumbnail.png", "image/png")
+    ),
+    description: new MultiLanguageString([{"en-EN", "description"}, {"de-DE", "Beschreibung"}]));
+
+// equivalent, via builder
+var shell = new AssetAdministrationShellBuilder("9A8F8B66-5AA7-4528-AA17-1CC128AF64C2",
+    new AssetInformation(
+        Core.AssetKind.Instance,
+        globalAssetId: "urn:conplement:aas:type:7689239_f0b4f6ff-6951-4614-b733-6da43db7af9a",
+        defaultThumbnail: new PackageFile("/some/local/path/conplement-product-thumbnail.png", "image/png")
+    ))
+    .WithDescription(new MultiLanguageString([{"en-EN", "description"}, {"de-DE", "Beschreibung"}]))
+    .Build();
+```
+
+Additionally, there is also the ability to load from and convert to shells of the AasCore types:
+
+```csharp
+using AasCore.Aas3_1;
+using twinsphere.TypedAasMetamodels.Types.Shell;
+
+Aas3_1.IShell metamodelShell;
+// load, e.g. from a repository
+
+// convert to the TypedAasMetamodels representation
+AssetAdministrationShell shell;
+try
+{
+    shell = AssetAdministrationShell.FromMetamodel(metamodelShell);
+}
+catch (ValidationException exception)
+{
+    Console.Error($"Could not load erroneous shell: {exception}");
+}
+
+// modify the shell
+
+// convert it back
+try
+{
+    metamodelShell = shell.ToMetamodel();
+}
+catch (ValidationException exception)
+{
+    Console.Error($"Could not convert to metamodel: {exception}");
+}
+```
+
+:::note
+In general the shell abstractions act as a thin layer around the types of the types of AasCore. They
+primarily extend them with convenience methods and stricter correctness checks to prevent user errors as early as
+possible.
+:::
+
+### Packaging
+
+Creating `.aasx` packages from scratch typically is complex and involves a number of tedious steps:
+
+- Create submodels
+- Create shells
+- Reference the submodels in the shell
+- Collect any used concept descriptions and reference them in the shell
+- Collect files for packaging
+- Collect the thumbnail file of the shell
+
+#### Simple Package Creation
+
+While you can do these steps manually, for most cases it should suffice to use the `AasxPackageBuilder`, that
+automatically takes care of the above steps. In the simplest form, the following code will suffice:
+
+```csharp
+using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0;
+using twinsphere.TypedAasMetamodels.Types.Shell;
+using twinsphere.TypedAasMetamodels.Types.Shell.Builder;
+using twinsphere.TypedAasMetamodels.Packaging;
+
+// 1. create the shell
+AssetAdministrationShell shell;
+
+// 2. create some submodels
+DigitalNameplate nameplate;
+
+// 3.1. include an external file reference
+nameplate.CompanyLogo = new FileReference("https://some.tld/some/image.png");
+
+// 3.2. alternatively, include a reference to a local file
+nameplate.CompanyLogo = new PackageFileReference("/home/user/some/image.png");
+
+// 5. we can now create an.aasx package out of all of this
+// Note: packagingInfo will wrap all information necessary for packaging, i.e., submodels,
+// referenced concept descriptions, and files to include into the paths, if available.
+var packagingInfo = AasxPackagingInformation.Builder()
+    .WithTypedShell(shell, [digitalNameplate])
+    .Build();
+var aasxPackage = new AasxPackageBuilder(packagingInfo)
+    .SetThumbnail("some-image.png", "image/png")
+    .Build();
+```
+
+This will automatically resolve all Concept Descriptions that are available in the submodel template definition,
+as well as all files for which you've added PackageFileReferences.
+
+:::note
+Take care to use the `PackageFileReference` type if you want to include local files into your package. This
+type wraps a reference to a file on disk. In the packaging step `PackageFileReference` elements will be included into
+the package and their links will resolved accordingly. See [Submodel Elements](/typed-aas-metamodels-overview#submodel-elements)
+for more details on the built-in types of the library.
+:::
+
+#### Extended Package Creation
+
+However, you may find yourself in a situation, where you want to have more control over the packaging process. To this end,
+the `AasxPackageBuilder` additionally offers and interface that allows you to specify how Concept Descriptions and Files
+(either File Submodel Elements, as well as Resources) should be resolved. This is particularly useful for situations where
+you plan to poll these resources from other locations.
+
+To this end, you can implement the `IFileResolver` and `IConceptDescriptionResolver` interfaces. Either create a factory
+function for a `Stream` object from their respective resources. You can then pass the resolvers into the `AasxPackageBuilder`
+upon creation with the `PackageResolvers` type.
+
+:::note
+`PackageResolver` accepts a list of `IFileResolver`/`IConceptDescriptionResolver` object. This way you can specify multiple
+resolvers. The `AasxPackageBuilder` then picks the first resolver that successfully resolves the respective resource.
+:::
+
+## Working with Submodels
+
+### Supported Submodels
+
+We are constantly working on the support of additional submodels. At the time of writing, twinsphere.TypedAasMetamodels
+provides support for the following submodels:
+
+- IDTA 02023 Carbon Footprint 0.9
+- IDTA 02002-1-0 Submodel for Contact Information 1.0
+- IDTA 02006-2-0 Digital Nameplate for industrial equipment 2.0
+- IDTA 02004-1-2 Handover Documentation 1.2
+- IDTA 02011-1-1 Hierarchical Structures enabling Bills of Material 1.1
+- IDTA 02003-1-2 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 1.2
+
+### Types of the Meta Model
+
+In twinsphere.TypedAasMetamodels we aim to provide an easy to use API for the work with submodels. To this end we use
+the primitives of the C# language to represent the parts of submodels.
+
+#### Submodels and Submodel Element Collections
+
+Submodels and Submodel Element Collections represent structure types in the language specification. In general, these
+types are realized as classes and records.
+
+#### Submodel Elements
+
+At the moment, we provide support for the following set of submodel elements. For each of these types we provide type
+that performs additional correctness checks at creation, and, potentially, provides additional helper methods.
+
+- **ReferenceElement**: representation of a ReferenceElement.
+- **Files**: the library provides two abstractions to represent files
+    - **FileReference**: generic representation of a file that may reference files anywhere, including external URLs.
+    - **PackageFileReference**: special file representation. Use this, if you want to create a package for which a file
+      should be included.
+- **MultiLanguageString**: Multi Language Property.
+
+#### Properties and Lists
+
+For both, properties, and lists, are realized using the suitable C# primitives.
+
+### Builders
+
+twinsphere.TypedAasMetamodels employs the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) for most of
+the composed types. These builders allow the step-wise collection of properties necessary for the creation of an object.
+To create an object with a builder, the workflow thereby is as follows:
+
+1. construction of the builder with mandatory arguments
+1. set or add attributes via `Add*` (for list elements) or `With*` for single attributes.
+1. finally, construct the actual type via a call to `Build()`.
+
+The builders follow the approach described in [design principles](#design-principles-and-concepts): they apply
+constraints in their constructors, setters, and in the build method, to ensure validity and consistency of input data.
+
+As shown with the `DigitalNameplateBuilder` you can use method chaining to fill in properties:
+
+```csharp
+// 1. construction of the Builder with its necessary attributes
+var digitalNameplateBuilder = new DigitalNameplateBuilder(
+    "nameplate-C4022",
+    "https://conplement.de/test",
+    "conplement AG".ToMultiLanguageString(),
+    "internal-product".ToMultiLanguageString(),
+    new ContactInformation(
+        "DE".ToMultiLanguageString(),
+        "Nürnberg".ToMultiLanguageString(),
+        "Südwestpark 92G".ToMultiLanguageString(),
+        "90449".ToMultiLanguageString()
+    ),
+    "2025");
+
+// 2. providing some additional attributes
+digitalNameplateBuilder
+    .WithHardwareVersion("en", "1.0.0")
+    .WithFirmwareVersion("en", "0.1.0")
+    .WithSoftwareVersion("en", "0.2.3");
+
+// 3. finally construct the digital nameplate
+var digitalNameplate = digitalNameplateBuilder.Build();
+```
+
+:::caution[Important]
+As complex objects are passed into the builder by reference, it is not safe to reuse a builder for the
+creation of multiple objects.
+:::
+
+### Validation
+
+There are extensive validation mechanisms in twinsphere.TypedAasMetamodels to check whether submodel instances are valid
+with respect to their submodel templates. Besides model specific checks, twinsphere.TypedAasMetamodels provides
+validations for:
+
+- missing mandatory submodel elements
+- unknown submodel elements
+- unset (mandatory) attributes in submodel elements
+- correct cardinality of submodel elements
+- valid type representation of properties
+
+See [Validation](/typed-aas-metamodels-validation) for a detailed description of the validation system.
+
+### Conversion
+
+The twinsphere.TypedAasMetamodels library provides the means to convert between ([valid](/typed-aas-metamodels-validation))
+models in the generic meta model representation and the typed submodel, and vice versa.
+
+To this end, submodels implement `FromMetamodel()` and `ToMetamodel()` as well as `FromXmlString` and `FromJsonString`:
+
+```csharp
+using AasCore.Aas3_1;
+using twinsphere.TypedAasMetamodels.Types.Submodels.DigitalNameplate.V2_0;
+
+Aas3_1.ISubmodel digitalNameplateMetamodel;
+// ... load a Digital Nameplate from some source, e.g., from a repository.
+
+// 1a. convert a Metamodel to its typed representation
+DigitalNameplate digitalNameplate;
+try
+{
+    digitalNameplate = DigitalNameplate.FromMetamodel(digitalNameplateMetamodel);
+}
+catch (SubmodelConversionException conversionException)
+{
+    Console.Error($"Failed to convert from erroneous submodel: {conversionException}");
+}
+
+// or load a string representation in JSON or XML format
+string submodelJson;
+string submodelXml;
+
+// 1b. convert JSON to typed representation
+DigitalNameplate digitalNameplate;
+try
+{
+    digitalNameplate = DigitalNameplate.FromJsonString(submodelJson);
+}
+catch (SubmodelConversionException conversionException)
+{
+    Console.Error($"Failed to convert from Json: {conversionException}");
+}
+
+// 1c. convert Xml to typed representation
+DigitalNameplate digitalNameplate;
+try
+{
+    digitalNameplate = DigitalNameplate.FromXmlString(submodelXml);
+}
+catch (SubmodelConversionException conversionException)
+{
+    Console.Error($"Failed to convert from Xml: {conversionException}");
+}
+
+// while converting from XML both Namespaces `https://admin-shell.io/aas/3/1`
+// and `https://admin-shell.io/aas/3/0` are viable
+
+// 2. perform operations on the Digital Nameplate
+digitalNameplate.SoftwareVersion = "1.0.0".ToMultiLanguageString("en");
+// ...
+
+// 3. convert the DigitalNameplate back
+digitalNameplateMetamodel = digitalNameplate.ToMetamodel();
+try
+{
+    digitalNameplateMetamodel = digitalNameplate.ToMetamodel();
+}
+catch (SubmodelConversionException conversionException)
+{
+    Console.Error($"Failed to convert to metamodel: {conversionException}");
+}
+```
+
+:::note
+`FromMetamodel()`, `FromJsonString()`, and `FromXmlString()` will use the validation mechanism
+to check whether the submodel is a valid instance of its SMT.
+If it is not, it will throw a `SubmodelConversionException` with the encountered errors.
+:::
+
+`FromJsonString()` and `FromXmlString()` use `twinsphere.TypedAasMetamodels.Common.Conversion.FromStringConversion`
+to convert serialized XML or JSON to Metamodel and Typed Models:
+`TMeta MetaModelFromXml<TMeta>(string xmlString)` converts to the given Metamodel from Xml.
+`TMeta MetaModelFromJson<TMeta>(string jsonString)` converts to the given Metamodel from JSON.
+`TType TypedModelFromXml<TType, TMeta>(string xmlString)` converts to the given Typedmodel from Xml.
+`TType TypedModelFromJson<TType, TMeta>(string jsonString)` converts to the given Typedmodel from JSON.
+`XmlReader ConvertFrom30To31(XmlReader reader)` creates an XmlReader with corrected 3.1 Xml Namespace.
+
+## Additional Features
+
+Besides the dedicated submodel support mechanisms, twinsphere.TypedAasMetamodels provides some further general-purpose
+utilities to simplify the work with submodels.
+
+### Value-only Semantics
+
+Besides the heavy meta model specification, the IDTA, furthermore, provides a specification for the so-called
+"Value-only Semantics". The Value-only Semantics describes a stripped down representation for meta models.
+
+The twinsphere.TypedAasMetamodels library allows to convert arbitrary submodels, i.e., also for submodels not listed in
+the [supported submodels](/typed-aas-metamodels-submodels) to the value-only representation.
+
+```csharp
+using AasCore.Aas3_1;
+using twinsphere.TypedAasMetamodels.Conversion.ValueOnly;
+
+Aas3_1.ISubmodel digitalNameplateMetamodel;
+// ... load a Digital Nameplate from some source, e.g., from a repository.
+
+var jsonString = ValueOnlySerializer.ToValueOnly(digitalNameplateMetamodel);
+```
+
+## Caveats and Notes on Usage
+
+### Non-stable IdShorts for SubmodelElements with Cardinality *ZeroToMany* or *OneToMany*
+
+This caveat requires some background information, for a brief summary of the consequences, see the [limitations section](#limitation)
+below.
+
+#### Background
+
+The representation of lists of SubmodelElements has changed significantly with different versions of the specifications.
+Initially (before version 3) of the specification, lists have been modelled by annotating SubmodelElements with
+different flavors of cardinality qualifiers; these SubmodelElements can typically be recognized by their IdShort, as it
+carries a suffix such as `__00___`. Version 3 of the spec introduced with SubmodelElementLists a better alternative to
+model lists and [IDTA endorses the use of SubmodelElementLists
+instead](https://github.com/admin-shell-io/aas-specs-metamodel/issues/435#issuecomment-2416992497).
+
+In the transition from v2 to v3, many SMTs adopted the older modeling approach, e.g., in DigitalNameplate 2.0, there is
+the SubmodelElementCollection `IPCommunication__00__`, with a cardinality of `ZeroToMany`. Instances of this
+SubmodelElementCollection would end up as `IPCommunication00`, `IPCommunication01`, ..., in the final instance (to
+satisfy the constraint that IdShorts of SubmodelElements must be unique in their context). However, in the light
+of SubmodelElementLists, this pattern becomes less frequent in more recent versions of templates.
+
+#### Limitation
+
+When deserializing a submodel from its meta model representation, the TypedAasMetamodels library does not store the
+respective IdShort, as this information is implicitly available from the respective context and can be generated
+on-the-fly when converting to meta model. For SubmodelElements with multiplicity (as is the case for the
+`IPCommunication__00__` example above), however, the matter is not so simple. Here, the library automatically generates
+suitable IdShorts, thus potentially renaming the elements.
+
+In general, this is no problem. However, one consequence of this approach, is, that it breaks IdShort paths and Model
+References, if they contain an element that is renamed.
+
+### Deviations From SMT Specifications
+
+In some cases the library deviates from the properties as described in the officially released SMTs. These changes are
+typically editorial in nature to fix issues in the SMTs. We adopt editorial changes if we can easily identify what the
+SMT should look like if it was correct, even if these changes are not part of the official SMT specifications (yet). We
+chose this strategy to provide users with the ability to create valid submodels as early as possible.
+
+You can find a detailed list of these changes in the overview of the [supported submodels](/typed-aas-metamodels-submodels).
+
+### Known Issues and Workarounds
+
+#### Using the proper locale
+
+twinsphere.TypedAasMetamodels internally uses features of `System.Globalization`, please ensure that your execution
+environment provides support for this library, otherwise, twinsphere.TypedAasMetamodels may not function correctly!
+The `dotnet` apline images, for example, are known to cause issues with default settings and require additional care.
+See the
+[dotnet notes on globalization support](https://github.com/dotnet/dotnet-docker/blob/main/samples/enable-globalization.md
+"Notes for running dotnet applications in alpine containers.") for detailed information.
