@@ -12,6 +12,7 @@ nav:
   - Home: index.md
   - Contact us: contact.md
   - Status: status.md
+  - Quotas and limits: quotas-and-limits.md
   - twinsphere ID:
     - Overview: id-overview.md
     - Users:
