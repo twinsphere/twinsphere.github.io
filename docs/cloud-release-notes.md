@@ -6,6 +6,18 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.29
+
+*Released on 15-Jul-2026*.
+
+**What's new:**
+
+- **[Licensing]** Organization and user-bound licensing, see [Licensing](management-licensing.md)
+- **[Quotas]** Quota and limit protection to enforce correct usage patterns and prevent accidental
+    growth, see [Quotas and limits](quotas-and-limits.md)
+
+---
+
 ## Cloud 1.28
 
 *Released on 29-Jun-2026*.
