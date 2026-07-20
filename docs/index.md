@@ -16,6 +16,6 @@ Our twinsphere suite consists of multiple applications and libraries:
 - [Viewer](viewer-overview.md)
 - [Management](management-overview.md)
 - [Development libraries (DevKit)](typed-aas-metamodels-overview.md)
-- [Validators](validators-overview.md)
+- [Validators](twinfix-overview.md)
 
 [![markitecture](img/twinsphere_marketecture-eng.png)](./img/twinsphere_marketecture-eng.png)
