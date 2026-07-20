@@ -57,6 +57,7 @@ nav:
       - Validation: typed-aas-metamodels-validation.md
       - Release Notes DevKit: typed-aas-metamodels-release_notes.md
       - Release Notes Rulebook: typed-aas-metamodels-rulebook-release_notes.md
+      - Release Notes Experimental: typed-aas-metamodels-experimental-release_notes.md
   - Validators:
       - Overview: twinfix-overview.md
       - Release Notes: twinfix-release_notes.md
