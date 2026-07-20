@@ -8,6 +8,43 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.3.2
+
+*Released on 29-July-2026*.
+
+- **[TAM]** Extend the validation of INST001 ("No incomplete Submodel Elements"). In earlier versions, INST001
+  violations were treated far more conservative. With this version we have a clear distinction what we consider to be
+  the complete configuration for the individual submodel element types.
+- **[TAM]** Resolve crashes due to unsupported types in validation.
+- **[TAM] [Bugfix]** Fixed crash in `FromStringConversion` for `AasCore` interface types. The `FromStringConversion`
+  worked only for the concrete `AasCore` types correctly, and raised a `MissingMethodException` if called with their
+  interface pendants (e.g. `ISubmodel` instead of `Submodel`). Now the `FromStringConversion` works for either types,
+  interfaces and concrete implementations.
+- **[TAM] [Bugfix]** The error path in validation diagnostics would not contain the id of the identifiable. Fixed the
+  validation code to include this id.
+- **[TAM] [Bugfix]** The serialization of decimal properties to ValueOnly serialization format would throw on numbers
+  with decimal places. Fix the conversion code so that the conversion works correctly.
+- **[Exp]** We've adopted a new release strategy for `twinsphere.TypedAasMetamodels.Experimental`. From now on, its
+  versioning scheme is decoupled from the `twinsphere.TypedAasMetamodels` version. For details on the individual
+  releases please refer to the [`twinsphere.TypedAasMetamodels.Experimental` release
+  notes](typed-aas-metamodels-experimental-release_notes.md).
+
+## twinsphere.TypedAasMetamodels 1.3.2-rc.3
+
+*Released on 03-July-2026*.
+
+- **[TAM] [Bugfix]** The error path in validation diagnostics would not contain the id of the identifiable. Fixed the
+  validation code to include this id.
+- **[TAM]** Extend the validation of INST001 ("No incomplete Submodel Elements"). In earlier versions, INST001
+  violations were treated far more conservative. With this version we have a clear distinction what we consider to be
+  the complete configuration for the individual submodel element types.
+
+## twinsphere.TypedAasMetamodels 1.3.2-rc.2
+
+*Released on 19-May-2026*.
+
+- **[TAM]** Resolve crashes due to unsupported types in validation.
+
 ## twinsphere.TypedAasMetamodels 1.3.2-rc.1
 
 *Released on 19-May-2026*.
