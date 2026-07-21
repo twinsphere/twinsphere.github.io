@@ -29,11 +29,11 @@ If no revision is given it will be assumed as *0*.
 
 You can switch between cards and the table by using the buttons **Show as Table** and **Show as Card**.
 A card and a table column provide the same actions.
-Additionaly a card can display the description and the thumbnail of an asset administration shell.
+Additionally a card can display the description and the thumbnail of an asset administration shell.
 
 You can switch between cards and the table by using the buttons **Show as Table** and **Show as Card**.
 A card and a table column provide the same actions.
-Additionaly a card can display the description and the thumbnail of an asset administration shell.
+Additionally a card can display the description and the thumbnail of an asset administration shell.
 
 ![Twin Catalog - Shells - Cards](img/twinstudio_catalog_twins_shells_cards.png){: width='800'}
 ![Twin Catalog - Shells](img/twinstudio_catalog_twins_shells.png){: width='800'}
@@ -51,7 +51,7 @@ It will be applied if the dialog is closed by clicking the *apply filter* button
 Filters for the same element will be be combined with or and all together will be combined with and.
 All string values are used as regex matches.
 The type will be matched exactly.
-Year of contruction entry will be matched with greater/lesser than the entered value.
+Year of construction entry will be matched with greater/lesser than the entered value.
 
 Each filter entry can be removed by clicking the cross symbol.
 
