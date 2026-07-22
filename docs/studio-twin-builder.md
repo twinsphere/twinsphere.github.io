@@ -330,6 +330,27 @@ Filling in a relationship element reference works exactly the same as filling in
 
 ![Relationship Element](img/twinstudio_builder_relationship_element.png){: width='800' }
 
+### Arbitrary Properties
+
+To create an arbitrary property, the template must allow it in the selected section.
+If this condition is met, you can add an arbitrary element using the Add Element menu.
+
+![Add Arbitrary Element Button](img/twinstudio_builder_arbitrary_add_menu.png){: width='800' }
+
+First, you must define the semantics of your property; this can be done using a Concept Description,
+an ECLASS ID, or another classification system.
+Semantic classification helps machines interpret the data correctly.
+
+![Add Arbitrary Element Dialog 1](img/twinstudio_builder_arbitrary_dialog_1.png)
+
+The second step is to specify a name for the property.
+This can be entered in multiple languages.
+The English name is required because the IdShort for the property is derived from it.
+
+![Add Arbitrary Element Dialog 2](img/twinstudio_builder_arbitrary_dialog_2.png)
+
+In the final step, you specify the type of your property. The available types are determined by the submodel template.
+
 ## Validation Issue List
 
 ![Validation Issue List](img/twinstudio_issuelist_withpath.png){: width='300' }
