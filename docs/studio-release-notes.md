@@ -5,6 +5,32 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ---
 
+## Studio 0.9
+
+*Released on 20-July-2026*.
+
+**New Features:**
+
+- **[General]**
+
+    - Realize ABAC rules in twinstudio, honoring read/write permissions for data access and
+      providing the user only with the operations matching to their role.
+
+- **[Catalog]**
+
+    - Introduce new card view of the twin & submodel catalog.
+    - Enhance catalog to display what submodel template a submodel instances is based on.
+    - Clicking into the locked SpecificAssetID form now directly opens the unlock dialog.
+    - The concept description inspection dialog now is directly accessible via its data specification.
+
+- **[TwinBuilder]**
+
+    - Add AI-assisted document classification for Handover Documentation 2.0.
+      This functionality automatically derives meta-data, such as classification
+      from uploaded documents.
+
+---
+
 ## Studio 0.8
 
 *Released on 19-May-2026*.
