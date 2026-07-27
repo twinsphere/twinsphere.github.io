@@ -5,6 +5,14 @@ The twinsphere Viewer follows the semantic versioning format in the form major.m
 
 ---
 
+## Viewer 2.4
+
+*Released on 18-May-2026*.
+
+- Added filtering of twins by Digital Nameplate attributes to the "Select Asset" menu
+
+---
+
 ## Viewer 2.3
 
 *Released on 25-Feb-2026*.
