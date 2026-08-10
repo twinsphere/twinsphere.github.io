@@ -6,6 +6,29 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.30
+
+*Release date TBA*.
+
+**Breaking changes:**
+
+- **[Events]** (experimental) The MQTT message contract changed — messages are now a small, uncompressed
+    notification instead of a gzipped envelope carrying the entity. The `payload` field is gone; read the
+    current state over the REST API using the identifier from the topic. A new `eventId` field supports
+    duplicate detection, see [Events](cloud-events.md#message-contract)
+- **[Events]** (experimental) Submodel publishing is now opt-out instead of opt-in — the
+    `publish.submodels.semanticIds` allow list is replaced by `publish.submodels.blockedSemanticIds`, and any
+    existing configuration is discarded. **Expect a higher event volume**: every submodel change is published
+    unless you block it, including submodels that carry no semantic ID, see
+    [Events](cloud-events.md#configuration)
+
+**What's new:**
+
+- **[Events]** (experimental) Events are now published within seconds of a change instead of after up to
+    several minutes, see [Events](cloud-events.md)
+
+---
+
 ## Cloud 1.29
 
 *Released on 15-Jul-2026*.
