@@ -305,6 +305,19 @@ provides support for the following submodels:
 - IDTA 02011-1-1 Hierarchical Structures enabling Bills of Material 1.1
 - IDTA 02003-1-2 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 1.2
 
+In addition to that, the twinsphere.TypedAasMetamodels.Experimental companion package provides support for the following
+submodels:
+
+- IDTA 02035-1 DBP Part 1 - Digital Nameplate 1.0
+- IDTA 02035-2 DBP Part 2 - Handover Documentation 1.0
+- IDTA 02035-3 DBP Part 3 - Product Carbon Footprint 1.0
+- IDTA 02035-4 DBP Part 4 - Technical Data 1.0
+- IDTA 02035-5 DBP Part 5 - Product Condition 1.0
+- IDTA 02035-6 DBP Part 6 - Material Composition 1.0
+- IDTA 02035-7 DBP Part 7 - Circularity 1.0
+- IDTA 02065-1 Digital Quality Documents Part 1: Core elements
+- IDTA 02029-1 Sensor 4.0 Part 1: Measurement Value
+
 ### Types of the Meta Model
 
 In twinsphere.TypedAasMetamodels we aim to provide an easy to use API for the work with submodels. To this end we use
