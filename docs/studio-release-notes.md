@@ -5,6 +5,45 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ---
 
+## Studio 0.10
+
+*Released on 07-August-2026*.
+
+**New Features:**
+
+- **[General]**
+
+    - Studio now provides the ability to duplicate existing drafts.
+    - Extended the functionality to duplicate existing twins for type twins. Until now, users could only duplicate
+      instance twins. Now, they can duplicate twins of any kind (type, not-applicable).
+
+- **[Builder]**
+
+    - Add support for the creation/manipulation/deletion of arbitrary properties if a submodel provides these (e.g.
+      Technical Data 2.0, Digital Nameplate 2.0).
+    - Add automatic deduction of property attributes from concept descriptions for arbitrary properties.
+
+**Fixes:**
+
+- **[General]**
+
+    - Several style inconsistency fixes for UI elements across all parts of studio.
+    - Fixed text fields to be single line only, where multi line inputs are not sensible.
+
+- **[Catalog]**
+
+    - Digital Nameplate submodels could not be filtered correctly, due to an error in the semantic id used for the
+      search. Adjusted the search filter so that they appear in search.
+
+- **[Builder]**
+
+    - The builder would resolve the invalid SMT for some submodels (Handover Documentation in particular), if
+      multiple SMTs use the same semantic ID. Use template ID to uniquely identify the correct SMT.
+    - The "Add Documents" button would be shown for all submodels, regardless whether it was sensible there,
+      or not. Fixed it to appear only in Handover Documentation submodels.
+
+---
+
 ## Studio 0.9
 
 *Released on 20-July-2026*.
