@@ -50,7 +50,9 @@ default values (as these are treated as omitted). All provided filter parameters
 - Principals: Full principal value, e.g. an e-mail address
 - Document Classification: Classification ID according to VDI 2770. For more information,
   refer for example to the IDTA Submodel Handover documentation
-- Custom Attributes: Any key–value pairs. Each key must be unique within the files meta data
+- Custom Attributes: Any key–value pairs. Each key must be unique within the files meta data. Keys and values are
+  matched case-insensitively, because both the stored and the requested attributes are converted to lower case
+  (see [Usage of File API](cloud-documentation.md#usage-of-file-api))
 
 ## Regex Support
 
