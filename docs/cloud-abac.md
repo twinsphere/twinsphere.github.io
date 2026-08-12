@@ -104,6 +104,9 @@ security attributes. Unlike Shells and Submodels, file security attributes are d
 - When uploading files as **attachments** or **thumbnails**, they initially **inherit the security
   attributes** of their parent (Shell or Submodel). These inherited attributes can be changed
   afterwards for each file individually.
+- File attributes are converted to **lower case** when they are stored, while policies are kept as written.
+  A policy that should match a file must therefore use lower case keys and values, otherwise it never matches.
+  This does not apply to Shells and Submodels, whose extensions keep their original casing.
 
 ### Strict Attribute Matching
 
