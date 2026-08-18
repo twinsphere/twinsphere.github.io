@@ -6,36 +6,50 @@
 Besides the HTTP/REST based API endpoint, twinsphere also offers a MQTT based API for receiving events about
 shells and submodels.
 
+An event tells you **that** something changed, not what it changed to. It carries no copy of the shell or
+submodel — you read the current state over the REST API when you are ready for it. This keeps events small
+and means you always act on current data rather than on a snapshot that may already be stale.
+
 ## Configuration
 
-All shell changes are published.
+**Everything is published by default** — every shell change and every submodel change, including submodels
+that carry no semantic ID at all.
 
-Submodel events are published only for configured semantic IDs. This configuration can be modified in the "Events"
+If you do not want to be told about certain submodels, block them. Blocking is configured in the "Events"
 section of the `/sphere/swagger/index.html`.
 
 ![Events Configuration](img/twinsphere_cloud_events_configuration.png)
 
-The default configuration will look something like this:
+An empty block list means nothing is withheld:
 
 ``` json
 {
   "publish": {
     "submodels": {
-      "semanticIds": [
-        "https://admin-shell.io/zvei/nameplate/1/0/ContactInformations",
-        "0173-1#01-AHF578#001",
-        "0173-1#01-AHF578#003",
-        "https://admin-shell.io/zvei/nameplate/2/0/Nameplate",
-        "https://admin-shell.io/idta/nameplate/3/0/Nameplate",
-        "https://admin-shell.io/ZVEI/TechnicalData/Submodel/1/2",
-        "0173-1#01-AHX837#002"
+      "blockedSemanticIds": []
+    }
+  }
+}
+```
+
+To stop receiving events for a submodel type, add its semantic ID:
+
+``` json
+{
+  "publish": {
+    "submodels": {
+      "blockedSemanticIds": [
+        "https://admin-shell.io/ZVEI/TechnicalData/Submodel/1/2"
       ]
     }
   }
 }
 ```
 
-Per default, only the common submodels (nameplate / handover docs / tech data) are included.
+A submodel is withheld if **any** of its semantic IDs matches the list. Shell events are never filtered.
+
+A configuration change takes up to a minute to take effect, so you may briefly keep receiving events for a
+semantic ID you have just blocked.
 
 ### Regex
 
@@ -43,13 +57,13 @@ To use regular expressions instead of exact matches, prefix your semantic ID wit
 valid regex expression. If you need to use special characters in your pattern (such as *$ / . @ >*) you'll
 need to escape them with double backslashes (\\\\).
 
-For example, to match all submodels whose Semantic ID includes "test":
+For example, to block all submodels whose Semantic ID includes "test":
 
 ``` json
 {
   "publish": {
     "submodels": {
-      "semanticIds": [
+      "blockedSemanticIds": [
         "$regex=^test$"
       ]
     }
@@ -127,68 +141,58 @@ Following MQTT topics are supported:
 MQTT wildcards for subscriptions are supported at the "id" level, for example, to subscribe to all shell update events,
 use: `twinsphere/shells/+/updated`
 
+**The topic tells you which entity changed**, and it is the only place the identifier appears — the message body does
+not repeat it. The third segment is already in the encoded form the REST API expects, so you can pass it straight
+through:
+
+```text
+topic:  twinsphere/submodels/aHR0cHM6Ly9leGFtcGxlLmNvbS9zbS8x/updated
+call:   GET /submodels/aHR0cHM6Ly9leGFtcGxlLmNvbS9zbS8x
+```
+
+Decode it only if you need the identifier in readable form for logging or correlation.
+
 Messages are delivered with a **QoS of 1 (at-least-once)**, which means that duplicates are possible and should be
 expected.
 
-The MQTT message content (referred to here as the twinsphere envelope) follows the schema below:
+### Message contract
 
-``` yaml
-# shell event envelope
-version: string
-timestamp: string (UTC in ISO 8601 format)
-payload: JSON string (aas-core-works AssetAdministationShell meta model)
+The message body is small and always uncompressed JSON:
 
-# submodel event envelope
-version: string
-timestamp: string (UTC in ISO 8601 format)
-payload: JSON string (aas-core-works Submodel meta model)
-affectedShellIds: JSON array of strings containing shells this submodel referenced at the time
+``` json
+{
+  "version": "experimental",
+  "timestamp": "2026-08-04T10:11:12.3450000Z",
+  "eventId": "66b0f3c2a1b2c3d4e5f60718",
+  "affectedShellIds": ["urn:example:shell:1"]
+}
 ```
 
-The envelope is always **compressed via gzip**, so you should first decompress it. Then, to deserialize the JSON string
-in the payload property, you can use the aas-core-works libraries for your target programming language or platform.
+| Field | Meaning |
+| --- | --- |
+| `version` | Contract version. Stays `experimental` while the feature is experimental. |
+| `timestamp` | When the change happened, UTC in ISO 8601 format. Not when the message was sent. |
+| `eventId` | Identifies the change. Useful for discarding duplicates — see below. |
+| `affectedShellIds` | Shells that referenced this submodel at the time of the change. **Submodel topics only.** |
 
-Below is a code snippet demonstrating how you could achieve this in C#:
+`affectedShellIds` is present on every submodel event, including deletions, and may be an empty array. It is absent on
+shell events, because the topic already names the shell.
 
-```csharp
+> ⚠️ Unlike the identifier in the topic, the identifiers in `affectedShellIds` are **not** encoded. Encode them
+> yourself before using them in a REST call such as `GET /shells/{id}`.
 
-// If you are using MQTTnet, then your MQTT message (MqttApplicationMessage) should have a
-// property called PayloadSegment. Using the extension method Decompress, defined below,
-// you can do something like this:
-var envelopeJson = msg.PayloadSegment.ToArray().Decompress();
-var envelope = JsonSerializer.Deserialize<ShellEvent>(envelopeJson);
+There is no `payload` field. If you are migrating from the earlier contract, the absence of `payload` is how you
+recognize the new format.
 
-// now you can read envelope.Payload, which is a JSON structure that can be deserialized via
-// core-works Jsonization helper from the https://github.com/aas-core-works/aas-core3.0-csharp
+### Handling duplicates
 
-// you need a "container" to deserialize into - this is our envelope
-public class ShellEvent
-{
-    [JsonPropertyName("version")]
-    public required string Version { get; init; }
+QoS 1 means the same event can arrive more than once. Keep a short-lived set of the `eventId` values you have already
+processed and skip repeats.
 
-    [JsonPropertyName("timestamp")]
-    public required string Timestamp { get; init; }
-
-    [JsonPropertyName("payload")]
-    public required string Payload { get; init; }
-}
-
-public static string Decompress(this byte[] compressedContent)
-{
-    using var compressedStream = new MemoryStream(compressedContent);
-    using var gzipStream = new GZipStream(compressedStream, CompressionMode.Decompress);
-    using var decompressedStream = new MemoryStream();
-    gzipStream.CopyTo(decompressedStream);
-
-    var decompressedBytes = decompressedStream.ToArray();
-    return Encoding.UTF8.GetString(decompressedBytes);
-}
-
-```
-
-To properly handle possible duplicate events on your side, make sure to use the timestamp property and ignore messages
-newer than the timestamp you already processed.
+Be aware of the limit of this approach: `eventId` reliably identifies a **redelivery of the same message**, but it is
+not a guarantee that a given change is announced exactly once. After an internal retry the same logical change may
+arrive with a different `eventId`. Treat event handling as idempotent — because events carry no data, re-reading the
+entity over REST twice is harmless.
 
 ## MQTT protocol details
 
@@ -196,16 +200,32 @@ For information on supported MQTT versions and limitations on MQTT features, ple
 resource](https://learn.microsoft.com/en-us/azure/event-grid/mqtt-support). Equally important are the [quotas &
 limitations](https://learn.microsoft.com/en-us/azure/event-grid/quotas-limits#mqtt-limits-in-event-grid-namespace).
 
-Especially important is to mention the limitations of the persistent sessions which is up to 100 messages / 8h per
-topic.
+### Delivery rate and keeping up
+
+Three limits matter, and all apply **per session**:
+
+- Your session receives at most **100 messages per second**.
+- While your client is disconnected, the broker queues messages for your session. Once that queue reaches
+  **100 messages or 1 MB**, whichever comes first, **the session is terminated** and the queued messages are gone.
+- A persistent session survives a disconnect for at most **8 hours**. After that it expires and is discarded
+  together with its subscriptions and anything still queued. MQTT 3.1.1 clients get these 8 hours by default;
+  MQTT v5 clients may request a shorter interval.
+
+If you need more than 100 messages per second, subscribing more often to the *same* topic filter does not help: every
+session receives its own copy of every message. Split the work across sessions instead: the six topics above are
+independent, so a session subscribed to `twinsphere/shells/+/updated` and another to `twinsphere/submodels/+/updated`
+each get their own 100 messages per second. This works today with any MQTT version.
 
 ## Additional information
 
 There are several important aspects to note regarding the twinsphere interface:
 
-- Events published are not issued immediately after a change is made via the REST API, there can be a delay of up to
-  several minutes.
+- Events are published within seconds of the change being made via the REST API.
 - Duplicate events should be expected, and are commonplace when using QoS 1.
+- Events are best effort. They are not retried and not replayed, so an event can be missed — for example while your
+  session is disconnected or the broker is unreachable. Do not use events as a system of record; use them as a prompt
+  to read current state.
+- No ordering is guaranteed between different entities. Events for one entity reach a topic in the order they happened.
 
 ## Troubleshooting
 
@@ -217,3 +237,6 @@ In some cases however, when it comes to features like authorization and topic pe
 disconnects from the broker without detailed explanation. Ensure that you subscribe to the correct topic names and
 double check for typos or similar issues. In the worst case scenario, don't hesitate to submit a ticket issue with us
 for further assistance in debugging the problem.
+
+If you stop receiving events for a particular kind of submodel, check the block list first — a blocked semantic ID is
+silent by design and produces no error anywhere.
