@@ -6,6 +6,17 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.30
+
+*Release date to be announced*.
+
+**What's new:**
+
+- **[SphereAPI]** New [VDI 2770 Connector](cloud-vdi2770-connector.md) endpoint for converting VDI 2770
+    documentation packages into Handover Documentation submodels, including the documents they contain
+
+---
+
 ## Cloud 1.29
 
 *Released on 15-Jul-2026*.
