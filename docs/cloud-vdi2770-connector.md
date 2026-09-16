@@ -28,7 +28,7 @@ The request is sent as `multipart/form-data` with the following fields:
 |-------|----------|-------------|
 | `submodelId` | yes | Identifier of the submodel to create or replace |
 | `aasIdentifier` | no | Identifier of an existing asset administration shell the submodel is linked to. Omit it to create the submodel without a link |
-| `validationLevel` | no | How strictly the package is checked: `Vdi2770Conformance` (default) or `Strict` |
+| `strict` | no | Set to `true` to report findings the VDI 2770 standard tolerates. Defaults to `false` |
 | `file` | yes | The VDI 2770 package |
 
 <!-- markdownlint-enable line-length -->
@@ -62,9 +62,9 @@ Content-Disposition: form-data; name="aasIdentifier"
 
 https://example.com/shells/pump-4711
 --boundary
-Content-Disposition: form-data; name="validationLevel"
+Content-Disposition: form-data; name="strict"
 
-Vdi2770Conformance
+false
 --boundary
 Content-Disposition: form-data; name="file"; filename="documentation.zip"
 Content-Type: application/zip
@@ -88,22 +88,16 @@ The response body is the submodel that was created or replaced, abbreviated here
 }
 ```
 
-## Validation levels
+## Strict checking
 
-The `validationLevel` field decides how strictly the package is checked before anything is stored.
-
-| Level | Checks |
-|-------|--------|
-| `Vdi2770Conformance` (default) | Everything the VDI 2770 standard requires |
-| `Strict` | The above, and additionally reports findings the standard tolerates |
-
-On top of the conformance checks, `Strict` reports files that are contained in the package but not
-referenced by any document, document relationships that cannot be resolved within the package, and
-`DocumentVersion` entries that use the same language more than once.
+Every package is checked against what the VDI 2770 standard requires before anything is stored.
+Setting `strict` to `true` adds checks for findings the standard itself tolerates: files that are
+contained in the package but not referenced by any document, document relationships that cannot be
+resolved within the package, and `DocumentVersion` entries that use the same language more than once.
 
 !!! note
-    A package that is accepted with `Vdi2770Conformance` can still be rejected with `Strict`. Start with
-    the default, and use `Strict` when you want the additional findings reported.
+    A package that is accepted by default can still be rejected with `strict` set. Start without it,
+    and switch it on when you want those additional findings reported.
 
 ## Documents from the package
 
