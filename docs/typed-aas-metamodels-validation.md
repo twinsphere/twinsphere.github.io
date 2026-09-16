@@ -292,7 +292,7 @@ information, such as:
 For example, you can access more details on rule `CONF000` as such:
 
 ```csharp
-var details = RulebookLookup.Lookup("CONF000");
+var details = RuleIndex.Lookup("CONF000");
 var englishSolution = details.RecommendedSolution.First(x => x.Lang == "en").Text;
 Console.WriteLine(englishSolution);
 ```
@@ -302,7 +302,7 @@ Alternatively, you can also directly lookup via a `Rule` object:
 ```csharp
 var validator = await Validator.Builder().Build().Value;
 var diagnostics = validator.Validate("path/to/my/package.aasx").First();
-var details = RulebookLookup.Lookup(diagnostics.Rule);
+var details = RuleIndex.Lookup(diagnostics.Rule);
 var englishSolution = details.RecommendedSolution.First(x => x.Lang == "en").Text;
 Console.WriteLine(englishSolution);
 ```
