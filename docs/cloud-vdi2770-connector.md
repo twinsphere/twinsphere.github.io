@@ -129,10 +129,16 @@ upload with the same `aasIdentifier` leaves the shell unchanged.
 
 ## Limits
 
-Packages of up to 1 GB are accepted. A larger package, or a package whose submodel would exceed the
-submodel size limit of 10 MB, is rejected with `413 Content Too Large`. The 10 MB limit is the same for
-every tenant and cannot be raised, so a package that stays well below 1 GB can still be rejected when it
-describes enough documents to produce a larger submodel.
+Packages of up to 1 GiB are accepted. A larger package, or a package whose submodel would exceed the
+submodel size limit of 10 MiB, is rejected with `413 Content Too Large`. The 10 MiB limit is the same for
+every tenant and cannot be raised.
+
+The submodel grows with the **number of documents** a package describes, not with its size, so the
+document count is what a package usually runs into first. Somewhere between 700 and 900 documents —
+depending on how much metadata each one carries — the submodel exceeds the limit however small the package
+itself is. This is checked after the package has been transferred and its documents stored, so such a
+package is rejected at the end of the upload rather than at the start: split it into several packages
+instead of retrying it unchanged.
 
 If a tenant quota is exhausted, the upload is rejected with `422 Unprocessable Content`.
 
@@ -149,7 +155,7 @@ If a tenant quota is exhausted, the upload is rejected with `422 Unprocessable C
 | Status | Meaning |
 |--------|---------|
 | `200 OK` | The package was imported; the body contains the created or replaced submodel |
-| `400 Bad Request` | The request is malformed, the validation level is unknown, the package does not meet the requested validation level, or the given shell does not exist |
+| `400 Bad Request` | The request is malformed, the package does not meet the checks it was run against, or the given shell does not exist |
 | `401 Unauthorized` | The request is not authenticated |
 | `403 Forbidden` | You are not allowed to write the submodel, or the shell given in `aasIdentifier` |
 | `409 Conflict` | A resource that is created or updated was modified by another process in the meantime |
