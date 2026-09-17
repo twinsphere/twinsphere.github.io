@@ -1,9 +1,9 @@
 # VDI 2770 Connector
 
 The twinsphere VDI 2770 connector turns a VDI 2770 documentation package into a Handover Documentation
-submodel in your twinsphere tenant. You upload the package as it is — twinsphere reads it, creates the
-submodel from its metadata, and stores the documents it contains as twinsphere files that the submodel
-refers to. You no longer need to convert your documentation to AAS yourself.
+submodel in your twinsphere tenant. You upload the package as it is. twinsphere builds the submodel from
+the package metadata and stores the documents it contains as twinsphere files, which the submodel refers
+to. You do not have to convert your documentation to AAS yourself.
 
 Refer to the Swagger documentation (available at `/sphere/swagger/index.html`) for detailed information
 on each parameter and return value.
@@ -34,7 +34,7 @@ The request is sent as `multipart/form-data` with the following fields:
 <!-- markdownlint-enable line-length -->
 
 !!! important
-    `submodelId` and `aasIdentifier` are passed as plain text identifiers — do not base64-encode or
+    `submodelId` and `aasIdentifier` are passed as plain text identifiers. Do not base64-encode or
     otherwise transform them. This differs from the identifiers in the paths of the repository endpoints,
     which are encoded.
 
@@ -113,8 +113,9 @@ elements of the resulting submodel. There are two ways to download them:
   other file in your tenant.
 
 !!! important
-    Both are path-based endpoints, so — unlike the form fields of the upload — what you put into the path is
-    base64-url-encoded: the submodel identifier in the first case, the file path in the second.
+    Both are path-based endpoints, so what you put into the path is base64-url-encoded: the submodel
+    identifier in the first case, the file path in the second. The form fields of the upload are not
+    encoded.
 
 !!! note
     No preview files are generated for the uploaded documents.
@@ -134,19 +135,18 @@ submodel size limit of 10 MiB, is rejected with `413 Content Too Large`. The 10 
 every tenant and cannot be raised.
 
 The submodel grows with the **number of documents** a package describes, not with its size, so the
-document count is what a package usually runs into first. Somewhere between 700 and 900 documents —
-depending on how much metadata each one carries — the submodel exceeds the limit however small the package
-itself is. This is checked after the package has been transferred and its documents stored, so such a
-package is rejected at the end of the upload rather than at the start: split it into several packages
-instead of retrying it unchanged.
+document count is what a package usually runs into first. Depending on how much metadata each document
+carries, the limit is reached somewhere between 700 and 900 documents, however small the package itself
+is. The size is checked once the package has been transferred and its documents stored, so the rejection
+arrives at the end of the upload. Split such a package into several smaller ones instead of sending it
+again unchanged.
 
 If a tenant quota is exhausted, the upload is rejected with `422 Unprocessable Content`.
 
 !!! note
     Only a limited number of packages can be processed at the same time. If that limit is currently
-    reached, the upload is answered with `503 Service Unavailable` and a `Retry-After` header. This is not
-    a problem with your request and not an outage — wait for the number of seconds given in the header and
-    send the request again.
+    reached, the upload is answered with `503 Service Unavailable` and a `Retry-After` header. Wait for the
+    number of seconds given in the header and send the same request again.
 
 ## Status codes
 
