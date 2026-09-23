@@ -1,9 +1,10 @@
 # VDI 2770 Connector
 
-The twinsphere VDI 2770 connector turns a VDI 2770 documentation package into a Handover Documentation
+The twinsphere VDI 2770 connector turns a VDI 2770 documentation package into a Handover Documentation 2.0
 submodel in your twinsphere tenant. You upload the package as it is. twinsphere builds the submodel from
 the package metadata and stores the documents it contains as twinsphere files, which the submodel refers
-to. You do not have to convert your documentation to AAS yourself.
+to. You do not have to convert your documentation to AAS yourself. The package format is defined by
+[VDI 2770 Blatt 1](https://www.vdi.de/en/home/vdi-standards/details/vdi-2770-blatt-1-operation-of-process-engineering-plants-minimum-requirements-for-digital-manufacturer-information-for-the-process-industry-fundamentals).
 
 Refer to the Swagger documentation (available at `/sphere/swagger/index.html`) for detailed information
 on each parameter and return value.
@@ -14,7 +15,7 @@ on each parameter and return value.
 
 | Operation | Method | Endpoint | Description |
 |-----------|--------|----------|-------------|
-| Upload package | `POST` | `/sphere/api/v1/vdi2770-connector` | Create or replace a Handover Documentation submodel from a VDI 2770 package |
+| Upload package | `POST` | `/sphere/api/v1/vdi2770-connector` | Create or replace a Handover Documentation 2.0 submodel from a VDI 2770 package |
 
 <!-- markdownlint-enable line-length -->
 
@@ -38,10 +39,6 @@ The request is sent as `multipart/form-data` with the following fields:
     otherwise transform them. This differs from the identifiers in the paths of the repository endpoints,
     which are encoded.
 
-!!! note
-    If you pass an `aasIdentifier`, the shell must already exist. If it does not, the upload is rejected
-    with `400 Bad Request` and no submodel is created.
-
 ### Upload a package
 
 > `POST https://{twinsphereTenantURL}/sphere/api/v1/vdi2770-connector`
@@ -62,10 +59,6 @@ Content-Disposition: form-data; name="aasIdentifier"
 
 https://example.com/shells/pump-4711
 --boundary
-Content-Disposition: form-data; name="strict"
-
-false
---boundary
 Content-Disposition: form-data; name="file"; filename="documentation.zip"
 Content-Type: application/zip
 
@@ -75,18 +68,7 @@ Content-Type: application/zip
 
 #### Example Response (200 OK)
 
-The response body is the submodel that was created or replaced, abbreviated here:
-
-```json
-{
-  "id": "https://example.com/submodels/handover-documentation",
-  "idShort": "HandoverDocumentation",
-  "modelType": "Submodel",
-  "submodelElements": [
-    ...
-  ]
-}
-```
+The response body is the submodel that was created or replaced.
 
 ## Strict checking
 
@@ -112,10 +94,8 @@ elements of the resulting submodel. There are two ways to download them:
   [file endpoints](cloud-documentation.md#file-repository): `GET /sphere/api/v1/files/{filePath}`, like any
   other file in your tenant.
 
-!!! important
-    Both are path-based endpoints, so what you put into the path is base64-url-encoded: the submodel
-    identifier in the first case, the file path in the second. The form fields of the upload are not
-    encoded.
+Both are path-based endpoints, so the identifier or file path in the URL is base64-url-encoded, unlike the
+plain form fields of the upload.
 
 !!! note
     No preview files are generated for the uploaded documents.
@@ -134,19 +114,14 @@ Packages of up to 1 GiB are accepted. A larger package, or a package whose submo
 submodel size limit of 10 MiB, is rejected with `413 Content Too Large`. The 10 MiB limit is the same for
 every tenant and cannot be raised.
 
-The submodel grows with the **number of documents** a package describes, not with its size, so the
-document count is what a package usually runs into first. Depending on how much metadata each document
-carries, the limit is reached somewhere between 700 and 900 documents, however small the package itself
-is. The size is checked once the package has been transferred and its documents stored, so the rejection
-arrives at the end of the upload. Split such a package into several smaller ones instead of sending it
-again unchanged.
+The submodel grows with the **number of documents** a package describes, not with the size of the package,
+so the document count is what usually reaches the limit first - a package of a few hundred documents can
+exceed it however small its files are. The submodel size is checked once the package has been transferred
+and its documents stored, so the rejection arrives at the end of the upload.
 
-If a tenant quota is exhausted, the upload is rejected with `422 Unprocessable Content`.
-
-!!! note
-    Only a limited number of packages can be processed at the same time. If that limit is currently
-    reached, the upload is answered with `503 Service Unavailable` and a `Retry-After` header. Wait for the
-    number of seconds given in the header and send the same request again.
+!!! important
+    A package has at most five minutes to reach the server. A transfer still running after that is cut and
+    answered with `504 Gateway Timeout` or `499 Client Closed Request`, depending on the HTTP version used.
 
 ## Status codes
 
