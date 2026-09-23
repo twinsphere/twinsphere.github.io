@@ -26,6 +26,8 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 - **[Events]** (experimental) Events are now published within seconds of a change instead of after up to
     several minutes, see [Events](cloud-events.md)
+- **[SphereAPI]** New [VDI 2770 Connector](cloud-vdi2770-connector.md) endpoint for converting VDI 2770
+    documentation packages into Handover Documentation 2.0 submodels, including the documents they contain
 
 ---
 
