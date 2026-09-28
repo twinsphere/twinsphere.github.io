@@ -55,7 +55,7 @@ var mainMarking = new MarkingBuilder("main-image", new PackageFile("/some/local/
         new ExplosionSafety(
             AmbientConditions: new AmbientConditions("external",
                 "maximum".ToMultiLanguageString("en"),
-                "ACME",
+                "ATEX",
                 "maximum",
                 "highly-flammable",
                 "0",
@@ -65,7 +65,7 @@ var mainMarking = new MarkingBuilder("main-image", new PackageFile("/some/local/
             ),
             ProcessConditions: new ProcessConditions("external",
                 "maximum".ToMultiLanguageString("en"),
-                "ACME",
+                "ATEX",
                 "maximum",
                 "highly-flammable",
                 "0",
