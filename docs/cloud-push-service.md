@@ -10,7 +10,7 @@ To send AAS data to a desired target, follow these steps:
 1. Create a valid push target with
     1. a unique name to identify the target (choose a URL-friendly name — e.g. lowercase alphanumeric with hyphens
     — since it is used as a path parameter in API URLs)
-    2. the target type (e.g. `azure-blob-storage`, `aasx-file-server`, `sharecat`, `sap-bnac`)
+    2. the target type (e.g. `azure-blob-storage`, `aasx-file-server`, `sharecat`)
     3. the type-specific configuration including connection details and credentials
 2. Create a new push job with
     1. the name of the target to push the data to
@@ -183,55 +183,6 @@ To connect to Sharecat, you need to create a target with a configuration as show
     - All URLs must be absolute and point to your access token or push target resource.
     - The destination's `workspaceId` and `parentId` are specific IDs of the Sharecat ecosystem.
 
-#### SAP Business Network Asset Collaboration (experimental)
-
-!!! warning
-    The SAP BNAC target is currently in **experimental** state and should only be used for prototypes / experimentation.
-
-To connect to SAP Business Network Asset Collaboration (SAP BNAC), you need an SAP Asset Intelligence Network
-subscription with API access. Create a target with a configuration as shown in the example below:
-
-```json
-{
-  "name": "{your-custom-target-name}",
-  "type": "sap-bnac",
-  "configuration": {
-    "credentials": {
-      "accessTokenUrl": "https://{domain}/oauth/token",
-      "clientId": "{id}",
-      "clientSecret": "{secret}"
-    },
-    "destination": {
-      "apiBaseUrl": "https://{domain}",
-      "businessPartnerId": "{your-business-partner-id}",
-      "groupId": "{your-authorization-group-id}"
-    }
-  }
-}
-```
-
-!!! note
-    - All configuration fields (`apiBaseUrl`, `businessPartnerId`, `groupId`, and the `credentials`)
-      are required.
-    - SAP BNAC always uses the `application/asset-administration-shell-package+json` serialization format.
-      The `serializationFormat` field in the push job request is ignored for SAP BNAC targets.
-    - The `apiBaseUrl` is the base URL of your SAP BNAC API instance
-      (e.g. `https://ain.{landscape}.business-network.cloud.sap`).
-    - The `businessPartnerId` identifies your organization in SAP BNAC and is sent as the
-      `x-businesspartner-id` header.
-    - The `groupId` is the SAP BNAC authorization group the created equipment is published and shared
-      with. Different targets can point at different authorization groups.
-    - For OAuth credentials, only SAP service keys of type `instance-secret` (default) or
-      `binding-secret` are supported.
-    - Supported submodel types:
-        - Handover Documentation V2.0 (SemanticId `0173-1#01-AHF578#003`) — **recommended**.
-        - Handover Documentation V1.2 (SemanticId `0173-1#01-AHF578#001`) — supported, but SAP BNAC
-          currently accepts only a single primary `DocumentId` per Handover Documentation submodel,
-          so a V1.2 submodel may contain only one `Document`. Prefer V2.0, which has no such limit.
-        - Nameplate V3.0 (SemanticId `https://admin-shell.io/idta/nameplate/3/0/Nameplate`)
-    - SAP BNAC requires exactly one Nameplate V3.0 submodel per shell in the push job.
-    - SAP BNAC only supports exactly one shell per push job. The `shellIds` array must contain exactly one entry.
-
 ## Job management
 
 To push data from your twinsphere repository to one of your targets, you need to create a push job.
@@ -338,50 +289,9 @@ The `state` field indicates the current status of the job:
 | `completed` | The job finished successfully |
 | `failed` | The job failed — check the `message` field for the error reason |
 
-The `metadata` field may contain additional target-specific information once the job completes
-(see [SAP BNAC push jobs](#sap-bnac-push-jobs-experimental)).
-
 If a job fails, the `message` field contains the error reason.
 Most issues occur due to invalid target configuration parameters or
 network connectivity issues between the twinsphere service and the target.
 
 If you cannot resolve the issue based on the error message,
 [please contact our support](contact.md) for further assistance.
-
-### SAP BNAC push jobs (experimental)
-
-When creating a push job for an SAP BNAC target, create a standard push job request:
-
-```http
-POST /sphere/api/v1/push/jobs
-Authorization: Bearer {token}
-Content-Type: application/json
-
-{
-  "pushTargetName": "{your-sap-bnac-target-name}",
-  "serializationFormat": "application/asset-administration-shell-package+json",
-  "shellIds": ["{shell-id}"],
-  "submodelIds": ["{nameplate-submodel-id}", "{handover-doc-submodel-id}"],
-  "includeConceptDescriptions": true
-}
-```
-
-The AASX package is uploaded to SAP BNAC and processed asynchronously. twinsphere polls the SAP BNAC
-processing status internally and waits for completion before marking the push job as completed.
-
-Once completed, the push job's `metadata` field contains:
-
-- `handleId` — identifies the uploaded package in SAP BNAC
-- `sapBnacStatus` — the full SAP BNAC status response as a JSON string, useful for diagnosing validation errors
-
-#### Equipment publishing and sharing
-
-After a successful upload, twinsphere resolves the equipment created from the package, publishes it,
-and shares it with the SAP BNAC authorization group configured as the target's `groupId`.
-
-!!! note
-    If any step in this chain (upload, processing, publish, or share) fails, the push job is marked
-    `failed`. Each step is idempotent, so you can simply create a new push job with the same shell and
-    submodels to retry the whole flow — re-running it does not create duplicates: SAP BNAC updates the
-    existing equipment instead of creating a second one, and re-publishing or re-sharing an already
-    published/shared equipment is a no-op.

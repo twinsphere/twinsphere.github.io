@@ -17,4 +17,6 @@ Here is a list of all available roles and their permissions. You can assign them
 | tenant-search-user | cloud tenant | Permissions on all search feature endpoints |
 | tenant-semantic-connector-reader | cloud tenant | Read permissions for the semantic connector feature endpoints |
 | tenant-semantic-connector-writer | cloud tenant | Read and write permissions for the semantic connector feature endpoints |
+| tenant-bnac-fulfillment-viewer | cloud tenant | Read permissions for the [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) endpoints |
+| tenant-bnac-fulfillment-operator | cloud tenant | Read and write permissions for the [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) endpoints |
 <!-- markdownlint-enable line-length -->
