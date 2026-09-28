@@ -9,10 +9,13 @@ In addition to the IDTA AAS API Specification, twinsphere offers supplementary p
 - [Implicit AAS & Submodel Registry](cloud-documentation.md#implicit-shell-registry)
 - [Events](cloud-events.md)
 - [Search](cloud-search.md)
+- [Push Service](cloud-push-service.md)
+- [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) (experimental)
 - [Semantic Connector](cloud-semantic-connector.md)
 - [VDI 2770 Connector](cloud-vdi2770-connector.md)
 - [Shell Filter Queries](cloud-shell-filter-queries.md)
 - [Statistics](cloud-statistics.md)
+- [ABAC (Attribute Based Access Control)](cloud-abac.md)
 - twinsphere Files
     - [File Repository](cloud-documentation.md#file-repository)
     - [File Filter Queries](cloud-file-filter-queries.md)

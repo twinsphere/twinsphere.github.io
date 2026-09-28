@@ -778,7 +778,7 @@ submodel element:
       {
         "$eq": [
           {"$field": "$sme#value"},
-          {"$strVal": "ACME Corp"}
+          {"$strVal": "Musterfirma GmbH"}
         ]
       }
     ]
