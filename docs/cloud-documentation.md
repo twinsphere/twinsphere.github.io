@@ -620,6 +620,47 @@ This targets the element at path `Collection.Property` within the submodel.
 
 Where `[N]` is a zero-based index for positional access and `[]` matches any position (wildcard).
 
+#### twinsphere Extensions
+
+!!! warning "Not part of the AAS specification"
+    The following fields are a twinsphere extension. They are not defined by the IDTA query
+    language specification (IDTA-01002-3), and other AAS implementations do not support them.
+    Queries that use them are not portable.
+
+<!-- markdownlint-disable line-length -->
+
+| Field reference                                                   | Description                                       |
+|-------------------------------------------------------------------|---------------------------------------------------|
+| `$sm#kind`                                                        | Modelling kind (`Instance` or `Template`)         |
+| `$sm#category`, `$aas#category`                                   | Category                                          |
+| `$sm#administration.version`, `$aas#administration.version`       | Administrative version                            |
+| `$sm#administration.revision`, `$aas#administration.revision`     | Administrative revision                           |
+| `$sm#administration.templateId`, `$aas#administration.templateId` | Identifier of the template the entity is based on |
+| `$sm#displayName`, `$aas#displayName`                             | Display name text in any language                 |
+| `$sm#description`, `$aas#description`                             | Description text in any language                  |
+
+<!-- markdownlint-enable line-length -->
+
+All operators that work on strings can be used with these fields. A `displayName` or `description`
+condition matches if the text of at least one language satisfies it. Substring searches with
+`$contains`, `$starts-with` and `$ends-with` on these two fields are optimized for large data sets.
+
+Example: find all pump submodels created from a specific template:
+
+```json
+{
+  "$condition": {
+    "$and": [
+      {"$eq": [
+        {"$field": "$sm#administration.templateId"},
+        {"$strVal": "https://admin-shell.io/idta/nameplate/3/0/Nameplate"}
+      ]},
+      {"$contains": [{"$field": "$sm#displayName"}, {"$strVal": "Pump"}]}
+    ]
+  }
+}
+```
+
 ### Operators
 
 #### Comparison Operators
