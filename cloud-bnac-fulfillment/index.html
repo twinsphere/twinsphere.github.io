@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/cloud-bnac-fulfillment/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>SAP BNAC Fulfillment Service - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SAP BNAC Fulfillment Service";
+        var mkdocs_page_input_path = "cloud-bnac-fulfillment.md";
+        var mkdocs_page_url = "/cloud-bnac-fulfillment/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../status/">Status</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quotas-and-limits/">Quotas and limits</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Users</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../id-registration/">Registration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../id-login/">Login</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../id-password-reset/">Password reset</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-licensing/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Proprietary Features</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">SAP BNAC Fulfillment Service</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#set-the-configuration">Set the configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#set-the-credentials">Set the credentials</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#how-a-request-is-processed">How a request is processed</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#equipment-request-status-bnac-side">Equipment request status (BNAC side)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fulfillment-states-twinsphere-side">Fulfillment states (twinsphere side)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#line-item-states">Line item states</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#processing-modes">Processing modes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#automatic-processing">Automatic processing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#manual-processing">Manual processing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-requirements">Data requirements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#list-fulfillments">List fulfillments</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#syncs">Syncs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pin-a-shell">Pin a shell</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#release-a-shell">Release a shell</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#deliver-a-line-item">Deliver a line item</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#finalize-a-request">Finalize a request</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jobs">Jobs</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get-a-job">Get a job</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#how-jobs-run">How jobs run</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-vdi2770-connector/">VDI 2770 Connector</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-statistics/">Statistics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-abac/">ABAC (Attribute Based Access Control)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-statistics/">Statistics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalog</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes DevKit</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-rulebook-release_notes/">Release Notes Rulebook</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-experimental-release_notes/">Release Notes Experimental</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validators</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../twinfix-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../twinfix-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud</li>
+          <li class="breadcrumb-item">Proprietary Features</li>
+      <li class="breadcrumb-item active">SAP BNAC Fulfillment Service</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sap-bnac-fulfillment-service">SAP BNAC Fulfillment Service</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>SAP BNAC Fulfillment Service is currently in <strong>experimental</strong> state and should only be used for prototypes /
+experimentation.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Known limitations</p>
+<ul>
+<li><strong>Automatic matching does not check the requesting partner.</strong> When two partners send requests with the
+  same purchase order number and line, a shell prepared for one of them can be delivered to and shared with
+  the other. If you accept requests from more than one partner, use <a href="#manual-processing">manual processing</a>,
+  or make sure that your partners' purchase order data never overlaps. An improvement for this topic is
+  coming soon.</li>
+<li><strong>Documents do not reach SAP BNAC yet.</strong> A delivery creates the equipment and a document for each document
+  of the Handover Documentation, but the files are not attached to these documents, and the documents are
+  not linked to the equipment. The delivery still succeeds. This is a known bug at the moment and we are working on it.</li>
+<li><strong>SAP BNAC import limits apply.</strong> SAP BNAC accepts packages smaller than 400 MB only.</li>
+</ul>
+</div>
+<p>twinsphere Cloud offers first-class integration with SAP Business Network Asset Collaboration (SAP BNAC), so that
+your customers receive the digital twins of the devices they ordered from you directly in SAP BNAC, built from the
+asset administration shells you already maintain in twinsphere.</p>
+<p>In SAP BNAC, a customer who has ordered devices from you asks for their digital data by sending you
+an <strong>equipment request</strong>. The request lists one <strong>line item</strong> per device, identified by the purchase order and the
+line within it.</p>
+<p>The SAP BNAC Fulfillment Service answers these requests from your twinsphere tenant. twinsphere picks up the
+equipment requests your customers send you, finds the shell for each line item, delivers it to SAP BNAC as
+equipment, shares that equipment with the customer and assigns it to the line item. Once every line item is
+answered, the request is handed back to your customer for review. You keep your device data in twinsphere,
+and you do not have to enter anything in SAP BNAC by hand.</p>
+<p>The following terms are used throughout this page:</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equipment request</td>
+<td>A customer's request in SAP BNAC for the data of the devices it ordered from you</td>
+</tr>
+<tr>
+<td>Line item</td>
+<td>One requested device within an equipment request</td>
+</tr>
+<tr>
+<td>Equipment</td>
+<td>The SAP BNAC record of a device, created from the shell and submodels twinsphere delivers</td>
+</tr>
+<tr>
+<td>Partner</td>
+<td>A customer you accept equipment requests from, identified by its SAP BNAC business partner id</td>
+</tr>
+<tr>
+<td>Authorization group</td>
+<td>The SAP BNAC group equipment is shared into, so that only the partner of that group can see it</td>
+</tr>
+<tr>
+<td>Fulfillment</td>
+<td>twinsphere's record of one equipment request: its state, its line items and what was delivered for each</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>Refer to the Sphere Server Swagger documentation (available on your tenant at <code>/sphere/swagger/index.html</code>) for
+detailed information on each parameter and return value.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>An SAP BNAC subscription with API access.</strong> SAP BNAC runs as an instance in a subaccount of your SAP
+  Business Technology Platform (SAP BTP) account. Create a service key on that instance; it holds the
+  connection details and credentials twinsphere needs (see <a href="#configuration">Configuration</a>).</li>
+<li><strong>An authorization group for each partner.</strong> Equipment is shared into the partner's authorization group,
+  so the group has to exist in SAP BNAC before anything can be delivered to that partner.</li>
+<li><strong>SAP BNAC Fulfillment Service activated for your tenant.</strong> <a href="../contact/">Contact us</a> to have it activated.</li>
+<li><strong>One of the following roles</strong> on the tenant:</li>
+</ul>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tenant-bnac-fulfillment-viewer</code></td>
+<td>Read the configuration, the fulfillments and the jobs</td>
+</tr>
+<tr>
+<td><code>tenant-bnac-fulfillment-operator</code></td>
+<td>Everything the viewer can, plus changing the configuration and starting syncs, deliveries and finalizations</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p><code>tenant-administrator</code>, <code>tenant-global-writer</code> and the organization owner have operator access as well;
+<code>tenant-global-reader</code> has viewer access. See <a href="../management-roles/">Roles</a> for how roles are assigned.</p>
+<h2 id="configuration">Configuration</h2>
+<p>A tenant has exactly one BNAC configuration. It specifies how twinsphere reaches SAP BNAC, your identity in BNAC, how
+equipment requests are processed, and which partners you accept equipment requests from.</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Get configuration</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/bnac/configuration</code></td>
+<td>Returns the configuration, with the client secret masked</td>
+</tr>
+<tr>
+<td>Set configuration</td>
+<td><code>PUT</code></td>
+<td><code>/sphere/api/v1/bnac/configuration</code></td>
+<td>Creates or replaces the configuration, except the credentials</td>
+</tr>
+<tr>
+<td>Set credentials</td>
+<td><code>PUT</code></td>
+<td><code>/sphere/api/v1/bnac/configuration/credentials</code></td>
+<td>Sets or rotates the credentials</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<h3 id="set-the-configuration">Set the configuration</h3>
+<blockquote>
+<p><code>PUT https://{twinsphereTenantURL}/sphere/api/v1/bnac/configuration</code></p>
+</blockquote>
+<h4 id="example-request">Example Request</h4>
+<pre><code class="language-http">PUT /sphere/api/v1/bnac/configuration
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  &quot;bnacApiBaseUrl&quot;: &quot;...&quot;,
+  &quot;myBusinessPartnerId&quot;: &quot;{your-business-partner-id}&quot;,
+  &quot;processing&quot;: &quot;automatic&quot;,
+  &quot;autoFinalize&quot;: false,
+  &quot;partners&quot;: [
+    {
+      &quot;name&quot;: &quot;Musterchemie GmbH&quot;,
+      &quot;businessPartnerId&quot;: &quot;{partner-business-partner-id}&quot;,
+      &quot;authorizationGroupId&quot;: &quot;{partner-authorization-group-id}&quot;
+    }
+  ]
+}
+</code></pre>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Description</th>
+<th>Hint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bnacApiBaseUrl</code></td>
+<td>yes</td>
+<td>Base URL of the SAP BNAC API</td>
+<td>In the SAP BTP cockpit, open your subaccount → <strong>Services</strong> → <strong>Instances and Subscriptions</strong> → <strong>Instances</strong>, and view the service key of your SAP BNAC instance (the link in the <strong>Credentials</strong> column). Take the value of <code>endpoints.ain.url</code></td>
+</tr>
+<tr>
+<td><code>myBusinessPartnerId</code></td>
+<td>yes</td>
+<td>Your own business partner id in SAP BNAC</td>
+<td>In SAP BNAC, open the <strong>Company Profile</strong> app → <strong>External IDs</strong> and take the <strong>Object ID</strong>. It is a 32-character hexadecimal id</td>
+</tr>
+<tr>
+<td><code>processing</code></td>
+<td>no</td>
+<td><code>automatic</code> or <code>manual</code>, see <a href="#processing-modes">Processing modes</a>. Defaults to <code>automatic</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>autoFinalize</code></td>
+<td>no</td>
+<td>Marks the equipment request as "done" from your side, as soon as every line item is answered. Must be <code>false</code> with <code>manual</code> processing. Defaults to <code>false</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>partners[].name</code></td>
+<td>yes</td>
+<td>Your name for the partner, shown on its fulfillments</td>
+<td>Free text, for example the company name the partner has in the SAP BNAC <strong>Business Partners</strong></td>
+</tr>
+<tr>
+<td><code>partners[].businessPartnerId</code></td>
+<td>yes</td>
+<td>The partner's business partner id in SAP BNAC. Equipment requests are attributed to a partner by it, so it must be unique across partners</td>
+<td>The partner's own id from its <strong>Company Profile</strong> app, so ask the partner for it. Or configure the other fields first: a request from a partner that is not configured yet appears as a <code>partner-not-configured</code> fulfillment</td>
+</tr>
+<tr>
+<td><code>partners[].authorizationGroupId</code></td>
+<td>yes</td>
+<td>The authorization group equipment for this partner is shared into</td>
+<td>In SAP BNAC, open the <strong>Network Authorizations</strong> app → <strong>Groups</strong> and select the group; the id is part of the page URL</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>autoFinalize</code> is off by default on purpose. Marking an equipment request as "done" cannot be undone
+from your side; only the customer can send it back to you. Review a few requests before you switch it on.</p>
+</div>
+<p>An equipment request from a business partner that is not in <code>partners</code> is recorded, but nothing is
+delivered for it. Add the partner to the configuration, and the request is processed with the next sync.</p>
+<h3 id="set-the-credentials">Set the credentials</h3>
+<blockquote>
+<p><code>PUT https://{twinsphereTenantURL}/sphere/api/v1/bnac/configuration/credentials</code></p>
+</blockquote>
+<p>twinsphere signs in to SAP BNAC with the OAuth client credentials of a BNAC service key.</p>
+<p>All values are in the service key of your SAP BNAC instance. In the SAP BTP cockpit, open your
+subaccount → <strong>Services</strong> → <strong>Instances and Subscriptions</strong> → <strong>Instances</strong>, and view the key through the link in
+the <strong>Credentials</strong> column. If the instance has no key yet, select it and create one under <strong>Service Keys</strong>.</p>
+<h4 id="example-request_1">Example Request</h4>
+<pre><code class="language-http">PUT /sphere/api/v1/bnac/configuration/credentials
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  &quot;authenticationBaseUrl&quot;: &quot;https://...&quot;,
+  &quot;clientId&quot;: &quot;{client-id}&quot;,
+  &quot;clientSecret&quot;: &quot;{client-secret}&quot;
+}
+</code></pre>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Hint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authenticationBaseUrl</code></td>
+<td>Base URL of the OAuth server of your SAP BTP subaccount</td>
+<td><code>uaa.url</code> in the service key</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td>OAuth client id</td>
+<td><code>uaa.clientid</code> in the service key</td>
+</tr>
+<tr>
+<td><code>clientSecret</code></td>
+<td>OAuth client secret</td>
+<td><code>uaa.clientsecret</code> in the service key</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>The client secret is stored encrypted and is never returned.</p>
+<h2 id="how-a-request-is-processed">How a request is processed</h2>
+<p>Once an hour, and whenever you start a <a href="#syncs">sync</a> yourself, twinsphere asks SAP BNAC for the equipment
+requests that are waiting for you. A request it sees for the first time is stored as a <strong>fulfillment</strong>.
+Every fulfillment that is not finished yet is then synced: twinsphere reads the request and its
+line items from SAP BNAC again and brings the fulfillment in line with them.</p>
+<p>In <a href="#automatic-processing">automatic processing</a>, the sync then takes the request as far as it can:
+it finds a shell for each line item, delivers it, and, with <code>autoFinalize</code>, finalizes the request once every
+line item is answered.</p>
+<p>In <a href="#manual-processing">manual processing</a>, the sync stops after reading, and you trigger each of these steps yourself.</p>
+<p>Delivering a line item takes the following steps in SAP BNAC:</p>
+<ol>
+<li>The shell and the submodels it references are uploaded to BNAC as equipment.</li>
+<li>The equipment is published and shared into the partner's authorization group.</li>
+<li>The equipment is assigned to the line item.</li>
+</ol>
+<p><strong>Finalizing</strong> a request (the <em>Recommend</em> action in the SAP BNAC UI) hands it back to your customer for review.
+Your customer then either confirms the result, or sends the request back to you. A request that comes back
+is picked up by the next sync and processed again like any other.</p>
+<h3 id="equipment-request-status-bnac-side">Equipment request status (BNAC side)</h3>
+<p>The <code>requestStatusCode</code> of a fulfillment is the status of the equipment request in SAP BNAC, as of
+<code>lastSyncedAt</code>. Deliveries and finalizations change the status in SAP BNAC; the fulfillment shows the new
+status after the next sync.</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>BNAC Code</th>
+<th>Status</th>
+<th>What it means for you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td>Draft</td>
+<td>Your customer is still editing the request. It is not picked up yet.</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>Author Action</td>
+<td>The request is back with your customer. Nothing can be delivered until it is submitted again.</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>Rejected</td>
+<td>The request was rejected. The fulfillment is closed.</td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td>Completed</td>
+<td>The request was finalized and waits for your customer's review.</td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td>In Process</td>
+<td>The request is being answered. The first equipment twinsphere assigns moves a submitted request to in process.</td>
+</tr>
+<tr>
+<td><code>6</code></td>
+<td>Submitted</td>
+<td>Your customer has sent the request to you, and nothing has been answered yet. This is the state before "in process".</td>
+</tr>
+<tr>
+<td><code>7</code></td>
+<td>Confirmed</td>
+<td>Your customer has confirmed the result. The request has ended.</td>
+</tr>
+<tr>
+<td><code>9</code></td>
+<td>Deleted</td>
+<td>The request was deleted. The fulfillment is closed.</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>Only requests in <code>5</code> In Process or <code>6</code> Submitted are processed. A request that returns to one of them, for
+example because your customer sent it back, is processed again.</p>
+<h3 id="fulfillment-states-twinsphere-side">Fulfillment states (twinsphere side)</h3>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open</code></td>
+<td>No line item carries equipment yet</td>
+</tr>
+<tr>
+<td><code>partially-fulfilled</code></td>
+<td>Some line items carry equipment</td>
+</tr>
+<tr>
+<td><code>fulfilled</code></td>
+<td>Every line item carries equipment</td>
+</tr>
+<tr>
+<td><code>partner-not-configured</code></td>
+<td>The request comes from a business partner that is not in your configuration. Nothing is delivered until you <a href="#set-the-configuration">add the partner</a></td>
+</tr>
+<tr>
+<td><code>finalized</code></td>
+<td>The request was finalized and handed back to your customer</td>
+</tr>
+<tr>
+<td><code>closed</code></td>
+<td>The request ended without being finalized by twinsphere, for example because it was rejected, deleted, or completed in SAP BNAC directly</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>The first three states follow from the line items and change whenever a line item does, including when
+SAP BNAC reports line items that were added or removed. A <code>finalized</code> or <code>closed</code> fulfillment becomes
+<code>open</code>, <code>partially-fulfilled</code> or <code>fulfilled</code> again when its request returns to In Process or Submitted.</p>
+<p>The <code>lastError</code> of a fulfillment tells why the last sync or finalization of the request as a whole did not
+succeed. It is absent once a later attempt succeeds.</p>
+<h3 id="line-item-states">Line item states</h3>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unmatched</code></td>
+<td>No shell answers the line item yet</td>
+</tr>
+<tr>
+<td><code>matched</code></td>
+<td>A shell answers the line item, but it has not been delivered yet</td>
+</tr>
+<tr>
+<td><code>equipment-shared</code></td>
+<td>The equipment was created and shared, but not yet assigned to the line item</td>
+</tr>
+<tr>
+<td><code>equipment-assigned</code></td>
+<td>The equipment is assigned to the line item</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p><code>matchSource</code> says how the shell was chosen:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>automatic</code></td>
+<td>Found by its shell extensions, see <a href="#matching-shells">Matching shells</a></td>
+</tr>
+<tr>
+<td><code>manual</code></td>
+<td>Pinned through the <a href="#pin-a-shell">mapping endpoint</a></td>
+</tr>
+<tr>
+<td><code>external</code></td>
+<td>The line item already carried equipment in SAP BNAC that twinsphere did not deliver</td>
+</tr>
+</tbody>
+</table>
+<p>twinsphere never overwrites equipment it did not deliver. An <code>external</code> line item is shown as
+<code>equipment-assigned</code> and cannot be mapped or delivered. It returns to <code>unmatched</code> once the equipment is
+removed from the line item in SAP BNAC.</p>
+<p>Every sync compares the line items with what SAP BNAC reports for them. The <code>lastError</code> of a line item tells
+why its last delivery did not succeed, or which difference the sync found, for example:</p>
+<ul>
+<li><strong>Your customer rejected the equipment.</strong> The line item stays <code>equipment-assigned</code> and keeps the error.
+  Correct the data and <a href="#deliver-a-line-item">deliver</a> the line item again, or <a href="#pin-a-shell">pin</a> another
+  shell.</li>
+<li><strong>The equipment was removed from the line item in SAP BNAC.</strong> The line item returns to <code>matched</code>. In
+  automatic processing, the same sync delivers it again; in manual processing, deliver it yourself.</li>
+<li><strong>SAP BNAC reports equipment other than the one twinsphere assigned.</strong> The line item keeps the error, so
+  that you can check the line item in SAP BNAC.</li>
+</ul>
+<p>A line item that SAP BNAC no longer reports is removed from the fulfillment.</p>
+<h2 id="processing-modes">Processing modes</h2>
+<p>The <code>processing</code> field of the <a href="#set-the-configuration">configuration</a> decides whether twinsphere answers
+equipment requests on its own, or only when you ask it to.</p>
+<h3 id="automatic-processing">Automatic processing</h3>
+<p>With <code>processing</code> set to <code>automatic</code>, every sync matches, delivers and, with <code>autoFinalize</code>, finalizes on
+its own. Mark your shells with the extensions below, and requests are answered without any further action.</p>
+<p>Line items that cannot be answered stay open, and the sync tries again the next time. A line item whose
+delivery failed carries the reason in its <code>lastError</code> and is delivered again by the next sync.</p>
+<p>With <code>autoFinalize</code> set to <code>true</code>, a sync finalizes a request once it is <code>fulfilled</code> and no line item carries
+an error. A request whose customer rejected one of the equipment is therefore not finalized again until
+that line item is corrected.</p>
+<h4 id="matching-shells">Matching shells</h4>
+<p>A sync finds the shell for a line item by the extensions on the shell. Add them to the shell itself, not to
+one of its submodels:</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Extension name</th>
+<th>Required</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>twinsphere.io/bnac/purchase-order</code></td>
+<td>yes</td>
+<td>The purchase order number of the line item</td>
+</tr>
+<tr>
+<td><code>twinsphere.io/bnac/purchase-order-line-item</code></td>
+<td>yes</td>
+<td>The line within the purchase order</td>
+</tr>
+<tr>
+<td><code>twinsphere.io/bnac/operator-equipment-id</code></td>
+<td>no</td>
+<td>Your customer's own identifier for the device, when the line item names one</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;https://example.com/shells/pump-4711&quot;,
+  &quot;extensions&quot;: [
+    { &quot;name&quot;: &quot;twinsphere.io/bnac/purchase-order&quot;, &quot;valueType&quot;: &quot;xs:string&quot;, &quot;value&quot;: &quot;4500012345&quot; },
+    { &quot;name&quot;: &quot;twinsphere.io/bnac/purchase-order-line-item&quot;, &quot;valueType&quot;: &quot;xs:string&quot;, &quot;value&quot;: &quot;00010&quot; },
+    { &quot;name&quot;: &quot;twinsphere.io/bnac/operator-equipment-id&quot;, &quot;valueType&quot;: &quot;xs:string&quot;, &quot;value&quot;: &quot;P-101&quot; }
+  ],
+  &quot;assetInformation&quot;: { &quot;assetKind&quot;: &quot;Instance&quot;, &quot;globalAssetId&quot;: &quot;https://example.com/assets/pump-4711&quot; }
+}
+</code></pre>
+<p>A shell answers a line item:</p>
+<ul>
+<li>when both the purchase order and the line match exactly. They are compared as text, so <code>00010</code> and <code>10</code> are
+  different lines. Use the values exactly as your customer entered them in SAP BNAC.</li>
+<li>and when it either names no operator equipment id, or the same one as the line item. A shell that names a different one
+  is meant for another device and is never used for this line item.</li>
+</ul>
+<p>A shell that names the line item's operator equipment id is preferred over one that names none. When several
+shells are equally suitable, the one with more <code>twinsphere.io/bnac/</code> extensions is used; the choice is
+always the same for the same shells.</p>
+<p>Matching only fills line items that have no shell yet. Changing the extensions of a shell later does not
+change a line item it already answers. To have such a line item matched again, <a href="#release-a-shell">release</a>
+its shell, or <a href="#pin-a-shell">pin</a> another one.</p>
+<h3 id="manual-processing">Manual processing</h3>
+<p>With <code>processing</code> set to <code>manual</code>, the syncs still pick up new requests once an hour and keep every
+fulfillment in line with SAP BNAC, but they never change anything in SAP BNAC. Shells are not matched by
+their extensions. Each step is an operation you call yourself, so you see its outcome and its errors
+directly. <code>autoFinalize</code> must be <code>false</code> in this mode.</p>
+<p>A typical client does the following:</p>
+<ol>
+<li><strong>Find open work:</strong> <code>GET /sphere/api/v1/bnac/fulfillments?state=open&amp;state=partially-fulfilled</code>. A
+   fulfillment that has just been discovered has no line items yet; they appear with its first sync, shortly
+   after.</li>
+<li><strong>Prepare the data:</strong> create the shell and its submodels, see <a href="#data-requirements">Data requirements</a>. The
+   shell needs no BNAC extensions.</li>
+<li><strong>Pin the shell</strong> to the line item, see <a href="#pin-a-shell">Pin a shell</a>.</li>
+<li><strong>Deliver the line item</strong>, see <a href="#deliver-a-line-item">Deliver a line item</a>, and follow the job until it has
+   <code>succeeded</code> or <code>failed</code>.</li>
+<li><strong>Finalize the request</strong>, see <a href="#finalize-a-request">Finalize a request</a>, once every line item is answered.</li>
+</ol>
+<h2 id="data-requirements">Data requirements</h2>
+<p>SAP BNAC creates the equipment from the AAS package twinsphere delivers. The package contains the shell,
+every submodel the shell references, and their concept descriptions. twinsphere sends it as it is; SAP BNAC
+validates it, and a package it does not accept fails the delivery with SAP BNAC's reason in <code>lastError</code>.</p>
+<p>SAP BNAC requires the following submodels:</p>
+<ul>
+<li><strong>Nameplate V3.0</strong> (SemanticId <code>https://admin-shell.io/idta/nameplate/3/0/Nameplate</code>), exactly one per shell.
+  SAP BNAC creates the equipment from it.</li>
+<li><strong>Handover Documentation V2.0</strong> (SemanticId <code>0173-1#01-AHF578#003</code>) for the documentation — recommended.</li>
+<li><strong>Handover Documentation V1.2</strong> (SemanticId <code>0173-1#01-AHF578#001</code>) is supported as well, but SAP BNAC
+  accepts only one <code>Document</code> in it. Prefer V2.0, which has no such limit.</li>
+</ul>
+<p>SAP BNAC identifies equipment by the serial number of the device. Delivering a shell again therefore updates
+the existing equipment instead of creating a second one.</p>
+<h2 id="endpoints">Endpoints</h2>
+<p>Operations marked <strong>async</strong> answer <code>202 Accepted</code> right away and run as a <a href="#jobs">job</a> in the background; all
+others answer directly with their result. The complete OpenAPI specification of these endpoints is available in
+the Sphere Server Swagger documentation on your tenant, at <code>/sphere/swagger/index.html</code>.</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Execution</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List fulfillments</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments</code></td>
+<td>sync</td>
+<td>Lists the fulfillments, newest first</td>
+</tr>
+<tr>
+<td>Get fulfillment</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}</code></td>
+<td>sync</td>
+<td>Returns one fulfillment with its line items</td>
+</tr>
+<tr>
+<td>List line items</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items</code></td>
+<td>sync</td>
+<td>Returns the line items of a fulfillment</td>
+</tr>
+<tr>
+<td>Get line item</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items/{itemId}</code></td>
+<td>sync</td>
+<td>Returns one line item</td>
+</tr>
+<tr>
+<td>Sync all</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/sync</code></td>
+<td>async (job)</td>
+<td>Queues a sync of all equipment requests</td>
+</tr>
+<tr>
+<td>Sync fulfillment</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/sync</code></td>
+<td>async (job)</td>
+<td>Queues a sync of one fulfillment</td>
+</tr>
+<tr>
+<td>Pin a shell</td>
+<td><code>PUT</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items/{itemId}/mapping</code></td>
+<td>sync</td>
+<td>Sets the shell that answers a line item</td>
+</tr>
+<tr>
+<td>Release a shell</td>
+<td><code>DELETE</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items/{itemId}/mapping</code></td>
+<td>sync</td>
+<td>Removes the shell from a line item</td>
+</tr>
+<tr>
+<td>Deliver a line item</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items/{itemId}/deliver</code></td>
+<td>async (job)</td>
+<td>Queues the delivery of one line item</td>
+</tr>
+<tr>
+<td>Finalize a request</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/finalize</code></td>
+<td>async (job)</td>
+<td>Queues the finalization of a request</td>
+</tr>
+<tr>
+<td>List jobs</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/jobs</code></td>
+<td>sync</td>
+<td>Lists the jobs, newest first</td>
+</tr>
+<tr>
+<td>Get job</td>
+<td><code>GET</code></td>
+<td><code>/sphere/api/v1/bnac/fulfillments/jobs/{jobId}</code></td>
+<td>sync</td>
+<td>Returns one job</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<h3 id="list-fulfillments">List fulfillments</h3>
+<blockquote>
+<p><code>GET https://{twinsphereTenantURL}/sphere/api/v1/bnac/fulfillments</code></p>
+</blockquote>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td>Fulfillment state, see <a href="#fulfillment-states-twinsphere-side">Fulfillment states</a></td>
+</tr>
+<tr>
+<td><code>partnerId</code></td>
+<td>Business partner id of the requester</td>
+</tr>
+<tr>
+<td><code>equipmentRequestId</code></td>
+<td>Id of the equipment request in SAP BNAC</td>
+</tr>
+<tr>
+<td><code>caseId</code></td>
+<td>Case number SAP BNAC shows for the equipment request</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Page size, at most 50. Defaults to 25</td>
+</tr>
+<tr>
+<td><code>cursor</code></td>
+<td>Cursor from <code>paging_metadata</code> of the previous page, see <a href="../cloud-documentation/#pagination">Pagination</a></td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p>Repeat a parameter to match any of its values, for example <code>?state=open&amp;state=partially-fulfilled</code>.
+Different parameters are combined, so a fulfillment has to match all of them.</p>
+<h4 id="example-response-200-ok">Example Response (200 OK)</h4>
+<pre><code class="language-json">{
+  &quot;paging_metadata&quot;: {},
+  &quot;result&quot;: [
+    {
+      &quot;identifier&quot;: &quot;{fulfillment-id}&quot;,
+      &quot;equipmentRequestId&quot;: &quot;{equipment-request-id}&quot;,
+      &quot;caseId&quot;: &quot;1000123&quot;,
+      &quot;description&quot;: &quot;Pumps for plant extension&quot;,
+      &quot;requesterBusinessPartnerId&quot;: &quot;{partner-business-partner-id}&quot;,
+      &quot;partnerName&quot;: &quot;Musterchemie GmbH&quot;,
+      &quot;authorizationGroupId&quot;: &quot;{partner-authorization-group-id}&quot;,
+      &quot;requestStatusCode&quot;: &quot;5&quot;,
+      &quot;discoveredAt&quot;: &quot;2026-09-28T09:15:02+00:00&quot;,
+      &quot;lastSyncedAt&quot;: &quot;2026-09-28T10:15:04+00:00&quot;,
+      &quot;state&quot;: &quot;partially-fulfilled&quot;,
+      &quot;items&quot;: [
+        {
+          &quot;identifier&quot;: &quot;{item-id-1}&quot;,
+          &quot;purchaseOrder&quot;: &quot;4500012345&quot;,
+          &quot;purchaseOrderLineItem&quot;: &quot;00010&quot;,
+          &quot;operatorEquipmentId&quot;: &quot;P-101&quot;,
+          &quot;state&quot;: &quot;equipment-assigned&quot;,
+          &quot;matchedShellId&quot;: &quot;https://example.com/shells/pump-4711&quot;,
+          &quot;matchSource&quot;: &quot;automatic&quot;,
+          &quot;assignedEquipmentId&quot;: &quot;{equipment-id}&quot;
+        },
+        {
+          &quot;identifier&quot;: &quot;{item-id-2}&quot;,
+          &quot;purchaseOrder&quot;: &quot;4500012345&quot;,
+          &quot;purchaseOrderLineItem&quot;: &quot;00020&quot;,
+          &quot;state&quot;: &quot;unmatched&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>Fields without a value are left out of the response.</p>
+<h3 id="syncs">Syncs</h3>
+<p><code>POST /sphere/api/v1/bnac/fulfillments/sync</code> does what the hourly sync does: it picks up requests that have
+not been seen yet and queues a sync of every fulfillment that is not finished. The <code>result.summary</code> of the job
+tells what it found:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>equipmentRequestsListed</code></td>
+<td>Equipment requests SAP BNAC listed as waiting for you</td>
+</tr>
+<tr>
+<td><code>fulfillmentsDiscovered</code></td>
+<td>Requests seen for the first time and stored as fulfillments</td>
+</tr>
+<tr>
+<td><code>jobsQueued</code></td>
+<td>Fulfillment syncs queued</td>
+</tr>
+<tr>
+<td><code>alreadyQueued</code></td>
+<td>Fulfillment syncs that were already waiting from an earlier sync</td>
+</tr>
+<tr>
+<td><code>discoveryFailures</code></td>
+<td>One message per equipment request that could not be read from SAP BNAC</td>
+</tr>
+</tbody>
+</table>
+<p><code>POST /sphere/api/v1/bnac/fulfillments/{fulfillmentId}/sync</code> syncs a single fulfillment, for example right
+after you created the shells for it, instead of waiting for the next hourly sync.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A sync job succeeds even when single line items could not be delivered. It fails only when the request
+itself could not be processed. Check the <code>lastError</code> of the fulfillment and of its line items to see what
+did not go through.</p>
+</div>
+<h3 id="pin-a-shell">Pin a shell</h3>
+<blockquote>
+<p><code>PUT https://{twinsphereTenantURL}/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items/{itemId}/mapping</code></p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;shellId&quot;: &quot;https://example.com/shells/pump-4711&quot;
+}
+</code></pre>
+<p>Sets the shell for the line item, in place of the one <a href="#matching-shells">matching</a> would choose.
+In manual processing, this is the only way to give a line item a shell. The request answers directly with
+<code>204 No Content</code>; the shell is delivered by the next <a href="#deliver-a-line-item">delivery</a> or, in automatic
+processing, by the next sync.</p>
+<p>A line item that was already delivered can be given another shell. It then returns to <code>matched</code>, and the new
+shell is delivered in its place. Pinning is refused with <code>400 Bad Request</code> when:</p>
+<ul>
+<li>the shell does not exist, or it already answers another line item of the same request,</li>
+<li>the line item carries equipment twinsphere did not deliver (<code>external</code>),</li>
+<li>the same shell was already delivered for the line item — <a href="#deliver-a-line-item">deliver</a> the line item
+  again instead,</li>
+<li>the fulfillment is <code>finalized</code> or <code>closed</code>.</li>
+</ul>
+<h3 id="release-a-shell">Release a shell</h3>
+<blockquote>
+<p><code>DELETE https://{twinsphereTenantURL}/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items/{itemId}/mapping</code></p>
+</blockquote>
+<p>Removes the shell from a line item that has not been delivered yet (<code>matched</code>). The line item returns to
+<code>unmatched</code>. In automatic processing, the next sync matches it again; in manual processing, it stays
+open until you pin a shell.</p>
+<h3 id="deliver-a-line-item">Deliver a line item</h3>
+<blockquote>
+<p><code>POST https://{twinsphereTenantURL}/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/items/{itemId}/deliver</code></p>
+</blockquote>
+<p>Queues the delivery of the line item's shell. Use it to deliver a pinned shell in manual processing, and to
+deliver a line item again after its shell or submodels changed, so that the equipment in SAP BNAC is updated.</p>
+<h3 id="finalize-a-request">Finalize a request</h3>
+<blockquote>
+<p><code>POST https://{twinsphereTenantURL}/sphere/api/v1/bnac/fulfillments/{fulfillmentId}/finalize</code></p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;allowIncomplete&quot;: false
+}
+</code></pre>
+<p>Queues the finalization of the request, which hands it back to your customer for review. The body is
+optional.</p>
+<p>By default, every line item has to carry equipment. Set <code>allowIncomplete</code> to <code>true</code> to finalize a request in
+which some line items are still open; at least one line item has to carry equipment either way.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A finalization cannot be undone from your side. Only your customer can send the request back to you.</p>
+</div>
+<h2 id="jobs">Jobs</h2>
+<p>Syncs, deliveries and finalizations run as jobs in the background, because they depend on SAP BNAC. The
+endpoints that start them answer <code>202 Accepted</code> with the job in the body and its address in the <code>Location</code>
+header. Get the job from there until its <code>state</code> is <code>succeeded</code> or <code>failed</code>.</p>
+<h3 id="get-a-job">Get a job</h3>
+<blockquote>
+<p><code>GET https://{twinsphereTenantURL}/sphere/api/v1/bnac/fulfillments/jobs/{jobId}</code></p>
+</blockquote>
+<h4 id="example-response-200-ok_1">Example Response (200 OK)</h4>
+<pre><code class="language-json">{
+  &quot;identifier&quot;: &quot;{job-id}&quot;,
+  &quot;kind&quot;: &quot;deliver-item&quot;,
+  &quot;trigger&quot;: &quot;user-request&quot;,
+  &quot;state&quot;: &quot;succeeded&quot;,
+  &quot;queuedAt&quot;: &quot;2026-09-28T10:20:00+00:00&quot;,
+  &quot;startedAt&quot;: &quot;2026-09-28T10:20:01+00:00&quot;,
+  &quot;completedAt&quot;: &quot;2026-09-28T10:20:43+00:00&quot;,
+  &quot;attempts&quot;: 1,
+  &quot;parameters&quot;: {
+    &quot;fulfillmentId&quot;: &quot;{fulfillment-id}&quot;,
+    &quot;itemId&quot;: &quot;{item-id-1}&quot;
+  },
+  &quot;result&quot;: {
+    &quot;delivery&quot;: {
+      &quot;itemState&quot;: &quot;equipment-assigned&quot;,
+      &quot;assignedEquipmentId&quot;: &quot;{equipment-id}&quot;
+    }
+  }
+}
+</code></pre>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kind</code></td>
+<td><code>tenant-sync</code> (sync all), <code>sync-fulfillment</code>, <code>deliver-item</code>, <code>finalize</code></td>
+</tr>
+<tr>
+<td><code>trigger</code></td>
+<td><code>user-request</code> when started through the API, <code>schedule</code> for the hourly sync and the fulfillment syncs it queues</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>pending</code> (waiting to start), <code>running</code>, <code>succeeded</code>, <code>failed</code></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>Why the job failed. Only set when <code>state</code> is <code>failed</code></td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td><code>summary</code> for <code>tenant-sync</code>, <code>delivery</code> for <code>deliver-item</code>. Only set when <code>state</code> is <code>succeeded</code></td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<p><code>GET /sphere/api/v1/bnac/fulfillments/jobs</code> lists the jobs, newest first. Filter them by <code>kind</code>, <code>state</code>,
+<code>trigger</code> and <code>fulfillmentId</code>, with the same rules and paging as the <a href="#list-fulfillments">fulfillment list</a>.</p>
+<h3 id="how-jobs-run">How jobs run</h3>
+<ul>
+<li><strong>One at a time per fulfillment.</strong> The jobs of one fulfillment run one after another, so a sync, a delivery
+  and a finalization never change the same fulfillment at once. Jobs of different fulfillments run in
+  parallel.</li>
+<li><strong>No duplicates while waiting.</strong> A job that is the same as one still <code>pending</code> is refused with
+  <code>409 Conflict</code>; the waiting job already covers it. Once that job has started, the same job can be queued
+  again.</li>
+<li><strong>Failed jobs are not retried.</strong> Start the operation again to retry it. Running a sync or a delivery again is
+  safe: finished work is not repeated, and a delivery updates the same equipment. A finalization that already
+  went through is refused instead of being sent a second time.</li>
+<li><strong>Time limit.</strong> A job that runs longer than one hour is stopped and fails.</li>
+<li><strong>Restarts.</strong> A job that is interrupted by a twinsphere update returns to <code>pending</code> and runs again. Its
+  <code>attempts</code> counts every start.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cloud-push-service/" class="btn btn-neutral float-left" title="Push Service"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cloud-semantic-connector/" class="btn btn-neutral float-right" title="Semantic Connector">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cloud-push-service/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-semantic-connector/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
