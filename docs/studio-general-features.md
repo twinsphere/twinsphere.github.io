@@ -1,123 +1,167 @@
 # twinstudio General Features
 
-## ID Generator
+## The main menu
 
-You can specify generator patterns for several ID types:
+The menu on the left is always available and contains three entries:
 
-- Global Asset ID
-- Shell/AAS ID (aka Twin ID)
-- Submodel ID
+| Entry | What it does |
+|---|---|
+| **Dashboard** | Your starting point. Create a twin, import a submodel, and see your tenant's key figures. |
+| **Catalogue** | Everything stored in your tenant: digital twins, submodels, concept descriptions, drafts and files. |
+| **Statistics** | How your tenant has grown over time. |
 
-![twinstudio General IdGenerator](img/twinstudio_general_idgenerator.png){: width='600' }
+Below the menu you find **Help & docs** (opens this documentation), **ID Settings** and your user name. Selecting your
+user name opens your [profile](#user-settings).
 
-If set respective IDs are automatically generated when needed (mainly on twin and submodel creation) and
-twinstudio will not ask you to manually fill-in IDs anymore.  
-Generally the {ULID} token has to be used trying to ensure a unique ID. If the *globalAssetId* is active
-it is possible to use {ASSET-ULID} instead of {ULID} for the *aasId* and if you use this and generate
-a new twin the *globalAssetId* and the *aasId* will contain the same generated *ulid*.
-
-!!!note "ID patterns have tenant scope"
-    The ID generator patterns are applied at the tenant level, not just to your user account.
-    They are centrally stored in twinstudio. So other users will automatically create IDs according to the specified
-    pattern when they are logged in to the relevant tenant.
-
-## Language Settings
-
-twinstudio supports the following languages for its user interface:
-
-- German
-- English
-
-Furthermore you may set a preferred languages to represent the data content of your twins.
-
-![twinstudio General IdGenerator](img/twinstudio_general_language.png){: width='400' }
-
-All language settings have user scope and are stored locally in your browser.
-
-## Tenant Switch
-
-twinstudio can connect to different twinsphere cloud tenants (access rights required).
-The tenants are hereby grouped into organizations. You can switch the tenant in the menu.
-
-![twinstudio Tenant Swich](img/twinstudio_general_switchtenant.png){: width='400' }
-
-twinstudio remembers (locally in the browser) the last tenant you logged in with and automatically uses this for your
-next session.
+In the top right corner the current organisation and tenant are shown (here: `twinsphere Sandbox | shovel`), next to the
+**Feedback** button.
 
 ## Dashboard
 
-The dashboard of twinstudio serves as an entry point to the application.
-You can easily switch to the twin catalog or to any other module of the application.
+The dashboard is the entry point to the application. It offers the actions most users need first, a summary of your
+tenant and a suggested workflow.
 
-![twinstudio ID Generator](img/twinstudio_general_dashboard.png){: width='500' }
+![twinstudio dashboard](img/twinstudio_general_dashboard.png)
 
-Via **open digital twin from file** you can upload a twin from a \*.json, \*.xml or \*.aasx file.
-If the file contains multiple twins, you are presented a dialog to select the desired one.
-All submodels that are of type **template** will be filtered out and all contained files will be ignored.
-After the selection you will be redirected to the twinbuilder so you can start editing your twin.
+### Quick actions
 
-## Object Naming
+- **Create new Digital Twin** opens the [twin creation wizard](studio-twin-builder.md#twin-creation-wizard).
+- **Load Digital Twin from storage medium** opens a twin from an **AASX**, **JSON** or **XML** file, or from the
+  clipboard. One Asset Administration Shell environment per file.
+- **Import Submodel** adds a submodel from a file or the clipboard to your catalogue. The submodel is validated first,
+  and any problems found are shown to you before anything is stored.
 
-The AAS metamodel offers various options for selecting a display name for its objects. All of these options are
-optional data fragments, i.e., it cannot be assumed that an object to be displayed actually has the desired
-information. Many of the options are also language-dependent, and it is uncertain whether data records are actually
-maintained for certain languages.
+![Load a twin from a file](img/twinstudio_general_upload_twin.png){: width='700' }
 
-For twinstudio — or any user interface in this sense — a certain hierarchy of fallbacks is required to determine the
-best option for naming the respective object. This is the only way to ensure, regardless of data quality, that a
-object name is available at all, which ideally enables the user to recognize what they are dealing with.
+### Key figures
 
-In twinstudio the same object naming logic applies to the following AAS metamodel objects:
+The dashboard shows the same figures as the [statistics](studio-statistics.md) page for the last week: the number of
+shells, submodels, files and the storage used, each with the change over that period. Select **View Statistics of
+current Tenant** to open the full statistics page.
 
-- shells
-- concept descriptions
-- submodels
-- submodel elements
+### Recommended procedure
 
-The name of those objects is determined in the following order (first available value wins):
+A short reminder of the usual path through twinstudio: pick a template, fill the fields, publish. Each step links to the
+place where it is done.
 
-- Object's property *displayName*, language value in the following order:
-    - studio's language setting "preferred data language"
-    - studio's language setting "UI language"
-    - language "EN"
-- list index (only if object is a list element of a submodel list)
-- Object's property *idShort*
-- Object's property *id*
-- Object's Propropertyperty *displayName*, first existing value (can be of any language)
-- "Unknown Property" / "Unbekannte Eigenschaft"
+## User settings
 
-Explanation:
+Select your user name in the main menu to open your profile. Everything that belongs to you personally is set here.
 
-- The *displayName* is the preferred value for each object.
-    - Since this is data from the twin, we first use the data language selected by the user.
-    - The user interface language comes second, as the user obviously understands this as well.
-    - The last resort is EN, which is neither the data language nor the user interface language of the user, but is
-      nevertheless generally understood.
-- A submodel list item must not have an *idShort* (specification v3.0) and, as an SME, it also has no *id*.
-  Therefore, we use its list index as the name if no *displayName* is available.
-- For all other objects, an *idShort* is recommended, although this is not mandatory. Even though it is a technical
-  property, its value is in English in most cases and has semantic meaning. Therefore, we also consider it as a name.
-- Shells, submodels, and concept descriptions must have an *id*, so we use this as the last resort for these objects.
-- However, this does not apply to SMEs, as they do not have an *id*. The last option for SMEs is therefore any other
-  existing *displayName* value other than those mentioned above.
-- If none of these work, we use a constant for naming SMEs as a last resort.
+![twinstudio profile](img/twinstudio_general_profile.png)
 
-!!! note
-    Concept Description are not yet used by twinstudio for the time being.
-    It is planned tough to take them into consideration for determination of an object's display name as well (e.g.
-    *preferredName* of the data specification).
+### Account data
+
+Your name, e-mail address and how you signed in. With Microsoft Entra ID only the name and e-mail address are stored in
+twinstudio.
+
+### Organisation and licences
+
+The organisation you are working in, its ID, and the licences that apply to you. **Studio Access** is bound to the
+organisation, **Studio Creator** to your user account. The licence list tells you which features you may use.
+
+### Session and support
+
+The version of twinstudio you are working with, and the **Logout** button.
+
+### Language
+
+![twinstudio language settings](img/twinstudio_general_language.png)
+
+twinstudio supports **German** and **English** as user interface languages.
+
+**Language for Data Content** is separate from the interface language. It decides which variant of a multi-language
+value is shown first, for example in a nameplate or a description. Setting it to English means an English text is
+preferred wherever one exists, even if you read the interface in German.
+
+All language settings belong to your user account and are stored locally in your browser.
+
+### Tenant switch
+
+![twinstudio tenant switch](img/twinstudio_general_switchtenant.png)
+
+twinstudio can connect to several twinsphere cloud tenants, as long as you have access rights to them. Tenants are
+grouped by organisation. Select a tenant to load its content.
+
+The tenant you used last is remembered in your browser and used again the next time you sign in.
+
+## ID Settings
+
+Creating a digital twin needs several globally unique identifiers: one for the asset, one for the administration shell,
+and one for each submodel. twinstudio can generate them for you from a pattern you define.
+
+![twinstudio ID Settings](img/twinstudio_general_idgenerator.png){: width='900' }
+
+There is a separate switch and pattern for each of the three ID types:
+
+- **assets** (globalAssetId)
+- **asset administration shells** (aasId)
+- **submodels** (smId)
+
+Switch a generator on and enter a pattern such as `https://my-company-name.twinstudio.com/identifier/{ULID}`. Whenever
+an ID of that type is needed, twinstudio fills it in and no longer asks you for it.
+
+Every pattern must contain the `{ULID}` token exactly once. A ULID is a 128-bit identifier and is generated freshly each
+time. We recommend wrapping it in a URL built from your own domain, so the ID stays unique and readable.
+
+If the **asset** generator is active, the **aasId** pattern may use `{ASSET-ULID}` instead of `{ULID}`. The twin then
+gets the same identifier for both, with the difference that both values stay distinct strings.
+
+The **Available tokens** panel on the right lists the tokens you may use and what they mean.
+
+!!! note "ID patterns have tenant scope"
+    ID patterns are stored centrally in twinstudio and apply to the whole tenant, not only to your user account. Every
+    user creating a twin in that tenant gets IDs according to the same pattern.
 
 ## Drafts
 
-twinstudio is able to save your unfinished work as a so called *draft*.
-These *drafts* belong exclusively to the user who saved them. They cannot be accessed by anyone else.
-*Drafts* are stored in twinstudio and not in your twinsphere tenant/repository. Therefore, they may not yet be fully
-valid and may still contain validation errors.
+Unfinished work can be saved as a **draft**. Drafts belong to the user who saved them, are not visible to anyone else,
+and are stored in twinstudio rather than in your twinsphere tenant. A draft may therefore still be incomplete and
+contain validation errors.
+
+Drafts are listed in the [draft catalogue](studio-catalog.md#catalogue-of-drafts), where you can continue editing,
+export, duplicate, publish or delete them.
+
+Starting with version 0.11, files that belong to a draft are stored with the draft, including their metadata and a
+thumbnail. They are uploaded to your twinsphere tenant only when the twin is published.
+
+## How objects are named
+
+The AAS metamodel offers several ways to give an object a display name, and all of them are optional. A submodel may
+carry names in one language but not another, and a name may be missing altogether. To make sure something readable is
+always shown, twinstudio follows a fixed order and takes the first value that exists.
+
+This applies to shells, concept descriptions, submodels and submodel elements. The order is:
+
+1. The object's **displayName** in your preferred data language.
+2. The **displayName** in your interface language.
+3. The **displayName** in English (`en`).
+4. The **list index**, if the object is a list element of a submodel list.
+5. The object's **idShort**.
+6. The object's **id**.
+7. Any other **displayName** value, in whichever language it exists.
+8. A generic placeholder such as *Unknown Property*.
+
+A few details explain the order:
+
+- **displayName** comes first because it is data from the twin, written for a reader.
+- A submodel list element must not have an `idShort` (specification v3.0) and, as a submodel element, has no `id`
+  either. Its position in the list is used instead.
+- **idShort** is technical, but it is usually written in English and carries meaning, so it is preferred over the raw
+  **id**.
+- Shells, submodels and concept descriptions must have an `id`, which makes it a reliable last resort. Submodel elements
+  do not, so for them any remaining **displayName** is used before the placeholder.
+
+!!! note
+    Concept descriptions are not yet used to name objects. It is planned to consider them as well, for example the
+    *preferredName* of their data specification.
 
 ## Feedback
 
-Feel free to provide feedback to the application so we can continuously improve your experience
-and add features that matter most to you.
-You can open the feedback form on the right of the screen.
+You can send us feedback at any time with the **Feedback** button in the top right corner. Tell us what you like and
+what should be improved, and optionally attach a file.
 
-![twinstudio General IdGenerator](img/twinstudio_general_feedback.png){: width='400' }
+![twinstudio feedback](img/twinstudio_general_feedback.png){: width='700' }
+
+There is also a checkbox to include technical data about your current environment, such as your browser and the page
+URL. This helps us reproduce problems, and it is the only technical data sent unless you tick the box.
