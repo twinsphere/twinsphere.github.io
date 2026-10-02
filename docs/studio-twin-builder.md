@@ -477,25 +477,29 @@ twinstudio asks for confirmation first (**Export Anyways**).
     version 2.0.
 
 Instead of filling in the document metadata by hand, you can have a document analysed and added automatically. Select
-**Add Document** inside the Handover Documentation submodel and choose your file.
+**Add Document** at the top of the Handover Documentation submodel.
 
-![Start the document wizard](img/twinstudio_builder_document_wizard_open_button.png)
+![Start the document wizard](img/twinstudio_builder_document_wizard_open_button.png){: width='900' }
 
-![Upload the document](img/twinstudio_builder_document_wizard_upload_file.png)
+Drag a PDF file into the dialog or select the drop zone to choose one, then select **Analyse**.
 
-The file is uploaded and analysed.
+![Upload the document](img/twinstudio_builder_document_wizard_upload_file.png){: width='900' }
 
-![Analysis running](img/twinstudio_builder_document_wizard_upload_process.png)
+The dialog shows **Analysis in progress** until the result is ready.
 
-The wizard then proposes the languages, the description, the keywords and the classification of the document. Each
-proposal comes with a confidence value, so you can judge how reliable it is, and you can correct anything before you
-confirm.
+![Analysis running](img/twinstudio_builder_document_wizard_upload_process.png){: width='900' }
 
-![Confidence of the analysis](img/twinstudio_builder_document_wizard_confidence.png)
+The wizard then shows the title, the keywords, the description and the classification it determined for the document.
+Each value carries a confidence in percent, so you can judge how reliable it is. The values cannot be edited in the
+dialog. Select **Upload File** to upload the PDF. The button then changes to **Add element**, which adds the document
+to the submodel. You can also cancel the process instead.
 
-After the document has been added, the wizard takes you to the new element so you can review it.
+![Confidence of the analysis](img/twinstudio_builder_document_wizard_confidence.png){: width='900' }
 
-![Jump to the new element](img/twinstudio_builder_document_wizard_navigated.png)
+After the document has been added, the editor opens the new element so you can review it. Its name is the title the
+wizard determined.
+
+![Jump to the new element](img/twinstudio_builder_document_wizard_navigated.png){: width='900' }
 
 ## Branding
 
