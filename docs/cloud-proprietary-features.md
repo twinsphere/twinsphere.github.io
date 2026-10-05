@@ -13,6 +13,7 @@ In addition to the IDTA AAS API Specification, twinsphere offers supplementary p
 - [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) (experimental)
 - [Semantic Connector](cloud-semantic-connector.md)
 - [VDI 2770 Connector](cloud-vdi2770-connector.md)
+- [DCC Connector](cloud-dcc-connector.md) (experimental)
 - [Shell Filter Queries](cloud-shell-filter-queries.md)
 - [Statistics](cloud-statistics.md)
 - [ABAC (Attribute Based Access Control)](cloud-abac.md)
