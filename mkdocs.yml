@@ -35,6 +35,7 @@ nav:
       - SAP BNAC Fulfillment Service: cloud-bnac-fulfillment.md
       - Semantic Connector: cloud-semantic-connector.md
       - VDI 2770 Connector: cloud-vdi2770-connector.md
+      - DCC Connector: cloud-dcc-connector.md
       - Shell Filter Queries: cloud-shell-filter-queries.md
       - File Filter Queries: cloud-file-filter-queries.md
       - Statistics: cloud-statistics.md
