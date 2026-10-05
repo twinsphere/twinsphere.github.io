@@ -6,6 +6,47 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.30
+
+*Released on 30-Sep-2026*.
+
+**Breaking changes:**
+
+- **[PushService]** The SAP BNAC push target (`sap-bnac`) is removed and replaced by
+    [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md). The connection settings and credentials of an
+    existing `sap-bnac` target are moved to the BNAC configuration automatically. Its authorization group
+    cannot be moved, because it now belongs to a partner: add it to that partner with `PUT /bnac/configuration`.
+    Push jobs for the `sap-bnac` target that had not finished are marked `failed`
+- **[Events]** (experimental) The MQTT message contract changed. Messages are now a small, uncompressed
+    notification instead of a gzipped envelope carrying the entity. The `payload` field is gone; read the
+    current state over the REST API using the identifier from the topic. A new `eventId` field supports
+    duplicate detection, see [Events](cloud-events.md#message-contract)
+- **[Events]** (experimental) Submodel publishing is now opt-out instead of opt-in — the
+    `publish.submodels.semanticIds` allow list is replaced by `publish.submodels.blockedSemanticIds`, and any
+    existing configuration is discarded. **Expect a higher event volume**: every submodel change is published
+    unless you block it, including submodels that carry no semantic ID, see
+    [Events](cloud-events.md#configuration)
+
+**What's new:**
+
+- **[BNAC]** (experimental) New [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) — answers the
+    equipment requests your customers send you in SAP Business Network Asset Collaboration with the shells and
+    submodels in your tenant, automatically or step by step through the API
+- **[Events]** (experimental) Events are now published within seconds of a change instead of after up to
+    several minutes, see [Events](cloud-events.md)
+- **[SphereAPI]** New [VDI 2770 Connector](cloud-vdi2770-connector.md) endpoint for converting VDI 2770
+    documentation packages into Handover Documentation 2.0 submodels, including the documents they contain
+- **[Search]** Faster building of the search index
+
+**Fixes:**
+
+- **[API]** [Query Language](cloud-documentation.md#query-language) results no longer contain the shell and
+    submodel twinsphere uses internally for monitoring, in line with all other read endpoints
+- **[API]** A request with an HTTP method an endpoint does not support is answered with
+    `405 Method Not Allowed` instead of `500 Internal Server Error`
+
+---
+
 ## Cloud 1.29
 
 *Released on 15-Jul-2026*.
@@ -41,7 +82,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[Resolver]** New **AAS ID Resolution** — twinsphere platform central ID resolver for registering rules in which
     organization / tenant the data for a certain AAS or Asset ID can be found
 - **[PushService]** SAP Business Network Asset Collaboration (SAP BNAC) - support for Handover Documentation V2.0
-    and sharing equipment via BNAC Authorization Groups, see [Push Service](cloud-push-service.md) for more information
+    and sharing equipment via BNAC Authorization Groups
 - **[ManageAPI]** Tenant data endpoint now returns tenant **metadata** (display name, region, status, …) and
     **feature flags** (change events, search, semantic connector, viewer)
 - **[ABAC]** Check endpoint now accepts `$ANONYMOUS` to preview anonymous access and validates that a given
@@ -73,8 +114,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[API]** AAS 3.1 full API update for all minor specification changes up to the latest v3.1.2
 - **[API]** Referable file path validation enforcement and improved validation messages
 - **[ManageAPI]** Audit trail for organization management operations
-- **[PushService]** SAP Business Network Asset Collaboration (SAP BNAC) push target (experimental),
-    see [Push Service](cloud-push-service.md#sap-bnac-push-jobs-experimental) for more information
+- **[PushService]** SAP Business Network Asset Collaboration (SAP BNAC) push target (experimental)
 - **[General]** Engineering blog available at [https://blog.twinsphere.io](https://blog.twinsphere.io)
 - **[General]** Status page available at [https://status.twinsphere.io](https://status.twinsphere.io)
 

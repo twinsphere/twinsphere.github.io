@@ -56,3 +56,14 @@ blockquote {
 .wy-nav-side {
     scroll-padding-top: 40vh;
 }
+
+/* The theme keeps table cells on one line, so a table with long descriptions scrolls sideways instead of
+   wrapping. Code stays on one line, so that identifiers are never broken apart. */
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    white-space: normal;
+}
+
+.wy-table-responsive table td code {
+    white-space: nowrap;
+}
