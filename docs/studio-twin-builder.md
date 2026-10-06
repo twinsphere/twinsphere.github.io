@@ -15,13 +15,14 @@ The wizard guides you through the creation of a digital twin. Open it with **Cre
 
 ![Create a new digital twin](img/twinstudio_creation_wizard_basis.png)
 
-The first screen asks two things: what the new twin is based on, and which kind of asset it describes.
+When you create a digital twin, you first decide which kind of asset the twin is for and what you want to base it on.
+Duplicating a twin or starting from a type carries its data over, so you only enter what differs.
 
-| Basis | What it means | What you still enter |
+| Basis | What it means | What information you must provide |
 |---|---|---|
 | **New Digital Twin from scratch** | An empty twin with nothing but the basic information. | Everything |
 | **Duplicate Existing Twin** | A copy of an existing twin, with new identifiers. | Values you want to change |
-| **Use type asset as basis for creation** | A new instance built from an existing type twin. | Instance-specific values |
+| **Use type asset as basis for creation** | A new instance built from a type twin. | Instance-specific values |
 | **Use blueprint as basis for creation** | Not available yet | - |
 
 When you duplicate a twin, you search for the twin to copy. Enter at least 3 characters and press Enter. The search
@@ -42,6 +43,9 @@ so you can pick the right one even if you have not met the term before:
 - **Not Applicable** is for twins that do not represent a physical asset, such as a software service or a conceptual
   process.
 
+For more on how type and instance twins relate, see the
+[AAS guide on type and instance assets](https://industrialdigitaltwin.io/aas-guides-antora/AAS_Concepts/1.0/general.html#life-cycle-with-type-assets-and-instance-assets).
+
 ### Step 1: Basic information
 
 ![Wizard step 1: basic information](img/twinstudio_creation_wizard_step_1.png){: width='900' }
@@ -49,11 +53,11 @@ so you can pick the right one even if you have not met the term before:
 | Field | Notes |
 |---|---|
 | **Identifier** | The globally unique identifier of the twin. Generated when the ID generator is on |
-| **Display Name** | Required. The name the twin is listed under. Enter the English name; the language is fixed to `en` |
-| **Global Asset ID** | The identifier of the physical asset, which is usually *not* the twin's own identifier |
+| **Display Name** | Required. The name the twin is listed under. More languages can be added later in the editor |
+| **Global Asset ID** | Unique identifier of the physical asset, for example a MAC address or an ISBN |
 
-The explanation under each field tells you what it is for. If a value was generated, the field is marked **Generated**.
-Use **Edit Identifier** or **Edit Asset ID** to replace a generated value with your own.
+If a value was generated, the field is marked **Generated**. You can replace a generated value with your own with
+**Edit Identifier** or **Edit Asset ID**.
 
 ### Step 2: Description
 
@@ -85,7 +89,7 @@ Select **Create Digital Twin** to finish. You land in the editor with the new tw
 | Control | What it does |
 |---|---|
 | **Published**, **Draft saved**, **Unsaved changes** | The current save state of the twin |
-| Eye icon | Opens the twin in the twinsphere Viewer. Only shown for a published twin |
+| ![Eye icon](img/twinstudio_icon_eye.png){: height='20' } | Opens the twin in the twinsphere Viewer. Only available for a published twin |
 | **Save draft** | Stores your work as a private draft |
 | **Publish** | Writes the twin to your twinsphere tenant. Only available when the twin has no validation issues |
 | **More actions** | Opens a menu with **Export** and **Edit Submodels** |
@@ -98,24 +102,23 @@ The strip on the right edge shows the number of validation issues. Select it to 
 The left-hand side lists the submodels of the twin. Expand a submodel to reach its elements. The icon in front of each
 submodel tells you whether twinstudio found the template of the submodel in your tenant:
 
-- **Template found:** the icon shows a caption symbol. Hover over it to see the name and version of the template. The
-  editor can then validate the submodel and offer the elements the template defines.
-- **Template not found:** the icon shows a crossed-out caption symbol in yellow. Hover over it to see why. The tooltip
-  reads **Submodel Template not available** together with the template name, or **Unknown or Custom Submodel Template**
-  if twinstudio does not know the template at all. You can still edit the existing values, but the editor cannot tell
-  you which elements are missing.
+- ![Template found](img/twinstudio_icon_template_found.png){: height='20' } **Template found.** The editor validates
+  the submodel and offers the elements the template defines.
+- ![Template not found](img/twinstudio_icon_template_missing.png){: height='20' } **Template not found.** You can
+  still edit the existing values, but the editor cannot validate the submodel or tell you which elements are missing.
+  To fix this, [import the submodel template](studio-catalog.md#importing-a-submodel) into your tenant.
 
 Select **Edit Submodels** above the tree to add or remove submodels.
 
 ### The form
 
 The main area shows the element you selected in the tree, as a form. Which input is shown depends on the type of the
-element. A star after the name of a field marks it as mandatory. If the template gives the element a definition, an
-information icon next to the name shows that definition when you hover over it.
+element. Throughout twinstudio, required fields are flagged with an asterisk. If the template gives the element a
+definition, an information icon next to the name shows that definition when you hover over it.
 
-If a saved draft exists for the twin you open, twinstudio asks which version you want to work on: the twin from the
-repository (**Open Original**) or your draft (**Open Draft**). If you load the original and save it, the stored draft is
-overwritten.
+If a saved draft exists for the twin you open, twinstudio asks which version you want to work on. **Open Original**
+loads the twin as it is stored in your repository. **Open Draft** continues your unpublished work. Opening the
+original and saving replaces the stored draft; the twin in the repository changes only when you publish.
 
 ![Stored draft found](img/twinstudio_builder_stored_draft.png){: width='900' }
 
@@ -126,7 +129,8 @@ The root of the tree is the shell itself. It holds the data that identifies the 
 ![Editor shell metadata](img/twinstudio_builder_shell_metadata.png)
 
 This data is protected because changing it carelessly can break references elsewhere. Select **unlock to edit** to make
-it editable and confirm the warning with **Proceed**. Select **lock to protect** to protect it again.
+it editable and confirm the warning with **Proceed**. Select **lock to protect** to protect it again. twinstudio also
+locks the data again when you leave the editor.
 
 | Field | Meaning |
 |---|---|
@@ -154,13 +158,16 @@ The top of the dialog lists the submodels the twin currently has. Select the cro
 removal. It is shown struck through, and the arrow next to it undoes the removal. Nothing is removed until you confirm
 the dialog.
 
-New submodels come from one of three sources, one per option:
+You can create a new submodel from a submodel template, from an existing twin, or from an existing submodel.
 
-| Source | How it works |
+| Source | What it does |
 |---|---|
-| **From submodel template** | Search the templates in your tenant and add one with the plus icon |
-| **From existing twin** | Search for a twin, then choose which of its submodels to add. Enter at least 3 characters and press Enter. The search looks at the display name, the global asset ID, the idShort and the AAS ID. At most ten matches are listed |
-| **From existing submodel** | Enter the full submodel ID and select **Resolve**. Partial IDs are not supported. twinstudio tells you whether the ID is valid |
+| **From submodel template** | Adds a new submodel based on a template from your tenant |
+| **From existing twin** | Takes submodels from another twin, for example the nameplate of a similar product |
+| **From existing submodel** | Adds one submodel from your repository, identified by its full ID |
+
+Search for a twin by display name, global asset ID, idShort or AAS ID; enter at least 3 characters. Partial submodel
+IDs are not supported.
 
 ![Edit submodels dialog, existing twin](img/twinstudio_submodeldialog_existingtwin.png){: width='900' }
 
@@ -194,8 +201,9 @@ If the template specifies a cardinality of *one*, the last remaining element can
 
 ### Custom elements
 
-Some templates allow additional elements that the template itself does not describe. These are called *custom
-elements*. In the **Add element** menu they appear as **Custom Element**. Choosing one opens the **Create Custom
+Some templates, for example Digital Nameplate 3.0 or Technical Data 2.0, allow additional elements that the template
+itself does not describe. These are called *custom elements*. In the **Add element** menu they appear as
+**Custom Element**. Choosing one opens the **Create Custom
 Element** dialog, which has three steps:
 
 1. **Select Semantic** - choose the meaning of the new element. The best option is to select a concept description
@@ -209,15 +217,7 @@ Element** dialog, which has three steps:
 
 ![Create custom element, step 1](img/twinstudio_arbitrary.png){: width='900' }
 
-The types are grouped as follows. The dialog only offers the types the template allows, so the list can be shorter.
-
-| Group | Types |
-|---|---|
-| Text | Monolingual, Multilingual |
-| Number | Integer, Floating-point |
-| Range | Integer, Floating-point |
-| Date/Time | Date, Time, Date with Time |
-| Other | Boolean, Link, and File if the template allows files |
+The dialog only offers the types the template allows.
 
 ![Create custom element, step 3](img/twinstudio_arbitrary_type.png){: width='900' }
 
@@ -300,7 +300,8 @@ A file element points either to a file on your computer or to a file in the twin
 Select **Add file** to open the dialog and choose one of three sources:
 
 - **I want to upload a file** stores the file in the file repository and writes a reference into the element.
-- **I want to add a link to an external file** stores the link as the value.
+- **I want to add a link to an external file** stores only the link as the value, so you can refer to files hosted elsewhere.
+  The file is not uploaded to the file repository.
 - **I want to choose a file from twinsphere file repository** selects a file that is already stored, instead of
   uploading it again.
 
@@ -322,6 +323,9 @@ A range element has a minimum and a maximum.
 
 ![Range element](img/twinstudio_builder_range.png)
 
+!!! note
+    The AAS specification marks the range element as experimental, so its definition may change.
+
 If the template marks the element as mandatory, at least one of the two values has to be set. For numeric data types the
 editor reports an error if the maximum is smaller than the minimum.
 
@@ -329,8 +333,12 @@ If the template defines a unit for the range, the unit is shown next to the fiel
 
 ### References
 
-A reference element points somewhere else. Select **Add Reference** to open the **Set Reference** dialog, and then
-choose what kind of target you want:
+A reference element points somewhere else. It can point to another element of an AAS (a *model reference*) or to
+something outside the AAS, such as an ECLASS entry (an *external reference*). See the
+[AAS specification](https://industrialdigitaltwin.io/aas-specifications/IDTA-01001/v3.2/spec-metamodel/referencing.html)
+for details.
+
+Select **Add Reference** to open the **Set Reference** dialog, and then choose what kind of target you want:
 
 | Type | Target |
 |---|---|
@@ -344,16 +352,16 @@ choose what kind of target you want:
 
 For the current twin, select the target in the tree and confirm with **Set Reference**.
 
-![Reference, current twin, element selection](img/twinstudio_builder_reference_extended_current_twin_element.png){: width='900' }
+![Reference, current twin, element selection](img/twinstudio_builder_reference_extended_current_twin_element.png){:width='900'}
 
 ![Reference, current twin filled](img/twinstudio_builder_reference_collapsed_filled_current_twin.png)
 
 For a twin in twinsphere you first search for the twin. Enter at least 3 characters and press Enter. Select a twin from
 the list, confirm with **Choose Twin**, and then pick the submodel or element inside it. **Back** returns to the search.
 
-![Reference, twin in twinsphere, search](img/twinstudio_builder_reference_expanded_twin_in_twinsphere_shell.png){: width='900' }
+![Reference, twin in twinsphere, search](img/twinstudio_builder_reference_expanded_twin_in_twinsphere_shell.png){:width='900'}
 
-![Reference, twin in twinsphere, element selection](img/twinstudio_builder_reference_expanded_twin_in_twinsphere_element.png){: width='900' }
+![Reference, twin in twinsphere, element selection](img/twinstudio_builder_reference_expanded_twin_in_twinsphere_element.png){:width='900'}
 
 ![Reference, twin in twinsphere filled](img/twinstudio_builder_reference_collapsed_twin_in_twinsphere_filled.png)
 
@@ -447,9 +455,9 @@ as a draft, **Discard and close** drops them, and **Cancel** keeps you in the ed
 
 ![Closing with unsaved changes](img/twinstudio_builder_close_warning.png){: width='900' }
 
-If your permission to edit was revoked while you were working, for example because a licence or a role was removed, the
-draft can no longer be saved. twinstudio tells you so with the message **Draft cannot be saved** instead of losing the
-changes silently.
+If your permission to edit was revoked while you were working, for example because a
+[licence](management-licensing.md) or a role was removed, the draft can no longer be saved. twinstudio tells you so
+with the message **Draft cannot be saved** instead of losing the changes silently.
 
 ## Exporting a twin
 
@@ -472,12 +480,15 @@ twinstudio asks for confirmation first (**Export Anyways**).
 
 ## Adding a document with the Document AI wizard
 
+The Handover Documentation submodel requires every document to carry a classification according to VDI 2770 sheet 1.
+twinstudio provides an AI-based classification service for this. The Document AI wizard analyses a document and
+suggests its classification, title, keywords and description, so you do not have to enter them by hand.
+
 !!! warning
     The wizard only accepts PDF files, and it can only add documents to **Handover Documentation** submodels of
     version 2.0.
 
-Instead of filling in the document metadata by hand, you can have a document analysed and added automatically. Select
-**Add Document** at the top of the Handover Documentation submodel.
+To start, select **Add Document** at the top of the Handover Documentation submodel.
 
 ![Start the document wizard](img/twinstudio_builder_document_wizard_open_button.png){: width='900' }
 

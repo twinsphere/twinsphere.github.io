@@ -13,79 +13,20 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 - **[General]**
 
-    - Completely redesigned user interface. twinstudio now uses a dark colour scheme with consistent spacing,
-      typography and controls across all pages.
-    - New navigation. The main menu now contains **Dashboard**, **Catalogue** and **Statistics**, with the catalogue
-      sections nested underneath.
-    - The dashboard is now a working overview page. It offers the common starting actions, a summary of your tenant's
-      key figures and a suggested three-step workflow.
-    - User settings have moved to a dedicated **Profile** page. Account data, licences, interface language, data
-      language and the tenant switch all live there now.
+    - Completely redesigned user interface with a dark colour scheme. The catalogue, the twin creation wizard, the
+      editor and the new **Profile** page for your account and language settings follow the new design.
     - British English spelling throughout the interface and the user documentation.
-    - Importing a digital twin from the clipboard is available again.
-
-- **[Catalogue]**
-
-    - The twin catalogue offers a card view and a list view. Cards show the thumbnail, description and identifiers of
-      a twin at a glance.
-    - Submodels can be shown as cards or as a list.
-    - Rebuilt filter. Twin filters are now set in a dialog with three tabs: **Twin Data**, **Used Submodel Templates**
-      and **Nameplate Values**. The dialog shows the entries you have added so far on the right-hand side.
-    - The file catalogue, the file upload dialog and the file properties dialog follow the new design.
-    - Importing a submodel is available from the submodel catalogue and from the dashboard.
-
-- **[Builder]**
-
-    - Reworked twin creation wizard. You first choose a basis (**from scratch**, **duplicate an existing twin** or
-      **from a type**), then work through three steps: basic information, description and submodels.
-    - Every input in the wizard now carries an explanation of what it is for and an example.
-    - The editor, the submodel list dialog, the shell metadata form and the multi-language property dialog follow the
-      new design.
-
-**Fixes:**
-
-- **[Builder]** Fixed icons and tooltips in the twin import.
-- **[Builder]** Fixed the display of thumbnails, the submodel list and the "recently selected" list.
-- **[Builder]** Fixed several layout issues in the create twin dialog and the submodel list dialog.
-- **[Catalogue]** Fixed the alignment of twin cards, submodel pages and concept description pages with the new design.
-- **[General]** Fixed design inconsistencies on the profile page and the general navigation.
-
----
-
-## Studio 0.11.1
-
-*Released on 23-September-2026*.
-
-**Fixes:**
-
-- **[General]** The **Template Designer** entry is no longer shown outside development organisations.
-
----
-
-## Studio 0.11
-
-*Released on 22-September-2026*.
-
-**New Features:**
-
-- **[General]**
-
     - **Import Submodel**: upload a submodel from a file (**AASX**, **JSON** or **XML**) or read it from the clipboard.
       The submodel is validated before it is added and you are shown any problems it contains.
     - Roles are now assigned per organisation and per tenant. You only see the actions your role allows.
-    - Licence checks for your organisation and your user account. When a licence check fails, twinstudio now switches
-      tenant correctly instead of showing a broken page.
+    - Licence checks for your organisation and your user account now determine whether you have access to twinstudio
+      and the catalogue.
     - **Saved drafts can now carry files.** Files that belong to a draft are stored together with the draft, including
       their metadata and a thumbnail.
 
 - **[Catalogue]**
 
-    - **Create an instance from a type.** A type twin in the catalogue can be used as the basis for a new instance
-      twin. The nameplate values of the type are carried over.
-    - Drafts can be duplicated.
-    - Concept descriptions can be filtered, and the catalogue now shows which data specification and which concept
-      description a submodel element uses.
-    - Units are displayed for properties and ranges.
+    - Concept descriptions can be filtered.
     - The file catalogue shows and edits file properties (display name, classification and custom attributes) in a
       dedicated dialog.
 
@@ -93,15 +34,19 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
     - When adding a file element, you can now pick an existing file from the twinsphere file repository instead of
       uploading a new one.
+    - Units are displayed for properties and ranges.
 
 **Fixes:**
 
-- **[Builder]** Empty minimum and maximum values in a range are now stored as empty values instead of invalid ones.
+- **[General]** Importing a digital twin from the clipboard works again.
+- **[General]** The **Template Designer** entry is no longer shown outside development organisations.
+- **[Builder]** Deleting the minimum or maximum value of a range no longer makes the submodel invalid.
 - **[Builder]** Form choices are only grouped when the template defines more than one qualifier.
 - **[Builder]** The validation issue list shows issues at the correct position.
 - **[Catalogue]** The file filter dialog is clearer, and **Apply filter** stays disabled until something has changed.
 - **[Catalogue]** The concept description filter shows an empty result list instead of stale rows, and cancelling it no
   longer clears the filter that was already set.
+
 
 ---
 

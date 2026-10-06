@@ -3,7 +3,8 @@
 twinstudio is the editor of the twinsphere suite. It is a web application for creating, editing and organising the
 content of your twinsphere tenant: digital twins, submodels, concept descriptions and files.
 
-Nothing has to be installed. You sign in with your twinsphere ID in a browser.
+twinstudio 1.0 has been available since October 2026. Nothing has to be installed. You sign in with your twinsphere
+ID in a browser.
 
 ![twinstudio dashboard](img/twinstudio_general_dashboard.png)
 

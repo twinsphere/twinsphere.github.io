@@ -39,11 +39,6 @@ The dashboard shows the same figures as the [statistics](studio-statistics.md) p
 shells, submodels, files and the storage used, each with the change over that period. Select **View Statistics of
 current Tenant** to open the full statistics page.
 
-### Recommended procedure
-
-A short reminder of the usual path through twinstudio: pick a template, fill the fields, publish. Each step links to the
-place where it is done.
-
 ## User settings
 
 Select your user name in the main menu to open your profile. Everything that belongs to you personally is set here.
@@ -52,13 +47,13 @@ Select your user name in the main menu to open your profile. Everything that bel
 
 ### Account data
 
-Your name, e-mail address and how you signed in. With Microsoft Entra ID only the name and e-mail address are stored in
-twinstudio.
+Your name and e-mail address, taken from your twinsphere ID.
 
 ### Organisation and licences
 
 The organisation you are working in, its ID, and the licences that apply to you. **Studio Access** is bound to the
-organisation, **Studio Creator** to your user account. The licence list tells you which features you may use.
+organisation, **Studio Creator** to your user account. The licence list tells you which features you may use. For how
+licences are granted and assigned, see [twinsphere Licensing](management-licensing.md).
 
 ### Session and support
 
@@ -68,7 +63,7 @@ The version of twinstudio you are working with, and the **Logout** button.
 
 ![twinstudio language settings](img/twinstudio_general_language.png)
 
-twinstudio supports **German** and **English** as user interface languages.
+At the moment, twinstudio supports **German** and **English** as user interface languages.
 
 **Language for Data Content** is separate from the interface language. It decides which variant of a multi-language
 value is shown first, for example in a nameplate or a description. Setting it to English means an English text is

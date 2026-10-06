@@ -28,8 +28,7 @@ The active range is highlighted. Selecting one loads the data immediately.
 
 ### Custom range
 
-Enter a **From** and a **To** date and select **Apply**. The **From** date must be earlier than the **To** date;
-otherwise nothing happens and the previous range stays in place.
+Enter a **From** and a **To** date and select **Apply**.
 
 Selecting a date, or selecting a quick range afterwards, clears the highlight on the quick-range buttons, because the
 range no longer matches a preset.
@@ -101,5 +100,4 @@ one column per series. This is the fastest way to read a precise value or to cop
 
 ## Export
 
-Select **Export as PNG** to save the whole page, including the key figures and the active chart, as an image. The file
-is named `stats-{tenantId}-{YYYY-MM-DD}.png`.
+Select **Export as PNG** to save the whole page, including the key figures and the active chart, as an image.
