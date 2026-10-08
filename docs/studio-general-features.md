@@ -117,7 +117,7 @@ contain validation errors.
 Drafts are listed in the [draft catalogue](studio-catalog.md#catalogue-of-drafts), where you can continue editing,
 export, duplicate, publish or delete them.
 
-Starting with version 0.11, files that belong to a draft are stored with the draft, including their metadata and a
+Starting with version 1.0, files that belong to a draft are stored with the draft, including their metadata and a
 thumbnail. They are uploaded to your twinsphere tenant only when the twin is published.
 
 ## How objects are named
@@ -140,8 +140,8 @@ This applies to shells, concept descriptions, submodels and submodel elements. T
 A few details explain the order:
 
 - **displayName** comes first because it is data from the twin, written for a reader.
-- A submodel list element must not have an `idShort` (specification v3.0) and, as a submodel element, has no `id`
-  either. Its position in the list is used instead.
+- Contrary to other places in submodels, elements of submodel element lists not necessarily need an idShort
+  (specification v3.1 and higher)
 - **idShort** is technical, but it is usually written in English and carries meaning, so it is preferred over the raw
   **id**.
 - Shells, submodels and concept descriptions must have an `id`, which makes it a reliable last resort. Submodel elements
