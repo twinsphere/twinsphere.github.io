@@ -60,12 +60,12 @@ nav:
       - Release Notes DevKit: typed-aas-metamodels-release_notes.md
       - Release Notes Rulebook: typed-aas-metamodels-rulebook-release_notes.md
       - Release Notes Experimental: typed-aas-metamodels-experimental-release_notes.md
-  - Validators:
+  - Validator:
       - Overview: twinfix-overview.md
       - Release Notes: twinfix-release_notes.md
   - Tips & Tricks:
       - Common Validation Errors: tips-common-validation-errors.md
-copyright: Copyright &copy; 2025 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
+copyright: Copyright &copy; 2025-2026 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a>
 validation:
   omitted_files: warn
   absolute_links: warn
