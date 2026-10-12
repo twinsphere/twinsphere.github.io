@@ -46,7 +46,7 @@ nav:
       - Overview: studio-overview.md
       - General Features: studio-general-features.md
       - Statistics: studio-statistics.md
-      - Catalog: studio-catalog.md
+      - Catalogue: studio-catalog.md
       - Twin Builder: studio-twin-builder.md
       - Release Notes: studio-release-notes.md
   - Viewer:
@@ -82,7 +82,7 @@ plugins:
   - spellcheck:
       backends:
         - codespell:
-            dictionaries: [clear, rare, informal, usage, en-GB_to_en-US]
+            dictionaries: [clear, rare, informal, usage, en-GB]
       known_words: known_words.txt
       ignore_code: yes
       allow_unicode: yes

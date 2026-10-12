@@ -1,221 +1,295 @@
-# twinstudio Catalog
+# twinstudio Catalogue
 
-## General Information
+## What the catalogue is
 
-The catalog is a view on all the content of twinsphere like twins, submodel templates, concept description
-and more.
+The catalogue shows everything stored in the twinsphere tenant you are connected to: digital twins, submodels,
+concept descriptions, your own drafts and the files in the file repository. Each kind of content has its own page,
+and each page has its own controls.
 
-Each object type has its own catalog. Its records are displayed as a list. On most items you may invoke actions, like
-viewing or editing a twin or displaying the detailed definitions of a concept description.
+The catalogue pages share a common layout:
 
-If there are more entries than displayed (indicated by a *"+"* sign in the list header) a *load more* button is visible
-at the bottom of the list. Each load will add up to 50 entries.
+- A **toolbar** at the top with **Refresh**, the view switch, the number of entries and the actions available on that
+  page. **Refresh** reloads the first page of entries using the filters you have set.
+- The **filter rail** on the right. **Set filter** opens the filter dialog; the filter entries you have added are listed
+  underneath and can be removed one by one.
+- **Load more** at the bottom of the list, if more entries match than are currently shown. Each load adds up to 50
+  entries. The count in the toolbar tells you whether it refers to your whole tenant (*50+ Entries in this tenant*) or
+  to the current filter (*Entries matching the current filter*).
 
-![Catalog plus entries](img/twinstudio_catalog_plus_entries.png){: width='800'}
+Every **ID** column contains a copy button. It shows a shortened ID; select it to see the full value, and use the copy
+icon next to it to put it on your clipboard.
 
-Every catalog has a *refresh* button which reloads the first 50 entries with the selected
-filters if any are available and set.
+**Version** is only shown when the entry has a version in its administration. If it has none, a dash (*-*) is
+displayed. A missing revision is treated as *0*.
 
-Each **id** column contains a button that displays the shortened id.
-On click the full id is shown and can be copied to your clipboard.
+## Catalogue of digital twins
 
-![Catalog Id column](img/twinstudio_catalog_id.png){: width='400'}
+![Twin Catalogue, card view](img/twinstudio_catalog_twins_shells_cards.png)
 
-**Version** is only displayed if the version of the entry's administration is set,
-else there is just a *"-"* visible.
-If no revision is given it will be assumed as *0*.
+The twin catalogue is the main page of the catalogue. Switch between the **Cards** and **List** views with the buttons
+in the toolbar. Both offer the same actions; only the presentation differs.
 
-## Catalog of Twins
+![Twin Catalogue, list view](img/twinstudio_catalog_twins_shells.png)
 
-You can switch between cards and the table by using the buttons **Show as Table** and **Show as Card**.
-A card and a table column provide the same actions.
-Additionally a card can display the description and the thumbnail of an asset administration shell.
+The twin designation in both views is a processed value, derived from the shell in this order: **displayName**,
+**idShort**, **id**. A card additionally shows the description and the thumbnail of the twin, the asset kind
+(**Instance**, **Type** or **Not Applicable**), both identifiers, and the number of submodels it contains. The list view
+shows the same information in columns.
 
-You can switch between cards and the table by using the buttons **Show as Table** and **Show as Card**.
-A card and a table column provide the same actions.
-Additionally a card can display the description and the thumbnail of an asset administration shell.
+Select the submodel count to open a dialog listing the submodels of that twin with their basic details.
 
-![Twin Catalog - Shells - Cards](img/twinstudio_catalog_twins_shells_cards.png){: width='800'}
-![Twin Catalog - Shells](img/twinstudio_catalog_twins_shells.png){: width='800'}
+### Creating and importing twins
 
-On the right a **filter** for twins can be set via a dialog
+- **Create new Digital Twin** opens the [twin creation wizard](studio-twin-builder.md#twin-creation-wizard).
+- **Upload Twin** opens a twin from an **AASX**, **JSON** or **XML** file, or from the clipboard. If the file contains
+  more than one twin, you are asked which one you want. Submodels of type **template** are filtered out and the files
+  they contain are ignored. Afterwards you are taken to the editor.
 
-![Twin Catalog - Filter first page](img/twinstudio_catalog_twinfilter_page1.png){: width='400'}
-![Twin Catalog - Filter second page](img/twinstudio_catalog_twinfilter_page2.png){: width='400'}
-![Twin Catalog - Filter third page](img/twinstudio_catalog_twinfilter_page3.png){: width='400'}
-![Twin Catalog - Filter third page](img/twinstudio_catalog_twinfilter_result.png){: width='200'}
+Both buttons are only available with the **Studio Creator** licence.
 
-A filter can be created by adding elements to it.
-It will be applied if the dialog is closed by clicking the *apply filter* button.
+### Filtering twins
 
-Filters for the same element will be be combined with or and all together will be combined with and.
-All string values are used as regex matches.
-The type will be matched exactly.
-Year of construction entry will be matched with greater/lesser than the entered value.
+The **Asset Kind** facet in the filter rail is always visible and lets you narrow the list to instances, types, or
+twins without an asset kind with a single click.
 
-Each filter entry can be removed by clicking the cross symbol.
+For anything else, select **Set filter** to open the filter dialog. It has three tabs:
 
-The **submodel column** shows the count of submodels the respective twin has. A click opens a dialog listing them
-with some basic information.
+| Tab | Filters |
+|---|---|
+| **Twin Data** | Asset kind, global asset ID and AAS ID |
+| **Used Submodel Templates** | Twins that use a particular submodel template |
+| **Nameplate Values** | Manufacturer name, designation, article number, serial number, year of construction |
 
-The action represented by an **eye symbol** (or the "Show" button in the more menu) opens the twin in our
-[twinsphere Viewer](viewer-overview.md) for viewing all of its data in detail.
+![Twin filter, twin data](img/twinstudio_catalog_twinfilter_twindata.png)
 
-The action represented by a **pen symbol** (or the "Edit" button in the more menu) opens the twin in our
-[Twin Builder](studio-twin-builder.md) for editing.
+![Twin filter, used submodel templates](img/twinstudio_catalog_twinfilter_smt.png)
 
-![Twin Catalog](img/twinstudio_catalog_twins_moremenu.png){: width='200'}
+![Twin filter, nameplate values](img/twinstudio_catalog_twinfilter_nameplate.png){: width='1000' }
 
-The more menu offers two further features:
+Each entry you add appears on the right-hand side of the dialog as you build it up. Entries of the same kind are
+combined with *or*, and the three tabs are combined with *and*. Select **Apply filter** to apply the result, or
+**Clear all** to start again.
 
-- The **export** of twins opens a dialog where you can choose the format, the target,
-which submodels to include and if concept descriptions should be added
+Text filters find a match anywhere in the text, ignoring case. Year of construction is compared as a range, so
+*min* and *max* narrow the result from both sides.
 
-![Twin Catalog Export Twin](img/twinstudio_catalog_export_shell.png){: width='350'}
+The **Twin Designation** filter is not available yet. It is disabled because the underlying AAS query language does not
+support it at the moment.
 
-- The **duplication** of *instance* twins (not types).
-- The **deletion** of twins.
+### Actions on a single twin
 
-### Delete Twin Dialog
+The **more actions** menu on a card or a row offers:
 
-After clicking on the **deletion** entry, a dialog appears. There you can see which twin will get deleted.
-You also have the possibility to deselect certain submodels of the twin, if you do not want them to be deleted.
-Submodels which are referenced by other twins, cannot be selected for deletion. If you want to delete a type twin,
-you will get a warning about its implications.
+| Action | What it does |
+|---|---|
+| **Show** | Opens the twin in the [twinsphere Viewer](viewer-overview.md) to inspect all of its data |
+| **Edit** | Opens the twin in the [Twin Builder](studio-twin-builder.md) for editing |
+| **Export** | Opens the export dialog (see below) |
+| **Duplicate** | Creates a copy of the twin (see below) |
+| **Delete** | Deletes the twin (see below) |
 
-![Twin Catalog](img/twinstudio_catalog_twins_delete_twin_dialog.png){: width='350'}
+The eye and pencil icons on a card do the same as **Show** and **Edit**.
 
-### Duplication of Instance Twins
+![Twin actions](img/twinstudio_catalog_twins_moremenu.png){: width='900' }
 
-When duplicating an existing twin all of its data (shell and referenced submodels) are duplicated. New IDs are created
-and assigned to the copies. We highly recommend using the studio's
-[ID Generator feature](studio-general-features.md/#id-generator) here. Otherwise, you'll be asked to enter an AAS-ID
-and GlobalAssetID manually and we will use the aas-id value appended by "/sm/{ULID}" automatically for all new submodel
-IDs.
+### Exporting a twin
 
-## Catalog of Submodels
+![Export dialog](img/twinstudio_catalog_export_shell.png){: width='900' }
 
-![Twin Catalog - Submodels Submodel View](img/twinstudio_catalog_submodels_cards.png){: width='800'}
-![Twin Catalog - Submodels Table View](img/twinstudio_catalog_submodels_table.png){: width='800'}
+The export dialog asks four things:
 
-The Submodels tab of the Catalog lists all existing submodels, either instance or template,
-of the connected tenant in a card or table view.
+1. **Where to export to**: the clipboard, or a file download.
+2. **The format**: JSON, XML or AASX.
+3. **Which submodels to include.** *All Submodels* selects or clears the whole list at once.
+4. **Whether the concept descriptions should be included**.
 
-The **export** of a submodel is available as action in the more menu of each record,
-which opens a dialog to select format and destination for your export.
+Two restrictions apply:
 
-![Twin Catalog - Submodels Export](img/twinstudio_catalog_export_submodel.png){: width='350'}
+- **AASX** can only be selected when the target is **File**, and only for a twin that has been published and not changed
+  since. Publish the twin first, or export it from the catalogue instead.
+- Concept descriptions are only available for a twin that exists in the repository, because only then are they stored
+  there.
 
-!!! Note
-    The twin catalog of submodels is work in progress. There are more feature to come here.
+### Duplicating a twin
 
-## Catalog of Concept Descriptions
+**Duplicate** copies a twin with all of its data, including the referenced submodels. New identifiers are created for
+the copy.
 
-![CD Catalog](img/twinstudio_catalog_conceptdescriptions.png){: width='800'}
+We recommend setting up the [ID generator](studio-general-features.md#id-settings) before duplicating. Without it you
+are asked to enter an AAS ID and a global asset ID by hand, and every new submodel ID is derived automatically by
+appending `/sm/{ULID}` to the AAS ID.
 
-This catalog lists all concept descriptions available in the corresponding repository of your twinsphere tenant.
+### Deleting a twin
 
-Since a concept description may consist of multiple data specifications the according catalog column shows which types
-of specification are included in each record. Currently only the type *IEC61360* is recognized and displayed by name.
-Every other specification will be labeled as "unknown". [Please give us a hint](contact.md#support-channels) if you
-experience this value so we can improve our recognition here.
+![Delete dialog](img/twinstudio_catalog_twins_delete_twin_dialog.png){: width='1000' }
 
-If it is an *IEC61360* data specification you can inspect the details of it by clicking on the *eye* button.
+The delete dialog names the twin that will be removed and lists its submodels. Clear the checkbox of any submodel you
+want to keep. Submodels that are referenced by other twins cannot be selected for deletion, because deleting them would
+break those twins.
 
-The **export** of a concept description is available as action in the more menu of each record.
+Deleting a twin of asset kind **Type** shows an additional warning about the consequences.
 
-*Preferred Name*, *Short Name* and *Definition* display an initial value from
-the available languages according to following criteria:
+## Catalogue of submodels
 
-1. the data language
-2. containing the data language
-3. the ui language
-4. containing the ui language
-5. english (en)
-6. containing english (en)
+![Submodel Catalogue, card view](img/twinstudio_catalog_submodels_cards.png)
 
-You can select another language value by clicking on the corresponding language tag.
-Hovering over a tag will display an indicator above it.
-The selected language is highlighted with a gray background.
+The submodel page lists every submodel and submodel template in the tenant. It offers the same **Cards** and **List**
+views as the twin page.
 
-## Catalog of Drafts
+![Submodel Catalogue, list view](img/twinstudio_catalog_submodels_table.png)
 
-![Draft Catalog](img/twinstudio_catalog_drafts.png){: width='800'}
+A submodel card shows the description with the languages it is available in, the submodel ID, the type of the submodel
+(**Instance** or **Template**) and the template it is based on, if that template can be resolved. Submodels and
+templates are listed together; the table shows the same information in columns.
 
-Your personal **twin drafts** are shown here.
+### Importing a submodel
 
-They are sorted by the *last modified* column in descending order.
-The state column shows if your draft has still issues (issue count as tooltip) or is valid already.
+Select **Import Submodel** to add a submodel that was created elsewhere. You can drag a file onto the dialog or read the
+submodel from the clipboard.
 
-You may continue editing the twin draft by clicking on the **pen symbol** or choosing "**Edit**" in the more menu.
-This is as well where you may "**Delete**" the draft or "**Export**" it.
+![Import submodel](img/twinstudio_catalog_submodels_import.png){: width='1000' }
 
-For valid drafts only the more menu offers a "**Publish**" action. This will publish the twin to the connect
-twinsphere tenant's repository and delete the draft afterward.
+The submodel is validated before it is stored, and the problems found are shown to you first.
+
+### Exporting a submodel
+
+The **more actions** menu of a submodel or template opens the same export dialog as for twins, so you can choose the
+format and the target.
 
 !!! note
-    With introduction of the upcoming twinstudio modules **Template Designer** and **Blueprint Editor** further draft
-    types will become available and shown in this catalog as well.
+    The submodel catalogue is still being extended. More features are planned here.
 
-## Catalog of Files
+## Catalogue of concept descriptions
 
-This catalog lists all *files* of [twinsphere's file repository](cloud-documentation.md#file-repository).
+![Concept description catalogue](img/twinstudio_catalog_conceptdescriptions.png)
 
-The classification value is displayed according to
-VDI 2770 Blatt 1: 2020, see respective table at [Handover Documentation Submodel](https://industrialdigitaltwin.io/idta-submodel-templates/Handover%20Documentation/v2.0/index.html#_annex_b_how_does_the_submodel_handover_documentation_relates_to_the_submodel_intelligent_information_for_use).
-Values that are not in this list will be displayed as *invalid* and empty values are represented by a dash (*-*).
+This page lists all concept descriptions in the repository of your twinsphere tenant. Concept descriptions are the
+semantic definitions that the submodels in your tenant refer to.
 
-The file size is given in kilo bytes for values below 100 kB and in mega bytes if larger.
+The **Data Specification** column shows which kinds of specification a concept description contains. Only the type
+*IEC61360* is recognised and shown by name; anything else is labelled *unknown*.
+[Please tell us](contact.md#support-channels) if you come across such a value, so we can extend the recognition.
 
-![File Catalog](img/twinstudio_catalog_file_overview.png){:width='1000'}
+Select the specification chip to open the details of an *IEC61360* specification: preferred name, short name, unit,
+source of definition, data type, symbol, value format, level type, definition and the embedded data specification.
 
-The custom attributes column displays the amount of configured attributes. If greater than 0 it gets clickable. A popup
-dialog shows the keys and values of all custom attributes. An *edit* button enables you to directly edit them.
+The **more actions** menu offers **Export**.
 
-![Custom Attributes](img/twinstudio_catalog_file_customattributes.png){:width='400'}
+A concept description can carry its names and definitions in several languages. The values that are shown use the
+first available match in this order:
 
-Each file has a more menu (represented by three vertical dots) offering the following actions:
-*Download File*, *Copy File Path*, *Edit Properties* and in future iterations the option to *Delete*.
+1. your preferred data language
+2. a value containing your data language
+3. your interface language
+4. a value containing your interface language
+5. English (`en`)
+6. a value containing English
 
-![File Actions](img/twinstudio_catalog_file_actions.png){:width='400'}
+Select a language tag to switch to that language. The selected tag is highlighted.
 
-*Set Filter* opens a dialog which allows to filter the file list.  
-The *Display Name* and *File Name* filter check for the inclusion of text ignoring casing.  
-The two date selects are for start and end date.
-Start date the time 00:00:00 will be added and to the end date 23:59:59.  
-Added custom attributes will be matched exactly.
-If either a key or a value is empty this pair will be ignored for filtering the files.
+## Catalogue of drafts
 
-![Filterdialog](img/twinstudio_catalog_file_filterdialog.png){:width='600'}
+![Draft catalogue](img/twinstudio_catalog_drafts.png)
 
-### Upload File
+Your personal twin drafts are listed here, most recently modified first.
 
-To start an upload for a file you have to go to the file catalog an click on the upload button.
+| Column | Meaning |
+|---|---|
+| **Name** | The name of the draft |
+| **Version** | The version of the twin |
+| **Draft Type** | Currently always a twin draft |
+| **Created At** | When the draft was first saved |
+| **Last Modified** | When the draft was last changed |
+| **State** | **Valid**, or **Invalid** with the number of issues as a tooltip |
 
-![UploadButtonInCatalog](img/twinstudio_catalog_file_upload_button.png){:width='600'}
+The **Draft Type** switch also offers **Submodels** and **Blueprints**, but those draft types do not exist yet, so only
+twin drafts are listed today.
 
-First you have to choose a file by clicking on the drag and drop zone and choose the file from the dialog.
+The **Edit** button continues work on a draft. The **more actions** menu additionally offers **Delete**, **Export**,
+**Duplicate** and, for drafts without validation issues, **Publish**. Publishing transfers the twin to your twinsphere
+tenant and removes the draft afterwards.
 
-![UploadDialog](img/twinstudio_catalog_file_upload_dialog.png)
+Editing, duplicating, publishing and deleting a draft require the **Studio Creator** licence.
 
-You can add a file name, a display name and a classification to the file. You can also store user-defined attributes
-for the file.
-An attribute consists of a key and a value, which both must not be longer than 2048 characters.
-A key must be unique in the list of attributes.
-For example the key could be "type" and the value could be "logo".
-If you do this with every logo you could find all logos with the filter function in the file catalog.
+Drafts are private to you. Nobody else can see or edit them.
 
-### Edit File Properties
+## Catalogue of files
 
-To edit the properties of a file, you can click on the pencil icon or on the "Edit Properties" entry in the menu.
+![File catalogue](img/twinstudio_catalog_file_overview.png)
 
-![FilePropertiesEditButton](img/twinstudio_catalog_file_edit_buttons.png){:width='600'}
+This page lists all files in the [twinsphere file repository](cloud-documentation.md#file-repository). Files are the
+documents and images that can be attached to twins and submodels.
 
-You can change the display name and classification of the file. You can also store user-defined attributes for a file.
-An attribute consists of a key and a value, which both must not be longer than 2048 characters.
-A key must be unique in the list of attributes.
+| Column | Meaning |
+|---|---|
+| **File Name** | The name in the repository, with a preview of the file type |
+| **Display Name** | A descriptive name you can set yourself |
+| **Classification** | The document classification according to VDI 2770 sheet 1:2020 |
+| **Size** | The size of the file. Values are shown in kB below 100 kB and in MB above that |
+| **Custom Attributes** | How many custom attributes are set. Select the number to display them all |
+| **Uploaded** | When the file was stored |
 
-![FilePropertiesEditDialog](img/twinstudio_catalog_file_edit_properties_dialog.png){:width='600'}
+**Show only files uploaded by me** narrows the list to your own uploads.
 
-Each key and each value must be filled in, or the attribute must be removed completely.
-If the Save button is not activated or is deactivated when clicked, a validation rule has been violated.
+Classification values that are not part of the VDI 2770 list are shown as *invalid*. An empty value is shown as a dash
+(*-*).
+
+### Custom attributes
+
+Select the number in the **Custom Attributes** column to see all attributes of a file in a dialog. The **Edit** button
+there opens the [properties dialog](#editing-file-properties) directly.
+
+![Custom attributes](img/twinstudio_catalog_file_customattributes.png){: width='1000' }
+
+### Actions on a single file
+
+Each row has an **Edit Properties** button and a **more actions** menu:
+
+| Action | What it does |
+|---|---|
+| **Download File** | Downloads the file |
+| **Copy File Path** | Copies the twinsphere file path to your clipboard, for use in a *File* element |
+| **Edit Properties** | Opens the properties dialog (see below) |
+| **Delete** | Not available yet. Offered once file references can be checked before deletion |
+
+### Uploading a file
+
+Select **Upload File** in the toolbar to open the upload dialog.
+
+![File upload](img/twinstudio_catalog_file_upload_dialog.png){: width='1000' }
+
+Drag your file onto the drop area, or select it from a file dialog. The maximum file size is 50 MB.
+
+You can then set:
+
+- **Twinsphere File Name** without a file extension, if you want a different name in the repository.
+- **Display Name**, independent of the file name, to make the file easier to recognise.
+- **Document Classification** according to VDI 2770.
+- **Custom attributes**, up to 50 key and value pairs. Keys and values may each be up to 2048 characters long.
+
+All criteria are combined with *and*, so a file has to match every one of them. Custom attributes are matched exactly.
+If a key or a value is left empty, that pair is ignored.
+
+Custom attributes are free-form. A common pattern is a key such as `type` with a value such as `logo`, which later
+makes it easy to find every logo with the file filter.
+
+### Editing file properties
+
+Select **Edit Properties** in a row to change the display name, the classification and the custom attributes.
+
+![Edit file properties](img/twinstudio_catalog_file_edit_properties_dialog.png){: width='1000' }
+
+Every custom attribute needs both a key and a value, or it has to be removed completely. Keys must be unique. If **Save
+Properties** stays disabled, one of those rules has been broken.
+
+### Filtering files
+
+![File filter](img/twinstudio_catalog_file_filterdialog.png){: width='1000' }
+
+The file filter dialog offers:
+
+- **Display Name** and **File Name**, which find a match anywhere in the text, ignoring case.
+- **File Size**.
+- **Creation Date**, as a start and an end date. The start date is read as 00:00:00 and the end date as 23:59:59.
+- **Document Classification**.
+- **Custom attributes**. Add as many key and value pairs as you need.

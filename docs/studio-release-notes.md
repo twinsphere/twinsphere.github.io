@@ -5,6 +5,50 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 ---
 
+## Studio 1.0
+
+*Released on 01-October-2026*.
+
+**New Features:**
+
+- **[General]**
+
+    - Completely redesigned user interface with the twinsphere corporate identity colour scheme. The catalogue, the
+      twin creation wizard, the editor and the new **Profile** page for your account and language settings follow the
+      new design.
+    - Import AAS data: upload twins and submodels ... or read them
+      The AAS data is validated before it is added and you are shown any problems it contains.
+    - Role-based access: you now see only the actions your role permits
+    - Licence checks for your organisation and your user account now determine whether you have access to twinstudio
+      and the catalogue.
+    - Saved drafts can now carry files. Files that belong to a draft are stored together with the draft, including
+      their metadata and a thumbnail.
+
+- **[Catalogue]**
+
+    - Concept descriptions can be filtered.
+    - The file catalogue shows and edits file properties (display name, classification and custom attributes) in a
+      dedicated dialog.
+
+- **[Builder]**
+
+    - When adding a file element, you can now pick an existing file from the twinsphere file repository instead of
+      uploading a new one.
+    - Units are displayed for properties and ranges.
+
+**Fixes:**
+
+- **[General]** Importing a digital twin from the clipboard works again.
+- **[General]** The **Template Designer** entry is no longer shown outside development organisations.
+- **[Builder]** Deleting the minimum or maximum value of a range no longer makes the submodel invalid.
+- **[Builder]** Form choices are only grouped when the template defines more than one qualifier.
+- **[Builder]** The validation issue list shows issues at the correct position.
+- **[Catalogue]** The file filter dialog is clearer, and **Apply filter** stays disabled until something has changed.
+- **[Catalogue]** The concept description filter shows an empty result list instead of stale rows, and cancelling it no
+  longer clears the filter that was already set.
+
+---
+
 ## Studio 0.10
 
 *Released on 07-August-2026*.
@@ -147,7 +191,7 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 - **[Catalog]:**
 
-    - Introduced [Catalog of Files](studio-catalog.md#catalog-of-files):
+    - Introduced [Catalog of Files](studio-catalog.md#catalogue-of-files):
         - List all files stored in [twinsphere's File Repository](cloud-documentation.md#file-repository).
         - Applying filter criteria to catalog view like file size, creation date, classification, file/display name or
           any custom attribute value.
