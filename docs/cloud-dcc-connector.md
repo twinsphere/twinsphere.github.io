@@ -93,6 +93,7 @@ upload with the same `aasIdentifier` leaves the shell unchanged.
 | `401 Unauthorized` | The request is not authenticated |
 | `403 Forbidden` | You are not allowed to write the submodel, or the shell given in `aasIdentifier` |
 | `409 Conflict` | A resource that is created or updated was modified by another process in the meantime |
+| `413 Content Too Large` | The submodel produced from the certificate exceeds the submodel size limit |
 | `422 Unprocessable Content` | A quota of your tenant is exhausted |
 
 <!-- markdownlint-enable line-length -->
