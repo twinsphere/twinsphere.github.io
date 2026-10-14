@@ -110,9 +110,9 @@ upload with the same `aasIdentifier` leaves the shell unchanged.
 
 ## Limits
 
-Packages of up to 1 GiB are accepted. A larger package, or a package whose submodel would exceed the
-submodel size limit of 10 MiB, is rejected with `413 Content Too Large`. The 10 MiB limit is the same for
-every tenant and cannot be raised.
+Packages of up to 1 GiB are accepted; a larger package is rejected with `400 Bad Request`. A package whose
+submodel would exceed the submodel size limit of 10 MiB is rejected with `413 Content Too Large`. The 10 MiB
+limit is the same for every tenant and cannot be raised.
 
 The submodel grows with the **number of documents** a package describes, not with the size of the package,
 so the document count is what usually reaches the limit first - a package of a few hundred documents can
@@ -130,11 +130,11 @@ and its documents stored, so the rejection arrives at the end of the upload.
 | Status | Meaning |
 |--------|---------|
 | `200 OK` | The package was imported; the body contains the created or replaced submodel |
-| `400 Bad Request` | The request is malformed, the package does not meet the checks it was run against, or the given shell does not exist |
+| `400 Bad Request` | The request is malformed, the package exceeds 1 GiB or does not meet the checks it was run against, or the given shell does not exist |
 | `401 Unauthorized` | The request is not authenticated |
 | `403 Forbidden` | You are not allowed to write the submodel, or the shell given in `aasIdentifier` |
 | `409 Conflict` | A resource that is created or updated was modified by another process in the meantime |
-| `413 Content Too Large` | The package, or the submodel produced from it, exceeds the size limit |
+| `413 Content Too Large` | The submodel produced from the package exceeds the submodel size limit |
 | `422 Unprocessable Content` | A quota of your tenant is exhausted |
 | `503 Service Unavailable` | Too many uploads are in progress; retry after the number of seconds in the `Retry-After` header |
 
