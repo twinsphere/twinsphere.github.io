@@ -25,6 +25,7 @@ nav:
     - API: management-api.md
     - Roles: management-roles.md
     - Licensing: management-licensing.md
+    - ID Resolver: management-resolver.md
   - Cloud:
     - API Documentation: cloud-documentation.md
     - Proprietary Features:
