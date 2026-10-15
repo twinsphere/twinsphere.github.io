@@ -22,7 +22,8 @@ nav:
     - Service accounts: id-service-accounts.md
   - Management:
     - Overview: management-overview.md
-    - API: management-api.md
+    - Manage UI: management-ui.md
+    - Manage API: management-api.md
     - Roles: management-roles.md
     - Licensing: management-licensing.md
     - ID Resolver: management-resolver.md

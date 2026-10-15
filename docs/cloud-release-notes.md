@@ -6,9 +6,9 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
-## Cloud 1.30.1
+## Cloud 1.31
 
-*Released on 15-Oct-2026*.
+*Released on 16-Oct-2026*.
 
 **Breaking changes:**
 
@@ -255,7 +255,9 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
-## Cloud 1.19.1
+## Archive
+
+### Cloud 1.19.1
 
 *Released on 22-Oct-2025*.
 
@@ -263,9 +265,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[DataMgmt]** Introduced optimistic concurrency handling for most of our CRUD operations
 - **[ManageAPI]**  Added /me endpoint showing organizations and tenant assignments of logged in user
 
----
-
-## Cloud 1.19
+### Cloud 1.19
 
 *Released on 20-Oct-2025*.
 
@@ -275,9 +275,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[ManageAPI]** Added service account functionality (with basic secret rotation)
 - **[Bugfix]** Fixed /import validation to ignore File SME with empty value (was too strict before)
 
----
-
-## Cloud 1.18
+### Cloud 1.18
 
 *Released on 12-Aug-2025*.
 
@@ -292,9 +290,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
       and /attachment supports blobs and TFS only)
 - **[Bugfix]** Fixed encoding of location header value in operation PostSubmodel
 
----
-
-## Cloud 1.17
+### Cloud 1.17
 
 *Released on 11-Jul-2025*.
 
@@ -311,25 +307,17 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
     - Used internally for tenant management and automation
 - **[Security]** Established secure inter-service communication between all twinsphere services
 
----
-
-## Cloud 1.16.1
+### Cloud 1.16.1
 
 *Released on 09-Jul-2025*.
 
 - **[Filter]** Added further shell properties displayName, idShort and aas-id to [Filter Queries](cloud-shell-filter-queries.md)
 
----
-
-## Cloud 1.16
+### Cloud 1.16
 
 *Released on 13-Jun-2025*.
 
 - **[Filter]** Introduction of Filter Queries feature, see [documentation](cloud-shell-filter-queries.md) for more information
-
----
-
-## Archive
 
 ### Cloud 1.15
 
