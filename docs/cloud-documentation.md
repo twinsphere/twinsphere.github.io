@@ -631,7 +631,7 @@ Where `[N]` is a zero-based index for positional access and `[]` matches any pos
 
 | Field reference                                                   | Description                                       |
 |-------------------------------------------------------------------|---------------------------------------------------|
-| `$sm#kind`                                                        | Modelling kind (`Instance` or `Template`)         |
+| `$sm#kind`                                                        | Modeling kind (`Instance` or `Template`)          |
 | `$sm#category`, `$aas#category`                                   | Category                                          |
 | `$sm#administration.version`, `$aas#administration.version`       | Administrative version                            |
 | `$sm#administration.revision`, `$aas#administration.revision`     | Administrative revision                           |
