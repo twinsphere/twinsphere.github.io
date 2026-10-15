@@ -8,7 +8,7 @@ a QR code is enough to show a twin's public data.
 You register **resolution rules** for your organization. Each rule claims an ID prefix and names the tenant
 endpoints that serve the twins whose IDs start with it.
 
-The resolver works across all the whole twinsphere landscape: an ID is resolved against the rules of every 
+The resolver works across the whole twinsphere landscape: an ID is resolved against the rules of every
 organization, not just your own. This is why a prefix belongs to exactly one organization. The first
 organization to register it owns it.
 
@@ -31,8 +31,8 @@ The following terms are used throughout this page:
 - **The `organization-owner` role** in the organization. Only organization owners can view, change and check
   resolution rules. See [Roles](management-roles.md).
 - **At least one tenant** in the organization.
-- **Named discovery or registry instances** are *optional*: A rule can point to a named discovery or registry instance of a
-  tenant. See [Discovery](cloud-documentation.md#standard-explicit-discovery) and
+- **Named discovery or registry instances** are *optional*: A rule can point to a named discovery or registry
+  instance of a tenant. See [Discovery](cloud-documentation.md#standard-explicit-discovery) and
   [Shell Registry](cloud-documentation.md#standard-explicit-shell-registry) for how to get one.
 
 ## How resolution works
