@@ -17,7 +17,8 @@ There are two equivalent ways to manage your organization — every operation is
 - organizing users and service accounts via user groups
 - role-based access control (RBAC) at organization and cloud (per tenant) level, see [Roles](management-roles.md)
 - licensing: reviewing your organization's entitlements and assigning per-user license seats, see [Licensing](management-licensing.md)
-- AAS twinsphere-global ID resolution rules that map AAS ID or Asset ID prefixes to your organization's tenants
+- AAS twinsphere-global ID resolution rules that map AAS ID or Asset ID prefixes to your organization's tenants,
+  see [ID Resolver](management-resolver.md)
 
 ## Getting started
 
