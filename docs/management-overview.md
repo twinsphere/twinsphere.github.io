@@ -7,8 +7,8 @@ user groups, role-based access control (RBAC) and other features.
 There are two equivalent ways to manage your organization — every operation is available in both:
 
 - **Manage UI** — a web interface available at
-  [https://manage.twinsphere.io](https://manage.twinsphere.io).
-- **Management API** — the same operations are also available programmatically, see [API](management-api.md).
+  [https://manage.twinsphere.io](https://manage.twinsphere.io), see [Manage UI](management-ui.md).
+- **Management API** — the same operations are also available programmatically, see [Manage API](management-api.md).
 
 ## What you can manage
 
