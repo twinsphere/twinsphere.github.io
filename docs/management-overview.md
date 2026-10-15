@@ -7,8 +7,8 @@ user groups, role-based access control (RBAC) and other features.
 There are two equivalent ways to manage your organization — every operation is available in both:
 
 - **Manage UI** — a web interface available at
-  [https://manage.twinsphere.io](https://manage.twinsphere.io).
-- **Management API** — the same operations are also available programmatically, see [API](management-api.md).
+  [https://manage.twinsphere.io](https://manage.twinsphere.io), see [Manage UI](management-ui.md).
+- **Management API** — the same operations are also available programmatically, see [Manage API](management-api.md).
 
 ## What you can manage
 
@@ -17,7 +17,8 @@ There are two equivalent ways to manage your organization — every operation is
 - organizing users and service accounts via user groups
 - role-based access control (RBAC) at organization and cloud (per tenant) level, see [Roles](management-roles.md)
 - licensing: reviewing your organization's entitlements and assigning per-user license seats, see [Licensing](management-licensing.md)
-- AAS twinsphere-global ID resolution rules that map AAS ID or Asset ID prefixes to your organization's tenants
+- AAS twinsphere-global ID resolution rules that map AAS ID or Asset ID prefixes to your organization's tenants,
+  see [ID Resolver](management-resolver.md)
 
 ## Getting started
 

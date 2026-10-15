@@ -6,6 +6,59 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.31
+
+*Released on 16-Oct-2026*.
+
+**Breaking changes:**
+
+- **[ManageAPI]** The page size parameter of the audit trail endpoint
+    (`GET /api/v1/organizations/{organizationId}/audit-trail`) is renamed from `pageSize` to `limit`, in line
+    with all other paged endpoints. A request that still sends `pageSize` gets the default page size
+
+**What's new:**
+
+- **[ManageUI]** New **tenant UI** section: open a tenant from the organization overview to see one of following pages:
+    - **Overview**: the tenant's details with a connect guide
+    - **Statistics**: charts of the shells, submodels, concept descriptions and files of the tenant, and of its
+      data and file storage over time. Pick a time range from 24 hours to 5 years or set your own, zoom into the
+      charts, download the data as CSV, and share a view as a link
+    - **Shells**: basic view of all shells of the tenant
+    - **Queries**: run AAS Query Language queries against the shells or submodels of the tenant, starting from
+      the examples of the IDTA specification
+- **[ManageUI]** New **My Tenants** page: users who only have tenant roles land on the tenants they can access,
+    instead of the organization-level pages
+- **[ManageAPI]** Tenant administrators can manage the role assignments of the tenants they administer, and read
+    the users, user groups and service accounts of the organization, see
+    [Roles](management-roles.md#permission-matrix)
+- **[Resolver]** The Manage UI has a setup wizard for the two common cases, mapping asset IDs or AAS IDs to a
+    tenant, and labels each prefix as an AAS ID or asset ID prefix, see [ID Resolver](management-resolver.md)
+- **[SphereAPI]** The [DCC Connector](cloud-dcc-connector.md) links the created submodel to a shell given in the
+    new `aasIdentifier` form field. Access is now checked with [ABAC](cloud-abac.md), like the VDI 2770 Connector
+- **[API]** New [Query Language](cloud-documentation.md#twinsphere-extensions) fields for shells and submodels:
+    `kind` (submodels only), `category`, `administration.version`, `administration.revision`,
+    `administration.templateId`, `displayName` and `description`. These are twinsphere extensions, not part of
+    the AAS specification
+- **[API]** Faster [Query Language](cloud-documentation.md#query-language) filters with `$contains`,
+    `$ends-with` and `$regex` on shell IDs, global asset IDs and submodel IDs
+- **[SphereAPI]** The [Statistics](cloud-statistics.md) response tells when statistics were last collected
+    (`lastCollectedAt`)
+
+**Fixes:**
+
+- **[API]** The [Query Language](cloud-documentation.md#query-language) operators `$contains`, `$starts-with`
+    and `$ends-with` match `%`, `_` and `\` literally. Before, `%` and `_` acted as wildcards, so for example
+    `pump_01` also matched `pumpA01`
+- **[API]** An AASX export (`GET /serialization`) with a file reference that cannot be resolved, for example to
+    a file of another tenant, is answered with `400 Bad Request` instead of `500 Internal Server Error`
+- **[ManageAPI]** User IDs starting with `group@` are refused with `400 Bad Request` when inviting a user,
+    because they are reserved for user groups
+- **[ManageUI]** Users who signed up but were not invited to an organization yet see the "No organization
+    assigned" page with the ID to give to an organization owner, instead of a sign-in error
+- **[ManageUI]** After signing in again, users return to the page they were on instead of a page of raw data
+
+---
+
 ## Cloud 1.30
 
 *Released on 30-Sep-2026*.
@@ -202,7 +255,9 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
-## Cloud 1.19.1
+## Archive
+
+### Cloud 1.19.1
 
 *Released on 22-Oct-2025*.
 
@@ -210,9 +265,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[DataMgmt]** Introduced optimistic concurrency handling for most of our CRUD operations
 - **[ManageAPI]**  Added /me endpoint showing organizations and tenant assignments of logged in user
 
----
-
-## Cloud 1.19
+### Cloud 1.19
 
 *Released on 20-Oct-2025*.
 
@@ -222,9 +275,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[ManageAPI]** Added service account functionality (with basic secret rotation)
 - **[Bugfix]** Fixed /import validation to ignore File SME with empty value (was too strict before)
 
----
-
-## Cloud 1.18
+### Cloud 1.18
 
 *Released on 12-Aug-2025*.
 
@@ -239,9 +290,7 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
       and /attachment supports blobs and TFS only)
 - **[Bugfix]** Fixed encoding of location header value in operation PostSubmodel
 
----
-
-## Cloud 1.17
+### Cloud 1.17
 
 *Released on 11-Jul-2025*.
 
@@ -258,25 +307,17 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
     - Used internally for tenant management and automation
 - **[Security]** Established secure inter-service communication between all twinsphere services
 
----
-
-## Cloud 1.16.1
+### Cloud 1.16.1
 
 *Released on 09-Jul-2025*.
 
 - **[Filter]** Added further shell properties displayName, idShort and aas-id to [Filter Queries](cloud-shell-filter-queries.md)
 
----
-
-## Cloud 1.16
+### Cloud 1.16
 
 *Released on 13-Jun-2025*.
 
 - **[Filter]** Introduction of Filter Queries feature, see [documentation](cloud-shell-filter-queries.md) for more information
-
----
-
-## Archive
 
 ### Cloud 1.15
 
