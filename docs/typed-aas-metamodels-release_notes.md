@@ -8,6 +8,17 @@ The twinsphere.TypedAasMetamodels library follows [semantic versioning](https://
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.3.3
+
+*Released on 16-October-2026*.
+
+- **[TAM] [Bugfix]** Packaging no longer creates package relative paths (paths starting with `./`) for supplementary
+  files. Instead it now emits paths absolute to package root, always (`/`).
+- **[TAM] [Bugfix]** Validation now correctly checks whether package absolute and package relative paths correctly
+  resolve to files in the package.
+- **[Semantics] [Bugfix]** Deserialization of Digital Nameplate 3.0 from semantic model no longer fails with an error
+  on the `UriOfTheProduct` element.
+
 ## twinsphere.TypedAasMetamodels 1.3.2
 
 *Released on 29-July-2026*.
