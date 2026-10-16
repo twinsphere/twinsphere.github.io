@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://docs.aas.conplement.cloud/cloud-vdi2770-connector/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>VDI 2770 Connector - Documentation of twinsphere Suite by conplement AG</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "VDI 2770 Connector";
+        var mkdocs_page_input_path = "cloud-vdi2770-connector.md";
+        var mkdocs_page_url = "/cloud-vdi2770-connector/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../img/twinsphere-logo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact us</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../status/">Status</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quotas-and-limits/">Quotas and limits</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">twinsphere ID</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Users</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../id-registration/">Registration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../id-login/">Login</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../id-password-reset/">Password reset</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../id-service-accounts/">Service accounts</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Management</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-api/">API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-roles/">Roles</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../management-licensing/">Licensing</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cloud</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-documentation/">API Documentation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >Proprietary Features</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-proprietary-features/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-events/">Events</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-push-service/">Push Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-bnac-fulfillment/">SAP BNAC Fulfillment Service</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-semantic-connector/">Semantic Connector</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">VDI 2770 Connector</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#package-upload">Package upload</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#form-fields">Form fields</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#upload-a-package">Upload a package</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#strict-checking">Strict checking</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documents-from-the-package">Documents from the package</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#replacing-a-submodel">Replacing a submodel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#limits">Limits</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#status-codes">Status codes</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-shell-filter-queries/">Shell Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-file-filter-queries/">File Filter Queries</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-statistics/">Statistics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../cloud-abac/">ABAC (Attribute Based Access Control)</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-client-generation/">Client Generation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cloud-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Studio</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-general-features/">General Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-statistics/">Statistics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-catalog/">Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-twin-builder/">Twin Builder</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../studio-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Viewer</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-features/">Features</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../viewer-release-notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Development libraries (DevKit)</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-submodels/">Supported Submodels</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-validation/">Validation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-release_notes/">Release Notes DevKit</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-rulebook-release_notes/">Release Notes Rulebook</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-aas-metamodels-experimental-release_notes/">Release Notes Experimental</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Validator</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../twinfix-overview/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../twinfix-release_notes/">Release Notes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tips & Tricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips-common-validation-errors/">Common Validation Errors</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Documentation of twinsphere Suite by conplement AG</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cloud</li>
+          <li class="breadcrumb-item">Proprietary Features</li>
+      <li class="breadcrumb-item active">VDI 2770 Connector</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="vdi-2770-connector">VDI 2770 Connector</h1>
+<p>The twinsphere VDI 2770 connector turns a VDI 2770 documentation package into a Handover Documentation 2.0
+submodel in your twinsphere tenant. You upload the package as it is. twinsphere builds the submodel from
+the package metadata and stores the documents it contains as twinsphere files, which the submodel refers
+to. You do not have to convert your documentation to AAS yourself. The package format is defined by
+<a href="https://www.vdi.de/en/home/vdi-standards/details/vdi-2770-blatt-1-operation-of-process-engineering-plants-minimum-requirements-for-digital-manufacturer-information-for-the-process-industry-fundamentals">VDI 2770 Blatt 1&nbsp;⧉</a>.</p>
+<p>Refer to the Swagger documentation (available at <code>/sphere/swagger/index.html</code>) for detailed information
+on each parameter and return value.</p>
+<h2 id="package-upload">Package upload</h2>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Upload package</td>
+<td><code>POST</code></td>
+<td><code>/sphere/api/v1/vdi2770-connector</code></td>
+<td>Create or replace a Handover Documentation 2.0 submodel from a VDI 2770 package</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<h3 id="form-fields">Form fields</h3>
+<p>The request is sent as <code>multipart/form-data</code> with the following fields:</p>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>submodelId</code></td>
+<td>yes</td>
+<td>Identifier of the submodel to create or replace</td>
+</tr>
+<tr>
+<td><code>aasIdentifier</code></td>
+<td>no</td>
+<td>Identifier of an existing asset administration shell the submodel is linked to. Omit it to create the submodel without a link</td>
+</tr>
+<tr>
+<td><code>strict</code></td>
+<td>no</td>
+<td>Set to <code>true</code> to report findings the VDI 2770 standard tolerates. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>yes</td>
+<td>The VDI 2770 package</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code>submodelId</code> and <code>aasIdentifier</code> are passed as plain text identifiers. Do not base64-encode or
+otherwise transform them. This differs from the identifiers in the paths of the repository endpoints,
+which are encoded.</p>
+</div>
+<h3 id="upload-a-package">Upload a package</h3>
+<blockquote>
+<p><code>POST https://{twinsphereTenantURL}/sphere/api/v1/vdi2770-connector</code></p>
+</blockquote>
+<h4 id="example-request">Example Request</h4>
+<pre><code class="language-http">POST /sphere/api/v1/vdi2770-connector
+Authorization: Bearer {token}
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name=&quot;submodelId&quot;
+
+https://example.com/submodels/handover-documentation
+--boundary
+Content-Disposition: form-data; name=&quot;aasIdentifier&quot;
+
+https://example.com/shells/pump-4711
+--boundary
+Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;documentation.zip&quot;
+Content-Type: application/zip
+
+{binary content of the VDI 2770 package}
+--boundary--
+</code></pre>
+<h4 id="example-response-200-ok">Example Response (200 OK)</h4>
+<p>The response body is the submodel that was created or replaced.</p>
+<h2 id="strict-checking">Strict checking</h2>
+<p>Every package is checked against what the VDI 2770 standard requires before anything is stored.
+Setting <code>strict</code> to <code>true</code> adds checks for findings the standard itself tolerates: files that are
+contained in the package but not referenced by any document, document relationships that cannot be
+resolved within the package, and <code>DocumentVersion</code> entries that use the same language more than once.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A package that is accepted by default can still be rejected with <code>strict</code> set. Start without it,
+and switch it on when you want those additional findings reported.</p>
+</div>
+<h2 id="documents-from-the-package">Documents from the package</h2>
+<p>The documents contained in the package are stored as twinsphere files and referenced from the <code>File</code>
+elements of the resulting submodel. There are two ways to download them:</p>
+<ul>
+<li>With the standard attachment endpoint
+  <code>GET /api/v3.0/submodels/{submodelId}/submodel-elements/{idShortPath}/attachment</code>, which addresses a
+  document by the idShort path of its <code>File</code> element. Nothing has to be read out of the submodel body
+  beyond that path.</li>
+<li>With the file path held by the respective <code>File</code> element, through the regular
+  <a href="../cloud-documentation/#file-repository">file endpoints</a>: <code>GET /sphere/api/v1/files/{filePath}</code>, like any
+  other file in your tenant.</li>
+</ul>
+<p>Both are path-based endpoints, so the identifier or file path in the URL is base64-url-encoded, unlike the
+plain form fields of the upload.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No preview files are generated for the uploaded documents.</p>
+</div>
+<h2 id="replacing-a-submodel">Replacing a submodel</h2>
+<p>Uploading a package under a <code>submodelId</code> that already exists replaces that submodel with the content of
+the new package. Correcting a package and uploading it again is the supported way to update the submodel.</p>
+<p>Linking the same submodel to the same shell twice does not create a second reference, so repeating an
+upload with the same <code>aasIdentifier</code> leaves the shell unchanged.</p>
+<h2 id="limits">Limits</h2>
+<p>Packages of up to 1 GiB are accepted. A larger package, or a package whose submodel would exceed the
+submodel size limit of 10 MiB, is rejected with <code>413 Content Too Large</code>. The 10 MiB limit is the same for
+every tenant and cannot be raised.</p>
+<p>The submodel grows with the <strong>number of documents</strong> a package describes, not with the size of the package,
+so the document count is what usually reaches the limit first - a package of a few hundred documents can
+exceed it however small its files are. The submodel size is checked once the package has been transferred
+and its documents stored, so the rejection arrives at the end of the upload.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>A package has at most five minutes to reach the server. A transfer still running after that is cut and
+answered with <code>504 Gateway Timeout</code> or <code>499 Client Closed Request</code>, depending on the HTTP version used.</p>
+</div>
+<h2 id="status-codes">Status codes</h2>
+<!-- markdownlint-disable line-length -->
+
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200 OK</code></td>
+<td>The package was imported; the body contains the created or replaced submodel</td>
+</tr>
+<tr>
+<td><code>400 Bad Request</code></td>
+<td>The request is malformed, the package does not meet the checks it was run against, or the given shell does not exist</td>
+</tr>
+<tr>
+<td><code>401 Unauthorized</code></td>
+<td>The request is not authenticated</td>
+</tr>
+<tr>
+<td><code>403 Forbidden</code></td>
+<td>You are not allowed to write the submodel, or the shell given in <code>aasIdentifier</code></td>
+</tr>
+<tr>
+<td><code>409 Conflict</code></td>
+<td>A resource that is created or updated was modified by another process in the meantime</td>
+</tr>
+<tr>
+<td><code>413 Content Too Large</code></td>
+<td>The package, or the submodel produced from it, exceeds the size limit</td>
+</tr>
+<tr>
+<td><code>422 Unprocessable Content</code></td>
+<td>A quota of your tenant is exhausted</td>
+</tr>
+<tr>
+<td><code>503 Service Unavailable</code></td>
+<td>Too many uploads are in progress; retry after the number of seconds in the <code>Retry-After</code> header</td>
+</tr>
+</tbody>
+</table>
+<!-- markdownlint-enable line-length -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The submodel, the metadata of its documents and the link to the shell are stored together or not at
+all. Documents that were already uploaded when a later step fails remain stored, but no submodel
+refers to them.</p>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cloud-semantic-connector/" class="btn btn-neutral float-left" title="Semantic Connector"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cloud-shell-filter-queries/" class="btn btn-neutral float-right" title="Shell Filter Queries">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2025-2026 <a href="https://www.conplement.de/twinsphere" taget="_blank">conplement AG</a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cloud-semantic-connector/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cloud-shell-filter-queries/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
