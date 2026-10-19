@@ -6,6 +6,22 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.32
+
+*Not yet released*.
+
+**What's new:**
+
+- **[API]** [Implicit discovery](cloud-documentation.md#implicit-discovery) and the implicit
+    [shell](cloud-documentation.md#implicit-shell-registry) and
+    [submodel](cloud-documentation.md#implicit-submodel-registry) registries follow your [ABAC](cloud-abac.md)
+    policies, so every shell and submodel a caller may read can be found there, for example a public one.
+    Anonymous callers and callers without a role no longer get `401`/`403` on the lists: they get `200` with
+    only the entries they may read, which is empty without access. Callers with a role see the same results as
+    before
+
+---
+
 ## Cloud 1.31
 
 *Released on 16-Oct-2026*.
