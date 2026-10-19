@@ -30,6 +30,8 @@ Specification and are located at the top level of our api path:
 
 > https://*{twinsphereTenantURL}*/api/*{api_version}*/lookup/shellsByAssetLink
 
+Access follows your [ABAC](cloud-abac.md) policies: a caller only finds the shells they may read.
+
 ### Standard ("Explicit") Discovery
 
 Of course twinsphere also offers the official discovery service as specified. It is even possible to have multiple
@@ -76,6 +78,8 @@ Discovery Service Specification and are located at the top level of our api path
 
 > https://*{twinsphereTenantURL}*/api/*{api_version}*/shell-descriptors
 
+Access follows your [ABAC](cloud-abac.md) policies: a caller only finds the shells they may read.
+
 ### Standard ("Explicit") Shell Registry
 
 Of course twinsphere also offers the official Asset Administration Shell Registry service as specified. It is even
@@ -105,6 +109,8 @@ The endpoints of our Implicit Submodel Registry feature correspond to the IDTA r
 Discovery Service Specification and are located at the top level of our api path:
 
 > https://*{twinsphereTenantURL}*/api/*{api_version}*/submodel-descriptors
+
+Access follows your [ABAC](cloud-abac.md) policies: a caller only finds the submodels they may read.
 
 ### Standard ("Explicit") Submodel Registry
 
