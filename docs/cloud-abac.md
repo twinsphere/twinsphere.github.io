@@ -132,6 +132,11 @@ Some operations exhibit special behavior when ABAC policies are in effect:
   granted by the principal's ABAC policies -- nothing will be imported.
 - **Serialization by ID**: Returns `403 Forbidden` if the principal is not authorized to
   access the requested resource. This is an explicit opt-in operation, not a filter.
+- **Implicit discovery and registries**: The [implicit discovery](cloud-documentation.md#implicit-discovery)
+  and the implicit [shell](cloud-documentation.md#implicit-shell-registry) and
+  [submodel](cloud-documentation.md#implicit-submodel-registry) registries behave like the shells and
+  submodels they are derived from: lists only contain what the principal may read, and a single entry
+  returns `403 Forbidden` if the principal may not read it.
 - **Files**: File contents are always filtered based on the principal's access rights. Any
   files the principal cannot access are **replaced with a placeholder access-denied file**.
 
