@@ -12,13 +12,13 @@ Here is a list of all available roles and their permissions. You can assign them
 | tenant-global-reader | cloud tenant | Read permissions on all endpoints |
 | tenant-metadata-writer | cloud tenant | Read and write permissions on all registry, discovery and concept descriptions endpoints (AAS metadata) |
 | tenant-metadata-reader | cloud tenant | Read permissions on all registry, discovery and concept descriptions endpoints (AAS metadata) |
-| tenant-push-service-writer | cloud tenant | Read and write permissions for push service feature endpoints |
+| tenant-push-service-writer | cloud tenant | Read and write permissions for push service feature endpoints. Push jobs can export all AAS data of the tenant |
 | tenant-push-service-reader | cloud tenant | Read permissions for push service feature endpoints |
-| tenant-search-user | cloud tenant | Permissions on all search feature endpoints |
-| tenant-semantic-connector-reader | cloud tenant | Read permissions for the semantic connector feature endpoints |
-| tenant-semantic-connector-writer | cloud tenant | Read and write permissions for the semantic connector feature endpoints |
+| tenant-search-user | cloud tenant | Permissions on all search feature endpoints. Search results contain the classifications and technical properties of all shells of the tenant |
+| tenant-semantic-connector-reader | cloud tenant | Read permissions for the semantic connector feature endpoints. Can read any submodel of the tenant |
+| tenant-semantic-connector-writer | cloud tenant | Read and write permissions for the semantic connector feature endpoints. Can create and replace any submodel of the tenant |
 | tenant-bnac-fulfillment-viewer | cloud tenant | Read permissions for the [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) endpoints |
-| tenant-bnac-fulfillment-operator | cloud tenant | Read and write permissions for the [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) endpoints |
+| tenant-bnac-fulfillment-operator | cloud tenant | Read and write permissions for the [SAP BNAC Fulfillment Service](cloud-bnac-fulfillment.md) endpoints. Can deliver any shell of the tenant, with the submodels it references, to SAP BNAC |
 <!-- markdownlint-enable line-length -->
 
 ## Permission matrix
@@ -44,7 +44,9 @@ gets the combined permissions of all of them.
 
 <!-- markdownlint-enable line-length -->
 
-`R` stands for read access, `R+W` for read and write access, and `·` for no access.
+`R` stands for read access, `R+W` for read and write access, and `·` for no access. A `*` marks access that a role
+gets through a feature rather than through the area's own endpoints: it is not limited by that area's roles or by
+[ABAC](cloud-abac.md) policies. The footnotes say what each of these roles can reach.
 
 <!-- markdownlint-disable line-length -->
 
@@ -56,18 +58,33 @@ gets the combined permissions of all of them.
 | tenant-global-reader | · | · | R | R | R | R | R | R |
 | tenant-metadata-writer | · | · | · | R+W | · | · | · | · |
 | tenant-metadata-reader | · | · | · | R | · | · | · | · |
-| tenant-push-service-writer | · | · | · | · | R+W | · | · | · |
+| tenant-push-service-writer | · | · | R*² | R*² | R+W | · | · | · |
 | tenant-push-service-reader | · | · | · | · | R | · | · | · |
-| tenant-search-user | · | · | · | · | · | R | · | · |
-| tenant-semantic-connector-writer | · | · | · | · | · | · | R+W | · |
-| tenant-semantic-connector-reader | · | · | · | · | · | · | R | · |
-| tenant-bnac-fulfillment-operator | · | · | · | · | · | · | · | R+W |
+| tenant-search-user | · | · | R*³ | · | · | R | · | · |
+| tenant-semantic-connector-writer | · | · | R+W*⁴ | · | · | · | R+W | · |
+| tenant-semantic-connector-reader | · | · | R*⁵ | · | · | · | R | · |
+| tenant-bnac-fulfillment-operator | · | · | R*⁶ | · | · | · | · | R+W |
 | tenant-bnac-fulfillment-viewer | · | · | · | · | · | · | · | R |
 
 <!-- markdownlint-enable line-length -->
 
 ¹ A tenant administrator can read the users, user groups and service accounts of the organization, and manage the
 role assignments of the tenants it administers. Everything else in the Org area is reserved to organization owners.
+
+² Push jobs can export any shell and submodel of the tenant to a push target, together with the concept descriptions
+the exported submodels reference. Registries and discovery are not exported.
+
+³ Search results contain the classifications and the technical properties (names and values) of every shell.
+
+⁴ Can create and replace any submodel, including its security attributes.
+
+⁵ Can read any submodel in its semantic form.
+
+⁶ Delivering a fulfillment sends the mapped shell and every submodel it references to SAP BNAC. Any shell of the
+tenant can be mapped.
+
+ABAC policies restrict only the AAS data endpoints (shells, submodels, files). Grant the roles marked with `*` only
+to principals that may see all AAS data of the tenant, for example integration service accounts.
 
 The organization-owner role applies to every tenant of the organization. All other roles in the matrix are assigned
 per tenant and grant access to that tenant only.
