@@ -30,10 +30,16 @@ A **principal** is the entity requesting access. This can be:
 Policies can target specific principals or use special values:
 
 - `*` (wildcard) - Matches any **authenticated** principal
-- `$ANONYMOUS` - Matches **unauthenticated** (anonymous) requests
+- `$ANONYMOUS` - Matches **unauthenticated** (anonymous) requests. Authenticated principals match it too, so they
+  can always read what anonymous users can
 
 **Important**: The wildcard `*` only matches authenticated users. To allow anonymous access,
 you must explicitly use `$ANONYMOUS`.
+
+**Anonymous access is read-only**: a `$ANONYMOUS` policy can only grant `READ`. A policy that combines
+`$ANONYMOUS` with `WRITE`, `DELETE` or `*` is rejected with `400 Bad Request`. Creating, updating and deleting
+resources always requires authentication; anonymous requests to these endpoints are answered with
+`401 Unauthorized`.
 
 ### Actions
 
@@ -244,7 +250,7 @@ Some operations exhibit special behavior when ABAC policies are in effect:
 | `random@user.com` | READ | Shell 1 (berlin, high) | ❌ Denied | No policy matches |
 | (anonymous) | READ | Shell with visibility=public | ✅ Allowed | Matches Policy 4 ($ANONYMOUS principal) |
 | (anonymous) | READ | Shell with visibility=internal | ❌ Denied | Policy 3 only applies to authenticated users |
-| `alice@example.com` | READ | Shell with visibility=public | ❌ Denied | Policy 4 only applies to anonymous users |
+| `alice@example.com` | READ | Shell with visibility=public | ✅ Allowed | Matches Policy 4 ($ANONYMOUS also applies to authenticated users) |
 | `alice@example.com` (member of `group@factory-admins`) | READ | Shell with location=usa, confidentiality=secret | ✅ Allowed | Matches Policy 2 via group membership (wildcard confidentiality) |
 <!-- markdownlint-enable line-length -->
 
