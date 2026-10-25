@@ -5,14 +5,10 @@
     experimentation.
 
 !!! warning "Known limitations"
-    - **Automatic matching does not check the requesting partner.** When two partners send requests with the
-      same purchase order number and line, a shell prepared for one of them can be delivered to and shared with
-      the other. If you accept requests from more than one partner, use [manual processing](#manual-processing),
-      or make sure that your partners' purchase order data never overlaps. An improvement for this topic is
-      coming soon.
-    - **Documents do not reach SAP BNAC yet.** A delivery creates the equipment and a document for each document
-      of the Handover Documentation, but the files are not attached to these documents, and the documents are
-      not linked to the equipment. The delivery still succeeds. This is a known bug at the moment and we are working on it.
+    - **SAP BNAC shows one `DocumentVersion` per document of a delivery.** Of a document whose Handover
+      Documentation holds several `DocumentVersion`s, for example one per language, your customer sees only the
+      first. See [Document languages](#document-languages). This is not about the versions SAP BNAC adds when a
+      line item is delivered again: your customer gets each of those, see [Documents](#documents).
     - **SAP BNAC import limits apply.** SAP BNAC accepts packages smaller than 400 MB only.
 
 twinsphere Cloud offers first-class integration with SAP Business Network Asset Collaboration (SAP BNAC), so that
@@ -20,8 +16,8 @@ your customers receive the digital twins of the devices they ordered from you di
 asset administration shells you already maintain in twinsphere.
 
 In SAP BNAC, a customer who has ordered devices from you asks for their digital data by sending you
-an **equipment request**. The request lists one **line item** per device, identified by the purchase order and the
-line within it.
+an **equipment request**. The request lists one **line item** per device, identified by the device's ID Link when
+your customer enters one, and by the purchase order and the line within it.
 
 The SAP BNAC Fulfillment Service answers these requests from your twinsphere tenant. twinsphere picks up the
 equipment requests your customers send you, finds the shell for each line item, delivers it to SAP BNAC as
@@ -37,8 +33,9 @@ The following terms are used throughout this page:
 |------|---------|
 | Equipment request | A customer's request in SAP BNAC for the data of the devices it ordered from you |
 | Line item | One requested device within an equipment request |
+| ID Link | The device's identifier according to IEC 61406, the URL behind the QR code on its nameplate |
 | Equipment | The SAP BNAC record of a device, created from the shell and submodels twinsphere delivers |
-| Partner | A customer you accept equipment requests from, identified by its SAP BNAC business partner id |
+| Partner | A customer you accept equipment requests from. You name it by your own [Fulfillment Partner Id](#fulfillment-partner-id); SAP BNAC identifies it by its business partner id |
 | Authorization group | The SAP BNAC group equipment is shared into, so that only the partner of that group can see it |
 | Fulfillment | twinsphere's record of one equipment request: its state, its line items and what was delivered for each |
 
@@ -97,14 +94,15 @@ Content-Type: application/json
 
 {
   "bnacApiBaseUrl": "...",
-  "myBusinessPartnerId": "{your-business-partner-id}",
+  "myBnacBusinessPartnerId": "{your-business-partner-id}",
   "processing": "automatic",
   "autoFinalize": false,
   "partners": [
     {
-      "name": "Musterchemie GmbH",
-      "businessPartnerId": "{partner-business-partner-id}",
-      "authorizationGroupId": "{partner-authorization-group-id}"
+      "id": "musterchemie",
+      "bnacBusinessPartnerId": "{partner-business-partner-id}",
+      "authorizationGroupId": "{partner-authorization-group-id}",
+      "documentLanguages": ["de"]
     }
   ]
 }
@@ -115,12 +113,13 @@ Content-Type: application/json
 | Field | Required | Description | Hint |
 |-------|----------|-------------|------|
 | `bnacApiBaseUrl` | yes | Base URL of the SAP BNAC API | In the SAP BTP cockpit, open your subaccount → **Services** → **Instances and Subscriptions** → **Instances**, and view the service key of your SAP BNAC instance (the link in the **Credentials** column). Take the value of `endpoints.ain.url` |
-| `myBusinessPartnerId` | yes | Your own business partner id in SAP BNAC | In SAP BNAC, open the **Company Profile** app → **External IDs** and take the **Object ID**. It is a 32-character hexadecimal id |
+| `myBnacBusinessPartnerId` | yes | Your own business partner id in SAP BNAC | In SAP BNAC, open the **Company Profile** app → **External IDs** and take the **Object ID**. It is a 32-character hexadecimal id |
 | `processing` | no | `automatic` or `manual`, see [Processing modes](#processing-modes). Defaults to `automatic` | |
 | `autoFinalize` | no | Marks the equipment request as "done" from your side, as soon as every line item is answered. Must be `false` with `manual` processing. Defaults to `false` | |
-| `partners[].name` | yes | Your name for the partner, shown on its fulfillments | Free text, for example the company name the partner has in the SAP BNAC **Business Partners** |
-| `partners[].businessPartnerId` | yes | The partner's business partner id in SAP BNAC. Equipment requests are attributed to a partner by it, so it must be unique across partners | The partner's own id from its **Company Profile** app, so ask the partner for it. Or configure the other fields first: a request from a partner that is not configured yet appears as a `partner-not-configured` fulfillment |
+| `partners[].id` | yes | Your [Fulfillment Partner Id](#fulfillment-partner-id) for the partner, shown on its fulfillments and named by the shells meant for it. 3 to 128 lowercase letters, digits and single hyphens between them, unique across partners | Your own choice, for example `musterchemie` |
+| `partners[].bnacBusinessPartnerId` | yes | The partner's business partner id in SAP BNAC. Equipment requests are attributed to a partner by it, so it must be unique across partners | The partner's own id from its **Company Profile** app, so ask the partner for it. Or configure the other fields first: a request from a partner that is not configured yet appears as a `partner-not-configured` fulfillment |
 | `partners[].authorizationGroupId` | yes | The authorization group equipment for this partner is shared into | In SAP BNAC, open the **Network Authorizations** app → **Groups** and select the group; the id is part of the page URL |
+| `partners[].documentLanguages` | no | The languages of the handover documentation the partner receives, as 2- or 3-letter ISO 639 codes such as `de` or `eng`; region tags such as `en-US` are refused. Omitted or empty: all languages. See [Document languages](#document-languages) | Agree on it with the partner |
 
 <!-- markdownlint-enable line-length -->
 
@@ -130,6 +129,18 @@ Content-Type: application/json
 
 An equipment request from a business partner that is not in `partners` is recorded, but nothing is
 delivered for it. Add the partner to the configuration, and the request is processed with the next sync.
+
+#### Fulfillment Partner Id
+
+A partner has two ids. The `id` is your Fulfillment Partner Id: you choose it, and your shells name the partner
+they are meant for by it (see [Matching shells](#matching-shells)). The `bnacBusinessPartnerId` is the partner's
+id in SAP BNAC, by which an equipment request is attributed to the partner.
+
+Your shells carry the Fulfillment Partner Id, so treat it as permanent:
+
+- Renaming it leaves the shells that name the old id unmatched.
+- Never give an id to another `bnacBusinessPartnerId`: the shells meant for the first partner would answer the
+  requests of the other one.
 
 ### Set the credentials
 
@@ -165,7 +176,8 @@ Content-Type: application/json
 
 <!-- markdownlint-enable line-length -->
 
-The client secret is stored encrypted and is never returned.
+The client secret is stored encrypted and is never returned. Getting the configuration shows its first 6
+characters followed by a mask, or only the mask for a secret shorter than 12 characters.
 
 ## How a request is processed
 
@@ -182,7 +194,8 @@ In [manual processing](#manual-processing), the sync stops after reading, and yo
 
 Delivering a line item takes the following steps in SAP BNAC:
 
-1. The shell and the submodels it references are uploaded to BNAC as equipment.
+1. The shell and the submodels SAP BNAC imports are uploaded to BNAC as equipment, see
+   [Data requirements](#data-requirements).
 2. The equipment is published and shared into the partner's authorization group.
 3. The equipment is assigned to the line item.
 
@@ -253,9 +266,23 @@ succeed. It is absent once a later attempt succeeds.
 
 | Value | Meaning |
 |-------|---------|
-| `automatic` | Found by its shell extensions, see [Matching shells](#matching-shells) |
+| `automatic` | Found by its ID Link or its shell extensions, see [Matching shells](#matching-shells) |
 | `manual` | Pinned through the [mapping endpoint](#pin-a-shell) |
 | `external` | The line item already carried equipment in SAP BNAC that twinsphere did not deliver |
+
+`matchedOn` says what an automatic match rested on:
+
+<!-- markdownlint-disable line-length -->
+
+| Value | The shell |
+|-------|-----------|
+| `id-link` | has the line item's ID Link as its `globalAssetId` |
+| `purchase-order-and-operator-equipment-id` | names the purchase order, the line and the line item's operator equipment id |
+| `purchase-order` | names the purchase order and the line, and no operator equipment id |
+
+<!-- markdownlint-enable line-length -->
+
+`matchedOn` is set for `automatic` matches only.
 
 twinsphere never overwrites equipment it did not deliver. An `external` line item is shown as
 `equipment-assigned` and cannot be mapped or delivered. It returns to `unmatched` once the equipment is
@@ -272,6 +299,9 @@ why its last delivery did not succeed, or which difference the sync found, for e
 - **SAP BNAC reports equipment other than the one twinsphere assigned.** The line item keeps the error, so
   that you can check the line item in SAP BNAC.
 
+The `warnings` of a line item list what your customer receives differently from what the shell holds, see
+[Warnings](#warnings).
+
 A line item that SAP BNAC no longer reports is removed from the fulfillment.
 
 ## Processing modes
@@ -282,7 +312,8 @@ equipment requests on its own, or only when you ask it to.
 ### Automatic processing
 
 With `processing` set to `automatic`, every sync matches, delivers and, with `autoFinalize`, finalizes on
-its own. Mark your shells with the extensions below, and requests are answered without any further action.
+its own. Give your shells the ID Link of their device, or mark them with the extensions below, and requests are
+answered without any further action.
 
 Line items that cannot be answered stay open, and the sync tries again the next time. A line item whose
 delivery failed carries the reason in its `lastError` and is delivered again by the next sync.
@@ -293,8 +324,15 @@ that line item is corrected.
 
 #### Matching shells
 
-A sync finds the shell for a line item by the extensions on the shell. Add them to the shell itself, not to
-one of its submodels:
+A sync finds the shell for a line item by the line item's ID Link, or by the extensions on the shell.
+
+**ID Link.** Your customer can enter the device's ID Link on a line item in SAP BNAC, or scan it from the QR
+code on the nameplate. A shell whose `assetInformation.globalAssetId` is that ID Link answers the line item,
+without any of the extensions below. The two are compared exactly, including case, trailing slashes and
+percent-encoding. SAP BNAC takes the `globalAssetId` of a delivered shell as the ID Link of the equipment, so
+your customer finds the equipment under the ID Link they entered.
+
+**Extensions.** Add them to the shell itself, not to one of its submodels:
 
 <!-- markdownlint-disable line-length -->
 
@@ -303,6 +341,7 @@ one of its submodels:
 | `twinsphere.io/bnac/purchase-order` | yes | The purchase order number of the line item |
 | `twinsphere.io/bnac/purchase-order-line-item` | yes | The line within the purchase order |
 | `twinsphere.io/bnac/operator-equipment-id` | no | Your customer's own identifier for the device, when the line item names one |
+| `twinsphere.io/bnac/partner-id` | once you have more than one partner | The [Fulfillment Partner Id](#fulfillment-partner-id) of the partner the shell is meant for. With more than one partner, also required on a shell matched by its ID Link |
 
 <!-- markdownlint-enable line-length -->
 
@@ -312,22 +351,31 @@ one of its submodels:
   "extensions": [
     { "name": "twinsphere.io/bnac/purchase-order", "valueType": "xs:string", "value": "4500012345" },
     { "name": "twinsphere.io/bnac/purchase-order-line-item", "valueType": "xs:string", "value": "00010" },
-    { "name": "twinsphere.io/bnac/operator-equipment-id", "valueType": "xs:string", "value": "P-101" }
+    { "name": "twinsphere.io/bnac/operator-equipment-id", "valueType": "xs:string", "value": "P-101" },
+    { "name": "twinsphere.io/bnac/partner-id", "valueType": "xs:string", "value": "musterchemie" }
   ],
-  "assetInformation": { "assetKind": "Instance", "globalAssetId": "https://example.com/assets/pump-4711" }
+  "assetInformation": { "assetKind": "Instance", "globalAssetId": "https://id.example.com/0815/4711" }
 }
 ```
 
-A shell answers a line item:
+A blank extension value counts as no extension. Each shell answers at most one line item of a request. For every
+line item:
 
-- when both the purchase order and the line match exactly. They are compared as text, so `00010` and `10` are
-  different lines. Use the values exactly as your customer entered them in SAP BNAC.
-- and when it either names no operator equipment id, or the same one as the line item. A shell that names a different one
-  is meant for another device and is never used for this line item.
+1. **ID Link:** a shell whose `globalAssetId` is the line item's ID Link answers it, even when its extensions
+   name another purchase order or operator equipment id: the ID Link identifies the device itself.
+2. **Purchase order:** otherwise, a shell answers when both the purchase order and the line match exactly. They
+   are compared as text, so `00010` and `10` are different lines. Use the values exactly as your customer
+   entered them in SAP BNAC. A shell that names an operator equipment id the line item does not name is meant
+   for another device and is never used for it; one that names the line item's operator equipment id is
+   preferred over one that names none. This step also answers a line item whose ID Link no shell carries, or
+   whose ID Link's shell already answers another line item.
 
-A shell that names the line item's operator equipment id is preferred over one that names none. When several
-shells are equally suitable, the one with more `twinsphere.io/bnac/` extensions is used; the choice is
-always the same for the same shells.
+In both steps, a shell that names another partner is never used, and a shell that names no partner is used only
+while you have a single partner. When the partner rule is all that keeps shells from a line item, its `lastError` says
+so. When several shells are equally suitable, the one with more `twinsphere.io/bnac/` extensions is used; the
+choice is always the same for the same shells.
+
+Only its ID Link can match a line item that lacks the purchase order or the line.
 
 Matching only fills line items that have no shell yet. Changing the extensions of a shell later does not
 change a line item it already answers. To have such a line item matched again, [release](#release-a-shell)
@@ -336,9 +384,9 @@ its shell, or [pin](#pin-a-shell) another one.
 ### Manual processing
 
 With `processing` set to `manual`, the syncs still pick up new requests once an hour and keep every
-fulfillment in line with SAP BNAC, but they never change anything in SAP BNAC. Shells are not matched by
-their extensions. Each step is an operation you call yourself, so you see its outcome and its errors
-directly. `autoFinalize` must be `false` in this mode.
+fulfillment in line with SAP BNAC, but they never change anything in SAP BNAC. Shells are not matched
+automatically, neither by their ID Link nor by their extensions. Each step is an operation you call yourself, so
+you see its outcome and its errors directly. `autoFinalize` must be `false` in this mode.
 
 A typical client does the following:
 
@@ -346,7 +394,8 @@ A typical client does the following:
    fulfillment that has just been discovered has no line items yet; they appear with its first sync, shortly
    after.
 2. **Prepare the data:** create the shell and its submodels, see [Data requirements](#data-requirements). The
-   shell needs no BNAC extensions.
+   shell needs no BNAC extensions, but one that names another partner with `twinsphere.io/bnac/partner-id`
+   cannot be pinned.
 3. **Pin the shell** to the line item, see [Pin a shell](#pin-a-shell).
 4. **Deliver the line item**, see [Deliver a line item](#deliver-a-line-item), and follow the job until it has
    `succeeded` or `failed`.
@@ -354,20 +403,82 @@ A typical client does the following:
 
 ## Data requirements
 
-SAP BNAC creates the equipment from the AAS package twinsphere delivers. The package contains the shell,
-every submodel the shell references, and their concept descriptions. twinsphere sends it as it is; SAP BNAC
-validates it, and a package it does not accept fails the delivery with SAP BNAC's reason in `lastError`.
+SAP BNAC creates the equipment from the AAS package twinsphere delivers. The package contains the shell and
+those of its submodels SAP BNAC imports; every other submodel is left out, and so are the shell's references
+to it. A package SAP BNAC does not accept fails the delivery with SAP BNAC's reason in `lastError`.
 
-SAP BNAC requires the following submodels:
+<!-- markdownlint-disable line-length -->
 
-- **Nameplate V3.0** (SemanticId `https://admin-shell.io/idta/nameplate/3/0/Nameplate`), exactly one per shell.
-  SAP BNAC creates the equipment from it.
-- **Handover Documentation V2.0** (SemanticId `0173-1#01-AHF578#003`) for the documentation — recommended.
-- **Handover Documentation V1.2** (SemanticId `0173-1#01-AHF578#001`) is supported as well, but SAP BNAC
-  accepts only one `Document` in it. Prefer V2.0, which has no such limit.
+| Submodel | Delivered version |
+|----------|-------------------|
+| Digital Nameplate | V3.0 (SemanticId `https://admin-shell.io/idta/nameplate/3/0/Nameplate`), otherwise V2.0. Required: SAP BNAC creates the equipment from it |
+| Handover Documentation | V2.0 (SemanticId `0173-1#01-AHF578#003`), otherwise V1.2 (SemanticId `0173-1#01-AHF578#001`). SAP BNAC accepts only one `Document` in V1.2, so prefer V2.0 |
+| Technical Data | V2.0 |
+
+<!-- markdownlint-enable line-length -->
+
+Only the highest version of each submodel is delivered, and only one submodel of each, so a shell with
+two of the delivered version is refused with an error on the line item, and so is a shell without a nameplate.
+Other submodels, for example a Carbon Footprint, are left out, because SAP BNAC would ignore them.
 
 SAP BNAC identifies equipment by the serial number of the device. Delivering a shell again therefore updates
 the existing equipment instead of creating a second one.
+
+### Documents
+
+Your customer receives the documents of the Handover Documentation with the equipment, together with their
+files. Delivering a line item again adds a new SAP BNAC version of each document, and your customer gets every
+one of these versions, listed with its version number. The document SAP BNAC creates for the imported package itself
+is not shared.
+
+### Document languages
+
+With `documentLanguages` set, a partner receives only the handover documentation in its languages. The filter
+works on the `DocumentVersion`s of the Handover Documentation:
+
+- A `DocumentVersion` is delivered, together with its files, when one of its languages matches a configured
+  code exactly, ignoring case. A `DocumentVersion` in several languages is delivered whole.
+- A `DocumentVersion` that names no language is always delivered.
+- A document left without `DocumentVersion`s is left out.
+
+Write the codes as they appear in the documentation: `en` does not match `eng`. Handover Documentation V1.2
+allows three-letter codes, so list both when your data mixes them.
+
+Of the `DocumentVersion`s one delivery holds for a document, SAP BNAC shows only the first, with its title and
+language; your customer never sees the others. Without `documentLanguages`, your customer therefore sees
+whichever language comes first in your data, and of several revisions in the same language the first one. One
+language per partner gives a predictable result whenever your documentation has one `DocumentVersion` per
+language. The versions SAP BNAC adds when a line item is delivered again are not affected, see
+[Documents](#documents).
+
+### Warnings
+
+What SAP BNAC would reject the whole package for is refused before the upload, with a `lastError` on the line
+item that names every element to fix:
+
+- a File without a value, or one whose attachment no longer exists,
+- a Blob in any delivered submodel,
+- an attached file whose name has a space, the shell's thumbnail included.
+
+Everything else SAP BNAC takes, even where your customer then receives less than the shell holds. The delivery
+goes ahead, and the line item gets a warning for each kind of problem, listing every file or document it
+concerns:
+
+<!-- markdownlint-disable line-length -->
+
+| Code | When | What your customer receives |
+|------|------|-----------------------------|
+| `file-without-extension` | A file without a file extension, such as `Manual01` | No file, and none of the equipment's documents |
+| `file-not-in-package` | A file the package only references: an http(s) URL, any other value that is no attachment in twinsphere, or an attachment without a content type | The document without its content |
+| `file-name-not-supported` | A file name with characters such as umlauts | The document without its file |
+| `several-document-versions` | A document with more than one `DocumentVersion` in the delivered Handover Documentation, see [Document languages](#document-languages) | Only the first `DocumentVersion` |
+| `sap-import-warning` | A finding SAP BNAC reports on the import, such as a shell without a display name | Depends on the finding |
+
+<!-- markdownlint-enable line-length -->
+
+Warnings describe the latest delivery of the line item. The next delivery replaces them, and they are removed
+when the line item gives up its equipment. Unlike `lastError`, they never hold back `autoFinalize`. They are in
+every line item (`warnings: [{ "code": …, "message": … }]`) and in the result of the `deliver-item` job.
 
 ## Endpoints
 
@@ -403,7 +514,8 @@ the Sphere Server Swagger documentation on your tenant, at `/sphere/swagger/inde
 | Parameter | Description |
 |-----------|-------------|
 | `state` | Fulfillment state, see [Fulfillment states](#fulfillment-states-twinsphere-side) |
-| `partnerId` | Business partner id of the requester |
+| `partnerId` | [Fulfillment Partner Id](#fulfillment-partner-id) of the requesting partner |
+| `bnacBusinessPartnerId` | Business partner id of the requester in SAP BNAC, which also finds requests from partners that are not configured |
 | `equipmentRequestId` | Id of the equipment request in SAP BNAC |
 | `caseId` | Case number SAP BNAC shows for the equipment request |
 | `limit` | Page size, at most 50. Defaults to 25 |
@@ -425,8 +537,8 @@ Different parameters are combined, so a fulfillment has to match all of them.
       "equipmentRequestId": "{equipment-request-id}",
       "caseId": "1000123",
       "description": "Pumps for plant extension",
-      "requesterBusinessPartnerId": "{partner-business-partner-id}",
-      "partnerName": "Musterchemie GmbH",
+      "requesterBnacBusinessPartnerId": "{partner-business-partner-id}",
+      "partnerId": "musterchemie",
       "authorizationGroupId": "{partner-authorization-group-id}",
       "requestStatusCode": "5",
       "discoveredAt": "2026-09-28T09:15:02+00:00",
@@ -435,19 +547,27 @@ Different parameters are combined, so a fulfillment has to match all of them.
       "items": [
         {
           "identifier": "{item-id-1}",
-          "purchaseOrder": "4500012345",
-          "purchaseOrderLineItem": "00010",
-          "operatorEquipmentId": "P-101",
+          "requested": {
+            "idLink": "https://id.example.com/0815/4711",
+            "purchaseOrder": "4500012345",
+            "purchaseOrderLineItem": "00010",
+            "operatorEquipmentId": "P-101"
+          },
           "state": "equipment-assigned",
           "matchedShellId": "https://example.com/shells/pump-4711",
           "matchSource": "automatic",
-          "assignedEquipmentId": "{equipment-id}"
+          "matchedOn": "id-link",
+          "assignedEquipmentId": "{equipment-id}",
+          "warnings": []
         },
         {
           "identifier": "{item-id-2}",
-          "purchaseOrder": "4500012345",
-          "purchaseOrderLineItem": "00020",
-          "state": "unmatched"
+          "requested": {
+            "purchaseOrder": "4500012345",
+            "purchaseOrderLineItem": "00020"
+          },
+          "state": "unmatched",
+          "warnings": []
         }
       ]
     }
@@ -455,7 +575,8 @@ Different parameters are combined, so a fulfillment has to match all of them.
 }
 ```
 
-Fields without a value are left out of the response.
+Fields without a value are left out of the response. What your customer asked for on a line item is grouped
+under `requested`; the other fields describe twinsphere's answer.
 
 ### Syncs
 
@@ -498,6 +619,7 @@ A line item that was already delivered can be given another shell. It then retur
 shell is delivered in its place. Pinning is refused with `400 Bad Request` when:
 
 - the shell does not exist, or it already answers another line item of the same request,
+- the shell names another partner with `twinsphere.io/bnac/partner-id`,
 - the line item carries equipment twinsphere did not deliver (`external`),
 - the same shell was already delivered for the line item — [deliver](#deliver-a-line-item) the line item
   again instead,
@@ -517,6 +639,10 @@ open until you pin a shell.
 
 Queues the delivery of the line item's shell. Use it to deliver a pinned shell in manual processing, and to
 deliver a line item again after its shell or submodels changed, so that the equipment in SAP BNAC is updated.
+
+Before sending, the delivery checks again that the shell is meant for the partner. If it is not, the line item
+carries the reason in its `lastError`. A shell matched automatically is also released, and the line item returns
+to `unmatched`, as long as nothing was shared yet; a pinned shell stays.
 
 ### Finalize a request
 
@@ -566,7 +692,8 @@ header. Get the job from there until its `state` is `succeeded` or `failed`.
   "result": {
     "delivery": {
       "itemState": "equipment-assigned",
-      "assignedEquipmentId": "{equipment-id}"
+      "assignedEquipmentId": "{equipment-id}",
+      "warnings": []
     }
   }
 }
