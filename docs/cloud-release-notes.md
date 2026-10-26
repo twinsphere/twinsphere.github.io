@@ -10,8 +10,40 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 *Not yet released*.
 
+**Breaking changes:**
+
+- **[BNAC]** Partners are identified by a [Fulfillment Partner Id](cloud-bnac-fulfillment.md#fulfillment-partner-id)
+    you choose, and your shells name the partner they are meant for by it. In `PUT /bnac/configuration`,
+    `partners[].id` replaces `partners[].name`, `partners[].businessPartnerId` is renamed to
+    `partners[].bnacBusinessPartnerId` and `myBusinessPartnerId` to `myBnacBusinessPartnerId`. In fulfillments,
+    `partnerId` replaces `partnerName`, `requesterBusinessPartnerId` is renamed to `requesterBnacBusinessPartnerId`,
+    and the `partnerId` filter takes the Fulfillment Partner Id
+- **[BNAC]** The update removes the configured partners. Enter them again with `PUT /bnac/configuration`; until
+    then, every equipment request is `partner-not-configured` and nothing is delivered. Line items matched
+    automatically but not delivered yet are matched again
+- **[BNAC]** With more than one partner configured, a shell answers only the equipment requests of the partner it
+    names with the `twinsphere.io/bnac/partner-id` extension, so a shell prepared for one partner is never
+    delivered to another one ordering under the same purchase order, see
+    [Matching shells](cloud-bnac-fulfillment.md#matching-shells)
+- **[BNAC]** What your customer asked for on a line item is grouped under `requested`: `purchaseOrder`,
+    `purchaseOrderLineItem` and `operatorEquipmentId` move there from the line item itself
+
 **What's new:**
 
+- **[BNAC]** Line items are matched by the device's ID Link first: a shell whose `globalAssetId` is the line item's
+    ID Link answers it, and the purchase order is the fallback. `requested.idLink` shows the ID Link, and
+    `matchedOn` what an automatic match rested on, see [Matching shells](cloud-bnac-fulfillment.md#matching-shells)
+- **[BNAC]** `documentLanguages` per partner limits the handover documentation it receives to its languages, see
+    [Document languages](cloud-bnac-fulfillment.md#document-languages)
+- **[BNAC]** A delivery sends only the submodels SAP BNAC imports: Digital Nameplate V3.0 (otherwise V2.0),
+    Handover Documentation V2.0 (otherwise V1.2) and Technical Data V2.0, see
+    [Data requirements](cloud-bnac-fulfillment.md#data-requirements)
+- **[BNAC]** Line items carry `warnings` for what SAP BNAC accepts from a shell but your customer does not receive
+    as it is, for example a file whose name SAP BNAC cannot read. The result of a `deliver-item` job lists them
+    too, see [Warnings](cloud-bnac-fulfillment.md#warnings). A package SAP BNAC would reject as a whole, for
+    example because of a file name with a space, is refused before the upload, with the reason in `lastError`
+- **[BNAC]** The fulfillment list has a `bnacBusinessPartnerId` filter, which also finds the equipment requests
+    of partners that are not configured
 - **[API]** [Implicit discovery](cloud-documentation.md#implicit-discovery) and the implicit
     [shell](cloud-documentation.md#implicit-shell-registry) and
     [submodel](cloud-documentation.md#implicit-submodel-registry) registries follow your [ABAC](cloud-abac.md)
@@ -19,6 +51,14 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
     Anonymous callers and callers without a role no longer get `401`/`403` on the lists: they get `200` with
     only the entries they may read, which is empty without access. Callers with a role see the same results as
     before
+
+**Fixes:**
+
+- **[BNAC]** Your customer receives the equipment's documents with their files. Every document of the Handover
+    Documentation, every version SAP BNAC keeps of it from earlier deliveries, and their files are shared with
+    the partner; before, the files were not attached and the documents not shared
+- **[BNAC]** Rejected credentials and a refused import fail the sync or delivery right away with SAP BNAC's
+    reason, instead of after a timeout
 
 ---
 
