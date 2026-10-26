@@ -5,10 +5,11 @@
     experimentation.
 
 !!! warning "Known limitations"
-    - **SAP BNAC shows one `DocumentVersion` per document of a delivery.** Of a document whose Handover
-      Documentation holds several `DocumentVersion`s, for example one per language, your customer sees only the
-      first. See [Document languages](#document-languages). This is not about the versions SAP BNAC adds when a
-      line item is delivered again: your customer gets each of those, see [Documents](#documents).
+    - **SAP BNAC expects one `DocumentVersion` per document.** It accepts a document with several, for example
+      one per language, but your customer then sees only the one listed first in the Handover Documentation, with
+      its title, language and file. See [Document languages](#document-languages). This is not about the versions
+      SAP BNAC adds when a line item is delivered again: your customer gets each of those, see
+      [Documents](#documents).
     - **SAP BNAC import limits apply.** SAP BNAC accepts packages smaller than 400 MB only.
 
 twinsphere Cloud offers first-class integration with SAP Business Network Asset Collaboration (SAP BNAC), so that
@@ -444,8 +445,9 @@ works on the `DocumentVersion`s of the Handover Documentation:
 Write the codes as they appear in the documentation: `en` does not match `eng`. Handover Documentation V1.2
 allows three-letter codes, so list both when your data mixes them.
 
-Of the `DocumentVersion`s one delivery holds for a document, SAP BNAC shows only the first, with its title and
-language; your customer never sees the others. Without `documentLanguages`, your customer therefore sees
+SAP BNAC expects one `DocumentVersion` per document. Of several that one delivery holds for a document, your
+customer sees only the one listed first in the Handover Documentation, with its title, language and file, and
+never the others. Without `documentLanguages`, your customer therefore sees
 whichever language comes first in your data, and of several revisions in the same language the first one. One
 language per partner gives a predictable result whenever your documentation has one `DocumentVersion` per
 language. The versions SAP BNAC adds when a line item is delivered again are not affected, see
