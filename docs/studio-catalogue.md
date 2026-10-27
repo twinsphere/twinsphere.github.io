@@ -1,6 +1,6 @@
-# twinstudio Catalogue
+# twinstudio catalogue
 
-## What the catalogue is
+## What the Catalogue is
 
 The catalogue shows everything stored in the twinsphere tenant you are connected to: digital twins, submodels,
 concept descriptions, your own drafts and the files in the file repository. Each kind of content has its own page,
@@ -43,7 +43,7 @@ Select the submodel count to open a dialog listing the submodels of that twin wi
 - **Create new Digital Twin** opens the [twin creation wizard](studio-twin-builder.md#twin-creation-wizard).
 - **Upload Twin** opens a twin from an **AASX**, **JSON** or **XML** file, or from the clipboard. If the file contains
   more than one twin, you are asked which one you want. Submodels of type **template** are filtered out and the files
-  they contain are ignored. Afterwards you are taken to the editor.
+  they contain are ignored. Afterwards you are taken to the twin builder.
 
 Both buttons are only available with the **Studio Creator** licence.
 

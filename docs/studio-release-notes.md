@@ -191,7 +191,7 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
 - **[Catalog]:**
 
-    - Introduced [Catalog of Files](studio-catalog.md#catalogue-of-files):
+    - Introduced [Catalog of Files](studio-catalogue.md#catalogue-of-files):
         - List all files stored in [twinsphere's File Repository](cloud-documentation.md#file-repository).
         - Applying filter criteria to catalog view like file size, creation date, classification, file/display name or
           any custom attribute value.
@@ -279,7 +279,7 @@ Our twinstudio follows the semantic versioning format in the form major.minor.pa
 
     - Proper handling of all optional submodel elements (deletion and adding)
     - It is possible to open empty twins (shell without any SM references)
-    - Text in File submodel-element is capped to max editor width
+    - Text in File submodel-element is capped to max twin builder width
     - Fixed broken layout by enabling multiline form elements for MLPs and Properties
     - It is possible to add/remove elements to submodels which structurally do not adhere to their referenced
       template

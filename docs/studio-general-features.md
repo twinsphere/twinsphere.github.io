@@ -114,7 +114,7 @@ Unfinished work can be saved as a **draft**. Drafts belong to the user who saved
 and are stored in twinstudio rather than in your twinsphere tenant. A draft may therefore still be incomplete and
 contain validation errors.
 
-Drafts are listed in the [draft catalogue](studio-catalog.md#catalogue-of-drafts), where you can continue editing,
+Drafts are listed in the [draft catalogue](studio-catalogue.md#catalogue-of-drafts), where you can continue editing,
 export, duplicate, publish or delete them.
 
 Starting with version 1.0, files that belong to a draft are stored with the draft, including their metadata and a

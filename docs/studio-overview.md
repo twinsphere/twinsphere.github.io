@@ -23,7 +23,7 @@ ID in a browser.
 | I want to … | Read |
 |---|---|
 | Create and edit a digital twin | [Twin Builder](studio-twin-builder.md) |
-| Find, export or delete content | [Catalogue](studio-catalog.md) |
+| Find, export or delete content | [Catalogue](studio-catalogue.md) |
 | Change my language, switch tenant, or set up ID patterns | [General features](studio-general-features.md) |
 | See how my tenant has grown | [Statistics](studio-statistics.md) |
 | Know what changed in which version | [Release notes](studio-release-notes.md) |

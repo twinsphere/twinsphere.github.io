@@ -9,7 +9,7 @@ everything you enter against that metamodel.
 ## Twin creation wizard
 
 The wizard guides you through the creation of a digital twin. Open it with **Create new Digital Twin** on the
-[dashboard](studio-general-features.md#dashboard) or in the [twin catalogue](studio-catalog.md#catalogue-of-digital-twins).
+[dashboard](studio-general-features.md#dashboard) or in the [twin catalogue](studio-catalogue.md#catalogue-of-digital-twins).
 
 ### Choosing a basis
 
@@ -30,7 +30,7 @@ looks at the display name, the global asset ID, the idShort and the AAS ID. If t
 asks you to narrow the search.
 
 By default, all submodels of the copied twin are copied as well. If you want to link a submodel instead, change that in
-the editor afterwards. Submodels of kind *template* are not copied. twinstudio tells you when the twin you selected
+the twin builder afterwards. Submodels of kind *template* are not copied. twinstudio tells you when the twin you selected
 contains such submodels.
 
 The **Kind of asset** selection on the right explains the three options and gives a use case and an example for each,
@@ -64,7 +64,7 @@ If a value was generated, the field is marked **Generated**. You can replace a g
 ![Wizard step 2: description](img/twinstudio_creation_wizard_step_2.png){: width='900' }
 
 The description is optional. It helps you and others recognise the purpose of the twin later. Enter the English text
-here; more languages can be added in the editor.
+here; more languages can be added in the twin builder.
 
 ### Step 3: Submodels
 
@@ -72,17 +72,17 @@ here; more languages can be added in the editor.
 
 Select the submodel templates the new twin should start with. You can search the list, and the panel on the right shows
 the templates you have selected so far. If you select none, the twin is created empty and you can add submodels later in
-the editor. Each selected template is turned into a submodel instance, given a unique identifier and attached to the
+the twin builder. Each selected template is turned into a submodel instance, given a unique identifier and attached to the
 twin.
 
 We recommend switching on the [ID generator](studio-general-features.md#id-settings) for submodels before creating
 twins. Without it, every new submodel identifier is built by appending `/sm/{ULID}` to the identifier of the twin.
 
-Select **Create Digital Twin** to finish. You land in the editor with the new twin open.
+Select **Create Digital Twin** to finish. You land in the twin builder with the new twin open.
 
-## The editor
+## The twin builder
 
-![The editor](img/twinstudio_builder_editor_overview.png)
+![The twin builder](img/twinstudio_builder_editor_overview.png)
 
 ### The toolbar
 
@@ -93,7 +93,7 @@ Select **Create Digital Twin** to finish. You land in the editor with the new tw
 | **Save draft** | Stores your work as a private draft |
 | **Publish** | Writes the twin to your twinsphere tenant. Only available when the twin has no validation issues |
 | **More actions** | Opens a menu with **Export** and **Edit Submodels** |
-| **Close** | Leaves the editor |
+| **Close** | Leaves the twin builder |
 
 The strip on the right edge shows the number of validation issues. Select it to open the [issue list](#validation-issues).
 
@@ -103,10 +103,11 @@ The left-hand side lists the submodels of the twin. Expand a submodel to reach i
 submodel tells you whether twinstudio found the template of the submodel in your tenant:
 
 - ![Template found](img/twinstudio_icon_template_found.png){: height='20' } **Template found.** The editor validates
-  the submodel and offers the elements the template defines.
+  twin builder can then validate the submodel and offer the elements the template defines.
 - ![Template not found](img/twinstudio_icon_template_missing.png){: height='20' } **Template not found.** You can
   still edit the existing values, but the editor cannot validate the submodel or tell you which elements are missing.
-  To fix this, [import the submodel template](studio-catalog.md#importing-a-submodel) into your tenant.
+  if twinstudio does not know the template at all. You can still edit the existing values, but the twin builder cannot tell
+  you which elements are missing.
 
 Select **Edit Submodels** above the tree to add or remove submodels.
 
@@ -126,7 +127,7 @@ original and saving replaces the stored draft; the twin in the repository change
 
 The root of the tree is the shell itself. It holds the data that identifies the twin rather than the asset's data.
 
-![Editor shell metadata](img/twinstudio_builder_shell_metadata.png)
+![twin builder shell metadata](img/twinstudio_builder_shell_metadata.png)
 
 This data is protected because changing it carelessly can break references elsewhere. Select **unlock to edit** to make
 it editable and confirm the warning with **Proceed**. Select **lock to protect** to protect it again. twinstudio also
@@ -186,7 +187,7 @@ The same submodel can be added to a twin more than once.
 
 ## Adding and removing elements
 
-If the template of a submodel could be resolved, the editor knows which elements it allows and offers an
+If the template of a submodel could be resolved, the twin builder knows which elements it allows and offers an
 **Add element** menu. The menu is grouped into two sections:
 
 - **Add to Tree Navigation** adds a child node that also appears in the navigation tree. To remove it, open that node
@@ -327,7 +328,7 @@ A range element has a minimum and a maximum.
     The AAS specification marks the range element as experimental, so its definition may change.
 
 If the template marks the element as mandatory, at least one of the two values has to be set. For numeric data types the
-editor reports an error if the maximum is smaller than the minimum.
+twin builder reports an error if the maximum is smaller than the minimum.
 
 If the template defines a unit for the range, the unit is shown next to the field.
 
@@ -406,11 +407,13 @@ Every change triggers a validation of the twin.
 
 ![Validation issue list](img/twinstudio_issuelist_withpath.png){: width='380' }
 
-The number of issues is shown on the strip at the right edge of the editor. Select it to open the list, and select the
-arrow in the header of the list to collapse it again. Each entry shows the name of the element, the name of the submodel
-or element it belongs to above it, and a message that says what is wrong. The switch **Show issue path** adds the
-technical path of the element to every entry. Select an issue to jump to the element that caused it; the editor opens the
-element and shows the message at the field.
+The number of issues is shown on the strip at the right edge of the twin builder.
+Select it to open the list, and select the arrow in the header of the list to collapse it again.
+Each entry shows the name of the element, the name of the submodel or element it belongs to above it,
+and a message that says what is wrong.
+The switch **Show issue path** adds the technical path of the element to every entry.
+Select an issue to jump to the element that caused it;
+the twin builder opens the element and shows the message at the field.
 
 A twin with issues can be saved as a draft but not published.
 
@@ -419,7 +422,7 @@ A twin with issues can be saved as a draft but not published.
 ### Save draft
 
 **Save draft** stores your work as a draft. A short message confirms it. Drafts are private: only you can see, edit or
-delete them, and they are listed in the [draft catalogue](studio-catalog.md#catalogue-of-drafts).
+delete them, and they are listed in the [draft catalogue](studio-catalogue.md#catalogue-of-drafts).
 
 Files that belong to a draft are stored with the draft and only uploaded to twinsphere when the twin is published.
 
@@ -450,8 +453,8 @@ The toolbar always shows the current state of the twin:
 
 ### Closing with unsaved changes
 
-If you close the editor with unsaved changes, twinstudio asks what should happen to them. **Save and close** stores them
-as a draft, **Discard and close** drops them, and **Cancel** keeps you in the editor.
+If you close the twin builder with unsaved changes, twinstudio asks what should happen to them.
+**Save and close** stores them as a draft, **Discard and close** drops them, and **Cancel** keeps you in the twin builder.
 
 ![Closing with unsaved changes](img/twinstudio_builder_close_warning.png){: width='900' }
 
@@ -463,7 +466,7 @@ with the message **Draft cannot be saved** instead of losing the changes silentl
 
 Open **More actions** in the toolbar and select **Export**.
 
-![Editor more actions](img/twinstudio_builder_menu.png){: width='260' }
+![twin builder more actions](img/twinstudio_builder_menu.png){: width='260' }
 
 The export dialog lets you choose, in this order:
 
