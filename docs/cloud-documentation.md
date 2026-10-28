@@ -114,7 +114,19 @@ Access follows your [ABAC](cloud-abac.md) policies: a caller only finds the subm
 
 ### Standard ("Explicit") Submodel Registry
 
-> *Not yet available, coming soon...*
+twinsphere also offers the official Submodel Registry service as specified. Use it to register submodels from any
+source, including submodels hosted outside of twinsphere.
+
+All endpoints correspond to the IDTA full service profile SSP-001 and the bulk profile SSP-003 of the Submodel Registry
+Service Specification. They are located under the same instance name as your
+[Standard Shell Registry](#standard-explicit-shell-registry):
+
+> https://*{twinsphereTenantURL}*/***{instanceName}***/api/*{api_version}*/submodel-descriptors
+
+The submodel registry is independent of the shell registry: submodel descriptors are not copied into or from the
+`submodelDescriptors` of a shell descriptor.
+
+In order to obtain a new registry instance please contact our [support team](contact.md).
 
 ---
 
