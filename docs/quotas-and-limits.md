@@ -38,6 +38,7 @@ summed across all of a tenant's instances and reflect explicitly stored descript
 | Submodels | 500,000 |
 | Concept Descriptions | 15,000 |
 | Shell Descriptors (Registry) | 200,000 |
+| Submodel Descriptors (Registry) | 500,000 |
 | Asset Links (Discovery) | 200,000 |
 | Access Policies (ABAC) | 100 |
 

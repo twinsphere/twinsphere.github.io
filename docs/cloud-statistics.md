@@ -97,6 +97,7 @@ The response granularity is selected automatically based on the requested time r
 | `used_blob_storage` | Blob storage consumption in **bytes** | `null` |
 | `asset_links_count` | Number of asset links in a Discovery instance | Discovery instance name |
 | `shell_descriptors_count` | Number of shell descriptors in a Registry instance | Registry instance name |
+| `submodel_descriptors_count` | Number of submodel descriptors in a Registry instance | Registry instance name |
 
 !!! note "Monitoring objects"
     In each twinsphere tenant exist one shell and one submodel for operational monitoring purposes. You are not able
