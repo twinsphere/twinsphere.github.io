@@ -72,6 +72,18 @@ detailed information on each parameter and return value.
 A tenant has exactly one BNAC configuration. It specifies how twinsphere reaches SAP BNAC, your identity in BNAC, how
 equipment requests are processed, and which partners you accept equipment requests from.
 
+### Configure in the Manage UI
+
+In the [Manage UI](management-ui.md), open the tenant and go to **Settings** → **SAP BNAC**. The page takes you
+through the configuration in three steps: **Configuration**, **Credentials** and **Validate connection**, the
+[validation](#validate-the-configuration) of what you stored. Users with viewer access see the settings read-only.
+
+[![SAP BNAC settings in the Manage UI](img/twinsphere_manage_tenant_settings_bnac.png)](img/twinsphere_manage_tenant_settings_bnac.png)
+
+The fields are the same as in the API, described below.
+
+### Configure with the API
+
 <!-- markdownlint-disable line-length -->
 
 | Operation | Method | Endpoint | Description |
@@ -79,6 +91,7 @@ equipment requests are processed, and which partners you accept equipment reques
 | Get configuration | `GET` | `/sphere/api/v1/bnac/configuration` | Returns the configuration, with the client secret masked |
 | Set configuration | `PUT` | `/sphere/api/v1/bnac/configuration` | Creates or replaces the configuration, except the credentials |
 | Set credentials | `PUT` | `/sphere/api/v1/bnac/configuration/credentials` | Sets or rotates the credentials |
+| Validate configuration | `POST` | `/sphere/api/v1/bnac/configuration/validate` | Checks the stored configuration and credentials against SAP BNAC |
 
 <!-- markdownlint-enable line-length -->
 
@@ -179,6 +192,29 @@ Content-Type: application/json
 
 The client secret is stored encrypted and is never returned. Getting the configuration shows its first 6
 characters followed by a mask, or only the mask for a secret shorter than 12 characters.
+
+### Validate the configuration
+
+> `POST https://{twinsphereTenantURL}/sphere/api/v1/bnac/configuration/validate`
+
+Checks the stored configuration and credentials against SAP BNAC. It needs operator access, and it only reads in
+SAP BNAC, changing nothing there.
+
+In the response, the validation steps always come in this order, the last two once per partner:
+
+<!-- markdownlint-disable line-length -->
+
+| Step | Checks |
+|------|--------|
+| `credentials` | SAP BNAC's OAuth server issues a token for `authenticationBaseUrl`, `clientId` and `clientSecret` |
+| `api-access` | The SAP BNAC API responds at `bnacApiBaseUrl` with that token |
+| `business-partner` | `myBnacBusinessPartnerId` is a business partner in SAP BNAC |
+| `partner-business-partner` | The partner's `bnacBusinessPartnerId` is a business partner in SAP BNAC |
+| `partner-authorization-group` | The partner's `authorizationGroupId` is an authorization group in your SAP BNAC |
+
+<!-- markdownlint-enable line-length -->
+
+A step is `passed`, `failed` or `skipped`.
 
 ## How a request is processed
 
