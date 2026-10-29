@@ -8,57 +8,62 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ## Cloud 1.32
 
-*Not yet released*.
+*Released on 29-Oct-2026*.
 
 **Breaking changes:**
 
-- **[BNAC]** Partners are identified by a [Fulfillment Partner Id](cloud-bnac-fulfillment.md#fulfillment-partner-id)
-    you choose, and your shells name the partner they are meant for by it. In `PUT /bnac/configuration`,
-    `partners[].id` replaces `partners[].name`, `partners[].businessPartnerId` is renamed to
-    `partners[].bnacBusinessPartnerId` and `myBusinessPartnerId` to `myBnacBusinessPartnerId`. In fulfillments,
-    `partnerId` replaces `partnerName`, `requesterBusinessPartnerId` is renamed to `requesterBnacBusinessPartnerId`,
-    and the `partnerId` filter takes the Fulfillment Partner Id
-- **[BNAC]** The update removes the configured partners. Enter them again with `PUT /bnac/configuration`; until
-    then, every equipment request is `partner-not-configured` and nothing is delivered. Line items matched
-    automatically but not delivered yet are matched again
-- **[BNAC]** With more than one partner configured, a shell answers only the equipment requests of the partner it
-    names with the `twinsphere.io/bnac/partner-id` extension, so a shell prepared for one partner is never
-    delivered to another one ordering under the same purchase order, see
-    [Matching shells](cloud-bnac-fulfillment.md#matching-shells)
-- **[BNAC]** What your customer asked for on a line item is grouped under `requested`: `purchaseOrder`,
-    `purchaseOrderLineItem` and `operatorEquipmentId` move there from the line item itself
+*Note: The SAP BNAC Fulfillment Service is still experimental. Even though we try to avoid or minimize breaking
+changes, some of these are necessary for a future stable version.*
+
+- **[BNAC]** (experimental) **Partner ID instead of partner name**: to support filtering, automatic matching and future
+    UI features around BNAC, we are changing the main partner identification key to an ID instead of the loose,
+    string-based parameter `name`. The partner ID should be a short, readable, lowercase string. This results in a few
+    breaking changes at this point:
+
+    - **Configuration**: a few fields of the configuration are renamed, and they are migrated automatically. However,
+        the configured partners are removed, because you need to choose a new ID for each of them.
+    - **GET /bnac/fulfillments**: the `partnerId` parameter switches to the new partner ID, and the new
+        `bnacBusinessPartnerId` parameter filters by the partner IDs on the BNAC side.
+
+        - `GET /bnac/fulfillments?partnerId=oi4` filters by the fulfillment partner ID
+        - `GET /bnac/fulfillments?bnacBusinessPartnerId=9CD321554...` filters by the business partner ID in SAP BNAC
+
+- **[BNAC]** The "requested" information of fulfillment line items, `purchaseOrder`, `purchaseOrderLineItem` and
+    `operatorEquipmentId`, is moved under `requested`
 
 **What's new:**
 
-- **[BNAC]** Line items are matched by the device's ID Link first: a shell whose `globalAssetId` is the line item's
-    ID Link answers it, and the purchase order is the fallback. `requested.idLink` shows the ID Link, and
-    `matchedOn` what an automatic match rested on, see [Matching shells](cloud-bnac-fulfillment.md#matching-shells)
-- **[BNAC]** `documentLanguages` per partner limits the handover documentation it receives to its languages, see
-    [Document languages](cloud-bnac-fulfillment.md#document-languages)
-- **[BNAC]** A delivery sends only the submodels SAP BNAC imports: Digital Nameplate V3.0 (otherwise V2.0),
-    Handover Documentation V2.0 (otherwise V1.2) and Technical Data V2.0, see
-    [Data requirements](cloud-bnac-fulfillment.md#data-requirements)
-- **[BNAC]** Line items carry `warnings` for what SAP BNAC accepts from a shell but your customer does not receive
-    as it is, for example a file whose name SAP BNAC cannot read. The result of a `deliver-item` job lists them
-    too, see [Warnings](cloud-bnac-fulfillment.md#warnings). A package SAP BNAC would reject as a whole, for
-    example because of a file name with a space, is refused before the upload, with the reason in `lastError`
-- **[BNAC]** The fulfillment list has a `bnacBusinessPartnerId` filter, which also finds the equipment requests
-    of partners that are not configured
 - **[API]** [Implicit discovery](cloud-documentation.md#implicit-discovery) and the implicit
     [shell](cloud-documentation.md#implicit-shell-registry) and
     [submodel](cloud-documentation.md#implicit-submodel-registry) registries follow your [ABAC](cloud-abac.md)
-    policies, so every shell and submodel a caller may read can be found there, for example a public one.
-    Anonymous callers and callers without a role no longer get `401`/`403` on the lists: they get `200` with
-    only the entries they may read, which is empty without access. Callers with a role see the same results as
-    before
+    policies
+- **[BNAC]** Automatic matching per **ID Link** - line items that specify the ID Link are matched (in automatic mode)
+    to shells by their `globalAssetId` property. Purchase-order-based matching remains as a fallback / secondary
+    strategy. See [Matching shells](cloud-bnac-fulfillment.md#matching-shells).
+- **[BNAC]** Automatic matching per **Partner ID** extension - a shell containing the
+    `twinsphere.io/bnac/partner-id` extension will match only to that specified partner. With more than one partner
+    configured, only shells that name the partner are matched automatically (shells without the extension can still
+    be pinned). See [Matching shells](cloud-bnac-fulfillment.md#matching-shells).
+- **[BNAC]** **Handover documentation language filtering** - see
+    [Document languages](cloud-bnac-fulfillment.md#document-languages).
+- **[BNAC]** **Supported submodels only** - a delivery sends only the submodels SAP BNAC imports: Digital Nameplate
+    V3.0 (otherwise V2.0), Handover Documentation V2.0 (otherwise V1.2) and Technical Data V2.0. See
+    [Data requirements](cloud-bnac-fulfillment.md#data-requirements).
+- **[BNAC]** In addition to errors, fulfillment line items now support **warnings** as well, listed in `warnings` property.
+    See [Warnings](cloud-bnac-fulfillment.md#warnings).
+- **[BNAC]** **Configuration in the Manage UI** - configure SAP BNAC, set the credentials and validate the connection
+    under **Settings** → **SAP BNAC** of your tenant. See
+    [Configure in the Manage UI](cloud-bnac-fulfillment.md#configure-in-the-manage-ui).
+- **[BNAC]** **Configuration validation** - `POST /bnac/configuration/validate` checks the stored configuration and
+    credentials against SAP BNAC (read-only), with an outcome for each step and partner. See
+    [Validate the configuration](cloud-bnac-fulfillment.md#validate-the-configuration).
 
 **Fixes:**
 
-- **[BNAC]** Your customer receives the equipment's documents with their files. Every document of the Handover
-    Documentation, every version SAP BNAC keeps of it from earlier deliveries, and their files are shared with
-    the partner; before, the files were not attached and the documents not shared
-- **[BNAC]** Rejected credentials and a refused import fail the sync or delivery right away with SAP BNAC's
-    reason, instead of after a timeout
+- **[BNAC]** **Documentation delivery** - your customer now receives the equipment's documents with their files.
+    Every document of the equipment and every version of it are shared with the partner; before, the files were not
+    attached and the documents were not shared.
+- **[BNAC]** Rejected credentials and a refused import fail early instead of after a timeout
 
 ---
 
