@@ -6,6 +6,17 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.33
+
+*Not yet released*.
+
+**What's new:**
+
+- **[Security]** Your tenant's APIs and twinsphere Viewer can be restricted to the IP ranges you provide, see
+    [IP Allowlist](cloud-ip-allowlist.md)
+
+---
+
 ## Cloud 1.32
 
 *Released on 29-Oct-2026*.
