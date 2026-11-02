@@ -16,6 +16,9 @@ Access through twinstudio is **not** restricted by the allowlist. twinstudio con
 twinsphere platform, so your users can keep using it from any network. Access to twinstudio itself is controlled by
 twinsphere ID and your roles.
 
+The allowlist restricts access from the internet only. Requests from within the twinsphere platform and from
+twinsphere operations are always permitted, so that your tenant can be operated and monitored.
+
 ## How to request it
 
 Open a ticket with the twinsphere [support team](contact.md) and provide:
