@@ -6,6 +6,67 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 ---
 
+## Cloud 1.32
+
+*Released on 29-Oct-2026*.
+
+**Breaking changes:**
+
+*Note: The SAP BNAC Fulfillment Service is still experimental. Even though we try to avoid or minimize breaking
+changes, some of these are necessary for a future stable version.*
+
+- **[BNAC]** (experimental) **Partner ID instead of partner name**: to support filtering, automatic matching and future
+    UI features around BNAC, we are changing the main partner identification key to an ID instead of the loose,
+    string-based parameter `name`. The partner ID should be a short, readable, lowercase string. This results in a few
+    breaking changes at this point:
+
+    - **Configuration**: a few fields of the configuration are renamed, and they are migrated automatically. However,
+        the configured partners are removed, because you need to choose a new ID for each of them.
+    - **GET /bnac/fulfillments**: the `partnerId` parameter switches to the new partner ID, and the new
+        `bnacBusinessPartnerId` parameter filters by the partner IDs on the BNAC side.
+
+        - `GET /bnac/fulfillments?partnerId=oi4` filters by the fulfillment partner ID
+        - `GET /bnac/fulfillments?bnacBusinessPartnerId=9CD321554...` filters by the business partner ID in SAP BNAC
+
+- **[BNAC]** The "requested" information of fulfillment line items, `purchaseOrder`, `purchaseOrderLineItem` and
+    `operatorEquipmentId`, is moved under `requested`
+
+**What's new:**
+
+- **[API]** [Implicit discovery](cloud-documentation.md#implicit-discovery) and the implicit
+    [shell](cloud-documentation.md#implicit-shell-registry) and
+    [submodel](cloud-documentation.md#implicit-submodel-registry) registries follow your [ABAC](cloud-abac.md)
+    policies
+- **[BNAC]** Automatic matching per **ID Link** - line items that specify the ID Link are matched (in automatic mode)
+    to shells by their `globalAssetId` property. Purchase-order-based matching remains as a fallback / secondary
+    strategy. See [Matching shells](cloud-bnac-fulfillment.md#matching-shells).
+- **[BNAC]** Automatic matching per **Partner ID** extension - a shell containing the
+    `twinsphere.io/bnac/partner-id` extension will match only to that specified partner. With more than one partner
+    configured, only shells that name the partner are matched automatically (shells without the extension can still
+    be pinned). See [Matching shells](cloud-bnac-fulfillment.md#matching-shells).
+- **[BNAC]** **Handover documentation language filtering** - see
+    [Document languages](cloud-bnac-fulfillment.md#document-languages).
+- **[BNAC]** **Supported submodels only** - a delivery sends only the submodels SAP BNAC imports: Digital Nameplate
+    V3.0 (otherwise V2.0), Handover Documentation V2.0 (otherwise V1.2) and Technical Data V2.0. See
+    [Data requirements](cloud-bnac-fulfillment.md#data-requirements).
+- **[BNAC]** In addition to errors, fulfillment line items now support **warnings** as well, listed in `warnings` property.
+    See [Warnings](cloud-bnac-fulfillment.md#warnings).
+- **[BNAC]** **Configuration in the Manage UI** - configure SAP BNAC, set the credentials and validate the connection
+    under **Settings** → **SAP BNAC** of your tenant. See
+    [Configure in the Manage UI](cloud-bnac-fulfillment.md#configure-in-the-manage-ui).
+- **[BNAC]** **Configuration validation** - `POST /bnac/configuration/validate` checks the stored configuration and
+    credentials against SAP BNAC (read-only), with an outcome for each step and partner. See
+    [Validate the configuration](cloud-bnac-fulfillment.md#validate-the-configuration).
+
+**Fixes:**
+
+- **[BNAC]** **Documentation delivery** - your customer now receives the equipment's documents with their files.
+    Every document of the equipment and every version of it are shared with the partner; before, the files were not
+    attached and the documents were not shared.
+- **[BNAC]** Rejected credentials and a refused import fail early instead of after a timeout
+
+---
+
 ## Cloud 1.31
 
 *Released on 16-Oct-2026*.
