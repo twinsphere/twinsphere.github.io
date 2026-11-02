@@ -10,6 +10,12 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 *Not yet released*.
 
+**Breaking changes:**
+
+- **[Filter]** Removed the Shell Filter Queries endpoint (`POST /filter/shells`), deprecated since Cloud 1.28 —
+    please use the AAS [Query Language](cloud-documentation.md#query-language) (`POST /query/shells`) instead. File
+    Filter Queries (`POST /filter/files`) are not affected
+
 **What's new:**
 
 - **[Security]** Your tenant's APIs and twinsphere Viewer can be restricted to the IP ranges you provide, see
@@ -383,13 +389,13 @@ changes, some of these are necessary for a future stable version.*
 
 *Released on 09-Jul-2025*.
 
-- **[Filter]** Added further shell properties displayName, idShort and aas-id to [Filter Queries](cloud-shell-filter-queries.md)
+- **[Filter]** Added further shell properties displayName, idShort and aas-id to Filter Queries
 
 ### Cloud 1.16
 
 *Released on 13-Jun-2025*.
 
-- **[Filter]** Introduction of Filter Queries feature, see [documentation](cloud-shell-filter-queries.md) for more information
+- **[Filter]** Introduction of Filter Queries feature
 
 ### Cloud 1.15
 
