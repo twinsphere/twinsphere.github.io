@@ -43,6 +43,7 @@ nav:
       - Statistics: cloud-statistics.md
       - ABAC (Attribute Based Access Control): cloud-abac.md
     - Authentication: cloud-auth.md
+    - IP Allowlist: cloud-ip-allowlist.md
     - Client Generation: cloud-client-generation.md
     - Release Notes: cloud-release-notes.md
   - Studio:
