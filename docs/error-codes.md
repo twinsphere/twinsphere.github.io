@@ -26,8 +26,7 @@ next to its human-readable `text`:
 A response can carry several messages, for example one per invalid value of a request. New codes may be added in
 any release; treat an unknown code like the generic code of its HTTP status.
 
-A few responses are produced before your request reaches the API, for example for an unknown route or an unsupported
-content type. They come without a body or without a code; rely on their HTTP status.
+A request for a path or an API version that does not exist is answered without a code; rely on its HTTP status.
 
 !!! note "Changed in Cloud 1.33"
     Before Cloud 1.33, `code` carried the HTTP status as a string (for example `"404"`), apart from the four codes
@@ -45,7 +44,9 @@ These codes are shared by the APIs, each API uses the ones that apply to it.
 | `forbidden` | 403 | You are not allowed to perform this operation |
 | `not-found` | 404 | The requested resource does not exist |
 | `already-exists` | 409 | A resource with this identity already exists |
+| `not-acceptable` | 406 | None of the response formats your request accepts is supported |
 | `concurrent-modification` | 409 | The data was changed by another request at the same time, repeat your request |
+| `unsupported-media-type` | 415 | The content type of the request is not supported |
 | `internal-error` | 500 | An unexpected error occurred, please contact us and quote the `correlationId` |
 | `feature-not-activated` | 501 | The feature is not activated for your tenant |
 | `bad-gateway` | 502 | A service required to process the request could not be reached |
