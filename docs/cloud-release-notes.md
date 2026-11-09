@@ -28,6 +28,9 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 - **[API]** Error texts name resources and properties as you know them from the API, and unexpected errors no longer
     expose internal details. Error responses carry the `correlationId` of the request
+- **[API]** Standard ("Explicit") Submodel Registry with the IDTA profiles SSP-001 and SSP-003 (bulk operations),
+    available under the instance name of your shell registry, see
+    [Standard Submodel Registry](cloud-documentation.md#standard-explicit-submodel-registry)
 - **[Security]** Your tenant's APIs and twinsphere Viewer can be restricted to the IP ranges you provide, see
     [IP Allowlist](cloud-ip-allowlist.md)
 
