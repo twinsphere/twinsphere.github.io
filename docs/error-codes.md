@@ -190,7 +190,6 @@ codes of the ID Resolver for its rules. A tenant in planned maintenance answers 
 
 | Code | HTTP status | Meaning |
 |------|-------------|---------|
-| `missing-id` | 400 | The ID to check is missing |
 | `id-too-short` | 400 | The ID is shorter than the minimum length |
 | `invalid-resolution-rule` | 400 | The [rule](management-resolver.md) is invalid, the text names the reason |
 | `tenant-not-in-organization` | 400 | The rule points to a tenant outside the organization |
