@@ -14,7 +14,8 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 
 - **[API]** **Error codes**: the `code` of an error message now identifies the error case, for example `aas-not-found`
     or `validation-failed`, instead of repeating the HTTP status (for example `"404"`). This applies to the Cloud API,
-    the Manage API and the ID Resolver; the HTTP status codes do not change. `QUOTA_EXCEEDED`, `LIMIT_EXCEEDED`,
+    the Manage API and the ID Resolver. The HTTP status codes do not change, except that a service the Cloud API
+    depends on, such as the file storage, failing now answers `502` instead of `500`. `QUOTA_EXCEEDED`, `LIMIT_EXCEEDED`,
     `PAYLOAD_TOO_LARGE` and `TENANT_MAINTENANCE` keep their spelling, while `AASXFileValidation` and
     `Vdi2770FileValidation` become `invalid-aasx-file` and `invalid-vdi2770-file`. All codes are listed in
     [Error Codes](error-codes.md). The `timestamp` of an error message now carries its time zone, for example
