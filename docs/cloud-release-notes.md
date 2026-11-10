@@ -17,7 +17,8 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
     the Manage API and the ID Resolver; the HTTP status codes do not change. `QUOTA_EXCEEDED`, `LIMIT_EXCEEDED`,
     `PAYLOAD_TOO_LARGE` and `TENANT_MAINTENANCE` keep their spelling, while `AASXFileValidation` and
     `Vdi2770FileValidation` become `invalid-aasx-file` and `invalid-vdi2770-file`. All codes are listed in
-    [Error Codes](error-codes.md)
+    [Error Codes](error-codes.md). The `timestamp` of an error message now carries its time zone, for example
+    `2026-11-06T09:41:12.1234567Z`
 - **[API]** Metamodel validation errors no longer start with a summary message. Each violation is its own message, with
     the violated rule as code and the path to the offending element at the end of the text
 - **[Filter]** Removed the Shell Filter Queries endpoint (`POST /filter/shells`), deprecated since Cloud 1.28 —

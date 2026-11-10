@@ -11,7 +11,7 @@ next to its human-readable `text`:
       "messageType": "Error",
       "text": "AAS 'https://example.com/aas/4711' does not exist.",
       "correlationId": "0HN8R3K2J5Q1V:00000001",
-      "timestamp": "2026-11-06T09:41:12"
+      "timestamp": "2026-11-06T09:41:12.1234567Z"
     }
   ]
 }
@@ -57,8 +57,9 @@ These codes are shared by the APIs, each API uses the ones that apply to it.
 
 ### Resource codes
 
-Codes for a missing, duplicate or concurrently changed resource name the resource type:
-`<resource>-not-found` (404), `<resource>-already-exists` (409) and `<resource>-concurrent-modification` (409).
+Codes for a missing or a duplicate resource name the resource type:
+`<resource>-not-found` (404) and `<resource>-exists` (409). A concurrent change of a resource is reported as
+`concurrent-modification` (409), its text names the resource.
 
 | Resource | Example code |
 |----------|--------------|
@@ -100,8 +101,8 @@ A request that refers to a resource which does not exist, for example in its bod
 | `semantic-conversion-failed` | 400 | The semantic document cannot be converted to a submodel |
 | `semantic-schema-not-found` | 404 | The requested semantic schema does not exist |
 | `submodel-value-not-found` | 404 | The submodel has no elements with a value |
-| `submodel-element-parent-not-found` | 404 | The parent element does not exist or cannot hold submodel elements |
-| `submodel-reference-already-exists` | 409 | The AAS already references this submodel |
+| `parent-element-not-found` | 404 | The parent element does not exist or cannot hold submodel elements |
+| `submodel-reference-exists` | 409 | The AAS already references this submodel |
 | `cursor-not-found` | 404 | The paging cursor does not exist for this AAS |
 | `file-element-not-found` | 404 | The element does not exist or is neither a File nor a Blob |
 | `attachment-not-found` | 404 | The File or Blob element has no attachment |
@@ -128,7 +129,7 @@ A request that refers to a resource which does not exist, for example in its bod
 | `bnac-item-invalid-state` | 400 | The line item is not in a state that allows this action |
 | `bnac-item-not-mapped` | 400 | No shell is mapped to the line item |
 | `bnac-item-externally-assigned` | 400 | The line item carries equipment provided by someone else |
-| `bnac-item-not-externally-assigned` | 400 | The line item carries no externally provided equipment |
+| `bnac-item-not-external` | 400 | The line item carries no externally provided equipment |
 | `bnac-item-already-delivered` | 400 | The line item was already delivered, deliver it again instead of remapping it |
 | `bnac-shell-already-mapped` | 400 | The shell is already mapped to another line item of this fulfillment |
 | `bnac-nameplate-missing` | 400 | The shell has no Digital Nameplate that SAP BNAC supports |
@@ -167,12 +168,12 @@ codes of the ID Resolver for its rules. A tenant in planned maintenance answers 
 | `role-assignment-already-exists` | 409 | The role assignment already exists |
 | `unknown-role` | 400 | The role is not a valid organization role |
 | `service-account-not-found` | 404 | The service account does not exist |
-| `service-account-not-in-organization` | 403 | The service account belongs to another organization |
+| `foreign-service-account` | 403 | The service account belongs to another organization |
 | `service-account-not-ready` | 400 | The service account could not be set up and cannot be used, please contact us |
 | `service-account-secret-not-found` | 404 | The secret does not exist |
 | `secret-expiry-out-of-range` | 400 | The expiry date of a secret must lie between 1 day and 2 years from now |
 | `not-a-service-account` | 400 | The principal is not a service account |
-| `system-service-account-creation-forbidden` | 403 | You are not allowed to create system service accounts |
+| `system-account-creation-denied` | 403 | You are not allowed to create system service accounts |
 | `system-service-account-protected` | 403 | System service accounts cannot be accessed or modified |
 | `license-type-not-configured` | 400 | No quota is configured for this [license](management-licensing.md) type |
 | `license-quota-exhausted` | 400 | No licenses of this type are left |
