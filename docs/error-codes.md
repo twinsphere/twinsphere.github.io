@@ -30,7 +30,8 @@ A request for a path or an API version that does not exist is answered without a
 
 !!! note "Changed in Cloud 1.33"
     Before Cloud 1.33, `code` carried the HTTP status as a string (for example `"404"`), apart from the four codes
-    listed under [legacy codes](#legacy-codes). See the [release notes](cloud-release-notes.md#cloud-133).
+    listed under [legacy codes](#legacy-codes) and `AASXFileValidation` and `Vdi2770FileValidation`, which are now
+    `invalid-aasx-file` and `invalid-vdi2770-file`. See the [release notes](cloud-release-notes.md#cloud-133).
 
 ## General codes
 
@@ -50,7 +51,7 @@ These codes are shared by the APIs, each API uses the ones that apply to it.
 | `internal-error` | 500 | An unexpected error occurred, please contact us and quote the `correlationId` |
 | `feature-not-activated` | 501 | The feature is not activated for your tenant |
 | `bad-gateway` | 502 | A service required to process the request could not be reached |
-| `service-unavailable` | 503 | The service cannot take the request right now, retry after the `Retry-After` header |
+| `service-unavailable` | 503 | The service cannot take the request right now, retry later (after `Retry-After` if set) |
 | `gateway-timeout` | 504 | A service required to process the request did not answer in time |
 
 ## Cloud API
@@ -110,6 +111,8 @@ A request that refers to a resource which does not exist, for example in its bod
 | `thumbnail-not-found` | 404 | The AAS has no thumbnail |
 | `unmanaged-file-path` | 404 | The file was not uploaded to twinsphere, so it cannot be downloaded from here |
 | `system-entity-locked` | 423 | The object is managed by twinsphere and cannot be modified |
+| `bulk-operation-failed` | 400 | The bulk operation failed, the text names the reason; its status reports it as well |
+| `TENANT_MAINTENANCE` | 503 | Your tenant is in planned maintenance, please try again later |
 | `QUOTA_EXCEEDED` | 422 | A [quota](quotas-and-limits.md) of your tenant is exhausted |
 | `PAYLOAD_TOO_LARGE` | 413 | The submodel exceeds the [size limit](quotas-and-limits.md) |
 
