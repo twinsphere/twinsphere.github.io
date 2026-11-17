@@ -232,20 +232,21 @@ You can attach meta information to a twinsphere file at
 - **classification**: Must be a valid class ID as defined in **VDI 2770**.
 - **Attributes**: Custom key–value metadata. Both `key` and `value` are converted to **lower case** before they are
   stored, so `"Country"`/`"Germany"` is returned as `"country"`/`"germany"` on every later read. `displayName` and
-  `classification` are stored unchanged.
+  `classification` are stored unchanged. [Security attributes](cloud-abac.md#files) are the exception: only their
+  `twinsphere.io/security-attribute/` prefix is converted to lower case, the rest of the key and the value keep
+  their case.
 - **Attributes Limit**: Up to 50 attributes per file.
 - **Attribute Size**: Keys and values can each be up to 2048 characters.
 
 Storing attributes in one canonical form keeps everything that compares them in agreement:
-[file filter queries](cloud-file-filter-queries.md) normalize the requested attributes the same way and are therefore
-case-insensitive, and file [security attributes](cloud-abac.md#files) are still recognized by their
-`twinsphere.io/security-attribute/` key prefix if it was written in mixed case — otherwise they would silently be
-stored as ordinary metadata and leave the file unprotected.
+[file filter queries](cloud-file-filter-queries.md) normalize the requested attributes the same way, and file
+security attributes are still recognized by their `twinsphere.io/security-attribute/` key prefix if it was written in
+mixed case — otherwise they would silently be stored as ordinary metadata and leave the file unprotected.
 
 !!! attention "Please notice"
     Keys must be unique per file **after** the conversion, so `Country` and `country` in the same request are
-    rejected with `400 Bad Request`. Access policies are **not** normalized, so a policy that should match a file
-    must be written in lower case.
+    rejected with `400 Bad Request`. Security attributes keep their case, so a policy matches a file exactly like it
+    matches the Shell or Submodel the file belongs to.
 
 ### Adaption of standard operations
 
