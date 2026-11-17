@@ -67,3 +67,41 @@ blockquote {
 .wy-table-responsive table td code {
     white-space: nowrap;
 }
+
+/* Content tabs (pymdownx.tabbed), which the theme does not style */
+.tabbed-set {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+.tabbed-set > input {
+    position: absolute;
+    opacity: 0;
+}
+
+.tabbed-set > label {
+    padding: 0.5em 1em;
+    border-bottom: 2px solid transparent;
+    color: #5c5c5c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tabbed-set > input:checked + label {
+    border-color: #6da40c;
+    color: #404040;
+}
+
+.tabbed-set > .tabbed-content {
+    display: none;
+    order: 99;
+    width: 100%;
+    border-top: 1px solid #e1e4e5;
+    padding-top: 0.5em;
+}
+
+.tabbed-set > input:checked + label + .tabbed-content {
+    display: block;
+}
