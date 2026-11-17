@@ -52,7 +52,9 @@ default values (as these are treated as omitted). All provided filter parameters
   refer for example to the IDTA Submodel Handover documentation
 - Custom Attributes: Any key–value pairs. Each key must be unique within the files meta data. Keys and values are
   matched case-insensitively, because both the stored and the requested attributes are converted to lower case
-  (see [Usage of File API](cloud-documentation.md#usage-of-file-api))
+  (see [Usage of File API](cloud-documentation.md#usage-of-file-api)). [Security attributes](cloud-abac.md#files) are
+  the exception: they are matched exactly as written, only their `twinsphere.io/security-attribute/` prefix is
+  case-insensitive
 
 ## Regex Support
 
