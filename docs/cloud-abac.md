@@ -110,9 +110,6 @@ security attributes. Unlike Shells and Submodels, file security attributes are d
 - When uploading files as **attachments** or **thumbnails**, they initially **inherit the security
   attributes** of their parent (Shell or Submodel). These inherited attributes can be changed
   afterwards for each file individually.
-- File security attributes keep their case like those of Shells and Submodels, so one policy matches a Shell or
-  Submodel and the files that inherited its attributes. Only the `twinsphere.io/security-attribute/` prefix is
-  converted to lower case.
 
 ### Strict Attribute Matching
 
