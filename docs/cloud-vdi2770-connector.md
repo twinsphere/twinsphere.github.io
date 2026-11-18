@@ -30,6 +30,7 @@ The request is sent as `multipart/form-data` with the following fields:
 | `submodelId` | yes | Identifier of the submodel to create or replace |
 | `aasIdentifier` | no | Identifier of an existing asset administration shell the submodel is linked to. Omit it to create the submodel without a link |
 | `strict` | no | Set to `true` to report findings the VDI 2770 standard tolerates. Defaults to `false` |
+| `allowMissingClassificationTranslations` | no | Set to `true` to accept missing class name translations, see [Missing classification translations](#missing-classification-translations). Defaults to `false` |
 | `file` | yes | The VDI 2770 package |
 
 <!-- markdownlint-enable line-length -->
@@ -80,6 +81,16 @@ resolved within the package, and `DocumentVersion` entries that use the same lan
 !!! note
     A package that is accepted by default can still be rejected with `strict` set. Start without it,
     and switch it on when you want those additional findings reported.
+
+## Missing classification translations
+
+By default, every document classification must give its class name in all languages of the document.
+English and German names of `VDI2770:2018` classes are filled in automatically. If another translation is
+missing, the package is rejected, or for classifications other than `VDI2770:2018` the classification is
+left out of the submodel.
+
+Set `allowMissingClassificationTranslations` to `true` to accept such packages. The classifications are
+then kept with only the class names the package gives.
 
 ## Documents from the package
 
