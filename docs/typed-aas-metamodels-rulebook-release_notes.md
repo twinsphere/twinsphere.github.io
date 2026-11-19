@@ -9,6 +9,16 @@ form major.minor.patch.
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels.Validation.Rulebook 1.4.0
+
+*Released on 18-November-2026*.
+
+- **[Feat]** Add rule `CONF012` (matching-supplemental-semantic-ids): every Supplemental Semantic ID of a Submodel or
+  SubmodelElement must also be listed among the Supplemental Semantic IDs of the corresponding element in the template
+  specification.
+- **[Feat]** Add rule `CONF013` (matching-order-relevant): the effective `orderRelevant` value of a
+  SubmodelElementList in an instance must equal that of the corresponding SubmodelElementList in the template.
+
 ## twinsphere.TypedAasMetamodels.Validation.Rulebook 1.3.2
 
 *Released on 30-July-2026*.
