@@ -11,6 +11,22 @@ releases.
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels.Experimental 1.5.1
+
+*Released on 13-November-2026*.
+
+- **[Fix] [Digital Quality Documents]** Resolve several issues in the domain model of the Digital Quality Documents
+  submodel that stemmed from issues in the SMT. The generated types and builders changed accordingly, which may require
+  adaptations in existing code.
+
+## twinsphere.TypedAasMetamodels.Experimental 1.5.0
+
+*Released on 09-November-2026*.
+
+- **[Feat] [Digital Quality Documents]** Update the submodel to SMT release 1.0.3. Until now, Experimental featured the
+  pre-1.0.0 version of the SMT, which has changed structurally. This is a breaking change for existing code using the
+  submodel.
+
 ## twinsphere.TypedAasMetamodels.Experimental 1.4.1
 
 *Released on 05-August-2026*.

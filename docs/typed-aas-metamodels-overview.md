@@ -318,8 +318,8 @@ submodels:
 - IDTA 02035-5 DBP Part 5 - Product Condition 1.0
 - IDTA 02035-6 DBP Part 6 - Material Composition 1.0
 - IDTA 02035-7 DBP Part 7 - Circularity 1.0
-- IDTA 02065-1 Digital Quality Documents Part 1: Core elements
-- IDTA 02029-1 Sensor 4.0 Part 1: Measurement Value
+- IDTA 02065-1 Digital Quality Documents Part 1: Core elements 1.0
+- IDTA 02029-1 Sensor 4.0 Part 1: Measurement Value 1.0
 
 See [Versioning and SMT Conformity](typed-aas-metamodels-versioning.md) for which SMT versions we target and how SMT
 updates map to our releases.
