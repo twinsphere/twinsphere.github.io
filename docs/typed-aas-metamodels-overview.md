@@ -301,9 +301,12 @@ provides support for the following submodels:
 - IDTA 02023 Carbon Footprint 0.9
 - IDTA 02002-1-0 Submodel for Contact Information 1.0
 - IDTA 02006-2-0 Digital Nameplate for industrial equipment 2.0
+- IDTA 02006-3-0 Digital Nameplate for industrial equipment 3.0
 - IDTA 02004-1-2 Handover Documentation 1.2
+- IDTA 02004-2-0 Handover Documentation 2.0
 - IDTA 02011-1-1 Hierarchical Structures enabling Bills of Material 1.1
 - IDTA 02003-1-2 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 1.2
+- IDTA 02003-2-0 Generic Frame for Technical Data for Industrial Equipment in Manufacturing 2.0
 
 In addition to that, the twinsphere.TypedAasMetamodels.Experimental companion package provides support for the following
 submodels:
