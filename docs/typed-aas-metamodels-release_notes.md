@@ -10,6 +10,18 @@ releases.
 
 <!--markdownlint-disable no-emphasis-as-heading -->
 
+## twinsphere.TypedAasMetamodels 1.3.4
+
+*Released on 13-November-2026*.
+
+- **[TAM] [Bugfix]** The ValueOnly serialization no longer throws on unset values in a SubmodelElementList. Instead, it
+  emits `null`, an empty object, or an empty list, depending on the type of the list.
+- **[TAM] [Bugfix]** Validation of MIME types now correctly handles XML files independent of whether the MIME type is
+  resolved as `application/xml` or `text/xml`.
+- **[TAM] [Bugfix]** Validation of Handover Documentation 2.0 no longer misapplies its special rules to the Digital
+  Quality Documents submodel, which erroneously reuses semantic IDs of the Handover Documentation SMT.
+- **[Semantics]** Released as version 1.3.4 together with TAM.
+
 ## twinsphere.TypedAasMetamodels 1.3.3
 
 *Released on 16-October-2026*.
