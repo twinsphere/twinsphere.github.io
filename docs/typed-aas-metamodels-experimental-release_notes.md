@@ -4,6 +4,8 @@
 
 The twinsphere.TypedAasMetamodels.Experimental library follows [semantic versioning](https://semver.org/) in the
 form major.minor.patch.
+See [Versioning and SMT Conformity](typed-aas-metamodels-versioning.md) for how updates to SMTs are reflected in
+releases.
 
 ---
 

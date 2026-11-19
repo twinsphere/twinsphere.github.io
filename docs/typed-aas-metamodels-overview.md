@@ -318,6 +318,9 @@ submodels:
 - IDTA 02065-1 Digital Quality Documents Part 1: Core elements
 - IDTA 02029-1 Sensor 4.0 Part 1: Measurement Value
 
+See [Versioning and SMT Conformity](typed-aas-metamodels-versioning.md) for which SMT versions we target and how SMT
+updates map to our releases.
+
 ### Types of the Meta Model
 
 In twinsphere.TypedAasMetamodels we aim to provide an easy to use API for the work with submodels. To this end we use
