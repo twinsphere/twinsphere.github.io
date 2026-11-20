@@ -25,6 +25,10 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
 - **[Filter]** Removed the Shell Filter Queries endpoint (`POST /filter/shells`), deprecated since Cloud 1.28 —
     please use the AAS [Query Language](cloud-documentation.md#query-language) (`POST /query/shells`) instead. File
     Filter Queries (`POST /filter/files`) are not affected
+- **[Security]** Security attributes on files keep their case, so an access policy matches a file exactly like the
+    Shell or Submodel it inherited its attributes from. File Filter Queries (`POST /filter/files`) therefore match
+    security attributes in their exact case, except for the `twinsphere.io/security-attribute/` prefix. All other file
+    attributes stay case-insensitive
 
 **What's new:**
 
