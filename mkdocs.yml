@@ -8,6 +8,8 @@ theme:
     primary: green
 extra_css:
   - css/extra.css
+extra_javascript:
+  - js/tabs.js
 nav:
   - Home: index.md
   - Contact us: contact.md
@@ -78,6 +80,8 @@ validation:
 markdown_extensions:
   - admonition
   - attr_list
+  - pymdownx.superfences
+  - pymdownx.tabbed
   - admonition
 plugins:
   - search

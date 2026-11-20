@@ -89,7 +89,7 @@ jobs:
           restore-keys: |
             twinsphere-docs-
       - run: pip install mkdocs
-      - run: pip install mkdocs-open-in-new-tab mkdocs-link-marker mkdocs-spellcheck[all]
+      - run: pip install mkdocs-open-in-new-tab mkdocs-link-marker mkdocs-spellcheck[all] pymdown-extensions
       - run: mkdocs gh-deploy --force --strict
 
   deploy:
