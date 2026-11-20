@@ -207,3 +207,5 @@ codes of the ID Resolver for its rules. A tenant in planned maintenance answers 
 
 `QUOTA_EXCEEDED`, `LIMIT_EXCEEDED`, `PAYLOAD_TOO_LARGE` and `TENANT_MAINTENANCE` predate the kebab-case codes. They
 keep their spelling, so clients relying on them continue to work.
+`ENVIRONMENT_MAINTENANCE` is spelled the same way. Like `TENANT_MAINTENANCE`, it comes with a `503`, here while the
+Manage UI and the Manage API are in planned maintenance.
