@@ -90,8 +90,9 @@ to principals that may see all AAS data of the tenant, for example integration s
 
 The organization-owner and organization-reader roles apply to every tenant of the organization. On each tenant, an
 organization reader has the access of a tenant-global-reader, and can also read the tenant's [ABAC](cloud-abac.md)
-access policies and run access checks. All other roles in the matrix are assigned per tenant and grant access to that
-tenant only.
+access policies and run access checks. twinstudio needs a role assigned on the tenant itself, so the
+organization-reader role alone does not open a tenant in twinstudio. All other roles in the matrix are assigned per
+tenant and grant access to that tenant only.
 
 Like any role, organization owners and platform administrators assign and revoke the organization-reader role under
 **Organization Role Assignments** in the [Manage UI](management-ui.md) or via the
