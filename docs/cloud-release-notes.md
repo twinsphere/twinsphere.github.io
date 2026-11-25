@@ -39,6 +39,9 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
     [Standard Submodel Registry](cloud-documentation.md#standard-explicit-submodel-registry)
 - **[Security]** Your tenant's APIs and twinsphere Viewer can be restricted to the IP ranges you provide, see
     [IP Allowlist](cloud-ip-allowlist.md)
+- **[SphereAPI]** **Exact and live statistics** - the counts of shells, submodels, concept descriptions, files,
+    asset links and descriptors are exact and follow every change within seconds, where they were hourly estimates
+    before. See [Statistics](cloud-statistics.md).
 
 ---
 

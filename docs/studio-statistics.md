@@ -56,10 +56,6 @@ red arrow means a decrease.
 | **File Storage** | Current file (blob) storage in GB |
 | **Average File Size** | Average size of the stored files in MB. This card has no trend indicator |
 
-!!! note "Monitoring objects"
-    Every twinsphere tenant contains one shell and one submodel used for operational monitoring. They cannot be reached
-    through the API, but they are counted in these figures.
-
 If your tenant has no registry or discovery instance, the lookup cards are not shown at all.
 
 ## Charts
