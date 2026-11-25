@@ -4,7 +4,8 @@
 Licensing controls which twinsphere capabilities your organization and its members can use. You can
 review your organization's licensing and assign per-user capabilities to members - in the
 [Manage UI](management-overview.md) or via the [Management API](management-api.md). These management
-operations require the `organization-owner` [role](management-roles.md); individual members can
+operations require the `organization-owner` [role](management-roles.md), and the `organization-reader` role can review
+the licensing without changing it; individual members can
 always see their own licenses via the [`/me` endpoint](management-api.md#self-check-via-me-endpoint).
 
 There are two kinds of licenses.

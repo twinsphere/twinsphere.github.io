@@ -39,6 +39,10 @@ The twinsphere Cloud Platform follows the semantic versioning format in the form
     [Standard Submodel Registry](cloud-documentation.md#standard-explicit-submodel-registry)
 - **[Security]** Your tenant's APIs and twinsphere Viewer can be restricted to the IP ranges you provide, see
     [IP Allowlist](cloud-ip-allowlist.md)
+- **[Management]** **Organization reader role**: the new `organization-reader` role gives read access to the whole
+    organization and all its tenants, without changing anything, for example for stakeholders, auditors and support
+    staff. Organization owners assign it like any organization role; in the Manage UI an organization reader sees the
+    same pages as an owner, without the actions that change something. See [Roles](management-roles.md)
 - **[SphereAPI]** **Exact and live statistics** - the counts of shells, submodels, concept descriptions, files,
     asset links and descriptors are exact and follow every change within seconds, where they were hourly estimates
     before. See [Statistics](cloud-statistics.md).

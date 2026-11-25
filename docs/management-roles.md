@@ -7,6 +7,7 @@ Here is a list of all available roles and their permissions. You can assign them
 | Role | Scope | Explanation |
 |------|-------|-------------|
 | organization-owner | organization | Full access rights across the organization |
+| organization-reader | organization | Read access across the organization, without changing anything. Meant for stakeholders, auditors and support staff |
 | tenant-administrator | cloud tenant | Full access rights for a given tenant. Required for security-relevant endpoints (e.g. ABAC policies) |
 | tenant-global-writer | cloud tenant | Read and write permissions on all endpoints |
 | tenant-global-reader | cloud tenant | Read permissions on all endpoints |
@@ -53,6 +54,7 @@ gets through a feature rather than through the area's own endpoints: it is not l
 | Role | Org | ABAC | AAS data | AAS metadata | Push | Search | Semantic connector | BNAC |
 |------|:---:|:----:|:--------:|:------------:|:----:|:------:|:------------------:|:----:|
 | organization-owner | R+W | R+W | R+W | R+W | R+W | R | R+W | R+W |
+| organization-reader | R | R | R | R | R | R | R | R |
 | tenant-administrator | partly¹ | R+W | R+W | R+W | R+W | R | R+W | R+W |
 | tenant-global-writer | · | · | R+W | R+W | R+W | R | R+W | R+W |
 | tenant-global-reader | · | · | R | R | R | R | R | R |
@@ -86,5 +88,12 @@ tenant can be mapped.
 ABAC policies restrict only the AAS data endpoints (shells, submodels, files). Grant the roles marked with `*` only
 to principals that may see all AAS data of the tenant, for example integration service accounts.
 
-The organization-owner role applies to every tenant of the organization. All other roles in the matrix are assigned
-per tenant and grant access to that tenant only.
+The organization-owner and organization-reader roles apply to every tenant of the organization. On each tenant, an
+organization reader has the access of a tenant-global-reader, and can also read the tenant's [ABAC](cloud-abac.md)
+access policies and run access checks. All other roles in the matrix are assigned per tenant and grant access to that
+tenant only.
+
+Like any role, organization owners and platform administrators assign and revoke the organization-reader role under
+**Organization Role Assignments** in the [Manage UI](management-ui.md) or via the
+[Management API](management-api.md). An organization reader sees the same pages as an organization owner, without
+the actions that change something.

@@ -65,7 +65,8 @@ detailed information on each parameter and return value.
 <!-- markdownlint-enable line-length -->
 
 `tenant-administrator`, `tenant-global-writer` and the organization owner have operator access as well;
-`tenant-global-reader` has viewer access. See [Roles](management-roles.md) for how roles are assigned.
+`tenant-global-reader` and the organization reader have viewer access. See [Roles](management-roles.md) for how roles
+are assigned.
 
 ## Configuration
 

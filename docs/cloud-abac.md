@@ -334,7 +334,8 @@ Once all resources have been migrated to include the new attribute, remove the o
 <!-- markdownlint-disable code-block-style -->
 !!! info "Required Roles"
 
-    Policy management endpoints require the **`tenant-administrator`** or **`organization-owner`** role.
+    Policy management endpoints require the **`tenant-administrator`** or **`organization-owner`** role. The
+    **`organization-reader`** role can read the policies and run access checks for a principal, but not change them.
 <!-- markdownlint-enable code-block-style -->
 
 | Operation | Method | Endpoint | Description |

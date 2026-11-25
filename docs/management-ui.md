@@ -4,8 +4,9 @@
 The Manage UI is the web interface for your twinsphere organization and its tenants, available at
 [https://manage.twinsphere.io](https://manage.twinsphere.io). Sign in with your [twinsphere ID](id-overview.md).
 
-What you see depends on your roles in the organization: organization owners manage the whole organization, while
-users with tenant roles only see the tenants they work with. See [Roles](management-roles.md) for what each role
+What you see depends on your roles in the organization: organization owners manage the whole organization,
+organization readers see all of it without changing anything, and users with tenant roles only see the tenants they
+work with. See [Roles](management-roles.md) for what each role
 allows.
 
 ## Signing in
@@ -20,7 +21,9 @@ It shows your user ID; give it to an organization owner, who can then invite you
 
 [![Organization view](img/twinsphere_manage_organization_view.png)](img/twinsphere_manage_organization_view.png)
 
-Organization owners see the organization view, with these pages in the sidebar:
+Organization owners and organization readers see the organization view, with these pages in the sidebar. Organization
+readers see the same pages, but none of the actions that change something, such as inviting, creating, assigning,
+editing or deleting:
 
 <!-- markdownlint-disable line-length -->
 

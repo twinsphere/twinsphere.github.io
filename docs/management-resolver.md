@@ -28,8 +28,8 @@ The following terms are used throughout this page:
 
 ## Prerequisites
 
-- **The `organization-owner` role** in the organization. Only organization owners can view, change and check
-  resolution rules. See [Roles](management-roles.md).
+- **The `organization-owner` role** in the organization. Only organization owners can change resolution rules;
+  organization readers can view and check them. See [Roles](management-roles.md).
 - **At least one tenant** in the organization.
 - **Named discovery or registry instances** are *optional*: A rule can point to a named discovery or registry
   instance of a tenant. See [Discovery](cloud-documentation.md#standard-explicit-discovery) and
