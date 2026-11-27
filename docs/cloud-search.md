@@ -4,7 +4,7 @@ twinsphere search is a feature that allows you to use Mongo Atlas Search queries
 submodel data. A list of defined indexes and their schema is given below. Each index is language-specific and contains
 only strings in a given language. We currently support English (en-US) and German (de-DE) languages only.
 
-To search using one of the indexes, send a query via POST on the `/api/v3/sphere/search` endpoint. Take a look at the
+To search using one of the indexes, send a query via POST on the `/sphere/api/v1/search` endpoint. Take a look at the
 Swagger for more API documentation around each parameter and return value.
 
 ## Shell Technical classifications

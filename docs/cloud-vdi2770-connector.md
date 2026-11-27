@@ -87,7 +87,7 @@ The documents contained in the package are stored as twinsphere files and refere
 elements of the resulting submodel. There are two ways to download them:
 
 - With the standard attachment endpoint
-  `GET /api/v3.0/submodels/{submodelId}/submodel-elements/{idShortPath}/attachment`, which addresses a
+  `GET /twin/api/v3.0/submodels/{submodelId}/submodel-elements/{idShortPath}/attachment`, which addresses a
   document by the idShort path of its `File` element. Nothing has to be read out of the submodel body
   beyond that path.
 - With the file path held by the respective `File` element, through the regular

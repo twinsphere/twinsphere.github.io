@@ -14,21 +14,21 @@ made for code generators. It describes the same API and the same JSON, at these 
 
 | API | Document for client generators |
 | --- | --- |
-| Twin API (AAS repository, registry, discovery, query) | `/swagger/v3-codegen/swagger.json` |
-| Sphere API | `/sphere/swagger/v1-codegen/swagger.json` |
+| Twin API (AAS repository, registry, discovery, query) | `/twin/api/v3/openapi-codegen.json` |
+| Sphere API | `/sphere/api/v1/openapi-codegen.json` |
 
 Generate your client from one of these documents. Download it first, for example:
 
 === "Linux / macOS"
 
     ```bash
-    curl -o openapi.json https://{twinsphereTenantURL}/swagger/v3-codegen/swagger.json
+    curl -o openapi.json https://{twinsphereTenantURL}/twin/api/v3/openapi-codegen.json
     ```
 
 === "Windows (PowerShell)"
 
     ```powershell
-    curl.exe -o openapi.json https://{twinsphereTenantURL}/swagger/v3-codegen/swagger.json
+    curl.exe -o openapi.json https://{twinsphereTenantURL}/twin/api/v3/openapi-codegen.json
     ```
 
 ## Generating a client
